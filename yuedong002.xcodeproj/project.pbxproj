@@ -14,6 +14,55 @@
 		366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366576EE2A46B6C6008C166D /* yuedong002Tests.swift */; };
 		366576F92A46B6C6008C166D /* yuedong002UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366576F82A46B6C6008C166D /* yuedong002UITests.swift */; };
 		366576FB2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366576FA2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift */; };
+		366577102A46B723008C166D /* pianoD.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 366577082A46B722008C166D /* pianoD.mp3 */; };
+		366577112A46B723008C166D /* pianoD.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 366577082A46B722008C166D /* pianoD.mp3 */; };
+		366577122A46B723008C166D /* pianoD.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 366577082A46B722008C166D /* pianoD.mp3 */; };
+		366577132A46B723008C166D /* pianoC2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 366577092A46B722008C166D /* pianoC2.mp3 */; };
+		366577142A46B723008C166D /* pianoC2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 366577092A46B722008C166D /* pianoC2.mp3 */; };
+		366577152A46B723008C166D /* pianoC2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 366577092A46B722008C166D /* pianoC2.mp3 */; };
+		366577162A46B723008C166D /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770A2A46B723008C166D /* pianoA.mp3 */; };
+		366577172A46B723008C166D /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770A2A46B723008C166D /* pianoA.mp3 */; };
+		366577182A46B723008C166D /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770A2A46B723008C166D /* pianoA.mp3 */; };
+		366577192A46B723008C166D /* pianoE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770B2A46B723008C166D /* pianoE.mp3 */; };
+		3665771A2A46B723008C166D /* pianoE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770B2A46B723008C166D /* pianoE.mp3 */; };
+		3665771B2A46B723008C166D /* pianoE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770B2A46B723008C166D /* pianoE.mp3 */; };
+		3665771C2A46B723008C166D /* pianoG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770C2A46B723008C166D /* pianoG.mp3 */; };
+		3665771D2A46B723008C166D /* pianoG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770C2A46B723008C166D /* pianoG.mp3 */; };
+		3665771E2A46B723008C166D /* pianoG.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770C2A46B723008C166D /* pianoG.mp3 */; };
+		3665771F2A46B723008C166D /* pianoC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770D2A46B723008C166D /* pianoC.mp3 */; };
+		366577202A46B723008C166D /* pianoC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770D2A46B723008C166D /* pianoC.mp3 */; };
+		366577212A46B723008C166D /* pianoC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770D2A46B723008C166D /* pianoC.mp3 */; };
+		366577222A46B723008C166D /* pianoB.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770E2A46B723008C166D /* pianoB.mp3 */; };
+		366577232A46B723008C166D /* pianoB.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770E2A46B723008C166D /* pianoB.mp3 */; };
+		366577242A46B723008C166D /* pianoB.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770E2A46B723008C166D /* pianoB.mp3 */; };
+		366577252A46B723008C166D /* pianoF.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770F2A46B723008C166D /* pianoF.mp3 */; };
+		366577262A46B723008C166D /* pianoF.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770F2A46B723008C166D /* pianoF.mp3 */; };
+		366577272A46B723008C166D /* pianoF.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665770F2A46B723008C166D /* pianoF.mp3 */; };
+		3665772D2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665772C2A46B75C008C166D /* 0614spatial_moonriver.mp3 */; };
+		3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665772C2A46B75C008C166D /* 0614spatial_moonriver.mp3 */; };
+		3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3665772C2A46B75C008C166D /* 0614spatial_moonriver.mp3 */; };
+		366577332A46B7E6008C166D /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577322A46B7E6008C166D /* MotionManager.swift */; };
+		366577342A46B7E6008C166D /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577322A46B7E6008C166D /* MotionManager.swift */; };
+		366577352A46B7E6008C166D /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577322A46B7E6008C166D /* MotionManager.swift */; };
+		366577372A46B7EF008C166D /* SoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577362A46B7EF008C166D /* SoundSystem.swift */; };
+		366577382A46B7EF008C166D /* SoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577362A46B7EF008C166D /* SoundSystem.swift */; };
+		366577392A46B7EF008C166D /* SoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577362A46B7EF008C166D /* SoundSystem.swift */; };
+		3665773C2A46B82A008C166D /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665773B2A46B82A008C166D /* ContentView3.swift */; };
+		3665773D2A46B82A008C166D /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665773B2A46B82A008C166D /* ContentView3.swift */; };
+		3665773E2A46B82A008C166D /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665773B2A46B82A008C166D /* ContentView3.swift */; };
+		366577402A46B832008C166D /* CreateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665773F2A46B832008C166D /* CreateMode.swift */; };
+		366577412A46B832008C166D /* CreateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665773F2A46B832008C166D /* CreateMode.swift */; };
+		366577422A46B832008C166D /* CreateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665773F2A46B832008C166D /* CreateMode.swift */; };
+		366577442A46B83F008C166D /* serverRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577432A46B83F008C166D /* serverRequests.swift */; };
+		366577452A46B83F008C166D /* serverRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577432A46B83F008C166D /* serverRequests.swift */; };
+		366577462A46B83F008C166D /* serverRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577432A46B83F008C166D /* serverRequests.swift */; };
+		366577482A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
+		366577492A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
+		3665774A2A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
+		36F4198C2A46C62700B11D59 /* MotionStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F4198B2A46C62700B11D59 /* MotionStateView.swift */; };
+		36F4198E2A46D4FF00B11D59 /* gs_instruments.dls in Resources */ = {isa = PBXBuildFile; fileRef = 36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */; };
+		36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */ = {isa = PBXBuildFile; fileRef = 36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */; };
+		36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */ = {isa = PBXBuildFile; fileRef = 36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +94,23 @@
 		366576F42A46B6C6008C166D /* yuedong002UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yuedong002UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		366576F82A46B6C6008C166D /* yuedong002UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yuedong002UITests.swift; sourceTree = "<group>"; };
 		366576FA2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yuedong002UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		366577082A46B722008C166D /* pianoD.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoD.mp3; sourceTree = "<group>"; };
+		366577092A46B722008C166D /* pianoC2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoC2.mp3; sourceTree = "<group>"; };
+		3665770A2A46B723008C166D /* pianoA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoA.mp3; sourceTree = "<group>"; };
+		3665770B2A46B723008C166D /* pianoE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoE.mp3; sourceTree = "<group>"; };
+		3665770C2A46B723008C166D /* pianoG.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoG.mp3; sourceTree = "<group>"; };
+		3665770D2A46B723008C166D /* pianoC.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoC.mp3; sourceTree = "<group>"; };
+		3665770E2A46B723008C166D /* pianoB.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoB.mp3; sourceTree = "<group>"; };
+		3665770F2A46B723008C166D /* pianoF.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoF.mp3; sourceTree = "<group>"; };
+		3665772C2A46B75C008C166D /* 0614spatial_moonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 0614spatial_moonriver.mp3; sourceTree = "<group>"; };
+		366577322A46B7E6008C166D /* MotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		366577362A46B7EF008C166D /* SoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundSystem.swift; sourceTree = "<group>"; };
+		3665773B2A46B82A008C166D /* ContentView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
+		3665773F2A46B832008C166D /* CreateMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMode.swift; sourceTree = "<group>"; };
+		366577432A46B83F008C166D /* serverRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serverRequests.swift; sourceTree = "<group>"; };
+		366577472A46B8B5008C166D /* soundVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soundVars.swift; sourceTree = "<group>"; };
+		36F4198B2A46C62700B11D59 /* MotionStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStateView.swift; sourceTree = "<group>"; };
+		36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */ = {isa = PBXFileReference; lastKnownFileType = file; path = gs_instruments.dls; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +161,10 @@
 		366576DB2A46B6C5008C166D /* yuedong002 */ = {
 			isa = PBXGroup;
 			children = (
+				3665773A2A46B815008C166D /* MainContentView */,
+				366577312A46B7CC008C166D /* Utils */,
+				366577302A46B765008C166D /* UIModules2 */,
+				366577072A46B6EC008C166D /* SoundFiles */,
 				366576DC2A46B6C5008C166D /* yuedong002App.swift */,
 				366576DE2A46B6C5008C166D /* ContentView.swift */,
 				366576E02A46B6C6008C166D /* Assets.xcassets */,
@@ -127,6 +197,51 @@
 				366576FA2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift */,
 			);
 			path = yuedong002UITests;
+			sourceTree = "<group>";
+		};
+		366577072A46B6EC008C166D /* SoundFiles */ = {
+			isa = PBXGroup;
+			children = (
+				36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */,
+				3665772C2A46B75C008C166D /* 0614spatial_moonriver.mp3 */,
+				3665770A2A46B723008C166D /* pianoA.mp3 */,
+				3665770E2A46B723008C166D /* pianoB.mp3 */,
+				3665770D2A46B723008C166D /* pianoC.mp3 */,
+				366577092A46B722008C166D /* pianoC2.mp3 */,
+				366577082A46B722008C166D /* pianoD.mp3 */,
+				3665770B2A46B723008C166D /* pianoE.mp3 */,
+				3665770F2A46B723008C166D /* pianoF.mp3 */,
+				3665770C2A46B723008C166D /* pianoG.mp3 */,
+				366577472A46B8B5008C166D /* soundVars.swift */,
+			);
+			path = SoundFiles;
+			sourceTree = "<group>";
+		};
+		366577302A46B765008C166D /* UIModules2 */ = {
+			isa = PBXGroup;
+			children = (
+				36F4198B2A46C62700B11D59 /* MotionStateView.swift */,
+			);
+			path = UIModules2;
+			sourceTree = "<group>";
+		};
+		366577312A46B7CC008C166D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				366577432A46B83F008C166D /* serverRequests.swift */,
+				366577362A46B7EF008C166D /* SoundSystem.swift */,
+				366577322A46B7E6008C166D /* MotionManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3665773A2A46B815008C166D /* MainContentView */ = {
+			isa = PBXGroup;
+			children = (
+				3665773F2A46B832008C166D /* CreateMode.swift */,
+				3665773B2A46B82A008C166D /* ContentView3.swift */,
+			);
+			path = MainContentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +348,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				366577162A46B723008C166D /* pianoA.mp3 in Resources */,
+				3665772D2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				366576E52A46B6C6008C166D /* Preview Assets.xcassets in Resources */,
+				3665771F2A46B723008C166D /* pianoC.mp3 in Resources */,
+				36F4198E2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
+				366577132A46B723008C166D /* pianoC2.mp3 in Resources */,
+				366577222A46B723008C166D /* pianoB.mp3 in Resources */,
+				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
 				366576E12A46B6C6008C166D /* Assets.xcassets in Resources */,
+				366577192A46B723008C166D /* pianoE.mp3 in Resources */,
+				3665771C2A46B723008C166D /* pianoG.mp3 in Resources */,
+				366577102A46B723008C166D /* pianoD.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +367,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
+				366577202A46B723008C166D /* pianoC.mp3 in Resources */,
+				3665771D2A46B723008C166D /* pianoG.mp3 in Resources */,
+				3665771A2A46B723008C166D /* pianoE.mp3 in Resources */,
+				366577232A46B723008C166D /* pianoB.mp3 in Resources */,
+				366577112A46B723008C166D /* pianoD.mp3 in Resources */,
+				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
+				366577262A46B723008C166D /* pianoF.mp3 in Resources */,
+				366577142A46B723008C166D /* pianoC2.mp3 in Resources */,
+				366577172A46B723008C166D /* pianoA.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +384,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
+				366577212A46B723008C166D /* pianoC.mp3 in Resources */,
+				3665771E2A46B723008C166D /* pianoG.mp3 in Resources */,
+				3665771B2A46B723008C166D /* pianoE.mp3 in Resources */,
+				366577242A46B723008C166D /* pianoB.mp3 in Resources */,
+				366577122A46B723008C166D /* pianoD.mp3 in Resources */,
+				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
+				366577272A46B723008C166D /* pianoF.mp3 in Resources */,
+				366577152A46B723008C166D /* pianoC2.mp3 in Resources */,
+				366577182A46B723008C166D /* pianoA.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +404,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				366577402A46B832008C166D /* CreateMode.swift in Sources */,
 				366576DF2A46B6C5008C166D /* ContentView.swift in Sources */,
+				366577332A46B7E6008C166D /* MotionManager.swift in Sources */,
+				366577372A46B7EF008C166D /* SoundSystem.swift in Sources */,
+				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
+				366577442A46B83F008C166D /* serverRequests.swift in Sources */,
 				366576DD2A46B6C5008C166D /* yuedong002App.swift in Sources */,
+				36F4198C2A46C62700B11D59 /* MotionStateView.swift in Sources */,
+				366577482A46B8B5008C166D /* soundVars.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +421,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */,
+				366577412A46B832008C166D /* CreateMode.swift in Sources */,
+				366577382A46B7EF008C166D /* SoundSystem.swift in Sources */,
+				3665773D2A46B82A008C166D /* ContentView3.swift in Sources */,
+				366577492A46B8B5008C166D /* soundVars.swift in Sources */,
+				366577452A46B83F008C166D /* serverRequests.swift in Sources */,
+				366577342A46B7E6008C166D /* MotionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +434,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				366577422A46B832008C166D /* CreateMode.swift in Sources */,
 				366576F92A46B6C6008C166D /* yuedong002UITests.swift in Sources */,
+				366577352A46B7E6008C166D /* MotionManager.swift in Sources */,
+				366577392A46B7EF008C166D /* SoundSystem.swift in Sources */,
+				3665773E2A46B82A008C166D /* ContentView3.swift in Sources */,
+				366577462A46B83F008C166D /* serverRequests.swift in Sources */,
 				366576FB2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift in Sources */,
+				3665774A2A46B8B5008C166D /* soundVars.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -399,6 +564,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -419,6 +585,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSMotionUsageDescription = "detect head movement to play";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -434,6 +602,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.jinsns.yuedong002;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -457,6 +626,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSMotionUsageDescription = "detect head movement to play";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -472,6 +643,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.jinsns.yuedong002;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
