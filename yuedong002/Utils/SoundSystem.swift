@@ -159,44 +159,10 @@ class MidiPlaySystem: ObservableObject{
 }
 
 
-//class AudioEngine {
-//    func initAudio(){
-//
-//        let engine = AVAudioEngine()
-//        let sampler = AVAudioUnitSampler()
-//
-//        engine.attach(sampler)
-//        engine.connect(sampler, to: engine.outputNode, format: nil)
-//
-//        guard let soundbank = Bundle.main.path(forResource: "gs_instruments", ofType: "dls")! else {
-//
-//            print("Could not initalize soundbank.")
-//            return
-//        }
-//        let soundbankURL = URL(fileURLWithPath:soundbank)
-//        let melodicBank:UInt8 = UInt8(kAUSampler_DefaultMelodicBankMSB)
-//        let gmHarpsichord:UInt8 = 6
-//        do {
-//            try engine.start()
-//            try self.sampler?.loadSoundBankInstrumentAtURL(bankURL: soundbankURL, program: gmHarpsichord, bankMSB: melodicBank, bankLSB: 0)(soundbank, program: gmHarpsichord, bankMSB: melodicBank, bankLSB: 0)
-//
-//        }catch {
-//            print("An error occurred \(error)")
-//            return
-//        }
-//
-//        self.sampler!.startNote(60, withVelocity: 64, onChannel: 0)
-//    }
-//}
 
 
-import SwiftUI
-import AVFoundation
 
-class AudioRecorder: NSObject, ObservableObject {
-    
-    
-}
+
 
 
 

@@ -11,8 +11,9 @@ import SwiftUI
 struct yuedong002App: App {
     var body: some Scene {
         WindowGroup {
+            MainNavigation()
 //            ContentView3()
-            CreateMode()
+//            CreateMode()
             
         }
     }

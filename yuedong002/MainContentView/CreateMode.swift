@@ -29,20 +29,7 @@ struct CreateMode: View {
     @State var username = "Bob"
     @State var musicDescription = "Happy rock"
     @State var fileURLs: [URL] = []
-    
-    
-    
-//    func getFileURLs() -> [URL] {
-//            do {
-//                let fileManager = FileManager.default
-//                let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-//                let fileURLs = try fileManager.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: [])
-//                return fileURLs
-//            } catch {
-//                print("无法获取文档目录中的文件URL列表：\(error)")
-//                return []
-//            }
-//    }
+
     
     
     var body: some View {
@@ -127,6 +114,7 @@ struct CreateMode: View {
                     
                 }
         }
+        .navigationTitle("Create Mode")
         
     }
 }

@@ -11,14 +11,15 @@ class MotionManager: ObservableObject, Equatable {
     @Published var clockWise = false
     @Published var antiClock = false
     
-    private var manager: CMMotionManager   //use iphone
-//    private var manager: CMHeadphoneMotionManager  //use airpods
+//    private var manager: CMMotionManager   //use iphone
+    private var manager: CMHeadphoneMotionManager  //use airpods
 
 
     init() {
-        self.manager = CMMotionManager()    //use iphone
-//        self.manager = CMHeadphoneMotionManager()   //use airpods
-        self.manager.deviceMotionUpdateInterval = 0.01  //use iphone
+//        self.manager = CMMotionManager()    //use iphone
+        self.manager = CMHeadphoneMotionManager()   //use airpods
+        
+//        self.manager.deviceMotionUpdateInterval = 0.01  //use iphone
         self.manager.startDeviceMotionUpdates(to: .main) { [self] (motionData, error) in guard error == nil else {
             print(error!)
             return

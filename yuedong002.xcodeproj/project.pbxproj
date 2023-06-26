@@ -63,6 +63,9 @@
 		36F4198E2A46D4FF00B11D59 /* gs_instruments.dls in Resources */ = {isa = PBXBuildFile; fileRef = 36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */; };
 		36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */ = {isa = PBXBuildFile; fileRef = 36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */; };
 		36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */ = {isa = PBXBuildFile; fileRef = 36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */; };
+		36F419922A49964D00B11D59 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F419912A49964D00B11D59 /* MainNavigation.swift */; };
+		36F419932A49964D00B11D59 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F419912A49964D00B11D59 /* MainNavigation.swift */; };
+		36F419942A49964D00B11D59 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F419912A49964D00B11D59 /* MainNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +114,7 @@
 		366577472A46B8B5008C166D /* soundVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soundVars.swift; sourceTree = "<group>"; };
 		36F4198B2A46C62700B11D59 /* MotionStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionStateView.swift; sourceTree = "<group>"; };
 		36F4198D2A46D4FF00B11D59 /* gs_instruments.dls */ = {isa = PBXFileReference; lastKnownFileType = file; path = gs_instruments.dls; sourceTree = "<group>"; };
+		36F419912A49964D00B11D59 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +244,7 @@
 			children = (
 				3665773F2A46B832008C166D /* CreateMode.swift */,
 				3665773B2A46B82A008C166D /* ContentView3.swift */,
+				36F419912A49964D00B11D59 /* MainNavigation.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				366576DF2A46B6C5008C166D /* ContentView.swift in Sources */,
 				366577332A46B7E6008C166D /* MotionManager.swift in Sources */,
 				366577372A46B7EF008C166D /* SoundSystem.swift in Sources */,
+				36F419922A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
 				366577442A46B83F008C166D /* serverRequests.swift in Sources */,
 				366576DD2A46B6C5008C166D /* yuedong002App.swift in Sources */,
@@ -424,6 +430,7 @@
 				366577412A46B832008C166D /* CreateMode.swift in Sources */,
 				366577382A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3665773D2A46B82A008C166D /* ContentView3.swift in Sources */,
+				36F419932A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				366577492A46B8B5008C166D /* soundVars.swift in Sources */,
 				366577452A46B83F008C166D /* serverRequests.swift in Sources */,
 				366577342A46B7E6008C166D /* MotionManager.swift in Sources */,
@@ -437,6 +444,7 @@
 				366577422A46B832008C166D /* CreateMode.swift in Sources */,
 				366576F92A46B6C6008C166D /* yuedong002UITests.swift in Sources */,
 				366577352A46B7E6008C166D /* MotionManager.swift in Sources */,
+				36F419942A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				366577392A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3665773E2A46B82A008C166D /* ContentView3.swift in Sources */,
 				366577462A46B83F008C166D /* serverRequests.swift in Sources */,

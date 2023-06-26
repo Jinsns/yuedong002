@@ -109,7 +109,7 @@ struct ContentView3: View {
                 .onChange(of: curTime) { newCurTime in
 //                    print(newCurTime)
                     
-                    if motionManager.pitch > 3.14 / 6 {
+                    if motionManager.pitch < -3.14 / 6 {
                         topForward = true
                         if (sweatAreaDict["forward1"]?[0] ?? 0.0)...(sweatAreaDict["forward1"]?[1] ?? 0.1) ~= newCurTime
                             || (sweatAreaDict["forward5"]?[0] ?? 0.0)...(sweatAreaDict["forward5"]?[1] ?? 0.1) ~= newCurTime {
@@ -124,7 +124,7 @@ struct ContentView3: View {
                         topForward = false
 //                        soundSystem.stop()
                     }
-                    if motionManager.pitch < -3.14 / 6 {
+                    if motionManager.pitch > 3.14 / 6 {
                         topBackward = true
 
                         if (sweatAreaDict["backward2"]?[0] ?? 0.0)...(sweatAreaDict["backward2"]?[1] ?? 0.1) ~= newCurTime
@@ -199,6 +199,7 @@ struct ContentView3: View {
             }
             
         }
+        .navigationTitle("Relax Mode")
     }
 }
 
