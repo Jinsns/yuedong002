@@ -8,6 +8,8 @@
 import SwiftUI
 import AVFoundation
 
+
+
 let forward1 = [24.0 / 17, 48.0 / 17]
 let backward2 = [(24.0 + 72 * 1) / 17, (48.0 + 72 * 1) / 17]
 let left3 = [(24.0 + 72 * 2) / 17, (48.0 + 72 * 2) / 17]
@@ -182,6 +184,25 @@ struct ContentView3: View {
                 
                 
         }.onAppear{
+            print("load music info from json")
+            var musicInfo = parseMusicInfo(musicName: "MoonRiver")!
+
+            var bpm = musicInfo.bpm
+            var timeSignature = musicInfo.timeSignature
+            var secondPerBeat = musicInfo.secondPerBeat
+            var beats = musicInfo.beats
+            
+            for var beat in beats {
+                var moment = beat.moment
+                beat.perfectArea = [moment - 0.5 * secondPerBeat, moment + 0.5 * secondPerBeat]
+                beat.greatArea = [moment - 1.0 * secondPerBeat, moment + 1.0 * secondPerBeat]
+                beat.goodArea = [moment - 1.5 * secondPerBeat, moment + 1.5 * secondPerBeat]
+                beat.badArea = [moment - 2.0 * secondPerBeat, moment + 2.0 * secondPerBeat]
+                
+            }
+            
+            
+            
             print("initialize curTime with bgm audioplayer currentTime")
             Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (_) in
                             if playState {
@@ -198,6 +219,9 @@ struct ContentView3: View {
                 soundSystem.stop()
             }
             
+        }
+        .onDisappear(){
+            bgmSystem.stop()
         }
         .navigationTitle("Relax Mode")
     }

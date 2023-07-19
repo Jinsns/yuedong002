@@ -1,0 +1,42 @@
+#  MoonRiver info
+
+{
+    "bpm": 85,
+    "timeSignature": "3/4",
+    "secondPerBeat": 12.0 / 17,
+    "beats": [
+        "beat1": {
+            "moment":(36.0 + 72.0 * 0) / 17,
+            "direction": "forward"
+        },
+        "beat2": {
+            "moment":(36.0 + 72.0 * 1) / 17,
+            "direction": "forward"
+        },
+        "beat3": {
+            "moment":(36.0 + 72.0 * 2) / 17,
+            "direction": "forward"
+        },
+        "beat4": {
+            "moment":(36.0 + 72.0 * 3) / 17,
+            "direction": "forward"
+        },
+        "beat5": {
+            "moment":(36.0 + 72.0 * 4) / 17,
+            "direction": "forward"
+        },
+        "beat6": {
+            "moment":(36.0 + 72.0 * 5) / 17,
+            "direction": "forward"
+        },
+        "beat7": {
+            "moment":(36.0 + 72.0 * 6) / 17,
+            "direction": "forward"
+        },
+        "beat8": {
+            "moment":(36.0 + 72.0 * 7) / 17,
+            "direction": "forward"
+        }
+    ]
+    
+}
