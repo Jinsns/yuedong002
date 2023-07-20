@@ -64,6 +64,20 @@ class BgmSystem {
 }
 
 
+//// play spatial audio, control the direction of sound x, y, z
+//class spatialAudioPlayer: {
+//    
+//    
+//}
+
+
+
+
+
+
+
+
+//MidePlaySystem is used in create mode
 class MidiPlaySystem: ObservableObject{
     @Published var isRecording: Bool
     let engine: AVAudioEngine
