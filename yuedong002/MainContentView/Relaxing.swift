@@ -11,15 +11,14 @@ import CoreMotion
 import Combine
 
 struct Relaxing: View {
-    @State var isAirPodsDisconnected = false
+    @State var isAirPodsConnected = false
     @State var isCheckingAirpods = false
     @ObservedObject var motionManager = MotionManager()
     @State var isHeadPositionChecked = false
+    @State var isShowingHeadPositionReady = false
+    @State var isShowingCloseEyeReminder = false
     
-    @State private var currentTime: TimeInterval = 0
-    private var timer: Publishers.Autoconnect<Timer.TimerPublisher>
-//    @State var pitch = 3.14 / 4
-//    @State var roll = 3.14 / 4
+
     
     
     var body: some View {
@@ -28,6 +27,10 @@ struct Relaxing: View {
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.vertical)
+                .brightness(isShowingCloseEyeReminder ? -0.6 : 0 )
+                .animation(.easeInOut(duration: 0.5))
+            
+            
             
             Image("RabbitEllipse")
                 .resizable()
@@ -37,7 +40,7 @@ struct Relaxing: View {
             
         }
         .overlay(
-                    disconnectedOverlay
+                    textReminderOverlay
                         .padding()
                         .padding(.bottom, 450)
                     
@@ -48,7 +51,7 @@ struct Relaxing: View {
 //            checkAirPodsConnection()
             startAirpodsViewTimer()
             
-            isAirPodsDisconnected = false  //假装已经连接上耳机了
+            isAirPodsConnected = true  //假装已经连接上耳机了
             isCheckingAirpods = true
             
             //检测头部初始姿势
@@ -62,20 +65,9 @@ struct Relaxing: View {
     }
     
     
-    func checkAirPodsConnection() {
-            
-        if CMHeadphoneMotionManager().isDeviceMotionAvailable {
-            isAirPodsDisconnected = false
-        } else {
-            isAirPodsDisconnected = true
-            isCheckingAirpods = true
-            startAirpodsViewTimer()
-        }
-    }
     
-    
-    var disconnectedOverlay: some View {
-         if isAirPodsDisconnected {
+    var textReminderOverlay: some View {
+         if !isAirPodsConnected {
              return AnyView(
                  RoundedRectangle(cornerRadius: 10)
                      .foregroundColor(.white)
@@ -129,7 +121,7 @@ struct Relaxing: View {
                     .opacity(isHeadPositionChecked ? 0 : 0.8)
                    
                 )
-        } else {
+        } else if isShowingHeadPositionReady {
             return AnyView(
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
@@ -137,7 +129,22 @@ struct Relaxing: View {
                        HStack{
                            Image(systemName: "checkmark.circle")
                            
-                           Text("初识姿势就绪")
+                           Text("初始姿势就绪")
+                       }
+                        .foregroundColor(.green)
+                        .padding()
+                    )
+                    .frame(width: 300, height: 60)
+                    .opacity(0.8)
+                   
+                )
+        } else {
+            return AnyView(
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.white)
+                    .overlay(
+                       HStack{
+                           Text("闭上眼，跟随音乐的脚步")
                        }
                         .foregroundColor(.green)
                         .padding()
@@ -153,18 +160,27 @@ struct Relaxing: View {
      }
     
     
+    func checkAirPodsConnection() {
+            
+        if CMHeadphoneMotionManager().isDeviceMotionAvailable {
+            isAirPodsConnected = true
+        } else {
+            isAirPodsConnected = false
+            isCheckingAirpods = true
+            startAirpodsViewTimer()
+        }
+    }
     
+    
+    // 在3秒后将 isCheckingAirpods 设置为 false
     func startAirpodsViewTimer() {
         isCheckingAirpods = true
-            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
-                isCheckingAirpods = false
-            }
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
+            isCheckingAirpods = false
+        }
     }
     
     
-    init() {
-        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    }
     
     
     func startHeadPositionCheckTimer(isHeadPositionChecked: Binding<Bool>) {
@@ -182,6 +198,14 @@ struct Relaxing: View {
                     if counter >= 20 { // 20 * 0.1秒 = 2秒
                         DispatchQueue.main.async {
                             isHeadPositionChecked.wrappedValue = true
+                            showHeadPositionReady()
+                        
+                        }
+//                        isTiming = false
+                    }
+                    if counter >= 40 {
+                        DispatchQueue.main.async {
+                            startCloseEyeReminderTimer()
                         }
                         isTiming = false
                     }
@@ -190,6 +214,19 @@ struct Relaxing: View {
                 isTiming = false
             }
         }
+    }
+    
+    
+    func showHeadPositionReady() {
+        isShowingHeadPositionReady = true
+    
+    }
+
+    
+    func startCloseEyeReminderTimer() {
+        isShowingHeadPositionReady = false
+        isShowingCloseEyeReminder = true
+        
     }
     
 
