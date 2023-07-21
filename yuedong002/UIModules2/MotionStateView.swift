@@ -39,6 +39,18 @@ struct MotionStateView : View {
     
 }
 
+
+struct CheckHeadStateView : View {
+    let motionManager: MotionManager
+    
+    var body: some View {
+        VStack {
+            Text("前后方向：\(motionManager.pitch) ")
+            Text("左右方向：\(motionManager.roll) ")
+        }
+    }
+}
+
 struct FileItem: View {
     var fileURL: URL
     var bgmSystem: BgmSystem
