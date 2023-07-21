@@ -138,7 +138,8 @@ struct Relaxing: View {
                     .opacity(0.8)
                    
                 )
-        } else {
+        }
+        if isShowingCloseEyeReminder  {
             return AnyView(
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
@@ -154,7 +155,7 @@ struct Relaxing: View {
                    
                 )
         }
-        return AnyView(Text("空"))
+        return AnyView(Text(""))
         
         
      }
@@ -195,17 +196,19 @@ struct Relaxing: View {
                     counter = 0
                 } else {
                     counter += 1
-                    if counter >= 20 { // 20 * 0.1秒 = 2秒
+                    if counter == 20 { // 20 * 0.1秒 = 2秒
                         DispatchQueue.main.async {
                             isHeadPositionChecked.wrappedValue = true
-                            showHeadPositionReady()
+                            isShowingHeadPositionReady = true
                         
                         }
 //                        isTiming = false
                     }
-                    if counter >= 40 {
+                    if counter == 40 {
                         DispatchQueue.main.async {
-                            startCloseEyeReminderTimer()
+//                            closeEyeRemind()
+                            isShowingHeadPositionReady = false
+                            isShowingCloseEyeReminder = true
                         }
                         isTiming = false
                     }
@@ -223,7 +226,7 @@ struct Relaxing: View {
     }
 
     
-    func startCloseEyeReminderTimer() {
+    func closeEyeRemind() {
         isShowingHeadPositionReady = false
         isShowingCloseEyeReminder = true
         
