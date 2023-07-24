@@ -10,9 +10,9 @@ import SceneKit
 
 struct SwiftUIView: View {
     
-    private let scene = GiraffeScene()
+    @ObservedObject private var scene = GiraffeScene()
+    
     private let cameraNode = createCameraNode()
-    private let score = 0
     
     @State var isLeafVisible = false
 
@@ -25,7 +25,7 @@ struct SwiftUIView: View {
             SceneView(scene: scene, pointOfView: cameraNode)
                 .ignoresSafeArea()
             
-            Text("当前得分\n       \(score)")
+            Text("当前得分\n       \(scene.score)")
                     .font(.system(size: 20))
                     .foregroundColor(.white)
                     .padding(.all, 10)
@@ -46,11 +46,14 @@ struct SwiftUIView: View {
             
         }
         .onAppear {
+            //set deleget here (in view) or GiraffeScene class init
+//            scene.physicsWorld.contactDelegate = scene
             // 每隔一段时间显示Leaf
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { timer in
                 isLeafVisible = true
             }
         }
+
         
     }
     
