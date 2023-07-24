@@ -18,6 +18,8 @@ struct Relaxing: View {
     @State var isShowingHeadPositionReady = false
     @State var isShowingCloseEyeReminder = false
     
+    @State private var showGameBoard = false
+    
 
     
     
@@ -38,11 +40,24 @@ struct Relaxing: View {
                 .frame(width: 289, height: 498)
                 .padding()
             
+            
+            if showGameBoard  {
+                NavigationView {
+                    NavigationLink(
+                        destination: GameBoard(),
+                        isActive: $showGameBoard) {
+                        EmptyView()
+                    }
+                }
+                
+            }
+            
         }
         .overlay(
                     textReminderOverlay
                         .padding()
                         .padding(.bottom, 450)
+                        .opacity(showGameBoard ? 0 : 1)
                     
                         
                 )
@@ -204,14 +219,23 @@ struct Relaxing: View {
                         }
 //                        isTiming = false
                     }
-                    if counter == 40 {
+                    else if counter == 40 {
                         DispatchQueue.main.async {
 //                            closeEyeRemind()
                             isShowingHeadPositionReady = false
                             isShowingCloseEyeReminder = true
                         }
+//                        isTiming = false
+                    }
+                    
+                    else if counter == 80 {
+                        DispatchQueue.main.async {
+                            showGameBoard = true
+                            
+                        }
                         isTiming = false
                     }
+                
                 }
             } else {
                 isTiming = false

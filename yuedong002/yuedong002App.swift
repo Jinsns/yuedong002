@@ -14,7 +14,13 @@ struct yuedong002App: App {
 //            MainNavigation()
 //            ContentView3()
 //            CreateMode()
-            RelaxMode()
+//            RelaxMode()
+//            Yue()
+//            PanView()
+//            SpatialAudioView()
+//            GameBoard()
+            
+            SwiftUIView()
         
             
         }
