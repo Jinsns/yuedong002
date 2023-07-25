@@ -11,30 +11,27 @@ import CoreMotion
 import AVFoundation
 
 class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAudioMixing {
+    
     //conform to AVAudioMixing protocol
     func destination(forMixer mixer: AVAudioNode, bus: AVAudioNodeBus) -> AVAudioMixingDestination? {
         return nil
     }
     
     var volume: Float = 0.0
-    
     var pan: Float = 0.0
-    
+
     var renderingAlgorithm: AVAudio3DMixingRenderingAlgorithm = AVAudio3DMixingRenderingAlgorithm.sphericalHead
   
     var sourceMode: AVAudio3DMixingSourceMode = .bypass
-    
     var pointSourceInHeadMode: AVAudio3DMixingPointSourceInHeadMode = .bypass
     
     var rate: Float = 1.2
-    
     var reverbBlend: Float = 40.0
-    
     var obstruction: Float = -100.0
-    
     var occlusion: Float = -100.0
     
     var position = AVAudio3DPoint(x: 0, y: 0, z: 0)
+    //end protocal AVAudioMixing
     
     
     private let motionManager = CMMotionManager()
@@ -44,15 +41,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     private var leafNode: SCNNode?
     
     @Published var score: Int = 0
-//    var shouldAddLeafNode = false
     
-    var leafXPosition = Float(2.0)
+    var leafXPosition = Float(1.0)
     var leafYPosition = Float(0.0)
     var leafZPosition = Float(0.0)
-    
-//    private var audioEngine = AVAudioEngine()
-//    private var leafAudioPlayer = AVAudioPlayerNode()
-//    private var collisionAudioPlayer = AVAudioPlayerNode()
     
     
     
@@ -68,7 +60,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         self.score = 0
         addBackground()
-//        addPlanetNode()
+        addPlanetNode()
         addNeckNode() // 添加脖子节点
         addLeafNode(xPosition: leafXPosition, yPosition: leafYPosition, zPosition: leafZPosition)  //添加叶子结点
         configureCamera()
@@ -91,14 +83,15 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     func addBackground() {
 //        background.contents = UIColor.black
-        if let backgroundImage = UIImage(named: "Ellipse") {
-            // Create an SCNMaterial with the image as its contents
-            let backgroundMaterial = SCNMaterial()
-            backgroundMaterial.diffuse.contents = backgroundImage
-            
-            // Set the material as the background of the scene
-            self.background.contents = backgroundMaterial
-        }
+        background.contents = UIColor.gray
+//        if let backgroundImage = UIImage(named: "Ellipse") {
+//            // Create an SCNMaterial with the image as its contents
+//            let backgroundMaterial = SCNMaterial()
+//            backgroundMaterial.diffuse.contents = backgroundImage
+//            
+//            // Set the material as the background of the scene
+//            self.background.contents = backgroundMaterial
+//        }
     }
     
     func addNeckNode() {
@@ -128,7 +121,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         neckNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         neckNode.name = "neck"
         
-
         self.rootNode.addChildNode(neckNode)
         self.neckNode = neckNode
     
@@ -146,6 +138,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         planetNode.physicsBody?.categoryBitMask = 3 // Set a unique bitmask for the "planet" node
         planetNode.physicsBody?.contactTestBitMask = 1 | 2 // Set the bitmask of nodes to be
         planetNode.position = SCNVector3(0, 0, 0)
+        planetNode.name = "planet"
+        
         self.rootNode.addChildNode(planetNode)
         self.planetNode = planetNode
     }
@@ -153,7 +147,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
         let leafMaterial = SCNMaterial()
         leafMaterial.diffuse.contents = UIImage(named: "leaf")
-        let leafGeometry = SCNBox(width: 2, height: 1, length:1, chamferRadius: 0.2)
+        let leafGeometry = SCNPlane(width: 1.0, height: 1.0)
+//        let leafGeometry = SCNBox(width: 1.0, height: 1.0, length:0.2, chamferRadius: 0.2)
         leafGeometry.materials = [leafMaterial]
         
         let leafNode = SCNNode(geometry: leafGeometry)
@@ -163,7 +158,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         leafNode.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
         leafNode.name = "leaf"
-        
         
         let leafAudioSource = SCNAudioSource(fileNamed: "monoPianoD.mp3")!
         leafAudioSource.isPositional = true // Enable 3D spatialization
@@ -176,7 +170,15 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.rootNode.addChildNode(leafNode)
         self.leafNode = leafNode
         
-//        playLeafAudio(at: leafNode.position)
+    }
+
+    func addLeafNodeRandomPosition() {
+        let xPosition = Float.random(in: -1.5...1.5) // Set the range of x position as needed
+        let yPosition = Float.random(in: -2...2) // Set the range of y position as needed
+//        let zPosition = Float.random(in: -5...5) // Set the range of z position as needed
+        let zPosition = Float(0)
+        
+        addLeafNode(xPosition: xPosition, yPosition: yPosition, zPosition: zPosition)
     }
 
     
@@ -234,7 +236,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //            self.shouldAddLeafNode = true
             self.leafXPosition = -self.leafXPosition
             self.leafYPosition = -self.leafYPosition
-            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
+//            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
+            addLeafNodeRandomPosition()
             self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
             self.leafNode?.runAction(SCNAction.fadeIn(duration: 0.5))
             
@@ -249,7 +252,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //            self.shouldAddLeafNode = true
             self.leafXPosition = -self.leafXPosition
             self.leafYPosition = -self.leafYPosition
-            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
+//            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
+            addLeafNodeRandomPosition()
             self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
             self.leafNode?.runAction(SCNAction.fadeIn(duration: 0.5))
             
@@ -259,71 +263,11 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
     func physicsWorld(_ world: SCNPhysicsWorld, didUpdate contact: SCNPhysicsContact) {
 //        print("contact update")
-        
-        
-        
-        // Check if "neck" and "leaf" nodes have collided
-        
     }
 
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
         print("contact end")
     }
     
-    func getCurrentScore() -> Int {
-        return self.score
-    }
-    
-//    private func setupAudioEngine() {
-//        let audioSession = AVAudioSession.sharedInstance()
-//
-//        do {
-//            try audioSession.setCategory(.playback, mode: .default)
-//            try audioSession.setActive(true)
-//
-//            // Load audio files and prepare player nodes
-//            guard let leafAudioFile = Bundle.main.url(forResource: "pianoD", withExtension: "mp3"),
-//                  let collisionAudioFile = Bundle.main.url(forResource: "pianoC2", withExtension: "mp3") else {
-//                fatalError("Could not find audio files.")
-//            }
-//            // Attach player nodes to the audio engine
-//            self.audioEngine.attach(leafAudioPlayer)
-//            self.audioEngine.attach(collisionAudioPlayer)
-//
-//            //Connect the playernode to engine's outputNode
-//            self.audioEngine.connect(leafAudioPlayer, to: audioEngine.outputNode, format: nil)
-//            self.audioEngine.connect(collisionAudioPlayer, to: audioEngine.outputNode, format: nil)
-//
-//            // Connect the AVAudioEngine to the output
-////            audioEngine.connect(audioEngine.mainMixerNode, to: audioEngine.outputNode, format: nil)
-//
-//            let leafAudio = try AVAudioFile(forReading: leafAudioFile)
-//            let collisionAudio = try AVAudioFile(forReading: collisionAudioFile)
-//
-//            self.leafAudioPlayer.scheduleFile(leafAudio, at: nil)
-//            self.collisionAudioPlayer.scheduleFile(collisionAudio, at: nil)
-//
-//
-//
-//            // Start the audio engine
-//            try audioEngine.start()
-//            print("engine started")
-//        } catch {
-//            print("Error setting up audio engine: \(error.localizedDescription)")
-//        }
-//    }
-    
-//    private func playLeafAudio(at position: SCNVector3) {
-//        // Set the position of the AVAudioPlayerNode to match the position of the leaf node
-//        self.leafAudioPlayer.position = AVAudio3DPoint(x: Float(position.x), y: Float(position.y), z: Float(position.z))
-//        self.leafAudioPlayer.play()
-//    }
-//
-//    private func playCollisionAudio(at position: SCNVector3) {
-//        // Set the position of the AVAudioPlayerNode to match the position of the neck node
-//        self.collisionAudioPlayer.position = AVAudio3DPoint(x: Float(position.x), y: Float(position.y), z: Float(position.z))
-//        self.collisionAudioPlayer.play()
-//    }
-
     
 }
