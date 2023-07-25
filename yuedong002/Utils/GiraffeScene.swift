@@ -8,6 +8,7 @@
 import Foundation
 import SceneKit
 import CoreMotion
+import AVFoundation
 
 class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
     
@@ -18,16 +19,22 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
     private var leafNode: SCNNode?
     
     @Published var score: Int = 0
-    var shouldAddLeafNode = false
+//    var shouldAddLeafNode = false
     
-    var leafXPosition = Float(0.0)
-    var leafYPosition = Float(2.0)
+    var leafXPosition = Float(2.0)
+    var leafYPosition = Float(0.0)
     var leafZPosition = Float(0.0)
+    
+//    private var audioEngine = AVAudioEngine()
+//    private var leafAudioPlayer = AVAudioPlayerNode()
+//    private var collisionAudioPlayer = AVAudioPlayerNode()
     
     
     
     override init() {
         super.init()
+//        setupAudioEngine()
+        
         
         physicsWorld.contactDelegate = self   //both this line and next line OK, also can set delegate in View onAppear
 //        self.physicsWorld.contactDelegate = self
@@ -85,12 +92,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
         neckNode.position = SCNVector3(0, 0, 0) // 设置位置，根据需要调整
         
         let neckBoundingBox = neckNode.boundingBox
-        let neckSize = SCNVector3(neckBoundingBox.max.x - neckBoundingBox.min.x,
-                                  neckBoundingBox.max.y - neckBoundingBox.min.y,
-                                  neckBoundingBox.max.z - neckBoundingBox.min.z)
+//        let neckSize = SCNVector3(neckBoundingBox.max.x - neckBoundingBox.min.x,
+//                                  neckBoundingBox.max.y - neckBoundingBox.min.y,
+//                                  neckBoundingBox.max.z - neckBoundingBox.min.z)
 //        neckNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: SCNBox(width: CGFloat(neckSize.x), height: CGFloat(neckSize.y), length: CGFloat(neckSize.z), chamferRadius: 0.0), options: nil))
         
-        neckNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+        //line below creates more accurate physics body than the line above, with more computation costs
+        neckNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .static, can't collide
         neckNode.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
         neckNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         neckNode.name = "neck"
@@ -120,10 +128,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
         let leafMaterial = SCNMaterial()
         leafMaterial.diffuse.contents = UIImage(named: "leaf")
-        // Add "leaf" node to simulate its appearance position
-//        let leafGeometry = SCNSphere(radius: 1)
         let leafGeometry = SCNBox(width: 2, height: 1, length:1, chamferRadius: 0.2)
-        
         leafGeometry.materials = [leafMaterial]
         
         let leafNode = SCNNode(geometry: leafGeometry)
@@ -133,18 +138,20 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
         
         leafNode.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
         leafNode.name = "leaf"
+        
+        
+        let leafAudioSource = SCNAudioSource(fileNamed: "pianoD.mp3")!
+        leafAudioSource.isPositional = true // Enable 3D spatialization
+        leafAudioSource.shouldStream = false // Use streaming for longer audio files
+        leafNode.addAudioPlayer(SCNAudioPlayer(source: leafAudioSource))
+        //播放
+        leafNode.runAction(SCNAction.playAudio(leafAudioSource, waitForCompletion: false))
+        
+        
         self.rootNode.addChildNode(leafNode)
         self.leafNode = leafNode
         
-        
-        print("leafNode position: ", leafNode.position)
-        
-//        let leafNode = SCNNode(geometry: SCNBox(width: 100, height: 50, length:100)
-//        leafNode.geometry?.firstMaterial?.diffuse.contents = UIColor.green // Set the color to clear to make it invisible
-//        leafNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-//        leafNode.position = SCNVector3(5, 5, 2) // Set the position of the "leaf" node
-//
-//        self.leafNode = leafNode
+//        playLeafAudio(at: leafNode.position)
     }
 
     
@@ -154,7 +161,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
         
         omniLightNode.light?.type = SCNLight.LightType.omni
         omniLightNode.light?.color = UIColor(white: 1, alpha: 1)
-        omniLightNode.position = SCNVector3Make(50, 0, 30)
+        omniLightNode.position = SCNVector3Make(0, 0, 30)
         
         self.rootNode.addChildNode(omniLightNode)
     }
@@ -180,68 +187,48 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
     }
     
     
-    // SCNPhysicsContactDelegate method to handle contact between physics bodies
-//    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-//        print("nodeA: ", contact.nodeA.name, contact.nodeA.categoryBitMask)
-//        print("nodeB: ", contact.nodeB.name, contact.nodeB.categoryBitMask)
-//
-//        // Check if "neck" and "leaf" nodes have collided
-//        if (contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") ||
-//           (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck") {
-//            // Add one point to the score when "neck" and "leaf" collide
-//            self.score += 1
-//            print("score: \(self.score)" )
-//
-//            // Update the score label or perform any other actions as needed
-//            // scoreLabel.text = "Score: \(score)"
-//        }
-//
-//    }
-    
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        
+//        self.collisionAudioPlayer.stop()
         
         print("nodeA: ", contact.nodeA.name, contact.nodeA.categoryBitMask)
         print("nodeB: ", contact.nodeB.name, contact.nodeB.categoryBitMask)
         print("contact begin")
-        print("shouldAddLeafNode: ", shouldAddLeafNode)
-        
-        
         
         if (contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") {
             print("contact 1")
+            
+            //collision sound effect
+//            self.playCollisionAudio(at: contact.nodeB.position)
+            
             // Add one point to the score when "neck" and "leaf" collide
             self.score += 1
             print("score: \(self.score)" )
             
             contact.nodeB.removeFromParentNode()  //remove leafnode
             
-            self.shouldAddLeafNode = true
+//            self.shouldAddLeafNode = true
+            self.leafXPosition = -self.leafXPosition
             self.leafYPosition = -self.leafYPosition
             self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
+            self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
+            self.leafNode?.runAction(SCNAction.fadeIn(duration: 0.5))
             
         } else if (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck") {
             print("contact 2")
+//            self.playCollisionAudio(at: contact.nodeA.position)
             self.score += 1
             print("score: \(self.score)")
             
             contact.nodeA.removeFromParentNode()  //remove leafnode
             
-            self.shouldAddLeafNode = true
+//            self.shouldAddLeafNode = true
+            self.leafXPosition = -self.leafXPosition
             self.leafYPosition = -self.leafYPosition
             self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
+            self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
+            self.leafNode?.runAction(SCNAction.fadeIn(duration: 0.5))
             
         }
-        
-//        if shouldAddLeafNode {
-//            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
-//                print("after 3 seconds1")
-//                self.addLeafNode() // Add the "leaf" node back to the scene
-//                self.shouldAddLeafNode = false
-//    //            self.configureCamera()
-//            }
-//        }
-        
         
     }
 
@@ -262,6 +249,56 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
         return self.score
     }
     
+//    private func setupAudioEngine() {
+//        let audioSession = AVAudioSession.sharedInstance()
+//
+//        do {
+//            try audioSession.setCategory(.playback, mode: .default)
+//            try audioSession.setActive(true)
+//
+//            // Load audio files and prepare player nodes
+//            guard let leafAudioFile = Bundle.main.url(forResource: "pianoD", withExtension: "mp3"),
+//                  let collisionAudioFile = Bundle.main.url(forResource: "pianoC2", withExtension: "mp3") else {
+//                fatalError("Could not find audio files.")
+//            }
+//            // Attach player nodes to the audio engine
+//            self.audioEngine.attach(leafAudioPlayer)
+//            self.audioEngine.attach(collisionAudioPlayer)
+//
+//            //Connect the playernode to engine's outputNode
+//            self.audioEngine.connect(leafAudioPlayer, to: audioEngine.outputNode, format: nil)
+//            self.audioEngine.connect(collisionAudioPlayer, to: audioEngine.outputNode, format: nil)
+//
+//            // Connect the AVAudioEngine to the output
+////            audioEngine.connect(audioEngine.mainMixerNode, to: audioEngine.outputNode, format: nil)
+//
+//            let leafAudio = try AVAudioFile(forReading: leafAudioFile)
+//            let collisionAudio = try AVAudioFile(forReading: collisionAudioFile)
+//
+//            self.leafAudioPlayer.scheduleFile(leafAudio, at: nil)
+//            self.collisionAudioPlayer.scheduleFile(collisionAudio, at: nil)
+//
+//
+//
+//            // Start the audio engine
+//            try audioEngine.start()
+//            print("engine started")
+//        } catch {
+//            print("Error setting up audio engine: \(error.localizedDescription)")
+//        }
+//    }
     
+//    private func playLeafAudio(at position: SCNVector3) {
+//        // Set the position of the AVAudioPlayerNode to match the position of the leaf node
+//        self.leafAudioPlayer.position = AVAudio3DPoint(x: Float(position.x), y: Float(position.y), z: Float(position.z))
+//        self.leafAudioPlayer.play()
+//    }
+//
+//    private func playCollisionAudio(at position: SCNVector3) {
+//        // Set the position of the AVAudioPlayerNode to match the position of the neck node
+//        self.collisionAudioPlayer.position = AVAudio3DPoint(x: Float(position.x), y: Float(position.y), z: Float(position.z))
+//        self.collisionAudioPlayer.play()
+//    }
+
     
 }

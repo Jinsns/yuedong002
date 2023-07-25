@@ -11,10 +11,12 @@ import SceneKit
 struct SwiftUIView: View {
     
     @ObservedObject private var scene = GiraffeScene()
+//    @State var score = 0
     
     private let cameraNode = createCameraNode()
     
     @State var isLeafVisible = false
+    
 
     
     
@@ -53,6 +55,10 @@ struct SwiftUIView: View {
                 isLeafVisible = true
             }
         }
+//        .onReceive(scene.$score) { updatedScore in
+//            // Update the view when the scene's @Published properties change
+//            score = updatedScore
+//        }
 
         
     }
