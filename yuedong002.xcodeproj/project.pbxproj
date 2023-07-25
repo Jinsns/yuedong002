@@ -108,6 +108,9 @@
 		3698D5802A6EA7F90003C037 /* giraffe.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3698D57F2A6EA7F90003C037 /* giraffe.dae */; };
 		3698D5812A6EA7F90003C037 /* giraffe.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3698D57F2A6EA7F90003C037 /* giraffe.dae */; };
 		3698D5822A6EA7F90003C037 /* giraffe.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3698D57F2A6EA7F90003C037 /* giraffe.dae */; };
+		3698D5842A6FDA510003C037 /* monoPianoD.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3698D5832A6FDA510003C037 /* monoPianoD.mp3 */; };
+		3698D5852A6FDA510003C037 /* monoPianoD.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3698D5832A6FDA510003C037 /* monoPianoD.mp3 */; };
+		3698D5862A6FDA510003C037 /* monoPianoD.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3698D5832A6FDA510003C037 /* monoPianoD.mp3 */; };
 		36A688592A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
 		36A6885A2A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
 		36A6885B2A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
@@ -198,6 +201,7 @@
 		3698D5712A6D76350003C037 /* GiraffeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeScene.swift; sourceTree = "<group>"; };
 		3698D5732A6E908F0003C037 /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
 		3698D57F2A6EA7F90003C037 /* giraffe.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = giraffe.dae; sourceTree = "<group>"; };
+		3698D5832A6FDA510003C037 /* monoPianoD.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monoPianoD.mp3; sourceTree = "<group>"; };
 		36A688582A68E7D300397F06 /* EnterRelax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnterRelax.png; sourceTree = "<group>"; };
 		36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAudio.swift; sourceTree = "<group>"; };
 		36EC1E132A6BCEA1009E5351 /* moonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moonriver.mp3; sourceTree = "<group>"; };
@@ -326,6 +330,7 @@
 		366577072A46B6EC008C166D /* SoundFiles */ = {
 			isa = PBXGroup;
 			children = (
+				3698D5832A6FDA510003C037 /* monoPianoD.mp3 */,
 				365CF7FC2A6D0EF10007A2CF /* pianoA.mp3 */,
 				36EC1E172A6CBAC3009E5351 /* monoMoonriver.mp3 */,
 				36EC1E132A6BCEA1009E5351 /* moonriver.mp3 */,
@@ -520,6 +525,7 @@
 				3637F6CA2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
 				366577132A46B723008C166D /* pianoC2.mp3 in Resources */,
 				365CF80A2A6D68140007A2CF /* neck.dae in Resources */,
+				3698D5842A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				366577222A46B723008C166D /* pianoB.mp3 in Resources */,
 				361F1FF92A66E24200CC2F5B /* apple.svg in Resources */,
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
@@ -558,6 +564,7 @@
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				361F1FEE2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				361F1FFA2A66E24200CC2F5B /* apple.svg in Resources */,
+				3698D5852A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				3664C3E62A695E34004486EB /* rabbit.png in Resources */,
 				3698D5812A6EA7F90003C037 /* giraffe.dae in Resources */,
 				366577262A46B723008C166D /* pianoF.mp3 in Resources */,
@@ -590,6 +597,7 @@
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				361F1FEF2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				361F1FFB2A66E24200CC2F5B /* apple.svg in Resources */,
+				3698D5862A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				3664C3E72A695E34004486EB /* rabbit.png in Resources */,
 				3698D5822A6EA7F90003C037 /* giraffe.dae in Resources */,
 				366577272A46B723008C166D /* pianoF.mp3 in Resources */,

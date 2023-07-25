@@ -10,7 +10,32 @@ import SceneKit
 import CoreMotion
 import AVFoundation
 
-class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
+class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAudioMixing {
+    //conform to AVAudioMixing protocol
+    func destination(forMixer mixer: AVAudioNode, bus: AVAudioNodeBus) -> AVAudioMixingDestination? {
+        return nil
+    }
+    
+    var volume: Float = 0.0
+    
+    var pan: Float = 0.0
+    
+    var renderingAlgorithm: AVAudio3DMixingRenderingAlgorithm = AVAudio3DMixingRenderingAlgorithm.sphericalHead
+  
+    var sourceMode: AVAudio3DMixingSourceMode = .bypass
+    
+    var pointSourceInHeadMode: AVAudio3DMixingPointSourceInHeadMode = .bypass
+    
+    var rate: Float = 1.2
+    
+    var reverbBlend: Float = 40.0
+    
+    var obstruction: Float = -100.0
+    
+    var occlusion: Float = -100.0
+    
+    var position = AVAudio3DPoint(x: 0, y: 0, z: 0)
+    
     
     private let motionManager = CMMotionManager()
     
@@ -140,7 +165,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject {
         leafNode.name = "leaf"
         
         
-        let leafAudioSource = SCNAudioSource(fileNamed: "pianoD.mp3")!
+        let leafAudioSource = SCNAudioSource(fileNamed: "monoPianoD.mp3")!
         leafAudioSource.isPositional = true // Enable 3D spatialization
         leafAudioSource.shouldStream = false // Use streaming for longer audio files
         leafNode.addAudioPlayer(SCNAudioPlayer(source: leafAudioSource))
