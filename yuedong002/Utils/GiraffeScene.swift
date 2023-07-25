@@ -36,7 +36,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     private let motionManager = CMMotionManager()
     
-    private var planetNode: SCNNode?
+//    private var planetNode: SCNNode?
     private var neckNode: SCNNode?
     private var leafNode: SCNNode?
     
@@ -45,6 +45,11 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     var leafXPosition = Float(1.0)
     var leafYPosition = Float(0.0)
     var leafZPosition = Float(0.0)
+    
+    //neckNode.eulerAngles = SCNVector3(0, -3.14 / 2 + 3.14 / 10, 0) // 设置旋转角度，根据需要调整
+    let neckInitialXEulerAngle = Float(0.0)
+    let neckInitialYEulerAngle = Float(-3.14 / 2 + 3.14 / 10)
+    let neckInitialZEulerAngle = Float(0.0)
     
     
     
@@ -60,8 +65,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         self.score = 0
         addBackground()
-        addPlanetNode()
-        addNeckNode() // 添加脖子节点
+//        addPlanetNode()
+        addNeckNode(neckInitialXEulerAngle: neckInitialXEulerAngle, neckInitialYEulerAngle: neckInitialYEulerAngle, neckInitialZEulerAngle: neckInitialZEulerAngle) // 添加脖子节点
         addLeafNode(xPosition: leafXPosition, yPosition: leafYPosition, zPosition: leafZPosition)  //添加叶子结点
         configureCamera()
         addOmniLight()
@@ -78,38 +83,51 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func configureCamera() {
-        self.rootNode.position = SCNVector3(x: 0.0, y: 0, z: -8)
+        self.rootNode.position = SCNVector3(x: 0.0, y: -1, z: -8)
     }
     
     func addBackground() {
+        //add an color or image as the background
 //        background.contents = UIColor.black
-        background.contents = UIColor.gray
-//        if let backgroundImage = UIImage(named: "Ellipse") {
-//            // Create an SCNMaterial with the image as its contents
-//            let backgroundMaterial = SCNMaterial()
-//            backgroundMaterial.diffuse.contents = backgroundImage
-//            
-//            // Set the material as the background of the scene
-//            self.background.contents = backgroundMaterial
+//        background.contents = UIColor.gray
+        
+        
+//        if let backgroundImage = UIImage(named: "gameBackgroundLayer") {
+//            print("gameBackground available.")
+//            self.background.contents = "gameBackgroundLayer"  //just give the name of image in assets
+//        } else {
+//            print("gameBackground unavailable")
 //        }
+        
+        //add a SCNPlane as the background
+        let backgroundMaterial = SCNMaterial()
+        backgroundMaterial.diffuse.contents = UIImage(named: "gameBackgroundSourceImage") //3000 * 2000
+        let backgroundGeometry = SCNPlane(width: 60, height: 40)
+        backgroundGeometry.materials = [backgroundMaterial]
+        let backgroundNode = SCNNode(geometry: backgroundGeometry)
+        backgroundNode.position = SCNVector3(0, 0, -10)
+        self.rootNode.addChildNode(backgroundNode)
+        
     }
     
-    func addNeckNode() {
-        guard let scene = SCNScene(named: "neck.dae") else {
-            print("Failed to load 'neck.dae'")
+    func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
+        guard let scene = SCNScene(named: "giraffe0.dae") else {
+            print("Failed to load 'giraffe0.dae'")
             return
         }
 
         guard let neckNode = scene.rootNode.childNodes.first else {
-            print("Failed to find the first child node in 'neck.dae'")
+            print("Failed to find the first child node in 'giraffe0.dae'")
             return
         }
         
         // 根据需要对脖子模型进行缩放和位置调整
-        neckNode.scale = SCNVector3(0.2, 0.2, 1.0)
-        neckNode.position = SCNVector3(0, 0, 0) // 设置位置，根据需要调整
+//        neckNode.scale = SCNVector3(0.2, 0.2, 1.0)   //缩放
+        neckNode.position = SCNVector3(0, -3, 0) // 设置位置，根据需要调整
+        neckNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
         
-        let neckBoundingBox = neckNode.boundingBox
+        
+//        let neckBoundingBox = neckNode.boundingBox
 //        let neckSize = SCNVector3(neckBoundingBox.max.x - neckBoundingBox.min.x,
 //                                  neckBoundingBox.max.y - neckBoundingBox.min.y,
 //                                  neckBoundingBox.max.z - neckBoundingBox.min.z)
@@ -126,23 +144,23 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     }
     
-    func addPlanetNode() {
-        let planetMaterial = SCNMaterial()
-        planetMaterial.diffuse.contents = UIImage(named: "Ellipse")
-           
-        let planetGeometry = SCNSphere(radius: 1)
-        planetGeometry.materials = [planetMaterial]
-
-        let planetNode = SCNNode(geometry: planetGeometry)
-        planetNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-        planetNode.physicsBody?.categoryBitMask = 3 // Set a unique bitmask for the "planet" node
-        planetNode.physicsBody?.contactTestBitMask = 1 | 2 // Set the bitmask of nodes to be
-        planetNode.position = SCNVector3(0, 0, 0)
-        planetNode.name = "planet"
-        
-        self.rootNode.addChildNode(planetNode)
-        self.planetNode = planetNode
-    }
+//    func addPlanetNode() {
+//        let planetMaterial = SCNMaterial()
+//        planetMaterial.diffuse.contents = UIImage(named: "Ellipse")
+//
+//        let planetGeometry = SCNSphere(radius: 1)
+//        planetGeometry.materials = [planetMaterial]
+//
+//        let planetNode = SCNNode(geometry: planetGeometry)
+//        planetNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
+//        planetNode.physicsBody?.categoryBitMask = 3 // Set a unique bitmask for the "planet" node
+//        planetNode.physicsBody?.contactTestBitMask = 1 | 2 // Set the bitmask of nodes to be
+//        planetNode.position = SCNVector3(0, 0, 0)
+//        planetNode.name = "planet"
+//
+//        self.rootNode.addChildNode(planetNode)
+//        self.planetNode = planetNode
+//    }
     
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
         let leafMaterial = SCNMaterial()
@@ -199,16 +217,16 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
             guard let attitude = deviceMotion?.attitude else { return }
                         
-            self?.planetNode?.eulerAngles = SCNVector3(
-                x: Float(attitude.pitch),
-                y: Float(attitude.roll),
-                z: Float(attitude.yaw)
-            )
+//            self?.planetNode?.eulerAngles = SCNVector3(
+//                x: Float(attitude.pitch),
+//                y: Float(attitude.roll),
+//                z: Float(attitude.yaw)
+//            )
             
             self?.neckNode?.eulerAngles = SCNVector3(
-                x: Float(attitude.pitch) * 3,
-                y: Float(attitude.roll) * 3,
-                z: Float(attitude.yaw) * 3
+                x: self!.neckInitialXEulerAngle + Float(attitude.pitch) * 3,
+                y: self!.neckInitialYEulerAngle + Float(attitude.roll) * 3,
+                z: self!.neckInitialZEulerAngle + Float(attitude.yaw) * 3
             )
         }
     }
@@ -233,9 +251,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             contact.nodeB.removeFromParentNode()  //remove leafnode
             
-//            self.shouldAddLeafNode = true
-            self.leafXPosition = -self.leafXPosition
-            self.leafYPosition = -self.leafYPosition
+
+//            self.leafXPosition = -self.leafXPosition
+//            self.leafYPosition = -self.leafYPosition
 //            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
             addLeafNodeRandomPosition()
             self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
@@ -249,9 +267,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             contact.nodeA.removeFromParentNode()  //remove leafnode
             
-//            self.shouldAddLeafNode = true
-            self.leafXPosition = -self.leafXPosition
-            self.leafYPosition = -self.leafYPosition
+//            self.leafXPosition = -self.leafXPosition
+//            self.leafYPosition = -self.leafYPosition
 //            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
             addLeafNodeRandomPosition()
             self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
