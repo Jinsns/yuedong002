@@ -24,6 +24,9 @@
 		3637F6CA2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */; };
 		3637F6CB2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */; };
 		3637F6CC2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */; };
+		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
+		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
+		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365CF7FB2A6CECD30007A2CF /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF7FA2A6CECD30007A2CF /* GameBoard.swift */; };
 		365CF7FD2A6D0EF10007A2CF /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 365CF7FC2A6D0EF10007A2CF /* pianoA.mp3 */; };
 		365CF7FE2A6D0EF10007A2CF /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 365CF7FC2A6D0EF10007A2CF /* pianoA.mp3 */; };
@@ -123,6 +126,18 @@
 		36A688592A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
 		36A6885A2A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
 		36A6885B2A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
+		36D15EA02A71823600BC1967 /* DottedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15E9F2A71823600BC1967 /* DottedCircleView.swift */; };
+		36D15EA12A71823600BC1967 /* DottedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15E9F2A71823600BC1967 /* DottedCircleView.swift */; };
+		36D15EA22A71823600BC1967 /* DottedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15E9F2A71823600BC1967 /* DottedCircleView.swift */; };
+		36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15EA32A72398600BC1967 /* StyledGauge.swift */; };
+		36D15EA52A72398600BC1967 /* StyledGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15EA32A72398600BC1967 /* StyledGauge.swift */; };
+		36D15EA62A72398600BC1967 /* StyledGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15EA32A72398600BC1967 /* StyledGauge.swift */; };
+		36D15EA82A72674900BC1967 /* ruling.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EA72A72674900BC1967 /* ruling.png */; };
+		36D15EA92A72674900BC1967 /* ruling.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EA72A72674900BC1967 /* ruling.png */; };
+		36D15EAA2A72674900BC1967 /* ruling.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EA72A72674900BC1967 /* ruling.png */; };
+		36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EAB2A7280A200BC1967 /* songEnd.png */; };
+		36D15EAD2A7280A200BC1967 /* songEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EAB2A7280A200BC1967 /* songEnd.png */; };
+		36D15EAE2A7280A200BC1967 /* songEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EAB2A7280A200BC1967 /* songEnd.png */; };
 		36EC1E102A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
 		36EC1E112A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
 		36EC1E122A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
@@ -172,6 +187,7 @@
 		361F1FF82A66E24200CC2F5B /* apple.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = apple.svg; sourceTree = "<group>"; };
 		3637F6C72A6A5763004FEB42 /* Yue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yue.swift; sourceTree = "<group>"; };
 		3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RabbitEyesClosed.png; sourceTree = "<group>"; };
+		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
 		365CF7FA2A6CECD30007A2CF /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		365CF7FC2A6D0EF10007A2CF /* pianoA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoA.mp3; sourceTree = "<group>"; };
 		365CF8052A6D67F90007A2CF /* head.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = head.dae; sourceTree = "<group>"; };
@@ -215,6 +231,10 @@
 		3698D58B2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameBackgroundSourceImage.jpeg; sourceTree = "<group>"; };
 		3698D58F2A7049DF0003C037 /* gameBackgroundLayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackgroundLayer.png; sourceTree = "<group>"; };
 		36A688582A68E7D300397F06 /* EnterRelax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnterRelax.png; sourceTree = "<group>"; };
+		36D15E9F2A71823600BC1967 /* DottedCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedCircleView.swift; sourceTree = "<group>"; };
+		36D15EA32A72398600BC1967 /* StyledGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledGauge.swift; sourceTree = "<group>"; };
+		36D15EA72A72674900BC1967 /* ruling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruling.png; sourceTree = "<group>"; };
+		36D15EAB2A7280A200BC1967 /* songEnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEnd.png; sourceTree = "<group>"; };
 		36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAudio.swift; sourceTree = "<group>"; };
 		36EC1E132A6BCEA1009E5351 /* moonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moonriver.mp3; sourceTree = "<group>"; };
 		36EC1E172A6CBAC3009E5351 /* monoMoonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monoMoonriver.mp3; sourceTree = "<group>"; };
@@ -266,6 +286,8 @@
 				3664C3EC2A6968FD004486EB /* rabbit2.png */,
 				36A688582A68E7D300397F06 /* EnterRelax.png */,
 				361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */,
+				36D15EA72A72674900BC1967 /* ruling.png */,
+				36D15EAB2A7280A200BC1967 /* songEnd.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -367,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				36F4198B2A46C62700B11D59 /* MotionStateView.swift */,
+				36D15E9F2A71823600BC1967 /* DottedCircleView.swift */,
+				36D15EA32A72398600BC1967 /* StyledGauge.swift */,
 			);
 			path = UIModules2;
 			sourceTree = "<group>";
@@ -396,6 +420,7 @@
 				36EC1E1B2A6CCA81009E5351 /* PanView.swift */,
 				365CF7FA2A6CECD30007A2CF /* GameBoard.swift */,
 				365CF80D2A6D68760007A2CF /* SwiftUIView.swift */,
+				365121BB2A7285950071D1C1 /* CountScoreView.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -538,6 +563,7 @@
 				36EC1E182A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				3698D5742A6E908F0003C037 /* leaf.png in Resources */,
 				36F4198E2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
+				36D15EA82A72674900BC1967 /* ruling.png in Resources */,
 				3637F6CA2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
 				366577132A46B723008C166D /* pianoC2.mp3 in Resources */,
 				365CF80A2A6D68140007A2CF /* neck.dae in Resources */,
@@ -554,6 +580,7 @@
 				3698D58C2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				366577192A46B723008C166D /* pianoE.mp3 in Resources */,
 				3665771C2A46B723008C166D /* pianoG.mp3 in Resources */,
+				36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */,
 				366577102A46B723008C166D /* pianoD.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,8 +611,10 @@
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				361F1FEE2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				361F1FFA2A66E24200CC2F5B /* apple.svg in Resources */,
+				36D15EA92A72674900BC1967 /* ruling.png in Resources */,
 				3698D5852A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				3664C3E62A695E34004486EB /* rabbit.png in Resources */,
+				36D15EAD2A7280A200BC1967 /* songEnd.png in Resources */,
 				3698D5812A6EA7F90003C037 /* giraffe.dae in Resources */,
 				366577262A46B723008C166D /* pianoF.mp3 in Resources */,
 				366577142A46B723008C166D /* pianoC2.mp3 in Resources */,
@@ -620,8 +649,10 @@
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				361F1FEF2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				361F1FFB2A66E24200CC2F5B /* apple.svg in Resources */,
+				36D15EAA2A72674900BC1967 /* ruling.png in Resources */,
 				3698D5862A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				3664C3E72A695E34004486EB /* rabbit.png in Resources */,
+				36D15EAE2A7280A200BC1967 /* songEnd.png in Resources */,
 				3698D5822A6EA7F90003C037 /* giraffe.dae in Resources */,
 				366577272A46B723008C166D /* pianoF.mp3 in Resources */,
 				366577152A46B723008C166D /* pianoC2.mp3 in Resources */,
@@ -647,9 +678,12 @@
 				36F419922A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
 				365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
+				36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */,
+				36D15EA02A71823600BC1967 /* DottedCircleView.swift in Sources */,
 				366577442A46B83F008C166D /* serverRequests.swift in Sources */,
 				365CF7FB2A6CECD30007A2CF /* GameBoard.swift in Sources */,
 				366576DD2A46B6C5008C166D /* yuedong002App.swift in Sources */,
+				365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */,
 				36F4198C2A46C62700B11D59 /* MotionStateView.swift in Sources */,
 				366577482A46B8B5008C166D /* soundVars.swift in Sources */,
 				3698D5722A6D76350003C037 /* GiraffeScene.swift in Sources */,
@@ -665,7 +699,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3664C3EA2A695E9D004486EB /* Relaxing.swift in Sources */,
+				36D15EA12A71823600BC1967 /* DottedCircleView.swift in Sources */,
 				36EC1E112A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
+				365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */,
 				3664C3DE2A68EB86004486EB /* SongSelectionView.swift in Sources */,
 				366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */,
 				36EC1E1D2A6CCA81009E5351 /* PanView.swift in Sources */,
@@ -673,6 +709,7 @@
 				366577382A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3665773D2A46B82A008C166D /* ContentView3.swift in Sources */,
 				365CF80F2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
+				36D15EA52A72398600BC1967 /* StyledGauge.swift in Sources */,
 				36F419932A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				366577492A46B8B5008C166D /* soundVars.swift in Sources */,
 				36F419992A5718DD00B11D59 /* MusicInfo.swift in Sources */,
@@ -687,6 +724,8 @@
 			files = (
 				366577422A46B832008C166D /* CreateMode.swift in Sources */,
 				366576F92A46B6C6008C166D /* yuedong002UITests.swift in Sources */,
+				36D15EA22A71823600BC1967 /* DottedCircleView.swift in Sources */,
+				365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */,
 				366577352A46B7E6008C166D /* MotionManager.swift in Sources */,
 				36EC1E122A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
 				36F4199A2A5718DD00B11D59 /* MusicInfo.swift in Sources */,
@@ -694,6 +733,7 @@
 				366577392A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3665773E2A46B82A008C166D /* ContentView3.swift in Sources */,
 				36EC1E1E2A6CCA81009E5351 /* PanView.swift in Sources */,
+				36D15EA62A72398600BC1967 /* StyledGauge.swift in Sources */,
 				3664C3EB2A695E9D004486EB /* Relaxing.swift in Sources */,
 				366577462A46B83F008C166D /* serverRequests.swift in Sources */,
 				366576FB2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift in Sources */,

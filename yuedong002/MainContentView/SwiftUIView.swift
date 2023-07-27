@@ -11,13 +11,15 @@ import SceneKit
 struct SwiftUIView: View {
     
     @ObservedObject private var scene = GiraffeScene()
-//    @State var score = 0
-    
     private let cameraNode = createCameraNode()
     
-//    @State var isLeafVisible = false
+    @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlSpatialMoonRiver)
     
-
+    //show the progress of bgm
+    @State private var trimEnd: CGFloat = 0.0
+    
+    @State var showCountScoreView = false
+    
     
     
     var body: some View {
@@ -26,29 +28,79 @@ struct SwiftUIView: View {
             SceneView(scene: scene, pointOfView: cameraNode)
                 .ignoresSafeArea()
             
-            Text("当前得分\n       \(scene.score)")
-                    .font(.system(size: 20))
-                    .foregroundColor(.white)
+            ZStack {
+                Image("ruling")
+                    .resizable()
                     .padding(.all, 10)
-                    .background(
+                    .frame(width: 150, height: 150)
+                    .padding(.all, 10)
+                    .opacity(0.9)
+                    .offset(x: 0, y: -280)
+                    .colorMultiply(Color.gray)
+                    .mask {
                         Circle()
-                            .foregroundColor(.green)
-                            .opacity(0.9)
-                            .frame(width: 150, height: 150)
-                            .shadow(color: Color.white.opacity(0.3), radius: 5, x: 10, y: 5)
-                    )
-                    .padding(.all, 10)
-                    .offset(x: 0, y: -300)
+                            .trim(from: 0.0, to: trimEnd) //trimEnd = 1 means 360 degree
+                            .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                            .foregroundColor(.gray)
+                            .frame(width: 120, height: 120)
+                            .padding(.all, 10)
+                            .offset(x: 280, y: 0)    //-90 degree时，x=280, y=0
+                            .opacity(0.6)
+                            .rotationEffect(.degrees(-90))
+                            .scaleEffect(x: -1, y: 1) //镜像反转 （水平翻转）
+                            .onReceive(scene.$score) { newScore in
+                                
+                                if newScore == 1 {
+                                    trimEnd = 1.0
+                                    //                                    animationDuration = bgmSystem.duration
+                                }
+                                
+                            }
+                            .onChange(of: bgmSystem.currentTime) { newValue in
+                                trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
+                            }
+                    }
+            } // zstack of ruling and circle
+            
+            
+            
+            
+            
+            
+            Gauge(value: (bgmSystem.currentTime), in: 0.0...bgmSystem.audioPlayer!.duration) {
+                Text("\(scene.score)")
+                //              Text("\(Int(bgmSystem.currentTime))")
+            }
+            .gaugeStyle(.accessoryCircularCapacity)
+            .frame(width: 250, height: 250)
+            .padding(.all, 10)
+            .offset(x: 0, y: -300)
+            .frame(width:300, height: 300)
+            .onChange(of: scene.score) { newScore in
+                if newScore == 1 {   //eat the first leaf to start bgm, start gaming
+                    print("newScore == 1 : ", newScore)
+                    bgmSystem.play()
+                    print("music playing has a duration of ", bgmSystem.duration)
+                }
+            }
+            
+            
+            
+            
+            
             
         }
-//        .onAppear {
-//            //set deleget here (in view) or GiraffeScene class init
-////            scene.physicsWorld.contactDelegate = scene
-//            // 每隔一段时间显示Leaf
-//            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { timer in
-//                isLeafVisible = true
-//            }
-//        }
+        .onChange(of: bgmSystem.currentTime) { newValue in
+            if newValue == 0.0 && scene.score >= 1 {
+                //bgmSystem.stop() will let bgmSystem.currentTime turns to 0.0
+                //and if scene.score >= 1 means game once started
+                showCountScoreView = true
+                
+            }
+        }
+        .fullScreenCover(isPresented: $showCountScoreView, content: {
+            CountScoreView()
+        })
         
     }
     
@@ -58,6 +110,7 @@ struct SwiftUIView: View {
         return cameraNode
     }
 }
+                         
 
 
 struct SceneKitView: UIViewRepresentable {

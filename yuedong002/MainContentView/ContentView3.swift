@@ -53,7 +53,7 @@ func transToHourMinSec(time: Double) -> String {
 }
 
 let soundSystem = SoundSystem()
-let bgmSystem = BgmSystem()
+let bgmSystem = BgmSystem(bgmURL: urlSpatialMoonRiver)
 //var playedTime = bgmSystem.audioPlayer?.currentTime
 
 struct ContentView3: View {
@@ -91,7 +91,7 @@ struct ContentView3: View {
                     print(sweatAreaDict)
                     
                     if playState {
-                        bgmSystem.play(soundUrl: urlSpatialMoonRiver)
+                        bgmSystem.play()
                     } else {
                         bgmSystem.stop()
                     }

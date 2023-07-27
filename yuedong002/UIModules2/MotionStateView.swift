@@ -96,7 +96,7 @@ struct FileItem: View {
         // 执行播放文件的逻辑
         print("播放文件：\(fileURL.path)")
 //        var bgmSystem = BgmSystem()
-        bgmSystem.play(soundUrl: fileURL)
+        bgmSystem.play()
     }
     
     func uploadFile() {

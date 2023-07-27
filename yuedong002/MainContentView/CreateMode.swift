@@ -14,7 +14,7 @@ struct CreateMode: View {
     let motionManager = MotionManager()
     @ObservedObject var midiPlaySystem = MidiPlaySystem()
     let downloader = Downloader()
-    let bgmSystem = BgmSystem()
+    let bgmSystem = BgmSystem(bgmURL: urlSpatialMoonRiver)
     let uploader = Uploader()
     
     @State var topBackward = false

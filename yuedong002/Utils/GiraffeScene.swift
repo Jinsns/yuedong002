@@ -48,7 +48,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     //neckNode.eulerAngles = SCNVector3(0, -3.14 / 2 + 3.14 / 10, 0) // 设置旋转角度，根据需要调整
     let neckInitialXEulerAngle = Float(0.0)
-    let neckInitialYEulerAngle = Float(-3.14 / 2 + 3.14 / 10)
+    let neckInitialYEulerAngle = Float(-3.14 / 2 - 3.14 / 16)
     let neckInitialZEulerAngle = Float(0.0)
     
     

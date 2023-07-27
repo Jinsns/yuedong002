@@ -42,23 +42,66 @@ class SoundSystem: UIViewController {
 }
 
 
-class BgmSystem {
+class BgmSystem: ObservableObject {
     var audioPlayer: AVAudioPlayer?
-    var isPlaying = false
+    var isPlaying: Bool
+    @Published var currentTime: Double
+    var duration: Double
     
-    func play(soundUrl: URL) {
+    
+    init(bgmURL: URL) {
         do {
-            self.audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
-            self.audioPlayer?.play()
+            self.audioPlayer = try AVAudioPlayer(contentsOf: bgmURL)
+//            self.duration = audioPlayer?.duration ?? 1.0
         } catch {
             print("error when playing bgm")
         }
+        
+        self.isPlaying = false
+        self.currentTime = 0.0
+        self.duration = audioPlayer?.duration ?? 3.0
+        print("music duration: ", self.duration)
+    }
+    
+    
+    func play() {
+        if self.isPlaying == false {
+            self.isPlaying = true
+            self.currentTime = 0.0
+            
+    //      self.audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
+            self.audioPlayer?.play()
+            self.currentTime = self.audioPlayer!.currentTime //第一次更新时间
+            // Update currentTime with the progress of the music playback
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                if self.isPlaying == true {
+                    self.currentTime = self.audioPlayer!.currentTime  //之后的更新时间
+                    print("change currentTime to ", self.currentTime)
+                }
+                
+                if self.currentTime >= self.duration {
+                    self.isPlaying = false
+                    self.stop()
+                    print("stopped")
+                }
+            
+            }
+        }
+            
+    }
+    
+    func pause() {
+        self.isPlaying = false
+        self.audioPlayer?.pause()
+    
     }
     
     func stop() {
-        self.audioPlayer?.stop()
-        self.audioPlayer?.currentTime = 0
         self.isPlaying = false
+        self.audioPlayer?.stop()
+        self.currentTime = -1.0
+        
     }
     
 }
