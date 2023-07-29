@@ -60,7 +60,7 @@ class BgmSystem: ObservableObject {
         self.isPlaying = false
         self.currentTime = 0.0
         self.duration = audioPlayer?.duration ?? 3.0
-        print("music duration: ", self.duration)
+//        print("music duration: ", self.duration)
     }
     
     

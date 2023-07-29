@@ -11,6 +11,7 @@ import SceneKit
 struct SwiftUIView: View {
     
     @ObservedObject private var scene = GiraffeScene()
+    
     private let cameraNode = createCameraNode()
     
     @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlSpatialMoonRiver)
@@ -27,6 +28,7 @@ struct SwiftUIView: View {
             
             SceneView(scene: scene, pointOfView: cameraNode)
                 .ignoresSafeArea()
+            
             
             ZStack {
                 Image("ruling")

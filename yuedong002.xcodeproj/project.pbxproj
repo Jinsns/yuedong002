@@ -27,6 +27,18 @@
 		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
+		365121C02A73A4CA0071D1C1 /* NeckSlides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */; };
+		365121C12A73A4CA0071D1C1 /* NeckSlides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */; };
+		365121C22A73A4CA0071D1C1 /* NeckSlides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */; };
+		365121C42A73AC700071D1C1 /* head.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121C32A73AC700071D1C1 /* head.swift */; };
+		365121C52A73AC700071D1C1 /* head.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121C32A73AC700071D1C1 /* head.swift */; };
+		365121C62A73AC700071D1C1 /* head.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121C32A73AC700071D1C1 /* head.swift */; };
+		365121C82A73B1DB0071D1C1 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121C72A73B1DB0071D1C1 /* Floor.swift */; };
+		365121C92A73B1DB0071D1C1 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121C72A73B1DB0071D1C1 /* Floor.swift */; };
+		365121CA2A73B1DB0071D1C1 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121C72A73B1DB0071D1C1 /* Floor.swift */; };
+		365121D02A74EFCC0071D1C1 /* rotatingCube.dae in Resources */ = {isa = PBXBuildFile; fileRef = 365121CF2A74EFCC0071D1C1 /* rotatingCube.dae */; };
+		365121D12A74EFCC0071D1C1 /* rotatingCube.dae in Resources */ = {isa = PBXBuildFile; fileRef = 365121CF2A74EFCC0071D1C1 /* rotatingCube.dae */; };
+		365121D22A74EFCC0071D1C1 /* rotatingCube.dae in Resources */ = {isa = PBXBuildFile; fileRef = 365121CF2A74EFCC0071D1C1 /* rotatingCube.dae */; };
 		365CF7FB2A6CECD30007A2CF /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF7FA2A6CECD30007A2CF /* GameBoard.swift */; };
 		365CF7FD2A6D0EF10007A2CF /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 365CF7FC2A6D0EF10007A2CF /* pianoA.mp3 */; };
 		365CF7FE2A6D0EF10007A2CF /* pianoA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 365CF7FC2A6D0EF10007A2CF /* pianoA.mp3 */; };
@@ -188,6 +200,10 @@
 		3637F6C72A6A5763004FEB42 /* Yue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yue.swift; sourceTree = "<group>"; };
 		3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RabbitEyesClosed.png; sourceTree = "<group>"; };
 		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
+		365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeckSlides.swift; sourceTree = "<group>"; };
+		365121C32A73AC700071D1C1 /* head.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = head.swift; sourceTree = "<group>"; };
+		365121C72A73B1DB0071D1C1 /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		365121CF2A74EFCC0071D1C1 /* rotatingCube.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = rotatingCube.dae; sourceTree = "<group>"; };
 		365CF7FA2A6CECD30007A2CF /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		365CF7FC2A6D0EF10007A2CF /* pianoA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianoA.mp3; sourceTree = "<group>"; };
 		365CF8052A6D67F90007A2CF /* head.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = head.dae; sourceTree = "<group>"; };
@@ -295,6 +311,7 @@
 		365CF8002A6D67C70007A2CF /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				365121CF2A74EFCC0071D1C1 /* rotatingCube.dae */,
 				3698D5872A703D860003C037 /* giraffe0.dae */,
 				3698D57F2A6EA7F90003C037 /* giraffe.dae */,
 				365CF8052A6D67F90007A2CF /* head.dae */,
@@ -403,6 +420,9 @@
 				366577322A46B7E6008C166D /* MotionManager.swift */,
 				36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */,
 				3698D5712A6D76350003C037 /* GiraffeScene.swift */,
+				365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */,
+				365121C32A73AC700071D1C1 /* head.swift */,
+				365121C72A73B1DB0071D1C1 /* Floor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -568,6 +588,7 @@
 				366577132A46B723008C166D /* pianoC2.mp3 in Resources */,
 				365CF80A2A6D68140007A2CF /* neck.dae in Resources */,
 				3698D5842A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
+				365121D02A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
 				366577222A46B723008C166D /* pianoB.mp3 in Resources */,
 				361F1FF92A66E24200CC2F5B /* apple.svg in Resources */,
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
@@ -604,6 +625,7 @@
 				3698D58D2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				3698D5752A6E908F0003C037 /* leaf.png in Resources */,
 				366577232A46B723008C166D /* pianoB.mp3 in Resources */,
+				365121D12A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
 				365CF7FE2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				366577112A46B723008C166D /* pianoD.mp3 in Resources */,
 				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
@@ -642,6 +664,7 @@
 				3698D58E2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				3698D5762A6E908F0003C037 /* leaf.png in Resources */,
 				366577242A46B723008C166D /* pianoB.mp3 in Resources */,
+				365121D22A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
 				365CF7FF2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				366577122A46B723008C166D /* pianoD.mp3 in Resources */,
 				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
@@ -676,6 +699,8 @@
 				3664C3DD2A68EB86004486EB /* SongSelectionView.swift in Sources */,
 				366577372A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				36F419922A49964D00B11D59 /* MainNavigation.swift in Sources */,
+				365121C42A73AC700071D1C1 /* head.swift in Sources */,
+				365121C02A73A4CA0071D1C1 /* NeckSlides.swift in Sources */,
 				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
 				365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 				36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */,
@@ -688,6 +713,7 @@
 				366577482A46B8B5008C166D /* soundVars.swift in Sources */,
 				3698D5722A6D76350003C037 /* GiraffeScene.swift in Sources */,
 				36EC1E102A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
+				365121C82A73B1DB0071D1C1 /* Floor.swift in Sources */,
 				36EC1E1C2A6CCA81009E5351 /* PanView.swift in Sources */,
 				36F419982A5718DD00B11D59 /* MusicInfo.swift in Sources */,
 				361F1FE42A66CEEB00CC2F5B /* RelaxMode.swift in Sources */,
@@ -700,14 +726,17 @@
 			files = (
 				3664C3EA2A695E9D004486EB /* Relaxing.swift in Sources */,
 				36D15EA12A71823600BC1967 /* DottedCircleView.swift in Sources */,
+				365121C12A73A4CA0071D1C1 /* NeckSlides.swift in Sources */,
 				36EC1E112A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
 				365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */,
+				365121C52A73AC700071D1C1 /* head.swift in Sources */,
 				3664C3DE2A68EB86004486EB /* SongSelectionView.swift in Sources */,
 				366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */,
 				36EC1E1D2A6CCA81009E5351 /* PanView.swift in Sources */,
 				366577412A46B832008C166D /* CreateMode.swift in Sources */,
 				366577382A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3665773D2A46B82A008C166D /* ContentView3.swift in Sources */,
+				365121C92A73B1DB0071D1C1 /* Floor.swift in Sources */,
 				365CF80F2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 				36D15EA52A72398600BC1967 /* StyledGauge.swift in Sources */,
 				36F419932A49964D00B11D59 /* MainNavigation.swift in Sources */,
@@ -725,6 +754,8 @@
 				366577422A46B832008C166D /* CreateMode.swift in Sources */,
 				366576F92A46B6C6008C166D /* yuedong002UITests.swift in Sources */,
 				36D15EA22A71823600BC1967 /* DottedCircleView.swift in Sources */,
+				365121CA2A73B1DB0071D1C1 /* Floor.swift in Sources */,
+				365121C62A73AC700071D1C1 /* head.swift in Sources */,
 				365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */,
 				366577352A46B7E6008C166D /* MotionManager.swift in Sources */,
 				36EC1E122A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
@@ -739,6 +770,7 @@
 				366576FB2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift in Sources */,
 				3664C3DF2A68EB86004486EB /* SongSelectionView.swift in Sources */,
 				3665774A2A46B8B5008C166D /* soundVars.swift in Sources */,
+				365121C22A73A4CA0071D1C1 /* NeckSlides.swift in Sources */,
 				365CF8102A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
