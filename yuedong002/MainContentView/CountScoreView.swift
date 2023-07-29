@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CountScoreView: View {
-    var finalScore = 20
+    @Binding var finalScore: Int
+    
+    
     
     
     
@@ -98,7 +100,7 @@ struct CountScoreView: View {
 
 struct CountScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        CountScoreView()
+        CountScoreView(finalScore: .constant(0))
     }
 }
 

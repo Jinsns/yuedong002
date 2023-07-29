@@ -19,6 +19,7 @@ struct SwiftUIView: View {
     //show the progress of bgm
     @State private var trimEnd: CGFloat = 0.0
     
+    @State var showPause = false
     @State var showCountScoreView = false
     
     
@@ -31,14 +32,45 @@ struct SwiftUIView: View {
             
             
             ZStack {
-                Image("ruling")
+                
+                
+
+                Button {
+                    print("pressed pause button")
+                    showPause = true
+                } label: {
+                    Image("pauseCircle")
+                        .resizable()
+                }
+                .frame(width: 48, height: 48)
+                .offset(x: 160, y: -330)
+                
+                if showPause {
+                    Color.black.opacity(0.1)
+                    PauseAlertView(isPresented: $showPause, leafNum: $scene.score)
+                }
+                
+
+                
+                
+                
+                Image("ruling")   //background
                     .resizable()
-                    .padding(.all, 10)
+                    .padding(.all, 10)  //padding must be above frame
                     .frame(width: 150, height: 150)
-                    .padding(.all, 10)
-                    .opacity(0.9)
                     .offset(x: 0, y: -280)
+                    .opacity(0.2)
+                    .colorMultiply(Color.black)
                     .colorMultiply(Color.gray)
+                
+                Image("ruling")   //front fade-out
+                    .resizable()
+                    .padding(.all, 10)  //padding must be above frame
+                    .frame(width: 150, height: 150)
+//                    .padding(.all, 10)
+                    .opacity(1.0)
+                    .offset(x: 0, y: -280)
+//                    .colorMultiply(Color.gray)
                     .mask {
                         Circle()
                             .trim(from: 0.0, to: trimEnd) //trimEnd = 1 means 360 degree
@@ -59,50 +91,48 @@ struct SwiftUIView: View {
                                 
                             }
                             .onChange(of: bgmSystem.currentTime) { newValue in
+                                print("newValue of curtime", newValue)
                                 trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
                             }
                     }
-            } // zstack of ruling and circle
-            
-            
-            
-            
-            
-            
-            Gauge(value: (bgmSystem.currentTime), in: 0.0...bgmSystem.audioPlayer!.duration) {
                 Text("\(scene.score)")
-                //              Text("\(Int(bgmSystem.currentTime))")
-            }
-            .gaugeStyle(.accessoryCircularCapacity)
-            .frame(width: 250, height: 250)
-            .padding(.all, 10)
-            .offset(x: 0, y: -300)
-            .frame(width:300, height: 300)
-            .onChange(of: scene.score) { newScore in
-                if newScore == 1 {   //eat the first leaf to start bgm, start gaming
-                    print("newScore == 1 : ", newScore)
-                    bgmSystem.play()
-                    print("music playing has a duration of ", bgmSystem.duration)
+                    .frame(width: 150, height: 150)
+                    .padding(.all, 10)
+                    .offset(x: 0, y: -270)
+                    .foregroundColor(Color(hex: "68A128"))
+                    .onChange(of: scene.score) { newScore in
+                        if newScore == 1 {   //eat the first leaf to start bgm, start gaming
+                            print("newScore == 1 : ", newScore)
+                            bgmSystem.play()
+                            print("music playing has a duration of ", bgmSystem.duration)
+                        }
+                    }
+                    
+                Image("scorePan")
+                    .resizable()
+                    .padding(.all, 10)
+                    .frame(width: 150, height: 150)
+                    .offset(x: 0, y: -280)
+                
+            } // zstack of ruling and circle
+            .onChange(of: bgmSystem.currentTime) { newValue in
+                if newValue == 0.0 && scene.score >= 1 {
+                    //bgmSystem.stop() will let bgmSystem.currentTime turns to 0.0
+                    //and if scene.score >= 1 means game once started
+                    showCountScoreView = true
+                    
                 }
             }
+            .fullScreenCover(isPresented: $showCountScoreView, content: {
+                CountScoreView(finalScore: $scene.score)
+            })
             
-            
-            
-            
-            
+
             
         }
-        .onChange(of: bgmSystem.currentTime) { newValue in
-            if newValue == 0.0 && scene.score >= 1 {
-                //bgmSystem.stop() will let bgmSystem.currentTime turns to 0.0
-                //and if scene.score >= 1 means game once started
-                showCountScoreView = true
-                
-            }
-        }
-        .fullScreenCover(isPresented: $showCountScoreView, content: {
-            CountScoreView()
-        })
+        
+        
+        
         
     }
     
