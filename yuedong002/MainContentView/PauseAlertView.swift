@@ -10,7 +10,9 @@ import SwiftUI
 struct PauseAlertView: View {
     @Environment(\.colorScheme) private var colorScheme
         
-    @Binding var isPresented: Bool
+    @Binding var isShowPause: Bool
+    
+    @Binding var isShowCountScoreView: Bool
     @Binding var leafNum: Int
 //    var dNeckLength: Int
         
@@ -33,6 +35,7 @@ struct PauseAlertView: View {
                           .multilineTextAlignment(.center)
                           .foregroundColor(.black.opacity(0.65))
                           .frame(maxWidth: .infinity, alignment: .center)
+                          .lineSpacing(5)   //调整行间距
                     }
                     .padding(.horizontal, 16)
                     .padding(.top, 0)
@@ -47,7 +50,8 @@ struct PauseAlertView: View {
                         HStack(alignment: .center, spacing: 0) {
                             Button(action: {
                                 print("pressed end this game")
-                                self.isPresented = false
+                                self.isShowPause = false
+                                self.isShowCountScoreView = true
                                 
                                 
                             }) {
@@ -66,7 +70,7 @@ struct PauseAlertView: View {
                         HStack(alignment: .center, spacing: 0) {
                             Button {
                                 print("pressed continue")
-                                self.isPresented = false
+                                self.isShowPause = false
                             } label: {
                                 Text("继续")
                                     .foregroundColor(.white)
@@ -102,6 +106,6 @@ struct PauseAlertView: View {
 
 struct PauseAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        PauseAlertView(isPresented: .constant(true), leafNum: .constant(8))
+        PauseAlertView(isShowPause: .constant(true), isShowCountScoreView: .constant(false), leafNum: .constant(8))
     }
 }

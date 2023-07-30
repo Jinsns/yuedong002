@@ -50,7 +50,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     @Published var score: Int = 0
     
-    var leafXPosition = Float(1.0)
+    var leafXPosition = Float(1.8)   //initial leaf position
     var leafYPosition = Float(0.0)
     var leafZPosition = Float(0.0)
     
@@ -395,8 +395,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
     func addLeafNodeRandomPosition() {
         //test if animation can touch leaf (trigger collision)
-        let xPosition = Float(0) // Set the range of x position as needed
-        let yPosition = Float(5) // Set the range of y position as needed
+        let xPosition = Float(-2.0) // Set the range of x position as needed
+        let yPosition = Float(0) // Set the range of y position as needed
         let zPosition = Float(0)
 
 //        let xPosition = Float.random(in: -1.5...1.5) // Set the range of x position as needed

@@ -67,9 +67,6 @@
 		365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF80D2A6D68760007A2CF /* SwiftUIView.swift */; };
 		365CF80F2A6D68760007A2CF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF80D2A6D68760007A2CF /* SwiftUIView.swift */; };
 		365CF8102A6D68760007A2CF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF80D2A6D68760007A2CF /* SwiftUIView.swift */; };
-		3664C3DD2A68EB86004486EB /* SongSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664C3DC2A68EB86004486EB /* SongSelectionView.swift */; };
-		3664C3DE2A68EB86004486EB /* SongSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664C3DC2A68EB86004486EB /* SongSelectionView.swift */; };
-		3664C3DF2A68EB86004486EB /* SongSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664C3DC2A68EB86004486EB /* SongSelectionView.swift */; };
 		3664C3E12A695E2A004486EB /* Ellipse 846.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E02A695E2A004486EB /* Ellipse 846.png */; };
 		3664C3E22A695E2A004486EB /* Ellipse 846.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E02A695E2A004486EB /* Ellipse 846.png */; };
 		3664C3E32A695E2A004486EB /* Ellipse 846.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E02A695E2A004486EB /* Ellipse 846.png */; };
@@ -131,6 +128,40 @@
 		366577482A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
 		366577492A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
 		3665774A2A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
+		3696A5DC2A756B1300B59DCB /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696A5DB2A756B1300B59DCB /* HomePageView.swift */; };
+		3696A5DE2A756BDD00B59DCB /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5DD2A756BDD00B59DCB /* SettingsButton.png */; };
+		3696A5DF2A756BDD00B59DCB /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5DD2A756BDD00B59DCB /* SettingsButton.png */; };
+		3696A5E02A756BDD00B59DCB /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5DD2A756BDD00B59DCB /* SettingsButton.png */; };
+		3696A5E22A756CE400B59DCB /* EyeGlassesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E12A756CE400B59DCB /* EyeGlassesIcon.png */; };
+		3696A5E32A756CE400B59DCB /* EyeGlassesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E12A756CE400B59DCB /* EyeGlassesIcon.png */; };
+		3696A5E42A756CE400B59DCB /* EyeGlassesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E12A756CE400B59DCB /* EyeGlassesIcon.png */; };
+		3696A5E62A756CEE00B59DCB /* PhotoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E52A756CEE00B59DCB /* PhotoIcon.png */; };
+		3696A5E72A756CEE00B59DCB /* PhotoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E52A756CEE00B59DCB /* PhotoIcon.png */; };
+		3696A5E82A756CEE00B59DCB /* PhotoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E52A756CEE00B59DCB /* PhotoIcon.png */; };
+		3696A5EA2A756DAC00B59DCB /* NeckIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E92A756DAC00B59DCB /* NeckIcon.png */; };
+		3696A5EB2A756DAC00B59DCB /* NeckIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E92A756DAC00B59DCB /* NeckIcon.png */; };
+		3696A5EC2A756DAC00B59DCB /* NeckIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5E92A756DAC00B59DCB /* NeckIcon.png */; };
+		3696A5EE2A7628D900B59DCB /* EarthIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5ED2A7628D900B59DCB /* EarthIcon.png */; };
+		3696A5EF2A7628D900B59DCB /* EarthIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5ED2A7628D900B59DCB /* EarthIcon.png */; };
+		3696A5F02A7628D900B59DCB /* EarthIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5ED2A7628D900B59DCB /* EarthIcon.png */; };
+		3696A5F52A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F12A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf */; };
+		3696A5F62A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F12A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf */; };
+		3696A5F72A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F12A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf */; };
+		3696A5F82A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F22A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf */; };
+		3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F22A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf */; };
+		3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F22A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf */; };
+		3696A5FB2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F32A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf */; };
+		3696A5FC2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F32A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf */; };
+		3696A5FD2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F32A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf */; };
+		3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F42A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf */; };
+		3696A5FF2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F42A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf */; };
+		3696A6002A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5F42A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf */; };
+		3696A6032A7633C400B59DCB /* airpodsReminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A6022A7633C400B59DCB /* airpodsReminder.png */; };
+		3696A6042A7633C400B59DCB /* airpodsReminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A6022A7633C400B59DCB /* airpodsReminder.png */; };
+		3696A6052A7633C400B59DCB /* airpodsReminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A6022A7633C400B59DCB /* airpodsReminder.png */; };
+		3696A6072A76395900B59DCB /* NodToEatReminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A6062A76395900B59DCB /* NodToEatReminder.png */; };
+		3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A6062A76395900B59DCB /* NodToEatReminder.png */; };
+		3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A6062A76395900B59DCB /* NodToEatReminder.png */; };
 		3698D5722A6D76350003C037 /* GiraffeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698D5712A6D76350003C037 /* GiraffeScene.swift */; };
 		3698D5742A6E908F0003C037 /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 3698D5732A6E908F0003C037 /* leaf.png */; };
 		3698D5752A6E908F0003C037 /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 3698D5732A6E908F0003C037 /* leaf.png */; };
@@ -229,7 +260,6 @@
 		365CF8052A6D67F90007A2CF /* head.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = head.dae; sourceTree = "<group>"; };
 		365CF8092A6D68140007A2CF /* neck.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = neck.dae; sourceTree = "<group>"; };
 		365CF80D2A6D68760007A2CF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		3664C3DC2A68EB86004486EB /* SongSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectionView.swift; sourceTree = "<group>"; };
 		3664C3E02A695E2A004486EB /* Ellipse 846.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse 846.png"; sourceTree = "<group>"; };
 		3664C3E42A695E34004486EB /* rabbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rabbit.png; sourceTree = "<group>"; };
 		3664C3E82A695E9D004486EB /* Relaxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relaxing.swift; sourceTree = "<group>"; };
@@ -259,6 +289,19 @@
 		3665773F2A46B832008C166D /* CreateMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMode.swift; sourceTree = "<group>"; };
 		366577432A46B83F008C166D /* serverRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serverRequests.swift; sourceTree = "<group>"; };
 		366577472A46B8B5008C166D /* soundVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soundVars.swift; sourceTree = "<group>"; };
+		3696A5DB2A756B1300B59DCB /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		3696A5DD2A756BDD00B59DCB /* SettingsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsButton.png; sourceTree = "<group>"; };
+		3696A5E12A756CE400B59DCB /* EyeGlassesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EyeGlassesIcon.png; sourceTree = "<group>"; };
+		3696A5E52A756CEE00B59DCB /* PhotoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhotoIcon.png; sourceTree = "<group>"; };
+		3696A5E92A756DAC00B59DCB /* NeckIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NeckIcon.png; sourceTree = "<group>"; };
+		3696A5ED2A7628D900B59DCB /* EarthIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EarthIcon.png; sourceTree = "<group>"; };
+		3696A5F12A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 41HuaKangYuanTiW5.ttf; sourceTree = "<group>"; };
+		3696A5F22A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 40HuaKangYuanTiW4.ttf; sourceTree = "<group>"; };
+		3696A5F32A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 43HuaKangYuanTiW9.ttf; sourceTree = "<group>"; };
+		3696A5F42A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 42HuaKangYuanTiW7.ttf; sourceTree = "<group>"; };
+		3696A6012A7629CB00B59DCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3696A6022A7633C400B59DCB /* airpodsReminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airpodsReminder.png; sourceTree = "<group>"; };
+		3696A6062A76395900B59DCB /* NodToEatReminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NodToEatReminder.png; sourceTree = "<group>"; };
 		3698D5712A6D76350003C037 /* GiraffeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeScene.swift; sourceTree = "<group>"; };
 		3698D5732A6E908F0003C037 /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
 		3698D57F2A6EA7F90003C037 /* giraffe.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = giraffe.dae; sourceTree = "<group>"; };
@@ -310,6 +353,7 @@
 		361F1FE52A66CF8400CC2F5B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3696A5DD2A756BDD00B59DCB /* SettingsButton.png */,
 				3698D58B2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg */,
 				3698D58F2A7049DF0003C037 /* gameBackgroundLayer.png */,
 				3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */,
@@ -321,11 +365,17 @@
 				3664C3E42A695E34004486EB /* rabbit.png */,
 				3664C3EC2A6968FD004486EB /* rabbit2.png */,
 				36A688582A68E7D300397F06 /* EnterRelax.png */,
+				3696A5E12A756CE400B59DCB /* EyeGlassesIcon.png */,
 				361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */,
+				3696A5E92A756DAC00B59DCB /* NeckIcon.png */,
 				36D15EA72A72674900BC1967 /* ruling.png */,
 				36D15EAB2A7280A200BC1967 /* songEnd.png */,
+				3696A5E52A756CEE00B59DCB /* PhotoIcon.png */,
 				365121D32A750BE20071D1C1 /* scorepan.png */,
 				365121D72A750FBD0071D1C1 /* Pause Circle.png */,
+				3696A6022A7633C400B59DCB /* airpodsReminder.png */,
+				3696A6062A76395900B59DCB /* NodToEatReminder.png */,
+				3696A5ED2A7628D900B59DCB /* EarthIcon.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -333,6 +383,10 @@
 		365121DB2A7547030071D1C1 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3696A5F22A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf */,
+				3696A5F12A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf */,
+				3696A5F42A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf */,
+				3696A5F32A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -372,6 +426,8 @@
 		366576DB2A46B6C5008C166D /* yuedong002 */ = {
 			isa = PBXGroup;
 			children = (
+				3696A6012A7629CB00B59DCB /* Info.plist */,
+				3696A5D82A7569B900B59DCB /* discarded */,
 				36F419952A57188A00B11D59 /* Data */,
 				3665773A2A46B815008C166D /* MainContentView */,
 				366577312A46B7CC008C166D /* Utils */,
@@ -434,9 +490,6 @@
 		366577302A46B765008C166D /* UIModules2 */ = {
 			isa = PBXGroup;
 			children = (
-				36F4198B2A46C62700B11D59 /* MotionStateView.swift */,
-				36D15E9F2A71823600BC1967 /* DottedCircleView.swift */,
-				36D15EA32A72398600BC1967 /* StyledGauge.swift */,
 			);
 			path = UIModules2;
 			sourceTree = "<group>";
@@ -444,15 +497,9 @@
 		366577312A46B7CC008C166D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				366577432A46B83F008C166D /* serverRequests.swift */,
 				366577362A46B7EF008C166D /* SoundSystem.swift */,
 				366577322A46B7E6008C166D /* MotionManager.swift */,
-				36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */,
 				3698D5712A6D76350003C037 /* GiraffeScene.swift */,
-				365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */,
-				365121C32A73AC700071D1C1 /* head.swift */,
-				365121C72A73B1DB0071D1C1 /* Floor.swift */,
-				365121E42A75655A0071D1C1 /* DataModel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -460,21 +507,53 @@
 		3665773A2A46B815008C166D /* MainContentView */ = {
 			isa = PBXGroup;
 			children = (
-				3665773F2A46B832008C166D /* CreateMode.swift */,
 				3665773B2A46B82A008C166D /* ContentView3.swift */,
-				36F419912A49964D00B11D59 /* MainNavigation.swift */,
-				361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */,
-				3664C3DC2A68EB86004486EB /* SongSelectionView.swift */,
-				3664C3E82A695E9D004486EB /* Relaxing.swift */,
-				3637F6C72A6A5763004FEB42 /* Yue.swift */,
-				36EC1E1B2A6CCA81009E5351 /* PanView.swift */,
-				365CF7FA2A6CECD30007A2CF /* GameBoard.swift */,
 				365CF80D2A6D68760007A2CF /* SwiftUIView.swift */,
 				365121BB2A7285950071D1C1 /* CountScoreView.swift */,
 				365121DC2A754FFB0071D1C1 /* PauseAlertView.swift */,
 				365121E02A755F710071D1C1 /* GamingView.swift */,
+				3696A5DB2A756B1300B59DCB /* HomePageView.swift */,
 			);
 			path = MainContentView;
+			sourceTree = "<group>";
+		};
+		3696A5D82A7569B900B59DCB /* discarded */ = {
+			isa = PBXGroup;
+			children = (
+				3696A5DA2A7569DD00B59DCB /* data */,
+				3696A5D92A7569D000B59DCB /* codes */,
+			);
+			path = discarded;
+			sourceTree = "<group>";
+		};
+		3696A5D92A7569D000B59DCB /* codes */ = {
+			isa = PBXGroup;
+			children = (
+				366577432A46B83F008C166D /* serverRequests.swift */,
+				36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */,
+				365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */,
+				365121C32A73AC700071D1C1 /* head.swift */,
+				365121C72A73B1DB0071D1C1 /* Floor.swift */,
+				365121E42A75655A0071D1C1 /* DataModel.swift */,
+				36F4198B2A46C62700B11D59 /* MotionStateView.swift */,
+				36D15E9F2A71823600BC1967 /* DottedCircleView.swift */,
+				36D15EA32A72398600BC1967 /* StyledGauge.swift */,
+				3665773F2A46B832008C166D /* CreateMode.swift */,
+				36F419912A49964D00B11D59 /* MainNavigation.swift */,
+				361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */,
+				3664C3E82A695E9D004486EB /* Relaxing.swift */,
+				3637F6C72A6A5763004FEB42 /* Yue.swift */,
+				36EC1E1B2A6CCA81009E5351 /* PanView.swift */,
+				365CF7FA2A6CECD30007A2CF /* GameBoard.swift */,
+			);
+			path = codes;
+			sourceTree = "<group>";
+		};
+		3696A5DA2A7569DD00B59DCB /* data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		36F419952A57188A00B11D59 /* Data */ = {
@@ -603,18 +682,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				36EC1E142A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
+				3696A5EA2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				361F1FF52A66E23700CC2F5B /* 手机.svg in Resources */,
 				361F1FF12A66DFF400CC2F5B /* 微信.svg in Resources */,
 				3664C3E52A695E34004486EB /* rabbit.png in Resources */,
 				36A688592A68E7D300397F06 /* EnterRelax.png in Resources */,
+				3696A5E22A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				3665772D2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				366576E52A46B6C6008C166D /* Preview Assets.xcassets in Resources */,
 				3664C3E12A695E2A004486EB /* Ellipse 846.png in Resources */,
 				3664C3ED2A6968FD004486EB /* rabbit2.png in Resources */,
+				3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				3698D5902A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 				3665771F2A46B723008C166D /* pianoC.mp3 in Resources */,
 				36EC1E182A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				3698D5742A6E908F0003C037 /* leaf.png in Resources */,
+				3696A6072A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				36F4198E2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				36D15EA82A72674900BC1967 /* ruling.png in Resources */,
 				3637F6CA2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
@@ -622,22 +705,29 @@
 				365CF80A2A6D68140007A2CF /* neck.dae in Resources */,
 				3698D5842A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				365121D82A750FBD0071D1C1 /* Pause Circle.png in Resources */,
+				3696A5F82A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				365121D02A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
+				3696A5EE2A7628D900B59DCB /* EarthIcon.png in Resources */,
+				3696A5FB2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				366577222A46B723008C166D /* pianoB.mp3 in Resources */,
+				3696A6032A7633C400B59DCB /* airpodsReminder.png in Resources */,
 				361F1FF92A66E24200CC2F5B /* apple.svg in Resources */,
 				365121D42A750BE20071D1C1 /* scorepan.png in Resources */,
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
 				361F1FED2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				365CF8062A6D67F90007A2CF /* head.dae in Resources */,
 				3698D5882A703D860003C037 /* giraffe0.dae in Resources */,
+				3696A5F52A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				365CF7FD2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				366576E12A46B6C6008C166D /* Assets.xcassets in Resources */,
 				3698D5802A6EA7F90003C037 /* giraffe.dae in Resources */,
 				3698D58C2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
+				3696A5E62A756CEE00B59DCB /* PhotoIcon.png in Resources */,
 				366577192A46B723008C166D /* pianoE.mp3 in Resources */,
 				3665771C2A46B723008C166D /* pianoG.mp3 in Resources */,
 				36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */,
 				366577102A46B723008C166D /* pianoD.mp3 in Resources */,
+				3696A5DE2A756BDD00B59DCB /* SettingsButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,34 +738,45 @@
 				3698D5892A703D860003C037 /* giraffe0.dae in Resources */,
 				365121D92A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				3664C3EE2A6968FD004486EB /* rabbit2.png in Resources */,
+				3696A5F62A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				361F1FF62A66E23700CC2F5B /* 手机.svg in Resources */,
 				365121D52A750BE20071D1C1 /* scorepan.png in Resources */,
 				36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				3664C3E22A695E2A004486EB /* Ellipse 846.png in Resources */,
 				36EC1E152A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				366577202A46B723008C166D /* pianoC.mp3 in Resources */,
+				3696A5EB2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				3665771D2A46B723008C166D /* pianoG.mp3 in Resources */,
 				36A6885A2A68E7D300397F06 /* EnterRelax.png in Resources */,
 				365CF8072A6D67F90007A2CF /* head.dae in Resources */,
 				3637F6CB2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
 				3665771A2A46B723008C166D /* pianoE.mp3 in Resources */,
+				3696A5E72A756CEE00B59DCB /* PhotoIcon.png in Resources */,
 				3698D58D2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				3698D5752A6E908F0003C037 /* leaf.png in Resources */,
 				366577232A46B723008C166D /* pianoB.mp3 in Resources */,
 				365121D12A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
+				3696A5FC2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				365CF7FE2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				366577112A46B723008C166D /* pianoD.mp3 in Resources */,
 				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				365CF80B2A6D68140007A2CF /* neck.dae in Resources */,
+				3696A5DF2A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
+				3696A5FF2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				361F1FEE2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
+				3696A6042A7633C400B59DCB /* airpodsReminder.png in Resources */,
 				361F1FFA2A66E24200CC2F5B /* apple.svg in Resources */,
 				36D15EA92A72674900BC1967 /* ruling.png in Resources */,
 				3698D5852A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				3664C3E62A695E34004486EB /* rabbit.png in Resources */,
 				36D15EAD2A7280A200BC1967 /* songEnd.png in Resources */,
 				3698D5812A6EA7F90003C037 /* giraffe.dae in Resources */,
+				3696A5E32A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				366577262A46B723008C166D /* pianoF.mp3 in Resources */,
+				3696A5EF2A7628D900B59DCB /* EarthIcon.png in Resources */,
+				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
+				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				366577142A46B723008C166D /* pianoC2.mp3 in Resources */,
 				361F1FF22A66DFF400CC2F5B /* 微信.svg in Resources */,
 				3698D5912A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
@@ -689,34 +790,45 @@
 				3698D58A2A703D860003C037 /* giraffe0.dae in Resources */,
 				365121DA2A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				3664C3EF2A6968FD004486EB /* rabbit2.png in Resources */,
+				3696A5F72A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				361F1FF72A66E23700CC2F5B /* 手机.svg in Resources */,
 				365121D62A750BE20071D1C1 /* scorepan.png in Resources */,
 				36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				3664C3E32A695E2A004486EB /* Ellipse 846.png in Resources */,
 				36EC1E162A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				366577212A46B723008C166D /* pianoC.mp3 in Resources */,
+				3696A5EC2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				3665771E2A46B723008C166D /* pianoG.mp3 in Resources */,
 				36A6885B2A68E7D300397F06 /* EnterRelax.png in Resources */,
 				365CF8082A6D67F90007A2CF /* head.dae in Resources */,
 				3637F6CC2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
 				3665771B2A46B723008C166D /* pianoE.mp3 in Resources */,
+				3696A5E82A756CEE00B59DCB /* PhotoIcon.png in Resources */,
 				3698D58E2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				3698D5762A6E908F0003C037 /* leaf.png in Resources */,
 				366577242A46B723008C166D /* pianoB.mp3 in Resources */,
 				365121D22A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
+				3696A5FD2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				365CF7FF2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				366577122A46B723008C166D /* pianoD.mp3 in Resources */,
 				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				365CF80C2A6D68140007A2CF /* neck.dae in Resources */,
+				3696A5E02A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
+				3696A6002A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				361F1FEF2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
+				3696A6052A7633C400B59DCB /* airpodsReminder.png in Resources */,
 				361F1FFB2A66E24200CC2F5B /* apple.svg in Resources */,
 				36D15EAA2A72674900BC1967 /* ruling.png in Resources */,
 				3698D5862A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				3664C3E72A695E34004486EB /* rabbit.png in Resources */,
 				36D15EAE2A7280A200BC1967 /* songEnd.png in Resources */,
 				3698D5822A6EA7F90003C037 /* giraffe.dae in Resources */,
+				3696A5E42A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				366577272A46B723008C166D /* pianoF.mp3 in Resources */,
+				3696A5F02A7628D900B59DCB /* EarthIcon.png in Resources */,
+				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
+				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				366577152A46B723008C166D /* pianoC2.mp3 in Resources */,
 				361F1FF32A66DFF400CC2F5B /* 微信.svg in Resources */,
 				3698D5922A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
@@ -735,7 +847,6 @@
 				3664C3E92A695E9D004486EB /* Relaxing.swift in Sources */,
 				366576DF2A46B6C5008C166D /* ContentView.swift in Sources */,
 				366577332A46B7E6008C166D /* MotionManager.swift in Sources */,
-				3664C3DD2A68EB86004486EB /* SongSelectionView.swift in Sources */,
 				366577372A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				36F419922A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				365121C42A73AC700071D1C1 /* head.swift in Sources */,
@@ -750,6 +861,7 @@
 				365CF7FB2A6CECD30007A2CF /* GameBoard.swift in Sources */,
 				366576DD2A46B6C5008C166D /* yuedong002App.swift in Sources */,
 				365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */,
+				3696A5DC2A756B1300B59DCB /* HomePageView.swift in Sources */,
 				36F4198C2A46C62700B11D59 /* MotionStateView.swift in Sources */,
 				366577482A46B8B5008C166D /* soundVars.swift in Sources */,
 				365121E12A755F710071D1C1 /* GamingView.swift in Sources */,
@@ -772,7 +884,6 @@
 				36EC1E112A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
 				365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */,
 				365121C52A73AC700071D1C1 /* head.swift in Sources */,
-				3664C3DE2A68EB86004486EB /* SongSelectionView.swift in Sources */,
 				366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */,
 				36EC1E1D2A6CCA81009E5351 /* PanView.swift in Sources */,
 				366577412A46B832008C166D /* CreateMode.swift in Sources */,
@@ -816,7 +927,6 @@
 				3664C3EB2A695E9D004486EB /* Relaxing.swift in Sources */,
 				366577462A46B83F008C166D /* serverRequests.swift in Sources */,
 				366576FB2A46B6C6008C166D /* yuedong002UITestsLaunchTests.swift in Sources */,
-				3664C3DF2A68EB86004486EB /* SongSelectionView.swift in Sources */,
 				3665774A2A46B8B5008C166D /* soundVars.swift in Sources */,
 				365121C22A73A4CA0071D1C1 /* NeckSlides.swift in Sources */,
 				365CF8102A6D68760007A2CF /* SwiftUIView.swift in Sources */,
@@ -963,7 +1073,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = yuedong002/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMotionUsageDescription = "detect head movement to play";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -1004,7 +1117,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = yuedong002/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMotionUsageDescription = "detect head movement to play";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

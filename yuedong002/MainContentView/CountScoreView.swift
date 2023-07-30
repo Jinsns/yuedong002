@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct CountScoreView: View {
-    @Binding var finalScore: Int
+//    @Binding var finalScore: Int
+    @ObservedObject var scene: GiraffeScene
     
+    @Binding var isInHomePage: Bool
+    
+    
+    @State private var isScorePanSizeSwitching = false
+    
+    @Environment(\.presentationMode) var presentationMode //used to close this sheet view
     
     
     
@@ -27,10 +34,7 @@ struct CountScoreView: View {
             
             
             ZStack {
-//                        Circle()
-//                            .foregroundColor(.white)
-//                            .opacity(0.7)
-//                            .frame(width: 100, height: 100)
+
                         
                 VStack {
                     Image("leaf")
@@ -41,51 +45,70 @@ struct CountScoreView: View {
                         .offset(x: 0, y: 6)
                         .padding(.top, 20)
  
-                    Text(" + \(finalScore)")
+                    Text(" + \(scene.score)")
                         .foregroundColor(.green)
                         .font(.headline)
                         .offset(x: 0, y: -16)
                         .padding(.bottom, 20)
-                }
+                }  //VStack of white circle containing a leaf and +finalScore
                 .background(
                     Circle()
                         .foregroundColor(.white)
                         .opacity(0.7)
                         .frame(width: 90, height: 90)
                 )
-            }
-            .offset(x: 120, y:-100)
-            
-            
-            VStack{
-                
-                VStack{
-                    Text("哦哦～脖子长度+5cm")
-                        .font(.title2)
-                        .foregroundColor(Color(hex: "68A128"))
-                    Text("现在我有128cm长的脖子").foregroundColor(Color(hex: "68A128"))
-                        .padding(.top, 16)
-                    Text("可以看到日出风景了")
-                        .padding(.top, 2)
-                        .foregroundColor(Color(hex: "68A128"))
-                }  //text VStack
-                .offset(x: 0, y: 280)
-                
-                
-                
-                
-                
-                Button {
-                    print("want to go back to main page")
-                } label: {
-                    Text("返回主页")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color(hex: "68A128"))
-                        .cornerRadius(7) // 设置圆角半径
+                .scaleEffect(isScorePanSizeSwitching ? 1.0 : 0.8)
+                .animation(.easeInOut(duration: 0.5).repeatCount(3), value: isScorePanSizeSwitching)
+                .offset(x: 120, y:-100)
+                .onAppear {
+                    isScorePanSizeSwitching = true
                 }
-                .offset(x: 0, y: 330)
+                
+            }
+            
+            
+            
+            
+            
+            
+            VStack(spacing: 60){
+                Spacer()
+                VStack(alignment: .center, spacing: 23) {
+                    Text("哦哦～脖子长度+\(Int(scene.score / 5))cm")
+                        .font(Font.custom("DFPYuanW9-GB", size: 25.05524))
+                        .kerning(0.5011)
+                        .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                    Text("现在我有128cm长的脖子\n可以看到日出风景啦")
+                      .font(Font.custom("DFPYuanW7-GB", size: 16))
+                      .kerning(0.64)
+                      .multilineTextAlignment(.center)
+                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                      .frame(width: 192, alignment: .center)
+                      .lineSpacing(5)   //调整行间距
+                } //text VStack
+                
+                
+                
+                HStack(alignment: .center, spacing: 0) {
+                    Button {
+                        print("want to go back to main page")
+                        scene.score = 0        
+                        isInHomePage = true
+                        
+                        presentationMode.wrappedValue.dismiss()  //close this sheet view
+                        
+                    } label: {
+                        Text("返回主页")
+                            .font(Font.custom("DFPYuanW9-GB", size: 17))
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.white)
+                    }
+                }
+                .padding(.leading, 29)
+                .padding(.trailing, 30)
+                .padding(.vertical, 11)
+                .background(Color(red: 0.41, green: 0.63, blue: 0.16))
+                .cornerRadius(7)
                 .padding(.bottom, 100)
 
             }
@@ -95,12 +118,13 @@ struct CountScoreView: View {
             
            
         }
+
     }
 }
 
 struct CountScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        CountScoreView(finalScore: .constant(0))
+        CountScoreView(scene: GiraffeScene(), isInHomePage: .constant(false))
     }
 }
 

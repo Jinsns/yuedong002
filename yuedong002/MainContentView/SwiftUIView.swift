@@ -10,7 +10,10 @@ import SceneKit
 
 struct SwiftUIView: View {
     
-    @ObservedObject private var scene = GiraffeScene()
+    @State var isInHomePage = true
+    @State var isGaming = false
+    
+    @ObservedObject var scene = GiraffeScene()
     
     private let cameraNode = createCameraNode()
     
@@ -19,8 +22,8 @@ struct SwiftUIView: View {
     //show the progress of bgm
     @State private var trimEnd: CGFloat = 0.0
     
-    @State var showPause = false
-    @State var showCountScoreView = false
+    @State var isShowPause = false
+    @State var isShowCountScoreView = false
     
     
     
@@ -31,13 +34,17 @@ struct SwiftUIView: View {
                 .ignoresSafeArea()
             
             
-            ZStack {
+            if isInHomePage {
+                HomePageView()
+            }
+            
+            
+            ZStack {  //gaming view
                 
-                
-
                 Button {
                     print("pressed pause button")
-                    showPause = true
+                    isShowPause = true
+                    
                 } label: {
                     Image("pauseCircle")
                         .resizable()
@@ -45,9 +52,10 @@ struct SwiftUIView: View {
                 .frame(width: 48, height: 48)
                 .offset(x: 160, y: -330)
                 
-                if showPause {
-                    Color.black.opacity(0.1)
-                    PauseAlertView(isPresented: $showPause, leafNum: $scene.score)
+                if isShowPause {
+                    Color.black.opacity(0.1)  //darken background of PauseAlertView
+                        .ignoresSafeArea()
+                    PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
                 }
                 
 
@@ -82,14 +90,7 @@ struct SwiftUIView: View {
                             .opacity(0.6)
                             .rotationEffect(.degrees(-90))
                             .scaleEffect(x: -1, y: 1) //镜像反转 （水平翻转）
-                            .onReceive(scene.$score) { newScore in
-                                
-                                if newScore == 1 {
-                                    trimEnd = 1.0
-                                    //                                    animationDuration = bgmSystem.duration
-                                }
-                                
-                            }
+                            
                             .onChange(of: bgmSystem.currentTime) { newValue in
                                 print("newValue of curtime", newValue)
                                 trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
@@ -100,13 +101,15 @@ struct SwiftUIView: View {
                     .padding(.all, 10)
                     .offset(x: 0, y: -270)
                     .foregroundColor(Color(hex: "68A128"))
-                    .onChange(of: scene.score) { newScore in
-                        if newScore == 1 {   //eat the first leaf to start bgm, start gaming
-                            print("newScore == 1 : ", newScore)
-                            bgmSystem.play()
-                            print("music playing has a duration of ", bgmSystem.duration)
-                        }
-                    }
+//                    .onChange(of: scene.score) { newScore in
+//                        //eat the first leaf to start bgm, start gaming
+//                        if newScore == 1 {
+//                            print("newScore == 1 : ", newScore)
+//                            isGaming = true
+//                            bgmSystem.play()
+//                            print("music playing has a duration of ", bgmSystem.duration)
+//                        }
+//                    }
                     
                 Image("scorePan")
                     .resizable()
@@ -114,18 +117,47 @@ struct SwiftUIView: View {
                     .frame(width: 150, height: 150)
                     .offset(x: 0, y: -280)
                 
-            } // zstack of ruling and circle
+            } // GamingView: zstack of ruling and circle
+            .onChange(of: scene.score) { newScore in
+                if newScore == 1 {                       //game starts
+                    trimEnd = 1.0
+
+                    bgmSystem.play()
+//                    isGaming = true
+                    isInHomePage = false
+                }
+                
+            }
+            .onChange(of: isShowPause, perform: { newValue in  //when game pauses
+                if newValue == true { //show pause
+                    bgmSystem.pause()
+//                    isGaming = false
+                    
+                    
+                } else {  //resume from pause
+                    bgmSystem.play()
+//                    isGaming = true
+                }
+            })
             .onChange(of: bgmSystem.currentTime) { newValue in
-                if newValue == 0.0 && scene.score >= 1 {
+                if newValue == 0.0 && scene.score >= 1 {   //when game ends
                     //bgmSystem.stop() will let bgmSystem.currentTime turns to 0.0
                     //and if scene.score >= 1 means game once started
-                    showCountScoreView = true
+                    isShowCountScoreView = true
+//                    isGaming = false
                     
                 }
             }
-            .fullScreenCover(isPresented: $showCountScoreView, content: {
-                CountScoreView(finalScore: $scene.score)
+            .fullScreenCover(isPresented: $isShowCountScoreView, content: {
+                CountScoreView(scene: scene, isInHomePage: $isInHomePage)
+                    .onAppear {
+                        bgmSystem.stop()
+//                        isGaming = false
+                    }
             })
+            .opacity(!isInHomePage ? 1.0 : 0.0)
+            
+            
             
 
             
@@ -168,3 +200,4 @@ struct SwiftUIView_Previews: PreviewProvider {
         SwiftUIView()
     }
 }
+
