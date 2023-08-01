@@ -23,7 +23,7 @@ class NeckSlide {
         geometry.materials.first?.diffuse.contents = UIColor.black
         
         bottomSlide = SCNNode(geometry: geometry)
-        bottomSlide.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        bottomSlide.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         bottomSlide.physicsBody?.mass = 5.0
         
         print("bottomSlide position: ", bottomSlide.position)

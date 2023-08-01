@@ -21,16 +21,18 @@ struct SwiftUIView: View {
     
     //show the progress of bgm
     @State private var trimEnd: CGFloat = 0.0
+    @State private var scoreChanged = false
     
     @State var isShowPause = false
     @State var isShowCountScoreView = false
     
     
     
+    
     var body: some View {
         ZStack{
             
-            SceneView(scene: scene, pointOfView: cameraNode)
+            SceneView(scene: scene, pointOfView: cameraNode, options: [.allowsCameraControl])
                 .ignoresSafeArea()
             
             
@@ -39,7 +41,10 @@ struct SwiftUIView: View {
             }
             
             
+            
             ZStack {  //gaming view
+                
+              
                 
                 Button {
                     print("pressed pause button")
@@ -101,15 +106,14 @@ struct SwiftUIView: View {
                     .padding(.all, 10)
                     .offset(x: 0, y: -270)
                     .foregroundColor(Color(hex: "68A128"))
-//                    .onChange(of: scene.score) { newScore in
-//                        //eat the first leaf to start bgm, start gaming
-//                        if newScore == 1 {
-//                            print("newScore == 1 : ", newScore)
-//                            isGaming = true
-//                            bgmSystem.play()
-//                            print("music playing has a duration of ", bgmSystem.duration)
-//                        }
-//                    }
+                    .scaleEffect(scoreChanged ? 1.2 : 1.0)
+                    .animation(.spring())
+                    .onChange(of: scene.score) { newScore in
+                        withAnimation {
+                            scoreChanged.toggle()
+                        }
+                        scoreChanged.toggle()
+                    }
                     
                 Image("scorePan")
                     .resizable()
@@ -128,6 +132,16 @@ struct SwiftUIView: View {
                 }
                 
             }
+            .onChange(of: scene.isLeafAppear, perform: { newValue in
+                if newValue == true {
+                    scene.changeLeafNodePosition()
+                    print("change leaf position")
+                    scene.isLeafAppear = false
+                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//
+//                }
+            })
             .onChange(of: isShowPause, perform: { newValue in  //when game pauses
                 if newValue == true { //show pause
                     bgmSystem.pause()

@@ -9,6 +9,10 @@ import Foundation
 import SceneKit
 import CoreMotion
 import AVFoundation
+import SwiftUI
+//import calculateObjectState
+
+
 
 class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAudioMixing {
     
@@ -35,18 +39,21 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     
     private let motionManager = CMMotionManager()
+//    private let motionManager = CMHeadphoneMotionManager()
     
 //    private var planetNode: SCNNode?
     private var neckNode: SCNNode?
-    private var neckJumpAnimation: CAAnimationGroup?
     
     private var neckNode1: SCNNode?   // bottom part
-    private var neckNode2: SCNNode?   //above part
+    var neckNode2: SCNNode?   //above part
+    private var slides = [slide]()
+    private var markNode: SCNNode?
     
     private var KAnimationKey: String = "Animation"
     
     
     private var leafNode: SCNNode?
+    private var textNode: SCNNode?
     
     @Published var score: Int = 0
     
@@ -56,8 +63,17 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     //neckNode.eulerAngles = SCNVector3(0, -3.14 / 2 + 3.14 / 10, 0) // 设置旋转角度，根据需要调整
     let neckInitialXEulerAngle = Float(0.0)
-    let neckInitialYEulerAngle = Float(-3.14 / 2 - 3.14 / 16)
+//    let neckInitialYEulerAngle = Float(-3.14 / 2 - 3.14 / 16)
+    let neckInitialYEulerAngle = Float(0.0)
     let neckInitialZEulerAngle = Float(0.0)
+    
+    let leavesAppearAudioSource = SCNAudioSource(fileNamed: "LeavesAppearing.mp3")!
+    let leavesEatenAudioSource = SCNAudioSource(fileNamed: "GetScore.mp3")
+    var textActionEffectGroup = SCNAction()  //+1 appears and disappears when eat
+    var timer: Timer?
+    
+    @Published var isLeafAppear = false
+     
     
     
     
@@ -78,19 +94,22 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
 //        addNeckNode1(neckInitialXEulerAngle: neckInitialXEulerAngle, neckInitialYEulerAngle: neckInitialYEulerAngle, neckInitialZEulerAngle: neckInitialZEulerAngle)
 //        addNeckNode2(neckInitialXEulerAngle: neckInitialXEulerAngle, neckInitialYEulerAngle: neckInitialYEulerAngle, neckInitialZEulerAngle: neckInitialZEulerAngle)
+//        addSlides()
+        
+
+//        addMarkNode()
+        
 //        addJoint()
 //        spawnNodes()
         
-        loadAnimations()
+//        loadAnimations()
         
         addLeafNode(xPosition: leafXPosition, yPosition: leafYPosition, zPosition: leafZPosition)  //添加叶子结点
         configureCamera()
         addOmniLight()
         
         //control rotation
-        addPlanetRotation()
-        
-        
+        addNeckRotation()
         
         
     }
@@ -132,7 +151,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             print("Failed to load 'giraffe0.dae'")
             return
         }
-
         guard let neckNode = scene.rootNode.childNodes.first else {
             print("Failed to find the first child node in 'giraffe0.dae'")
             return
@@ -141,7 +159,12 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         // 根据需要对脖子模型进行缩放和位置调整
 //        neckNode.scale = SCNVector3(0.2, 0.2, 1.0)   //缩放
         neckNode.position = SCNVector3(0, -3, 0) // 设置位置，根据需要调整
-        neckNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
+//        neckNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
+//        neckNode.orientation = SCNVector4(0, 1, 0, -Float.pi / 2) // 设置旋转角度，根据需要调整
+//        let rotateAction = SCNAction.rotateBy(x: 0, y: -CGFloat.pi / 2, z: 0, duration: 0)
+//        neckNode.runAction(rotateAction)
+//        neckNode.rotation = SCNVector4(0, 1, 0, -Float.pi / 2 - Float.pi / 16)
+        
         
         
 //        let neckBoundingBox = neckNode.boundingBox
@@ -161,90 +184,29 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     }
     
-    func loadAnimations() {
-        // Load the DAE file with skeletal animations
-//        guard let animationsScene = SCNScene(named: "rotatingCube.dae") else {
-//            print("failed to load rotatingCube.dae")
-//            return
-//        }
-//        print("rotatingCube position1: ", animationsScene.rootNode.position)
-//
-//        animationsScene.rootNode.position = self.neckNode!.position
-//        print("rotatingCube position2: ", animationsScene.rootNode.position)
-//
-//        print(animationsScene.rootNode)
-//        print(animationsScene.rootNode.childNodes)
+    func addMarkNode() {
+        let markNodeMaterial = SCNMaterial()
+        markNodeMaterial.diffuse.contents = UIColor.yellow
+        let markNodeGeometry = SCNBox(width: 1, height: 0.1, length: 1, chamferRadius: 0.0)
+        markNodeGeometry.materials = [markNodeMaterial]
+        let markNode = SCNNode(geometry: markNodeGeometry)
+        markNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
+        markNode.physicsBody?.categoryBitMask = 12 // Set a unique bitmask for the "neck" node
+        markNode.physicsBody?.contactTestBitMask = 22 // Set the bitmask of nodes to be notified about contact
+//      markNodee2.physicsBody?.mass = 5.0
+        markNode.physicsBody?.friction = 0.5
         
-        //load animation group
-        var animationGroups: [CAAnimation] = []
-        if let url = Bundle.main.url(forResource: "rotatingCube", withExtension: "dae") {
-            let sceneSource = SCNSceneSource(url: url)
-            print("loaded ratatingcube.dae")
-            let animationIDs = sceneSource?.identifiersOfEntries(withClass: CAAnimation.self)
-            print("animationIDs: ", animationIDs)
-            var maxDuration: CFTimeInterval = 0.0
-            if let animations = animationIDs {
-                for item in animations {
-                    if let ani = sceneSource?.entryWithIdentifier(item, withClass: CAAnimation.self) {
-                        maxDuration = max(maxDuration, ani.duration)
-                        animationGroups.append(ani)
-                    }
-                }
-            }
-            
-            let group = CAAnimationGroup()
-            group.animations = animationGroups
-            group.duration = maxDuration
-//            group.repeatCount = MAXFLOAT
-//            group.autoreverses = true
-            
-            //record this animation
-            self.neckJumpAnimation = group
-            
-            //add animation
-            self.rootNode.childNode(withName: "neck", recursively: true)!.addAnimation(group, forKey: self.KAnimationKey)
-            
-            //validate skeletonNode
-            let skeletonNode = self.rootNode
-            for item in skeletonNode.childNodes {
-                debugPrint("skinner:\(String(describing: item.skinner))")
-            }
-            
-        }
+        markNode.position = SCNVector3(2, 2, 0)
+//        markNode.eulerAngles = SCNVector3(x: neckInitialXEulerAngle, y: neckInitialYEulerAngle, z: neckInitialZEulerAngle)
+        markNode.name = "neckNode2"
+        self.rootNode.addChildNode(markNode)
+        self.markNode = markNode
         
-//        guard let animationsScene = SCNScene(named: "rotatingCube.dae"),
-//              let animationsNode = animationsScene.rootNode.childNode(withName: "Animations", recursively: true) else {
-//            print("Failed to load animationsNode")
-//            return
-//        }
-
-//        // Set up the animation controller
-//        let animationPlayer = animationsNode.animationPlayer(forKey: "animationName")
-//        animationPlayer?.speed = 1.0 // Adjust the animation speed as needed
-//        animationPlayer?.blendFactor = 1.0 // Adjust the blend factor as needed
-//
-//        // Add the animations node to the scene
-//        self.rootNode.addChildNode(animationsNode)
+        let markNode2 = SCNNode(geometry: markNodeGeometry)
+        markNode2.position = SCNVector3(2, 1, 0)
+        self.rootNode.addChildNode(markNode2)
+        
     }
-    
-    func neckJump() {
-        self.neckNode?.addAnimation(self.neckJumpAnimation!, forKey: "neckJump")
-    }
-    
-//    func playAnimation() {
-//        guard let animationsNode = self.rootNode.childNode(withName: "animationsNode", recursively: true) else {
-//            print("Failed to find the animationsNode")
-//            return
-//        }
-//
-//        guard let animationPlayer = animationsNode.animationPlayer(forKey: "animationName") else {
-//                print("Animation player not found")
-//                return
-//            }
-//
-//        animationPlayer.play()
-//    }
-    
     
     func addNeckNode1(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {  //bottom part
         let neckNode1Material = SCNMaterial()
@@ -252,10 +214,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let neckNode1Geometry = SCNBox(width: 1, height: 2, length: 1, chamferRadius: 0.0)
         neckNode1Geometry.materials = [neckNode1Material]
         let neckNode1 = SCNNode(geometry: neckNode1Geometry)
-        neckNode1.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        neckNode1.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         neckNode1.physicsBody?.categoryBitMask = 11 // Set a unique bitmask for the "neck" node
         neckNode1.physicsBody?.contactTestBitMask = 21 // Set the bitmask of nodes to be notified about contact
-        neckNode1.physicsBody?.mass = 5.0
+//        neckNode1.physicsBody?.mass = 5.0
         neckNode1.physicsBody?.friction = 0.5
         neckNode1.position = SCNVector3(0, 0, 0)
         neckNode1.eulerAngles = SCNVector3(x: neckInitialXEulerAngle, y: neckInitialYEulerAngle, z: neckInitialZEulerAngle)
@@ -264,16 +226,16 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.neckNode1 = neckNode1
     }
     
-    func addNeckNode2(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {  //bottom part
+    func addNeckNode2(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
         let neckNode2Material = SCNMaterial()
         neckNode2Material.diffuse.contents = UIColor.yellow
         let neckNode2Geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0.0)
         neckNode2Geometry.materials = [neckNode2Material]
         let neckNode2 = SCNNode(geometry: neckNode2Geometry)
-        neckNode2.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        neckNode2.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
         neckNode2.physicsBody?.categoryBitMask = 12 // Set a unique bitmask for the "neck" node
         neckNode2.physicsBody?.contactTestBitMask = 22 // Set the bitmask of nodes to be notified about contact
-        neckNode2.physicsBody?.mass = 5.0
+//        neckNode2.physicsBody?.mass = 5.0
         neckNode2.physicsBody?.friction = 0.5
         
         neckNode2.position = SCNVector3(0, 2, 0)
@@ -283,67 +245,49 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.neckNode2 = neckNode2
     }
     
-    func addJoint() {
-        let anchor = SCNPhysicsBallSocketJoint(bodyA: self.neckNode1!.physicsBody!, anchorA: SCNVector3(0, 2, 0), bodyB: self.neckNode2!.physicsBody!, anchorB: SCNVector3(0, 2, 0))
-        self.physicsWorld.addBehavior(anchor)
-    }
-    
-    func spawnNodes() {
-        var headObject = Head()
-        var theHead = headObject.getHead()
-        var slideObject = NeckSlide()
+    func addSlides() {
+        let slideMaterial = SCNMaterial()
+        slideMaterial.diffuse.contents = UIColor.gray
+        let slideGeometry = SCNBox(width: 1, height: 0.1, length: 1, chamferRadius: 0.5)
+        slideGeometry.materials = [slideMaterial]
         
-        //attach to floor
-        let floorObject = Floor()
-        let anchor = SCNPhysicsBallSocketJoint(
-            bodyA: slideObject.getbottomSlide().physicsBody!,
-            anchorA: SCNVector3(x: 0, y: 0, z: -0.0005),
-            bodyB: floorObject.getFloor().physicsBody!,
-            anchorB: SCNVector3(x: 0, y: 0, z: 0)
-        )
-        self.physicsWorld.addBehavior(anchor)
         
-        //generate link of neck slides
-        var cnt: Float = 0.0
-        var previousLink: SCNNode = slideObject.getbottomSlide()
-        while cnt < 20.0 {
-            let link = slideObject.getLink(y: Float(cnt))
-            slideObject.links.append(link)
-            
-            let joint = SCNPhysicsBallSocketJoint(
-                bodyA: link.physicsBody!,
-                anchorA: SCNVector3(x: 0, y: 0, z: -0.0005),
-                bodyB: previousLink.physicsBody!,
-                anchorB: SCNVector3(x: 0, y: 0, z: 0.0005)
-            )
-            self.physicsWorld.addBehavior(joint)
-            previousLink = link
-            cnt += 0.1
+        
+        var headPositionInfo = solveHeadPosition(
+            neckLength: 2.0,
+            pitch: (self.neckNode2!.eulerAngles.x),
+            roll: (self.neckNode2!.eulerAngles.z)
+        ) //return (x, y, z, theta, phi)
+        print("necknode2 eulerangles: ", self.neckNode2!.eulerAngles)
+        
+        
+        print("self.neckNode1?.geometry?.accessibilityFrame.height: ", self.neckNode1?.geometry?.accessibilityFrame.height)
+        print("self.neckNode2?.geometry?.accessibilityFrame.height: ", self.neckNode2?.geometry?.accessibilityFrame.height)
+        
+        var slidesInfo = solveNeckSlides(
+            SlidesNum: 10,
+            theta: headPositionInfo.theta,
+            phi: headPositionInfo.phi,
+            headPosition: SCNVector3(x: headPositionInfo.x, y: headPositionInfo.y, z: headPositionInfo.z),
+            headHeight: 1.0,
+            neckPosition: SCNVector3(x: 0, y: 0, z: 0),
+            neckHeight: 2.0
+        )   // return an array [slide]
+        
+        var i = 0
+        while i < 10 {
+            let slide = SCNNode(geometry: slideGeometry)
+            slide.position = SCNVector3(x: Float(slidesInfo[i].x), y: Float(slidesInfo[i].y), z: Float(slidesInfo[i].z) )
+            slide.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+            slide.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
+            slide.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
+            slide.physicsBody?.collisionBitMask = 2
+            self.rootNode.addChildNode(slide)
         }
-        
-        //attach neck slides to head
-        let joint = SCNPhysicsBallSocketJoint(
-            bodyA: theHead.physicsBody!,
-            anchorA: SCNVector3(x: 0, y: 0, z: -0.0005),
-            bodyB: previousLink.physicsBody!,
-            anchorB: SCNVector3(x: 0, y: 0, z: 0.0005)
-        )
-        self.physicsWorld.addBehavior(joint)
-        
-        //add all nodes to scene
-        
-        slideObject.getHolder().addChildNode(floorObject.getFloor())
-        slideObject.getbottomSlide().position = SCNVector3(x: 0, y: 0, z: 0)
-        slideObject.getHolder().addChildNode(slideObject.getbottomSlide())
-        slideObject.links.forEach { link in
-            slideObject.getHolder().addChildNode(link)
-        }
-//        slideObject.clampLinks()
-        self.rootNode.addChildNode(slideObject.getHolder())
-        theHead.position = SCNVector3(x: 2.0, y: 4.0, z: 0)
-        self.rootNode.addChildNode(theHead)
-        self.rootNode.addChildNode(floorObject.getFloor())
-        
+         
+//        slide1.position = SCNVector3(0, 0, 0)
+//        slide1.name = "slide1"
+//        self.rootNode.addChildNode(slide1)
         
     }
     
@@ -366,10 +310,12 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //    }
     
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
+        
+//        self.textNode?.removeFromParentNode()
+        
         let leafMaterial = SCNMaterial()
         leafMaterial.diffuse.contents = UIImage(named: "leaf")
         let leafGeometry = SCNPlane(width: 1.0, height: 1.0)
-//        let leafGeometry = SCNBox(width: 1.0, height: 1.0, length:0.2, chamferRadius: 0.2)
         leafGeometry.materials = [leafMaterial]
         
         let leafNode = SCNNode(geometry: leafGeometry)
@@ -380,30 +326,65 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         leafNode.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
         leafNode.name = "leaf"
         
-        let leafAudioSource = SCNAudioSource(fileNamed: "monoPianoD.mp3")!
-        leafAudioSource.isPositional = true // Enable 3D spatialization
-        leafAudioSource.shouldStream = false // Use streaming for longer audio files
-        leafNode.addAudioPlayer(SCNAudioPlayer(source: leafAudioSource))
+        //appear audio setting
+        self.leavesAppearAudioSource.isPositional = true // Enable 3D spatialization
+        self.leavesAppearAudioSource.shouldStream = false // Use streaming for longer audio files
+        leafNode.addAudioPlayer(SCNAudioPlayer(source: leavesAppearAudioSource))
+        
+        //eaten(get score) audio setting
+        self.leavesEatenAudioSource?.isPositional = true
+        self.leavesEatenAudioSource?.shouldStream = false
+        leafNode.addAudioPlayer(SCNAudioPlayer(source: leavesEatenAudioSource!))
         //播放
-        leafNode.runAction(SCNAction.playAudio(leafAudioSource, waitForCompletion: false))
+        
         
         
         self.rootNode.addChildNode(leafNode)
         self.leafNode = leafNode
         
+        //SCNtext +1
+        let textMaterial = SCNMaterial()
+        textMaterial.diffuse.contents = UIColor(red: 0.41, green: 0.63, blue: 0.16, alpha: 0.38)
+        let textGeometry = SCNText(string: "+1", extrusionDepth: 0.2)
+//        textGeometry.font = UIFont(name: "DFPYuanW9", size: 1.0)
+        textGeometry.materials = [textMaterial]
+        
+        let textNode = SCNNode(geometry: textGeometry)
+        textNode.scale = SCNVector3(0.02, 0.02, 0.02)
+        let textXPosition = Float((self.leafNode?.position.x)!) + 0.1
+        let textYPosition = Float((self.leafNode?.position.y)!) + 0.1
+        let textZPosition = Float(4.0)
+        textNode.position = SCNVector3(x: textXPosition, y: textYPosition, z: textZPosition)
+        
+        textNode.opacity = 0.0
+        let fadeInAction = SCNAction.fadeOpacity(to: 0.8, duration: 0.4)
+        let fadeOutAction = SCNAction.fadeOpacity(to: 0.0, duration: 0.4)
+        self.textActionEffectGroup = SCNAction.sequence([fadeInAction, fadeOutAction])
+//        textNode.runAction(actionEffectGroup)  //when eat
+        
+        self.rootNode.addChildNode(textNode)  //add +1 text into scene
+        self.textNode = textNode
+        
     }
 
-    func addLeafNodeRandomPosition() {
+    func changeLeafNodePosition() {
         //test if animation can touch leaf (trigger collision)
-        let xPosition = Float(-2.0) // Set the range of x position as needed
-        let yPosition = Float(0) // Set the range of y position as needed
+//        let xPosition = Float(-2.0) // Set the range of x position as needed
+//        let yPosition = Float(0) // Set the range of y position as needed
         let zPosition = Float(0)
 
-//        let xPosition = Float.random(in: -1.5...1.5) // Set the range of x position as needed
-//        let yPosition = Float.random(in: -2...2) // Set the range of y position as needed
-//        let zPosition = Float.random(in: -5...5) // Set the range of z position as needed
+        let xPosition = Float.random(in: -1.5...1.5) // Set the range of x position as needed
+        let yPosition = Float.random(in: -2...2)
+//        let zPosition = Float.random(in: -5...5)
+        self.leafNode?.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
+        self.leafNode?.runAction(SCNAction.playAudio(self.leavesAppearAudioSource, waitForCompletion: false))
         
-        addLeafNode(xPosition: xPosition, yPosition: yPosition, zPosition: zPosition)
+        self.textNode?.position = SCNVector3(x: xPosition + 0.04, y: yPosition + 0.04, z: 5.0)
+    }
+    
+    func addEatenEffect() {
+        self.textNode?.runAction(self.textActionEffectGroup) //+1 appear and disappear
+        self.leafNode?.runAction(SCNAction.playAudio(self.leavesEatenAudioSource!, waitForCompletion: false))
     }
 
     
@@ -420,87 +401,47 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
     
     
-    func addPlanetRotation() {
+    func addNeckRotation() {
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
             guard let attitude = deviceMotion?.attitude else { return }
                         
-//            self?.planetNode?.eulerAngles = SCNVector3(
-//                x: Float(attitude.pitch),
-//                y: Float(attitude.roll),
-//                z: Float(attitude.yaw)
-//            )
-            
-            if Float(attitude.pitch) > 3.14 / 4 {
-                self!.neckJump()
-            }
             
             self?.neckNode?.eulerAngles = SCNVector3(
                 x: self!.neckInitialXEulerAngle + Float(attitude.pitch) * 3,
-                y: self!.neckInitialYEulerAngle + Float(attitude.roll) * 3,
-                z: self!.neckInitialZEulerAngle + Float(attitude.yaw) * 3
+                y: self!.neckInitialYEulerAngle - Float(attitude.yaw) * 3,
+                z: self!.neckInitialZEulerAngle - Float(attitude.roll) * 3
             )
-            
-//            self?.neckNode1?.eulerAngles = SCNVector3(
-//                x: self!.neckInitialXEulerAngle + Float(attitude.pitch) * 3,
-//                y: self!.neckInitialYEulerAngle + Float(attitude.roll) * 3,
-//                z: self!.neckInitialZEulerAngle + Float(attitude.yaw) * 3
-//            )
-//
-//            self?.neckNode2?.eulerAngles = SCNVector3(
-//                x: self!.neckInitialXEulerAngle + Float(attitude.pitch) * 3,
-//                y: self!.neckInitialYEulerAngle + Float(attitude.roll) * 3,
-//                z: self!.neckInitialZEulerAngle + Float(attitude.yaw) * 3
-//            )
-            
             
         }
     }
     
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-//        self.collisionAudioPlayer.stop()
         
         print("nodeA: ", contact.nodeA.name, contact.nodeA.categoryBitMask)
         print("nodeB: ", contact.nodeB.name, contact.nodeB.categoryBitMask)
         print("contact begin")
-        
-        if (contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") {
-            print("contact 1")
-            
-            //collision sound effect
-//            self.playCollisionAudio(at: contact.nodeB.position)
+        print("timenow: ", Date())
+        if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
+            print("leaf and neck contact ")
+
             
             // Add one point to the score when "neck" and "leaf" collide
             self.score += 1
             print("score: \(self.score)" )
+            self.addEatenEffect()
+            physicsWorld.contactDelegate = nil
             
-            contact.nodeB.removeFromParentNode()  //remove leafnode
-            
-
-//            self.leafXPosition = -self.leafXPosition
-//            self.leafYPosition = -self.leafYPosition
-//            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
-            addLeafNodeRandomPosition()
-            self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
-            self.leafNode?.runAction(SCNAction.fadeIn(duration: 0.5))
-            
-        } else if (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck") {
-            print("contact 2")
-//            self.playCollisionAudio(at: contact.nodeA.position)
-            self.score += 1
-            print("score: \(self.score)")
-            
-            contact.nodeA.removeFromParentNode()  //remove leafnode
-            
-//            self.leafXPosition = -self.leafXPosition
-//            self.leafYPosition = -self.leafYPosition
-//            self.addLeafNode(xPosition: self.leafXPosition, yPosition: self.leafYPosition, zPosition: self.leafZPosition)
-            addLeafNodeRandomPosition()
-            self.leafNode?.opacity = 0.0 // Set the initial opacity to 0
-            self.leafNode?.runAction(SCNAction.fadeIn(duration: 0.5))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.isLeafAppear = true
+                self.physicsWorld.contactDelegate = self
+                    
+                // 示例代码：在控制台打印延迟执行的时间
+                print("延时执行时间：\(Date())")
+            }
+                       
             
         }
-        
     }
 
     func physicsWorld(_ world: SCNPhysicsWorld, didUpdate contact: SCNPhysicsContact) {

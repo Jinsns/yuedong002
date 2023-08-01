@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.3.1 commit date:2022-10-04, commit time:18:35, hash:b292cfe5a936</authoring_tool>
+    </contributor>
+    <created>2023-07-31T17:54:18</created>
+    <modified>2023-07-31T17:54:18</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="左" name="左" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <node id="左_Bone" name="Bone" sid="Bone" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 0 -1 -0.0291062 0 1 0 0.02958554 0 0 0 1</matrix>
+          <node id="左_Bone_001" name="Bone.001" sid="Bone_001" type="JOINT">
+            <matrix sid="transform">1 0 0 0 0 1 0 1 0 0 1 0 0 0 0 1</matrix>
+            <node id="左_Bone_002" name="Bone.002" sid="Bone_002" type="JOINT">
+              <matrix sid="transform">1 0 -2.38419e-7 0 -4.07494e-9 0.999854 -0.01709152 0.9074271 2.38384e-7 0.01709152 0.9998539 0 0 0 0 1</matrix>
+              <node id="左_Bone_003" name="Bone.003" sid="Bone_003" type="JOINT">
+                <matrix sid="transform">1 4.53839e-9 -4.30499e-11 8.88178e-16 -4.53838e-9 0.9998189 -0.01903536 1.00174 -4.33058e-11 0.01903536 0.9998189 3.72529e-9 0 0 0 1</matrix>
+                <extra>
+                  <technique profile="blender">
+                    <connect sid="connect" type="bool">1</connect>
+                    <layer sid="layer" type="string">0</layer>
+                    <roll sid="roll" type="float">-2.38419e-7</roll>
+                    <tip_x sid="tip_x" type="float">0</tip_x>
+                    <tip_y sid="tip_y" type="float">-0.02568185</tip_y>
+                    <tip_z sid="tip_z" type="float">0.7105324</tip_z>
+                  </technique>
+                </extra>
+              </node>
+              <extra>
+                <technique profile="blender">
+                  <connect sid="connect" type="bool">1</connect>
+                  <layer sid="layer" type="string">0</layer>
+                  <roll sid="roll" type="float">-2.38419e-7</roll>
+                </technique>
+              </extra>
+            </node>
+            <extra>
+              <technique profile="blender">
+                <connect sid="connect" type="bool">1</connect>
+                <layer sid="layer" type="string">0</layer>
+              </technique>
+            </extra>
+          </node>
+          <extra>
+            <technique profile="blender">
+              <layer sid="layer" type="string">0</layer>
+            </technique>
+          </extra>
+        </node>
+        <node id="左_Bone_006" name="Bone.006" sid="Bone_006" type="JOINT">
+          <matrix sid="transform">1 -8.88178e-16 -2.38419e-7 5.88227e-16 -2.38194e-7 -0.04343725 -0.9990562 -0.07190936 -1.03563e-8 0.9990562 -0.04343736 3.649139 0 0 0 1</matrix>
+          <extra>
+            <technique profile="blender">
+              <layer sid="layer" type="string">0</layer>
+              <roll sid="roll" type="float">-2.38419e-7</roll>
+              <tip_x sid="tip_x" type="float">0</tip_x>
+              <tip_y sid="tip_y" type="float">-0.03424251</tip_y>
+              <tip_z sid="tip_z" type="float">0.7875779</tip_z>
+            </technique>
+          </extra>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

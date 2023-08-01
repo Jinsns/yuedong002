@@ -21,6 +21,7 @@ struct yuedong002App: App {
 //            GameBoard()
             
             SwiftUIView()
+//            EulerAngle()
         
             
         }
