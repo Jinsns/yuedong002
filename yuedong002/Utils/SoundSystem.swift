@@ -67,26 +67,26 @@ class BgmSystem: ObservableObject {
     func play() {
         if self.isPlaying == false {
             self.isPlaying = true
-            self.currentTime = 0.0
+//            self.currentTime = 0.0
             
     //      self.audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
             self.audioPlayer?.play()
-            self.currentTime = self.audioPlayer!.currentTime //第一次更新时间
+//            self.currentTime = self.audioPlayer!.currentTime //第一次更新时间
             // Update currentTime with the progress of the music playback
             
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-                if self.isPlaying == true {
-                    self.currentTime = self.audioPlayer!.currentTime  //之后的更新时间
-//                    print("change currentTime to ", self.currentTime)
-                }
-                
-                if self.currentTime >= self.duration {
-                    self.isPlaying = false
-                    self.stop()
-                    print("stopped")
-                }
-            
-            }
+//            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+//                if self.isPlaying == true {
+//                    self.currentTime = self.audioPlayer!.currentTime  //之后的更新时间
+////                    print("change currentTime to ", self.currentTime)
+//                }
+//
+//                if self.currentTime >= self.duration - 0.2 {
+//                    self.isPlaying = false
+//                    self.stop()
+//                    print("stopped")
+//                }
+//
+//            }
         }
             
     }
@@ -94,13 +94,15 @@ class BgmSystem: ObservableObject {
     func pause() {
         self.isPlaying = false
         self.audioPlayer?.pause()
+        print("paused")
     
     }
     
     func stop() {
         self.isPlaying = false
+        self.audioPlayer?.currentTime = 0.0
         self.audioPlayer?.stop()
-        self.currentTime = -1.0
+        print("stopped")
         
     }
     

@@ -38,6 +38,9 @@ struct SwiftUIView: View {
             
             if isInHomePage {
                 HomePageView()
+                    .onAppear{
+                        bgmSystem.audioPlayer?.prepareToPlay()
+                    }
             }
             
             
@@ -96,7 +99,7 @@ struct SwiftUIView: View {
                             .rotationEffect(.degrees(-90))
                             .scaleEffect(x: -1, y: 1) //镜像反转 （水平翻转）
                             
-                            .onChange(of: bgmSystem.currentTime) { newValue in
+                            .onChange(of: bgmSystem.audioPlayer!.currentTime) { newValue in
                                 print("newValue of curtime", newValue)
                                 trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
                             }
@@ -123,7 +126,7 @@ struct SwiftUIView: View {
                     .offset(x: 0, y: -270)
                     .foregroundColor(Color(hex: "68A128"))
                     .bounce(animCount: scoreChanged)
-                    .onChange(of: scene.score) { newScore in
+                    .onChange(of: scene.score) { newScore in     //得分，记分板弹跳
                         withAnimation (Animation.linear(duration: 0.8)){
                             scoreChanged += 1
                         }
@@ -135,7 +138,6 @@ struct SwiftUIView: View {
                     trimEnd = 1.0
 
                     bgmSystem.play()
-//                    isGaming = true
                     isInHomePage = false
                 }
                 
@@ -153,28 +155,27 @@ struct SwiftUIView: View {
             .onChange(of: isShowPause, perform: { newValue in  //when game pauses
                 if newValue == true { //show pause
                     bgmSystem.pause()
-//                    isGaming = false
-                    
-                    
                 } else {  //resume from pause
                     bgmSystem.play()
-//                    isGaming = true
                 }
             })
-            .onChange(of: bgmSystem.currentTime) { newValue in
+            .onChange(of: bgmSystem.audioPlayer!.currentTime) { newValue in
                 if newValue == 0.0 && scene.score >= 1 {   //when game ends
-                    //bgmSystem.stop() will let bgmSystem.currentTime turns to 0.0
+                    //bgmSystem.stop() will let bgmSystem.audioPlayer!.currentTime turns to 0.0
                     //and if scene.score >= 1 means game once started
                     isShowCountScoreView = true
-//                    isGaming = false
                     
                 }
             }
             .fullScreenCover(isPresented: $isShowCountScoreView, content: {
                 CountScoreView(scene: scene, isInHomePage: $isInHomePage)
-                    .onAppear {
+                    .onAppear(){
+                        print("countscoreview appear")
                         bgmSystem.stop()
-//                        isGaming = false
+                    }
+                    .onDisappear(){
+                        print("countscoreview disappear")
+                        isShowCountScoreView = false
                     }
             })
             .opacity(!isInHomePage ? 1.0 : 0.0)

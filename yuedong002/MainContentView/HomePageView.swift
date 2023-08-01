@@ -105,10 +105,8 @@ struct HomePageView: View {
 
                     } //HStack of PhotoIcon
                     .padding(10)
-                    .frame(width: 52, height: 52, alignment: .topLeading)
-                    .background(.white.opacity(0.6))
-//                    .cornerRadius(50)
-                    
+                    .frame(width: 52, height: 52)
+
                     
                     HStack(alignment: .top, spacing: 10) {
                         Button {
@@ -118,13 +116,11 @@ struct HomePageView: View {
                         }
                     }  //HStack of EyeGlassesIcon
                     .padding(10)
-                    .frame(width: 52, height: 52, alignment: .topLeading)
-                    .background(.white.opacity(0.6))
-//                    .cornerRadius(50)
+                    .frame(width: 52, height: 52)
                     
                 } //HStack of PhotoIcon, EyeGlassesIcon
-                .padding(0)
-                .frame(width: 309, height: 52, alignment: .top)
+                .padding(.bottom, 90)
+                .frame(width: 309, height: 52, alignment: .center)
                 
                 
                 
