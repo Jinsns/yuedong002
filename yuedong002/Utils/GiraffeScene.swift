@@ -137,6 +137,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         //add a SCNPlane as the background
         let backgroundMaterial = SCNMaterial()
+        backgroundMaterial.lightingModel = .constant
         backgroundMaterial.diffuse.contents = UIImage(named: "gameBackgroundSourceImage") //3000 * 2000
         let backgroundGeometry = SCNPlane(width: 60, height: 40)
         backgroundGeometry.materials = [backgroundMaterial]
@@ -389,14 +390,22 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
     
     func addOmniLight() {
-        let omniLightNode = SCNNode()
-        omniLightNode.light = SCNLight()
+        let omniLightNode1 = SCNNode()
+        omniLightNode1.light = SCNLight()
         
-        omniLightNode.light?.type = SCNLight.LightType.directional
-        omniLightNode.light?.color = UIColor(white: 1, alpha: 1)
-        omniLightNode.position = SCNVector3Make(0, 0, 30)
+        omniLightNode1.light?.type = SCNLight.LightType.directional
+        omniLightNode1.light?.color = UIColor(white: 1.0, alpha: 0.9)
+        omniLightNode1.position = SCNVector3Make(-10, 10, 20)
         
-        self.rootNode.addChildNode(omniLightNode)
+        let omniLightNode2 = omniLightNode1.clone()
+        omniLightNode2.position = SCNVector3(10, 10, 20)
+        
+        let omniLightNode3 = omniLightNode1.clone()
+        omniLightNode3.position = SCNVector3(0, 0, 20)
+        
+        self.rootNode.addChildNode(omniLightNode1)
+        self.rootNode.addChildNode(omniLightNode2)
+        self.rootNode.addChildNode(omniLightNode3)
     }
 
     
