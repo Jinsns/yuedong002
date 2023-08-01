@@ -418,15 +418,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         
-        print("nodeA: ", contact.nodeA.name, contact.nodeA.categoryBitMask)
-        print("nodeB: ", contact.nodeB.name, contact.nodeB.categoryBitMask)
-        print("contact begin")
-        print("timenow: ", Date())
+        print("contact begin time: ", Date())
         if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
-            print("leaf and neck contact ")
-
-            
-            // Add one point to the score when "neck" and "leaf" collide
+            // get 1 score when "neck" and "leaf" collide
             self.score += 1
             print("score: \(self.score)" )
             self.addEatenEffect()
@@ -436,7 +430,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                 self.isLeafAppear = true
                 self.physicsWorld.contactDelegate = self
                     
-                // 示例代码：在控制台打印延迟执行的时间
                 print("延时执行时间：\(Date())")
             }
                        

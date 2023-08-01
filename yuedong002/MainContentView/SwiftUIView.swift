@@ -21,7 +21,7 @@ struct SwiftUIView: View {
     
     //show the progress of bgm
     @State private var trimEnd: CGFloat = 0.0
-    @State private var scoreChanged = false
+    @State private var scoreChanged = 0
     
     @State var isShowPause = false
     @State var isShowCountScoreView = false
@@ -101,25 +101,33 @@ struct SwiftUIView: View {
                                 trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
                             }
                     }
-                Text("\(scene.score)")
-                    .frame(width: 150, height: 150)
-                    .padding(.all, 10)
-                    .offset(x: 0, y: -270)
-                    .foregroundColor(Color(hex: "68A128"))
-                    .scaleEffect(scoreChanged ? 1.2 : 1.0)
-                    .animation(.spring())
-                    .onChange(of: scene.score) { newScore in
-                        withAnimation {
-                            scoreChanged.toggle()
-                        }
-                        scoreChanged.toggle()
-                    }
+                
                     
                 Image("scorePan")
                     .resizable()
                     .padding(.all, 10)
                     .frame(width: 150, height: 150)
                     .offset(x: 0, y: -280)
+                
+                Text("\(scene.score)")
+                    .font(Font.custom("LilitaOne", size: 38))
+                    .foregroundStyle(
+                          LinearGradient(
+                            colors: [Color(hex: "#407800"), Color(hex: "#68A128")],  //#407800, #68A128
+                            startPoint: .leading,
+                            endPoint: .trailing
+                          )
+                    )
+                    .frame(width: 150, height: 150)
+                    .padding(.all, 10)
+                    .offset(x: 0, y: -270)
+                    .foregroundColor(Color(hex: "68A128"))
+                    .bounce(animCount: scoreChanged)
+                    .onChange(of: scene.score) { newScore in
+                        withAnimation (Animation.linear(duration: 0.8)){
+                            scoreChanged += 1
+                        }
+                    }
                 
             } // GamingView: zstack of ruling and circle
             .onChange(of: scene.score) { newScore in
@@ -132,7 +140,7 @@ struct SwiftUIView: View {
                 }
                 
             }
-            .onChange(of: scene.isLeafAppear, perform: { newValue in
+            .onChange(of: scene.isLeafAppear, perform: { newValue in  //更新叶子位置
                 if newValue == true {
                     scene.changeLeafNodePosition()
                     print("change leaf position")
@@ -215,3 +223,39 @@ struct SwiftUIView_Previews: PreviewProvider {
     }
 }
 
+
+//记分板得分弹跳效果
+struct Bounce: AnimatableModifier {
+    let animCount: Int
+    var animValue: CGFloat
+    var amplitude: CGFloat  // 振幅
+    var bouncingTimes: Int
+    
+    init(animCount: Int, amplitude: CGFloat = 10, bouncingTimes: Int = 3) {
+        self.animCount = animCount
+        self.animValue = CGFloat(animCount)
+        self.amplitude = amplitude
+        self.bouncingTimes = bouncingTimes
+    }
+    
+    var animatableData: CGFloat {
+        get { animValue }
+        set { animValue = newValue }
+    }
+    
+    func body(content: Content) -> some View {
+        let t = animValue - CGFloat(animCount)
+        let offset: CGFloat = -abs(pow(CGFloat(M_E), -t) * sin(t * .pi * CGFloat(bouncingTimes)) * amplitude)
+        return content.offset(y: offset)
+    }
+}
+
+extension View {
+    func bounce(animCount: Int,
+                amplitude: CGFloat = 10,
+                bouncingTimes: Int = 3) -> some View {
+        self.modifier(Bounce(animCount: animCount,
+                             amplitude: amplitude,
+                             bouncingTimes: bouncingTimes))
+    }
+}

@@ -10,6 +10,9 @@
 		36027DF02A79545100A505BC /* GetScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36027DEF2A79545100A505BC /* GetScore.mp3 */; };
 		36027DF12A79545100A505BC /* GetScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36027DEF2A79545100A505BC /* GetScore.mp3 */; };
 		36027DF22A79545100A505BC /* GetScore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36027DEF2A79545100A505BC /* GetScore.mp3 */; };
+		36027DF42A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36027DF32A795D5B00A505BC /* LilitaOne-Regular.ttf */; };
+		36027DF52A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36027DF32A795D5B00A505BC /* LilitaOne-Regular.ttf */; };
+		36027DF62A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36027DF32A795D5B00A505BC /* LilitaOne-Regular.ttf */; };
 		361F1FE42A66CEEB00CC2F5B /* RelaxMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */; };
 		361F1FED2A66D2EB00CC2F5B /* EnterCreate.png in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */; };
 		361F1FEE2A66D2EB00CC2F5B /* EnterCreate.png in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */; };
@@ -310,6 +313,7 @@
 
 /* Begin PBXFileReference section */
 		36027DEF2A79545100A505BC /* GetScore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore.mp3; sourceTree = "<group>"; };
+		36027DF32A795D5B00A505BC /* LilitaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LilitaOne-Regular.ttf"; sourceTree = "<group>"; };
 		361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxMode.swift; sourceTree = "<group>"; };
 		361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnterCreate.png; sourceTree = "<group>"; };
 		361F1FF02A66DFF400CC2F5B /* 微信.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "微信.svg"; sourceTree = "<group>"; };
@@ -479,6 +483,7 @@
 		365121DB2A7547030071D1C1 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				36027DF32A795D5B00A505BC /* LilitaOne-Regular.ttf */,
 				3696A5F22A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf */,
 				3696A5F12A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf */,
 				3696A5F42A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf */,
@@ -823,6 +828,7 @@
 				36CD26DF2A77DEBC009FF796 /* test.dae in Resources */,
 				3664C3E52A695E34004486EB /* rabbit.png in Resources */,
 				36A688592A68E7D300397F06 /* EnterRelax.png in Resources */,
+				36027DF42A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				3696A5E22A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				3665772D2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
@@ -923,6 +929,7 @@
 				368726E82A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
 				368726D82A793963007F859C /* CountScoreView_onloading.mp3 in Resources */,
 				36CD26C42A779289009FF796 /* 脖子左摆-模型+骨架.dae in Resources */,
+				36027DF52A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				36CD26E02A77DEBC009FF796 /* test.dae in Resources */,
 				368726F82A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
@@ -997,6 +1004,7 @@
 				368726E92A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
 				368726D92A793963007F859C /* CountScoreView_onloading.mp3 in Resources */,
 				36CD26C52A779289009FF796 /* 脖子左摆-模型+骨架.dae in Resources */,
+				36027DF62A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				36CD26E12A77DEBC009FF796 /* test.dae in Resources */,
 				368726F92A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
