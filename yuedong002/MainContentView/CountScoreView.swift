@@ -92,6 +92,7 @@ struct CountScoreView: View {
                 HStack(alignment: .center, spacing: 0) {
                     Button {
                         print("want to go back to main page")
+                        soundEffectSystem.buttonPlay()
                         scene.score = 0        
                         isInHomePage = true
                         

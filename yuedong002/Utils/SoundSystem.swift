@@ -45,48 +45,25 @@ class SoundSystem: UIViewController {
 class BgmSystem: ObservableObject {
     var audioPlayer: AVAudioPlayer?
     var isPlaying: Bool
-    @Published var currentTime: Double
     var duration: Double
     
     
     init(bgmURL: URL) {
         do {
             self.audioPlayer = try AVAudioPlayer(contentsOf: bgmURL)
-//            self.duration = audioPlayer?.duration ?? 1.0
         } catch {
             print("error when playing bgm")
         }
         
         self.isPlaying = false
-        self.currentTime = 0.0
         self.duration = audioPlayer?.duration ?? 3.0
-//        print("music duration: ", self.duration)
     }
     
     
     func play() {
         if self.isPlaying == false {
             self.isPlaying = true
-//            self.currentTime = 0.0
-            
-    //      self.audioPlayer = try AVAudioPlayer(contentsOf: soundUrl)
             self.audioPlayer?.play()
-//            self.currentTime = self.audioPlayer!.currentTime //第一次更新时间
-            // Update currentTime with the progress of the music playback
-            
-//            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-//                if self.isPlaying == true {
-//                    self.currentTime = self.audioPlayer!.currentTime  //之后的更新时间
-////                    print("change currentTime to ", self.currentTime)
-//                }
-//
-//                if self.currentTime >= self.duration - 0.2 {
-//                    self.isPlaying = false
-//                    self.stop()
-//                    print("stopped")
-//                }
-//
-//            }
         }
             
     }
@@ -103,17 +80,45 @@ class BgmSystem: ObservableObject {
         self.audioPlayer?.currentTime = 0.0
         self.audioPlayer?.stop()
         print("stopped")
-        
     }
     
 }
 
+class SoundEffectSystem {
+    
+    var buttonAudioPlayer: AVAudioPlayer?
+    var showCountScoreViewAudioPlayer: AVAudioPlayer?
+    
+    init() {
+        let buttonSoundFileName = "Overall_ClickButton"
+        let showCountScoreViewSoundFileName = "CountScoreView_onloading"
+        let buttonSoundURL = Bundle.main.url(forResource: buttonSoundFileName, withExtension: "mp3")!
+        let showCountScoreViewSoundURL = Bundle.main.url(forResource: showCountScoreViewSoundFileName, withExtension: "mp3")!
+        do {
+            self.buttonAudioPlayer = try AVAudioPlayer(contentsOf: buttonSoundURL)
+            self.showCountScoreViewAudioPlayer = try AVAudioPlayer(contentsOf: showCountScoreViewSoundURL)
+        } catch {
+            print("error when playing bgm")
 
-//// play spatial audio, control the direction of sound x, y, z
-//class spatialAudioPlayer: {
-//    
-//    
-//}
+        }
+    }
+    
+    func prepareToPlay() {
+        self.buttonAudioPlayer?.prepareToPlay()
+        self.showCountScoreViewAudioPlayer?.prepareToPlay()
+    }
+    
+    func buttonPlay() {
+        self.buttonAudioPlayer?.play()
+    }
+    
+    func showCountScoreViewPlay() {
+        self.showCountScoreViewAudioPlayer?.play()
+    }
+    
+    
+}
+
 
 
 

@@ -50,6 +50,7 @@ struct PauseAlertView: View {
                         HStack(alignment: .center, spacing: 0) {
                             Button(action: {
                                 print("pressed end this game")
+                                soundEffectSystem.buttonPlay()
                                 self.isShowPause = false
                                 self.isShowCountScoreView = true
                                 
@@ -70,6 +71,7 @@ struct PauseAlertView: View {
                         HStack(alignment: .center, spacing: 0) {
                             Button {
                                 print("pressed continue")
+                                soundEffectSystem.buttonPlay()
                                 self.isShowPause = false
                             } label: {
                                 Text("继续")

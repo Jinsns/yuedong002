@@ -20,6 +20,7 @@ DFPYuanW9
 struct HomePageView: View {
     @State var isShowAirpodsReminder = false
     @State var isShowNodToEatReminder = false
+    var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     
     
     var body: some View {
@@ -85,6 +86,7 @@ struct HomePageView: View {
                     HStack(alignment: .center, spacing: 9.85389) {  //button hstack
                         Button {
                             print("pressed settings button")
+                            soundEffectSystem.buttonPlay()
                         } label: {
                             Image("SettingsButton")
                         }
@@ -99,6 +101,7 @@ struct HomePageView: View {
                     HStack(alignment: .top, spacing: 10) {
                         Button {
                             print("pressed PhotoIcon")
+                            soundEffectSystem.buttonPlay()
                         } label: {
                             Image("PhotoIcon")
                         }
@@ -111,6 +114,7 @@ struct HomePageView: View {
                     HStack(alignment: .top, spacing: 10) {
                         Button {
                             print("pressed EyeGlassesIcon")
+                            soundEffectSystem.buttonPlay()
                         } label: {
                             Image("EyeGlassesIcon")
                         }
@@ -130,6 +134,14 @@ struct HomePageView: View {
             .foregroundColor(.clear)
             .frame(width: 393, height: 852)
         }
+        .onAppear(){
+            soundEffectSystem.prepareToPlay()
+            homePageBgmSystem.play()
+        }
+        .onDisappear() {
+            homePageBgmSystem.stop()
+        }
+        
         
     }
 }

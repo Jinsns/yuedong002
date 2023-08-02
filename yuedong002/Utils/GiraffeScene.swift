@@ -67,8 +67,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     let neckInitialYEulerAngle = Float(0.0)
     let neckInitialZEulerAngle = Float(0.0)
     
-    let leavesAppearAudioSource = SCNAudioSource(fileNamed: "LeavesAppearing.mp3")!
-    let leavesEatenAudioSource = SCNAudioSource(fileNamed: "GetScore.mp3")
+    let leavesAppearAudioSource = SCNAudioSource(fileNamed: "monoLeavesAppearing.mp3")!
+    let leavesEatenAudioSource = SCNAudioSource(fileNamed: "monoGetScore.mp3")!
     var textActionEffectGroup = SCNAction()  //+1 appears and disappears when eat
     var timer: Timer?
     
@@ -82,8 +82,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        setupAudioEngine()
         
         
-        physicsWorld.contactDelegate = self   //both this line and next line OK, also can set delegate in View onAppear
-//        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.contactDelegate = self   //both this line and next line OK, also can set delegate in View onAppear
+//        physicsWorld.contactDelegate = self
         
 //        self.physicsWorld.speed = 1.0
         
@@ -292,23 +292,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
     }
     
-//    func addPlanetNode() {
-//        let planetMaterial = SCNMaterial()
-//        planetMaterial.diffuse.contents = UIImage(named: "Ellipse")
-//
-//        let planetGeometry = SCNSphere(radius: 1)
-//        planetGeometry.materials = [planetMaterial]
-//
-//        let planetNode = SCNNode(geometry: planetGeometry)
-//        planetNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
-//        planetNode.physicsBody?.categoryBitMask = 3 // Set a unique bitmask for the "planet" node
-//        planetNode.physicsBody?.contactTestBitMask = 1 | 2 // Set the bitmask of nodes to be
-//        planetNode.position = SCNVector3(0, 0, 0)
-//        planetNode.name = "planet"
-//
-//        self.rootNode.addChildNode(planetNode)
-//        self.planetNode = planetNode
-//    }
+
     
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
         
@@ -330,12 +314,14 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         //appear audio setting
         self.leavesAppearAudioSource.isPositional = true // Enable 3D spatialization
         self.leavesAppearAudioSource.shouldStream = false // Use streaming for longer audio files
+        self.leavesAppearAudioSource.volume = 1.0
         leafNode.addAudioPlayer(SCNAudioPlayer(source: leavesAppearAudioSource))
         
         //eaten(get score) audio setting
-        self.leavesEatenAudioSource?.isPositional = true
-        self.leavesEatenAudioSource?.shouldStream = false
-        leafNode.addAudioPlayer(SCNAudioPlayer(source: leavesEatenAudioSource!))
+        self.leavesEatenAudioSource.isPositional = true
+        self.leavesEatenAudioSource.shouldStream = false
+        self.leavesEatenAudioSource.volume = 1.0
+        leafNode.addAudioPlayer(SCNAudioPlayer(source: leavesEatenAudioSource))
         //播放
         
         
@@ -385,7 +371,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     func addEatenEffect() {
         self.textNode?.runAction(self.textActionEffectGroup) //+1 appear and disappear
-        self.leafNode?.runAction(SCNAction.playAudio(self.leavesEatenAudioSource!, waitForCompletion: false))
+        self.leafNode?.runAction(SCNAction.playAudio(self.leavesEatenAudioSource, waitForCompletion: false))
     }
 
     

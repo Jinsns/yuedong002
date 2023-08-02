@@ -15,8 +15,8 @@ struct GaugeStyleView: View {
       var body: some View {
           
           VStack{
-              Gauge(value: bgmSystem.currentTime, in: minTime...bgmSystem.audioPlayer!.duration) {
-                  Text("\(Int(bgmSystem.currentTime))")
+              Gauge(value: bgmSystem.audioPlayer!.currentTime, in: minTime...bgmSystem.audioPlayer!.duration) {
+                  Text("\(Int(bgmSystem.audioPlayer!.currentTime))")
               }
               .gaugeStyle(.accessoryCircularCapacity)
               

@@ -8,6 +8,9 @@
 import SwiftUI
 import SceneKit
 
+let soundEffectSystem = SoundEffectSystem()
+
+
 struct SwiftUIView: View {
     
     @State var isInHomePage = true
@@ -18,6 +21,7 @@ struct SwiftUIView: View {
     private let cameraNode = createCameraNode()
     
     @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlSpatialMoonRiver)
+        
     
     //show the progress of bgm
     @State private var trimEnd: CGFloat = 0.0
@@ -40,6 +44,7 @@ struct SwiftUIView: View {
                 HomePageView()
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
+                        soundEffectSystem.prepareToPlay()
                     }
             }
             
@@ -51,6 +56,7 @@ struct SwiftUIView: View {
                 
                 Button {
                     print("pressed pause button")
+                    soundEffectSystem.buttonPlay()
                     isShowPause = true
                     
                 } label: {
@@ -133,6 +139,9 @@ struct SwiftUIView: View {
                     }
                 
             } // GamingView: zstack of ruling and circle
+            .onAppear() {
+                bgmSystem.audioPlayer?.volume = 0.3
+            }
             .onChange(of: scene.score) { newScore in
                 if newScore == 1 {                       //game starts
                     trimEnd = 1.0
@@ -172,6 +181,7 @@ struct SwiftUIView: View {
                     .onAppear(){
                         print("countscoreview appear")
                         bgmSystem.stop()
+                        soundEffectSystem.showCountScoreViewPlay()
                     }
                     .onDisappear(){
                         print("countscoreview disappear")
