@@ -52,8 +52,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     private var KAnimationKey: String = "Animation"
     
     
-    private var leafNode: SCNNode?
-    private var textNode: SCNNode?
+    @Published var leafNode: SCNNode?
+    @Published var textNode: SCNNode?
     
     @Published var score: Int = 0
     
@@ -72,7 +72,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     var textActionEffectGroup = SCNAction()  //+1 appears and disappears when eat
     var timer: Timer?
     
-    @Published var isLeafAppear = false
+    @Published var isContacted = false
+    @Published var shouldContact = true
      
     
     
@@ -104,7 +105,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
 //        loadAnimations()
         
-        addLeafNode(xPosition: leafXPosition, yPosition: leafYPosition, zPosition: leafZPosition)  //添加叶子结点
+//        addLeafNode(xPosition: leafXPosition, yPosition: leafYPosition, zPosition: leafZPosition)  //添加叶子结点
         configureCamera()
         addOmniLight()
         
@@ -296,8 +297,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
         
-//        self.textNode?.removeFromParentNode()
-        
         let leafMaterial = SCNMaterial()
         leafMaterial.diffuse.contents = UIImage(named: "leaf")
         let leafGeometry = SCNPlane(width: 1.0, height: 1.0)
@@ -322,9 +321,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.leavesEatenAudioSource.shouldStream = false
         self.leavesEatenAudioSource.volume = 1.0
         leafNode.addAudioPlayer(SCNAudioPlayer(source: leavesEatenAudioSource))
-        //播放
-        
-        
         
         self.rootNode.addChildNode(leafNode)
         self.leafNode = leafNode
@@ -337,9 +333,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         textGeometry.materials = [textMaterial]
         
         let textNode = SCNNode(geometry: textGeometry)
-        textNode.scale = SCNVector3(0.02, 0.02, 0.02)
-        let textXPosition = Float((self.leafNode?.position.x)!) + 0.1
-        let textYPosition = Float((self.leafNode?.position.y)!) + 0.1
+        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        let textXPosition = Float((self.leafNode?.position.x)!) + 0.04
+        let textYPosition = Float((self.leafNode?.position.y)!) + 0.04
         let textZPosition = Float(4.0)
         textNode.position = SCNVector3(x: textXPosition, y: textYPosition, z: textZPosition)
         
@@ -352,6 +348,12 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.rootNode.addChildNode(textNode)  //add +1 text into scene
         self.textNode = textNode
         
+    }
+    
+    func removeLeafNode() {
+        print("parent of leaf: ", self.leafNode!.parent)
+        self.leafNode!.removeFromParentNode()
+        self.textNode!.removeFromParentNode()
     }
 
     func changeLeafNodePosition() {
@@ -366,7 +368,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.leafNode?.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
         self.leafNode?.runAction(SCNAction.playAudio(self.leavesAppearAudioSource, waitForCompletion: false))
         
-        self.textNode?.position = SCNVector3(x: xPosition + 0.04, y: yPosition + 0.04, z: 5.0)
+        self.textNode?.position = SCNVector3(x: xPosition + 0.04, y: yPosition + 0.04, z: 4.0)
     }
     
     func addEatenEffect() {
@@ -403,7 +405,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             self?.neckNode?.eulerAngles = SCNVector3(
                 x: self!.neckInitialXEulerAngle + Float(attitude.pitch) * 3,
-                y: self!.neckInitialYEulerAngle - Float(attitude.yaw) * 3,
+                y: self!.neckInitialYEulerAngle ,
                 z: self!.neckInitialZEulerAngle - Float(attitude.roll) * 3
             )
             
@@ -412,28 +414,32 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+//        print("contact begin time: ", Date())
         
-        print("contact begin time: ", Date())
+    }
+
+    func physicsWorld(_ world: SCNPhysicsWorld, didUpdate contact: SCNPhysicsContact) {
+        print("contact update")
         if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
             // get 1 score when "neck" and "leaf" collide
             self.score += 1
             print("score: \(self.score)" )
             self.addEatenEffect()
+            
             physicsWorld.contactDelegate = nil
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.isLeafAppear = true
-                self.physicsWorld.contactDelegate = self
-                    
-                print("延时执行时间：\(Date())")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { //最快0.25秒进行一次碰撞检测
+                if self.shouldContact {
+                    self.isContacted.toggle()
+                    self.physicsWorld.contactDelegate = self
+                        
+                    print("延时执行时间：\(Date())")
+                }
+                
             }
                        
             
         }
-    }
-
-    func physicsWorld(_ world: SCNPhysicsWorld, didUpdate contact: SCNPhysicsContact) {
-//        print("contact update")
     }
 
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {

@@ -9,7 +9,15 @@ import SwiftUI
 import SceneKit
 
 let soundEffectSystem = SoundEffectSystem()
-
+let notes: [Note] = [
+    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 0, y: -2, z: 1), isTenuto: false), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 5.0, endTime: 15.0, leafPosition: SCNVector3(x: -1.5, y: -2, z: 1), isTenuto: true),
+    Note(startTime: 20.0, endTime: 25.0, leafPosition: SCNVector3(x: 1.5, y: 2, z: 1), isTenuto: false),
+    Note(startTime: 30.0, endTime: 35.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true),
+    Note(startTime: 40.0, endTime: 45.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
+]
+var note: Note?
+var noteIterator = 0
 
 struct SwiftUIView: View {
     
@@ -21,10 +29,11 @@ struct SwiftUIView: View {
     private let cameraNode = createCameraNode()
     
     @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlSpatialMoonRiver)
+    
         
     
     //show the progress of bgm
-    @State private var trimEnd: CGFloat = 0.0
+    @State var trimEnd: CGFloat = 0.0
     @State private var scoreChanged = 0
     
     @State var isShowPause = false
@@ -45,6 +54,18 @@ struct SwiftUIView: View {
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
                         soundEffectSystem.prepareToPlay()
+                        
+                        if scene.leafNode != nil {  //清空之前的叶子
+                            scene.leafNode?.removeFromParentNode()
+                        }
+                        
+                        noteIterator = 0
+                        note = notes[noteIterator]  //init note to be notes[0]
+                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z)
+                        print("addleafnode1")
+                        
+                        scene.shouldContact = true
+                        scene.physicsWorld.contactDelegate = scene
                     }
             }
             
@@ -105,8 +126,8 @@ struct SwiftUIView: View {
                             .rotationEffect(.degrees(-90))
                             .scaleEffect(x: -1, y: 1) //镜像反转 （水平翻转）
                             
-                            .onChange(of: bgmSystem.audioPlayer!.currentTime) { newValue in
-                                print("newValue of curtime", newValue)
+                            .onChange(of: bgmSystem.currentTime) { newValue in
+                                
                                 trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
                             }
                     }
@@ -141,6 +162,7 @@ struct SwiftUIView: View {
             } // GamingView: zstack of ruling and circle
             .onAppear() {
                 bgmSystem.audioPlayer?.volume = 0.3
+                
             }
             .onChange(of: scene.score) { newScore in
                 if newScore == 1 {                       //game starts
@@ -151,24 +173,33 @@ struct SwiftUIView: View {
                 }
                 
             }
-            .onChange(of: scene.isLeafAppear, perform: { newValue in  //更新叶子位置
-                if newValue == true {
-                    scene.changeLeafNodePosition()
-                    print("change leaf position")
-                    scene.isLeafAppear = false
-                }
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//
-//                }
-            })
-            .onChange(of: isShowPause, perform: { newValue in  //when game pauses
-                if newValue == true { //show pause
-                    bgmSystem.pause()
-                } else {  //resume from pause
-                    bgmSystem.play()
+            .onChange(of: scene.isContacted, perform: { newValue in  //发生碰撞
+                if note!.isTenuto == false {
+                    //(eaten effect implemented in GiraffeScene)
+                    //remove leaf from the scene
+                    print("not a tenuto, remove immediately")
+                    
+                    scene.removeLeafNode()
+                    
                 }
             })
-            .onChange(of: bgmSystem.audioPlayer!.currentTime) { newValue in
+            .onChange(of: bgmSystem.currentTime) { newValue in
+                
+                if (newValue > note!.endTime) {
+                    //if currentTime is not in the range of current note
+                    //then change note to the next one
+                    print("curtime and note.endtime: ", newValue, note!.endTime)
+                    noteIterator += 1
+                    note = notes[noteIterator]
+                    if scene.leafNode != nil {
+                        scene.leafNode?.removeFromParentNode()
+                    }
+                    scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z)
+                    print("addleafnode 2")
+                
+                }
+                
+                
                 if newValue == 0.0 && scene.score >= 1 {   //when game ends
                     //bgmSystem.stop() will let bgmSystem.audioPlayer!.currentTime turns to 0.0
                     //and if scene.score >= 1 means game once started
@@ -176,12 +207,24 @@ struct SwiftUIView: View {
                     
                 }
             }
+            .onChange(of: isShowPause, perform: { newValue in  //when game pauses
+                if newValue == true { //show pause
+                    bgmSystem.pause()
+                    scene.shouldContact = false
+                } else {  //resume from pause
+                    bgmSystem.play()
+                    scene.shouldContact = true //恢复碰撞检测
+                    scene.physicsWorld.contactDelegate = scene
+                }
+            })
             .fullScreenCover(isPresented: $isShowCountScoreView, content: {
                 CountScoreView(scene: scene, isInHomePage: $isInHomePage)
                     .onAppear(){
                         print("countscoreview appear")
                         bgmSystem.stop()
                         soundEffectSystem.showCountScoreViewPlay()
+                        scene.shouldContact = false
+                        
                     }
                     .onDisappear(){
                         print("countscoreview disappear")

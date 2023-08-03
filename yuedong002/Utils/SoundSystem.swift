@@ -46,6 +46,8 @@ class BgmSystem: ObservableObject {
     var audioPlayer: AVAudioPlayer?
     var isPlaying: Bool
     var duration: Double
+    @Published var currentTime: Double = 0.0
+    
     
     
     init(bgmURL: URL) {
@@ -65,7 +67,14 @@ class BgmSystem: ObservableObject {
             self.isPlaying = true
             self.audioPlayer?.play()
         }
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            if self.isPlaying == true {
+                self.currentTime = self.audioPlayer!.currentTime  //之后的更新时间
+                //                    print("change currentTime to ", self.currentTime)
+            }
             
+        }
     }
     
     func pause() {
@@ -77,8 +86,9 @@ class BgmSystem: ObservableObject {
     
     func stop() {
         self.isPlaying = false
-        self.audioPlayer?.currentTime = 0.0
         self.audioPlayer?.stop()
+        self.audioPlayer?.currentTime = 0.0
+        
         print("stopped")
     }
     
@@ -88,15 +98,21 @@ class SoundEffectSystem {
     
     var buttonAudioPlayer: AVAudioPlayer?
     var showCountScoreViewAudioPlayer: AVAudioPlayer?
+    var overallDialogAudioPlayer: AVAudioPlayer?
     
     init() {
-        let buttonSoundFileName = "Overall_ClickButton"
-        let showCountScoreViewSoundFileName = "CountScoreView_onloading"
-        let buttonSoundURL = Bundle.main.url(forResource: buttonSoundFileName, withExtension: "mp3")!
-        let showCountScoreViewSoundURL = Bundle.main.url(forResource: showCountScoreViewSoundFileName, withExtension: "mp3")!
+//        let buttonSoundFileName = "Overall_ClickButton"
+//        let showCountScoreViewSoundFileName = "CountScoreView_onloading"
+//        let overallDialogSoundFileName = "Overall_Dialog"
+        
+        let buttonSoundURL = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3")!
+        let showCountScoreViewSoundURL = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "mp3")!
+        let overallDialogSoundURL = Bundle.main.url(forResource: "Overall_Dialog", withExtension: "mp3")!
+        
         do {
             self.buttonAudioPlayer = try AVAudioPlayer(contentsOf: buttonSoundURL)
             self.showCountScoreViewAudioPlayer = try AVAudioPlayer(contentsOf: showCountScoreViewSoundURL)
+            self.overallDialogAudioPlayer = try AVAudioPlayer(contentsOf: overallDialogSoundURL)
         } catch {
             print("error when playing bgm")
 
@@ -106,6 +122,7 @@ class SoundEffectSystem {
     func prepareToPlay() {
         self.buttonAudioPlayer?.prepareToPlay()
         self.showCountScoreViewAudioPlayer?.prepareToPlay()
+        self.overallDialogAudioPlayer?.prepareToPlay()
     }
     
     func buttonPlay() {
@@ -115,6 +132,11 @@ class SoundEffectSystem {
     func showCountScoreViewPlay() {
         self.showCountScoreViewAudioPlayer?.play()
     }
+    
+    func overallDialogPlay() {
+        self.overallDialogAudioPlayer?.play()
+    }
+    
     
     
 }

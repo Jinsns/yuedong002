@@ -20,7 +20,7 @@ DFPYuanW9
 struct HomePageView: View {
     @State var isShowAirpodsReminder = false
     @State var isShowNodToEatReminder = false
-    var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
+    @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     
     
     var body: some View {
@@ -36,6 +36,7 @@ struct HomePageView: View {
                 withAnimation {
                     isShowAirpodsReminder = true
                 }
+                soundEffectSystem.overallDialogPlay()
             }
 
             
@@ -139,6 +140,7 @@ struct HomePageView: View {
             homePageBgmSystem.play()
         }
         .onDisappear() {
+            print("homepage disappear, stop homepage bgm")
             homePageBgmSystem.stop()
         }
         
