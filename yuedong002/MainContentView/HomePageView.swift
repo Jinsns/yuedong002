@@ -29,7 +29,7 @@ struct HomePageView: View {
                 Image("AirpodsReminder")
             }
             .padding(0)
-            .padding(.bottom, 230)
+            .padding(.bottom, 390)
             .scaleEffect(isShowAirpodsReminder ? 1 : 0)
             .animation(.spring())
             .onAppear {

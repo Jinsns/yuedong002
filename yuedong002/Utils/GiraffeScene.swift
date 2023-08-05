@@ -38,8 +38,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     //end protocal AVAudioMixing
     
     
-    private let motionManager = CMMotionManager()
-//    private let motionManager = CMHeadphoneMotionManager()
+//    private let motionManager = CMMotionManager()
+    private let motionManager = CMHeadphoneMotionManager() //use airpods
     
 //    private var planetNode: SCNNode?
     private var neckNode: SCNNode?
@@ -149,7 +149,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        guard let scene = SCNScene(named: "giraffe0.dae") else {
+        guard let scene = SCNScene(named: "单个长颈鹿.dae") else {
             print("Failed to load 'giraffe0.dae'")
             return
         }
@@ -299,6 +299,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         let leafMaterial = SCNMaterial()
         leafMaterial.diffuse.contents = UIImage(named: "leaf")
+        leafMaterial.lightingModel = .constant  //not affected by light
+
         let leafGeometry = SCNPlane(width: 1.0, height: 1.0)
         leafGeometry.materials = [leafMaterial]
         
@@ -404,9 +406,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                         
             
             self?.neckNode?.eulerAngles = SCNVector3(
-                x: self!.neckInitialXEulerAngle + Float(attitude.pitch) * 3,
-                y: self!.neckInitialYEulerAngle ,
-                z: self!.neckInitialZEulerAngle - Float(attitude.roll) * 3
+                x: self!.neckInitialXEulerAngle - Float(attitude.pitch),
+                y: 0,
+                z: self!.neckInitialZEulerAngle - Float(attitude.roll)
             )
             
         }

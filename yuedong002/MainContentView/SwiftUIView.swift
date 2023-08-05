@@ -38,7 +38,7 @@ struct SwiftUIView: View {
     
     @State var isShowPause = false
     @State var isShowCountScoreView = false
-    
+    @State var scoreScale: CGFloat = 1.0
     
     
     
@@ -78,6 +78,7 @@ struct SwiftUIView: View {
                 Button {
                     print("pressed pause button")
                     soundEffectSystem.buttonPlay()
+                    soundEffectSystem.popUpWindowPlay()
                     isShowPause = true
                     
                 } label: {
@@ -152,12 +153,27 @@ struct SwiftUIView: View {
                     .padding(.all, 10)
                     .offset(x: 0, y: -270)
                     .foregroundColor(Color(hex: "68A128"))
-                    .bounce(animCount: scoreChanged)
-                    .onChange(of: scene.score) { newScore in     //得分，记分板弹跳
-                        withAnimation (Animation.linear(duration: 0.8)){
-                            scoreChanged += 1
+                    .scaleEffect(scoreScale, anchor: .center)
+                    .animation(.default)
+                    .onChange(of: scene.score) { newValue in
+                        withAnimation(.easeOut(duration: 0.2)) {
+                            scoreScale = 1.2
                         }
+                        withAnimation(.easeOut(duration: 0.2).delay(0.2)) {
+                            scoreScale = 0.9
+                        }
+                        withAnimation(.easeOut(duration: 0.2).delay(0.4)) {
+                            scoreScale = 1.0
+                        }
+                        
                     }
+                
+//                    .bounce(animCount: scoreChanged)
+//                    .onChange(of: scene.score) { newScore in     //得分，记分板弹跳
+//                        withAnimation (Animation.linear(duration: 0.8)){
+//                            scoreChanged += 1
+//                        }
+//                    }
                 
             } // GamingView: zstack of ruling and circle
             .onAppear() {

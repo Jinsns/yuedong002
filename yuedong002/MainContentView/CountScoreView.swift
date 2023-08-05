@@ -15,6 +15,7 @@ struct CountScoreView: View {
     
     
     @State private var isScorePanSizeSwitching = false
+    @State var scoreScale: CGFloat = 1.0
     
     @Environment(\.presentationMode) var presentationMode //used to close this sheet view
     
@@ -57,11 +58,22 @@ struct CountScoreView: View {
                         .opacity(0.7)
                         .frame(width: 90, height: 90)
                 )
-                .scaleEffect(isScorePanSizeSwitching ? 1.0 : 0.8)
-                .animation(.easeInOut(duration: 0.5).repeatCount(3), value: isScorePanSizeSwitching)
-                .offset(x: 120, y:-100)
+                .scaleEffect(scoreScale)
+                .offset(x: 110, y:-100)
                 .onAppear {
-                    isScorePanSizeSwitching = true
+                    isScorePanSizeSwitching.toggle()
+                    
+                }
+                .onChange(of: isScorePanSizeSwitching) { newValue in
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        scoreScale = 1.2
+                    }
+                    withAnimation(.easeOut(duration: 0.3).delay(0.5)) {
+                        scoreScale = 0.8
+                    }
+                    withAnimation(.easeOut(duration: 0.2).delay(0.8)) {
+                        scoreScale = 1.0
+                    }
                 }
                 
             }

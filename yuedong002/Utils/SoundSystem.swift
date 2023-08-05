@@ -99,6 +99,7 @@ class SoundEffectSystem {
     var buttonAudioPlayer: AVAudioPlayer?
     var showCountScoreViewAudioPlayer: AVAudioPlayer?
     var overallDialogAudioPlayer: AVAudioPlayer?
+    var popUpWindowAudioPlayer: AVAudioPlayer?
     
     init() {
 //        let buttonSoundFileName = "Overall_ClickButton"
@@ -108,13 +109,16 @@ class SoundEffectSystem {
         let buttonSoundURL = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3")!
         let showCountScoreViewSoundURL = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "mp3")!
         let overallDialogSoundURL = Bundle.main.url(forResource: "Overall_Dialog", withExtension: "mp3")!
+        let popUpWindowSoundURL = Bundle.main.url(forResource: "PopupWindow", withExtension: "mp3")!
         
         do {
             self.buttonAudioPlayer = try AVAudioPlayer(contentsOf: buttonSoundURL)
             self.showCountScoreViewAudioPlayer = try AVAudioPlayer(contentsOf: showCountScoreViewSoundURL)
             self.overallDialogAudioPlayer = try AVAudioPlayer(contentsOf: overallDialogSoundURL)
+            self.popUpWindowAudioPlayer = try AVAudioPlayer(contentsOf: popUpWindowSoundURL)
+            
         } catch {
-            print("error when playing bgm")
+            print("error when initializing audioplayer")
 
         }
     }
@@ -123,6 +127,8 @@ class SoundEffectSystem {
         self.buttonAudioPlayer?.prepareToPlay()
         self.showCountScoreViewAudioPlayer?.prepareToPlay()
         self.overallDialogAudioPlayer?.prepareToPlay()
+        self.popUpWindowAudioPlayer?.prepareToPlay()
+        
     }
     
     func buttonPlay() {
@@ -136,6 +142,13 @@ class SoundEffectSystem {
     func overallDialogPlay() {
         self.overallDialogAudioPlayer?.play()
     }
+    
+    func popUpWindowPlay() {
+        self.popUpWindowAudioPlayer?.play()
+        print("popUpWindowPlayed")
+        
+    }
+    
     
     
     
