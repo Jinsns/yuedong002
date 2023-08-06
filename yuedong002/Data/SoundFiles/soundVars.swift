@@ -29,6 +29,7 @@ struct Note {
     let endTime: Double
     let leafPosition: SCNVector3
     let isTenuto: Bool
+    let level: Int   //1, 2, 3, 三个级别，分别加 1，2，5 分
 }
 
 

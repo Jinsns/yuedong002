@@ -12,17 +12,17 @@ let soundEffectSystem = SoundEffectSystem()
 
 //延音时长统一为4秒，bgm虫儿飞时长58秒
 let notes: [Note] = [
-    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 0, y: -2, z: 1), isTenuto: false), //吃掉第一个叶子启动游戏，位置固定在正下方
-    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: -1.5, y: 0, z: 1), isTenuto: true), //左
-    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 1.5, y: 0, z: 1), isTenuto: true), //右
-    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: -1.5, y: 0, z: 1), isTenuto: true), //左
-    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 1.5, y: 0, z: 1), isTenuto: true), //右
-    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 0.5, y: -1.5, z: -1), isTenuto: true),  //前
-    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 0.5, y: -1.5, z: -1), isTenuto: true),  //前
-    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -0.5, y: -1.5, z: 1), isTenuto: true),  //后
-    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -0.5, y: -1.5, z: 1), isTenuto: true),  //后
+    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 0, y: -2, z: 1), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: -1.5, y: 0, z: 1), isTenuto: true, level: 1), //左
+    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 1.5, y: 0, z: 1), isTenuto: true, level: 2), //右
+    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: -1.5, y: 0, z: 1), isTenuto: true, level: 3), //左
+    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 1.5, y: 0, z: 1), isTenuto: true, level: 1), //右
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 0.5, y: -1.5, z: -1), isTenuto: true, level: 2),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 0.5, y: -1.5, z: -1), isTenuto: true, level: 3),  //前
+    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -0.5, y: -1.5, z: 1), isTenuto: true, level: 1),  //后
+    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -0.5, y: -1.5, z: 1), isTenuto: true, level: 2),  //后
     
-    Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
+    Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
 var note: Note?
 var noteIterator = 0
@@ -74,7 +74,7 @@ struct SwiftUIView: View {
                         
                         noteIterator = 0
                         note = notes[noteIterator]  //init note to be notes[0]
-                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z)
+                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level)
                         print("addleafnode1")
                         
                         scene.shouldContact = true
@@ -211,6 +211,15 @@ struct SwiftUIView: View {
                 
             }
             .onChange(of: scene.isContacted, perform: { newValue in  //发生碰撞
+                scene.runEatenEffect()
+                if note?.level == 1{
+                    scene.score += 1
+                } else if note?.level == 2 {
+                    scene.score += 2
+                } else if note?.level == 3 {
+                    scene.score += 5
+                }
+                
                 if note!.isTenuto == true {
                     
                 }
@@ -247,7 +256,7 @@ struct SwiftUIView: View {
                 
                 if newValue > note!.startTime && isLeafAdded == false {
                     
-                    scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z)
+                    scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level)
                     isLeafAdded = true
                     
                     print("addleafnode 2")

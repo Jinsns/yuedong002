@@ -91,7 +91,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
 //        loadAnimations()
         
-//        addLeafNode(xPosition: leafXPosition, yPosition: leafYPosition, zPosition: leafZPosition)  //添加叶子结点
         configureCamera()
         addOmniLight()
         
@@ -178,10 +177,17 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
 
     
-    func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
+    func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float, level: Int) {
         
         let leafMaterial = SCNMaterial()
-        leafMaterial.diffuse.contents = UIImage(named: "leaf")
+        if level == 1 {
+            leafMaterial.diffuse.contents = UIImage(named: "leaf")
+        } else if level == 2 {
+            leafMaterial.diffuse.contents = UIImage(named: "SettingsButton")
+        } else if level == 3 {
+            leafMaterial.diffuse.contents = UIImage(named: "PhotoIcon")
+        }
+        
         leafMaterial.lightingModel = .constant  //not affected by light
 
         let leafGeometry = SCNPlane(width: 1.0, height: 1.0)
@@ -256,7 +262,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.textNode?.position = SCNVector3(x: xPosition + 0.04, y: yPosition + 0.04, z: 4.0)
     }
     
-    func addEatenEffect() {
+    func runEatenEffect() {
         self.textNode?.runAction(self.textActionEffectGroup) //+1 appear and disappear
         self.leafNode?.runAction(SCNAction.playAudio(self.leavesEatenAudioSource, waitForCompletion: false))
     }
@@ -325,9 +331,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         print("contact update")
         if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
             // get 1 score when "neck" and "leaf" collide
-            self.score += 1
-            print("score: \(self.score)" )
-            self.addEatenEffect()
+//            self.score += 1   //operate in SwiftUIView
+//            self.runEatenEffect()
             
             physicsWorld.contactDelegate = nil
             
