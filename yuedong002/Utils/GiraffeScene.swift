@@ -43,11 +43,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
 //    private var planetNode: SCNNode?
     private var neckNode: SCNNode?
-    
-    private var neckNode1: SCNNode?   // bottom part
-    var neckNode2: SCNNode?   //above part
-    private var slides = [slide]()
-    private var markNode: SCNNode?
+    private var backgroundNode: SCNNode?
     
     private var KAnimationKey: String = "Animation"
     
@@ -93,16 +89,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        addPlanetNode()
         addNeckNode(neckInitialXEulerAngle: neckInitialXEulerAngle, neckInitialYEulerAngle: neckInitialYEulerAngle, neckInitialZEulerAngle: neckInitialZEulerAngle) // 添加脖子节点
         
-//        addNeckNode1(neckInitialXEulerAngle: neckInitialXEulerAngle, neckInitialYEulerAngle: neckInitialYEulerAngle, neckInitialZEulerAngle: neckInitialZEulerAngle)
-//        addNeckNode2(neckInitialXEulerAngle: neckInitialXEulerAngle, neckInitialYEulerAngle: neckInitialYEulerAngle, neckInitialZEulerAngle: neckInitialZEulerAngle)
-//        addSlides()
-        
-
-//        addMarkNode()
-        
-//        addJoint()
-//        spawnNodes()
-        
 //        loadAnimations()
         
 //        addLeafNode(xPosition: leafXPosition, yPosition: leafYPosition, zPosition: leafZPosition)  //添加叶子结点
@@ -144,7 +130,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         backgroundGeometry.materials = [backgroundMaterial]
         let backgroundNode = SCNNode(geometry: backgroundGeometry)
         backgroundNode.position = SCNVector3(0, 0, -10)
+//        backgroundNode.categoryBitMask = LightType.onBackground
         self.rootNode.addChildNode(backgroundNode)
+        self.backgroundNode = backgroundNode
+        self.backgroundNode?.categoryBitMask = LightType.onBackground
         
     }
     
@@ -180,119 +169,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         neckNode.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
         neckNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         neckNode.name = "neck"
+        neckNode.categoryBitMask = LightType.onNeck
         
         self.rootNode.addChildNode(neckNode)
         self.neckNode = neckNode
+        
     
     }
-    
-    func addMarkNode() {
-        let markNodeMaterial = SCNMaterial()
-        markNodeMaterial.diffuse.contents = UIColor.yellow
-        let markNodeGeometry = SCNBox(width: 1, height: 0.1, length: 1, chamferRadius: 0.0)
-        markNodeGeometry.materials = [markNodeMaterial]
-        let markNode = SCNNode(geometry: markNodeGeometry)
-        markNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-        markNode.physicsBody?.categoryBitMask = 12 // Set a unique bitmask for the "neck" node
-        markNode.physicsBody?.contactTestBitMask = 22 // Set the bitmask of nodes to be notified about contact
-//      markNodee2.physicsBody?.mass = 5.0
-        markNode.physicsBody?.friction = 0.5
-        
-        markNode.position = SCNVector3(2, 2, 0)
-//        markNode.eulerAngles = SCNVector3(x: neckInitialXEulerAngle, y: neckInitialYEulerAngle, z: neckInitialZEulerAngle)
-        markNode.name = "neckNode2"
-        self.rootNode.addChildNode(markNode)
-        self.markNode = markNode
-        
-        let markNode2 = SCNNode(geometry: markNodeGeometry)
-        markNode2.position = SCNVector3(2, 1, 0)
-        self.rootNode.addChildNode(markNode2)
-        
-    }
-    
-    func addNeckNode1(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {  //bottom part
-        let neckNode1Material = SCNMaterial()
-        neckNode1Material.diffuse.contents = UIColor.red
-        let neckNode1Geometry = SCNBox(width: 1, height: 2, length: 1, chamferRadius: 0.0)
-        neckNode1Geometry.materials = [neckNode1Material]
-        let neckNode1 = SCNNode(geometry: neckNode1Geometry)
-        neckNode1.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-        neckNode1.physicsBody?.categoryBitMask = 11 // Set a unique bitmask for the "neck" node
-        neckNode1.physicsBody?.contactTestBitMask = 21 // Set the bitmask of nodes to be notified about contact
-//        neckNode1.physicsBody?.mass = 5.0
-        neckNode1.physicsBody?.friction = 0.5
-        neckNode1.position = SCNVector3(0, 0, 0)
-        neckNode1.eulerAngles = SCNVector3(x: neckInitialXEulerAngle, y: neckInitialYEulerAngle, z: neckInitialZEulerAngle)
-        neckNode1.name = "neckNode1"
-        self.rootNode.addChildNode(neckNode1)
-        self.neckNode1 = neckNode1
-    }
-    
-    func addNeckNode2(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        let neckNode2Material = SCNMaterial()
-        neckNode2Material.diffuse.contents = UIColor.yellow
-        let neckNode2Geometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0.0)
-        neckNode2Geometry.materials = [neckNode2Material]
-        let neckNode2 = SCNNode(geometry: neckNode2Geometry)
-        neckNode2.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
-        neckNode2.physicsBody?.categoryBitMask = 12 // Set a unique bitmask for the "neck" node
-        neckNode2.physicsBody?.contactTestBitMask = 22 // Set the bitmask of nodes to be notified about contact
-//        neckNode2.physicsBody?.mass = 5.0
-        neckNode2.physicsBody?.friction = 0.5
-        
-        neckNode2.position = SCNVector3(0, 2, 0)
-        neckNode2.eulerAngles = SCNVector3(x: neckInitialXEulerAngle, y: neckInitialYEulerAngle, z: neckInitialZEulerAngle)
-        neckNode2.name = "neckNode2"
-        self.rootNode.addChildNode(neckNode2)
-        self.neckNode2 = neckNode2
-    }
-    
-    func addSlides() {
-        let slideMaterial = SCNMaterial()
-        slideMaterial.diffuse.contents = UIColor.gray
-        let slideGeometry = SCNBox(width: 1, height: 0.1, length: 1, chamferRadius: 0.5)
-        slideGeometry.materials = [slideMaterial]
-        
-        
-        
-        var headPositionInfo = solveHeadPosition(
-            neckLength: 2.0,
-            pitch: (self.neckNode2!.eulerAngles.x),
-            roll: (self.neckNode2!.eulerAngles.z)
-        ) //return (x, y, z, theta, phi)
-        print("necknode2 eulerangles: ", self.neckNode2!.eulerAngles)
-        
-        
-        print("self.neckNode1?.geometry?.accessibilityFrame.height: ", self.neckNode1?.geometry?.accessibilityFrame.height)
-        print("self.neckNode2?.geometry?.accessibilityFrame.height: ", self.neckNode2?.geometry?.accessibilityFrame.height)
-        
-        var slidesInfo = solveNeckSlides(
-            SlidesNum: 10,
-            theta: headPositionInfo.theta,
-            phi: headPositionInfo.phi,
-            headPosition: SCNVector3(x: headPositionInfo.x, y: headPositionInfo.y, z: headPositionInfo.z),
-            headHeight: 1.0,
-            neckPosition: SCNVector3(x: 0, y: 0, z: 0),
-            neckHeight: 2.0
-        )   // return an array [slide]
-        
-        var i = 0
-        while i < 10 {
-            let slide = SCNNode(geometry: slideGeometry)
-            slide.position = SCNVector3(x: Float(slidesInfo[i].x), y: Float(slidesInfo[i].y), z: Float(slidesInfo[i].z) )
-            slide.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-            slide.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
-            slide.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
-            slide.physicsBody?.collisionBitMask = 2
-            self.rootNode.addChildNode(slide)
-        }
-         
-//        slide1.position = SCNVector3(0, 0, 0)
-//        slide1.name = "slide1"
-//        self.rootNode.addChildNode(slide1)
-        
-    }
-    
 
     
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float) {
@@ -383,9 +266,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let omniLightNode1 = SCNNode()
         omniLightNode1.light = SCNLight()
         
-        omniLightNode1.light?.type = SCNLight.LightType.directional
+        omniLightNode1.light?.type = SCNLight.LightType.omni
         omniLightNode1.light?.color = UIColor(white: 1.0, alpha: 0.9)
         omniLightNode1.position = SCNVector3Make(-10, 10, 20)
+        omniLightNode1.light?.categoryBitMask = LightType.onNeck
         
         let omniLightNode2 = omniLightNode1.clone()
         omniLightNode2.position = SCNVector3(10, 10, 20)
@@ -396,6 +280,23 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.rootNode.addChildNode(omniLightNode1)
         self.rootNode.addChildNode(omniLightNode2)
         self.rootNode.addChildNode(omniLightNode3)
+        
+    }
+    
+    func addExtraLight() {
+        self.backgroundNode?.geometry?.materials.first?.lightingModel = .phong    //change background material lignting model here.
+        let extraLightNode = SCNNode()
+        extraLightNode.light = SCNLight()
+        extraLightNode.light?.type = SCNLight.LightType.directional
+        extraLightNode.light?.color = UIColor(red: 0.97, green: 1, blue: 0.76, alpha: 1)
+        extraLightNode.position = SCNVector3(0, -1, -20)
+        extraLightNode.light?.categoryBitMask = LightType.onBackground
+        var extraLightNode2 = SCNNode()
+        extraLightNode2 = extraLightNode.clone()
+        extraLightNode2.position = SCNVector3(0, 1, -20)
+        extraLightNode2.light?.categoryBitMask = LightType.onBackground
+        self.rootNode.addChildNode(extraLightNode)
+        self.rootNode.addChildNode(extraLightNode2)
     }
 
     
@@ -449,4 +350,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     
+}
+
+
+struct LightType {
+    static let onNeck: Int = 0x1 << 1
+    static let onBackground: Int = 0x1 << 2
 }

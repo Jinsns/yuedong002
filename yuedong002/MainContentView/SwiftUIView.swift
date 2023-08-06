@@ -40,6 +40,7 @@ struct SwiftUIView: View {
     @State var isShowCountScoreView = false
     @State var scoreScale: CGFloat = 1.0
     
+    @State var extraLightAdded = false
     
     
     var body: some View {
@@ -200,6 +201,12 @@ struct SwiftUIView: View {
                 }
             })
             .onChange(of: bgmSystem.currentTime) { newValue in
+                
+                if newValue >= 15.0 && extraLightAdded == false {
+                    scene.addExtraLight() 
+                    extraLightAdded = true
+                    print("extra light added")
+                }
                 
                 if (newValue > note!.endTime) {
                     //if currentTime is not in the range of current note
