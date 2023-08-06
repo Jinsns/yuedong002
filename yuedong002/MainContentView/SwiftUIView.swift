@@ -34,7 +34,7 @@ struct SwiftUIView: View {
     
     @ObservedObject var scene = GiraffeScene()
     
-    private let cameraNode = createCameraNode()
+//    private let cameraNode = createCameraNode()
     
     @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlCaterpillarsFly!)
     
@@ -58,12 +58,12 @@ struct SwiftUIView: View {
     var body: some View {
         ZStack{
             
-            SceneView(scene: scene, pointOfView: cameraNode, options: [.allowsCameraControl])
+            SceneView(scene: scene,  options: [.allowsCameraControl])
                 .ignoresSafeArea()
             
             
             if isInHomePage {
-                HomePageView()
+                HomePageView(scene: scene)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
                         soundEffectSystem.prepareToPlay()
@@ -311,11 +311,11 @@ struct SwiftUIView: View {
         
     }
     
-    static func createCameraNode() -> SCNNode {
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        return cameraNode
-    }
+//    static func createCameraNode() -> SCNNode {
+//        let cameraNode = SCNNode()
+//        cameraNode.camera = SCNCamera()
+//        return cameraNode
+//    }
 }
                          
 

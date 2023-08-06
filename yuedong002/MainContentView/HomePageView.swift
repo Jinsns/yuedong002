@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import SceneKit
 
 
 /* fonts name：
@@ -23,6 +24,9 @@ struct HomePageView: View {
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     @State var isShowShutterView = false
     @State var isShowSnapEffect = false
+    
+    @ObservedObject var scene: GiraffeScene  //used to control camera height with button
+    
     
     
     var body: some View {
@@ -138,6 +142,39 @@ struct HomePageView: View {
             .foregroundColor(.clear)
             .frame(width: 393, height: 852)
             .opacity(isShowShutterView ? 0.0 : 1.0) //if show ShutterView, icons at corners should hide
+            
+            VStack(spacing: 30) {
+                Button {
+                    print("pressed arrow up")
+                    scene.cameraNode!.position = SCNVector3(
+                        x: 0,
+                        y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
+                        z: 10
+                    )
+                } label: {
+                    Image(systemName: "arrow.up")
+                        .resizable()
+                        .frame(width: 30, height: 34)
+                        .foregroundColor(Color.black)
+                }
+                
+                Button {
+                    print("pressed arrow down")
+                    scene.cameraNode!.position = SCNVector3(
+                        x: 0,
+                        y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
+                        z: 10
+                    )
+                } label: {
+                    Image(systemName: "arrow.down")
+                        .resizable()
+                        .frame(width: 30, height: 34)
+                        .foregroundColor(Color.black)
+                }
+                
+            }
+            .offset(x: -150, y: 0)
+
         }
         .onAppear(){
             soundEffectSystem.prepareToPlay()
@@ -164,7 +201,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView()
+        HomePageView(scene: GiraffeScene())
     }
 }
 

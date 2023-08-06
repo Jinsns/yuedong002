@@ -41,7 +41,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //    private let motionManager = CMMotionManager()
     private let motionManager = CMHeadphoneMotionManager() //use airpods
     
-//    private var planetNode: SCNNode?
+    @Published var cameraNode: SCNNode?
+    
     private var neckNode: SCNNode?
     private var backgroundNode: SCNNode?
     
@@ -87,11 +88,18 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.score = 0
         addBackground()
 //        addPlanetNode()
-        addNeckNode(neckInitialXEulerAngle: neckInitialXEulerAngle, neckInitialYEulerAngle: neckInitialYEulerAngle, neckInitialZEulerAngle: neckInitialZEulerAngle) // 添加脖子节点
+        
+        // 添加脖子节点
+        addNeckNode(
+            neckInitialXEulerAngle: neckInitialXEulerAngle,
+            neckInitialYEulerAngle: neckInitialYEulerAngle,
+            neckInitialZEulerAngle: neckInitialZEulerAngle
+        )
         
 //        loadAnimations()
         
-        configureCamera()
+//        configureCamera()
+        addCameraNode()
         addOmniLight()
         
         //control rotation
@@ -104,8 +112,27 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCamera() {
-        self.rootNode.position = SCNVector3(x: 0.0, y: -1, z: -8)
+//    func configureCamera() {
+//        self.rootNode.position = SCNVector3(x: 0.0, y: -1, z: -8)
+//    }
+    
+    func addCameraNode() {
+        let cameraNode = SCNNode()
+        let camera = SCNCamera()
+        cameraNode.camera = camera
+        cameraNode.position = SCNVector3(x: 0.0, y: 5, z: 12) //y=9就能看见背景图片外的空白了
+            //y=-3就能看见脖子底部了
+            //所以y的整数区间是 [-2, 8]
+        
+        //rotation
+        //x增大，视角上仰看天；
+        //y增大，视角从左看向右；
+        //z增大，场景顺时针转动
+        let cameraRotation = SCNVector3(x: -0.3, y: 0.0, z: 0.0)
+        
+        cameraNode.eulerAngles = cameraRotation
+        self.rootNode.addChildNode(cameraNode)
+        self.cameraNode = cameraNode
     }
     
     func addBackground() {
@@ -137,7 +164,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        guard let scene = SCNScene(named: "单个长颈鹿.dae") else {
+        guard let scene = SCNScene(named: "giraffe0.dae") else {
             print("Failed to load 'giraffe0.dae'")
             return
         }
