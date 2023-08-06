@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgressView: View {
-    @State private var progress: CGFloat = 0.0 // The current progress value
+    @Binding var progress: Double // The current progress value
     let totalTime: TimeInterval = 4.0 // The total time for the progress bar (4 seconds in this example)
     let timerInterval: TimeInterval = 0.1 // The interval to update the progress value (adjust for smoother animation)
 
@@ -24,12 +24,19 @@ struct ProgressView: View {
                     RoundedRectangle(cornerRadius: 22) // The animated progress bar
                         .frame(width: geometry.size.width * 0.6 * progress, height: 10)
                         .foregroundColor(Color(red: 0.43, green: 0.65, blue: 0.3))
-                        .animation(.linear(duration: timerInterval)) // Animate the progress bar
+                        .animation(.linear(duration: 4.0)) // Animate the progress bar
                 }
             }
             Spacer()
             .onAppear {
-                startTimer()
+//                startTimer()
+                withAnimation(.linear(duration: 4.0)) {
+                    progress = 1.0
+                }
+                
+            }
+            .onDisappear() {
+                progress = 0.0
             }
         }
         .offset(x:80, y:600)
@@ -37,26 +44,26 @@ struct ProgressView: View {
         
     }
 
-    // Start the timer to update the progress value
-    private func startTimer() {
-        let timer = Timer(timeInterval: timerInterval, repeats: true) { _ in
-            updateProgress()
-        }
-        RunLoop.current.add(timer, forMode: .common)
-    }
-
-    // Update the progress value
-    private func updateProgress() {
-        guard progress < 1.0 else {
-            return
-        }
-        progress += CGFloat(timerInterval / totalTime)
-    }
+//    // Start the timer to update the progress value
+//    private func startTimer() {
+//        let timer = Timer(timeInterval: timerInterval, repeats: true) { _ in
+//            updateProgress()
+//        }
+//        RunLoop.current.add(timer, forMode: .common)
+//    }
+//
+//    // Update the progress value
+//    private func updateProgress() {
+//        guard progress < 1.0 else {
+//            return
+//        }
+//        progress += CGFloat(timerInterval / totalTime)
+//    }
     
 }
 
 struct ProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressView()
+        ProgressView(progress: .constant(0.5))
     }
 }

@@ -9,12 +9,20 @@ import SwiftUI
 import SceneKit
 
 let soundEffectSystem = SoundEffectSystem()
+
+//延音时长统一为4秒，bgm虫儿飞时长58秒
 let notes: [Note] = [
     Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 0, y: -2, z: 1), isTenuto: false), //吃掉第一个叶子启动游戏，位置固定在正下方
-    Note(startTime: 5.0, endTime: 15.0, leafPosition: SCNVector3(x: -1.5, y: -2, z: 1), isTenuto: true),
-    Note(startTime: 20.0, endTime: 25.0, leafPosition: SCNVector3(x: 1.5, y: 2, z: 1), isTenuto: false),
-    Note(startTime: 30.0, endTime: 35.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true),
-    Note(startTime: 40.0, endTime: 45.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
+    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: -1.5, y: 0, z: 1), isTenuto: true), //左
+    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 1.5, y: 0, z: 1), isTenuto: true), //右
+    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: -1.5, y: 0, z: 1), isTenuto: true), //左
+    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 1.5, y: 0, z: 1), isTenuto: true), //右
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 0.5, y: -1.5, z: -1), isTenuto: true),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 0.5, y: -1.5, z: -1), isTenuto: true),  //前
+    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -0.5, y: -1.5, z: 1), isTenuto: true),  //后
+    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -0.5, y: -1.5, z: 1), isTenuto: true),  //后
+    
+    Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
 var note: Note?
 var noteIterator = 0
@@ -28,7 +36,7 @@ struct SwiftUIView: View {
     
     private let cameraNode = createCameraNode()
     
-    @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlSpatialMoonRiver)
+    @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlCaterpillarsFly!)
     
         
     
@@ -41,7 +49,10 @@ struct SwiftUIView: View {
     @State var scoreScale: CGFloat = 1.0
     
     @State var extraLightAdded = false
+    @State var isLeafAdded = false
+    
     @State var isShowProgressBar = false
+    @State private var progress: Double = 0.0
     
     
     var body: some View {
@@ -179,7 +190,7 @@ struct SwiftUIView: View {
                 
                 if isShowProgressBar {
                     VStack{
-                        ProgressView()
+                        ProgressView(progress: $progress)
                     }
                 }
 
@@ -187,6 +198,7 @@ struct SwiftUIView: View {
             } // GamingView: zstack of ruling and circle
             .onAppear() {
                 bgmSystem.audioPlayer?.volume = 0.3
+                print("bgm duration: ", bgmSystem.audioPlayer?.duration)
                 
             }
             .onChange(of: scene.score) { newScore in
@@ -222,20 +234,27 @@ struct SwiftUIView: View {
                 if (newValue > note!.endTime) {
                     //if currentTime is not in the range of current note
                     //then change note to the next one
+                    if scene.leafNode != nil {
+                        scene.leafNode!.removeFromParentNode()
+                        print("removed leaf")
+                    }
                     isShowProgressBar = false
                     print("curtime and note.endtime: ", newValue, note!.endTime)
                     noteIterator += 1
                     note = notes[noteIterator]
+                    isLeafAdded = false
+                }
+                
+                if newValue > note!.startTime && isLeafAdded == false {
                     
-                    if scene.leafNode != nil {
-                        scene.leafNode?.removeFromParentNode()
-                    }
                     scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z)
+                    isLeafAdded = true
+                    
+                    print("addleafnode 2")
                     if note!.isTenuto {
                         isShowProgressBar = true
                     }
-                    print("addleafnode 2")
-                
+                    
                 }
                 
                 

@@ -270,6 +270,9 @@
 		36E5F18B2A7F8B7600C11B37 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */; };
 		36E5F18C2A7F8B7600C11B37 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */; };
 		36E5F18D2A7F8B7600C11B37 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */; };
+		36E5F1932A7F993600C11B37 /* 虫儿飞.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36E5F1922A7F993600C11B37 /* 虫儿飞.mp3 */; };
+		36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36E5F1922A7F993600C11B37 /* 虫儿飞.mp3 */; };
+		36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36E5F1922A7F993600C11B37 /* 虫儿飞.mp3 */; };
 		36EC1E102A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
 		36EC1E112A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
 		36EC1E122A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
@@ -414,6 +417,7 @@
 		36D15EA72A72674900BC1967 /* ruling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruling.png; sourceTree = "<group>"; };
 		36D15EAB2A7280A200BC1967 /* songEnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEnd.png; sourceTree = "<group>"; };
 		36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		36E5F1922A7F993600C11B37 /* 虫儿飞.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "虫儿飞.mp3"; sourceTree = "<group>"; };
 		36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAudio.swift; sourceTree = "<group>"; };
 		36EC1E132A6BCEA1009E5351 /* moonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moonriver.mp3; sourceTree = "<group>"; };
 		36EC1E172A6CBAC3009E5351 /* monoMoonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monoMoonriver.mp3; sourceTree = "<group>"; };
@@ -632,6 +636,7 @@
 		368726CD2A793917007F859C /* SoundEffects */ = {
 			isa = PBXGroup;
 			children = (
+				36E5F1922A7F993600C11B37 /* 虫儿飞.mp3 */,
 				36027DF72A7A0F6D00A505BC /* monoGetScore.mp3 */,
 				36027DFB2A7A0F7700A505BC /* monoLeavesAppearing.mp3 */,
 				368726F22A7939C7007F859C /* BGM_HomepageAndCamera.mp3 */,
@@ -859,6 +864,7 @@
 				365121D02A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
 				3696A5EE2A7628D900B59DCB /* EarthIcon.png in Resources */,
 				3696A5FB2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
+				36E5F1932A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				366577222A46B723008C166D /* pianoB.mp3 in Resources */,
 				3696A6032A7633C400B59DCB /* airpodsReminder.png in Resources */,
 				365121D42A750BE20071D1C1 /* scorepan.png in Resources */,
@@ -958,6 +964,7 @@
 				36CD26D42A77D8A1009FF796 /* ani1.dae in Resources */,
 				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
+				36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				366577142A46B723008C166D /* pianoC2.mp3 in Resources */,
 				3698D5912A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 			);
@@ -1033,6 +1040,7 @@
 				36CD26D52A77D8A1009FF796 /* ani1.dae in Resources */,
 				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
+				36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				366577152A46B723008C166D /* pianoC2.mp3 in Resources */,
 				3698D5922A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 			);
