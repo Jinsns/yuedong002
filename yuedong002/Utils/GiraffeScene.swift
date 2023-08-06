@@ -59,10 +59,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     var leafZPosition = Float(0.0)
     
     //neckNode.eulerAngles = SCNVector3(0, -3.14 / 2 + 3.14 / 10, 0) // 设置旋转角度，根据需要调整
-    let neckInitialXEulerAngle = Float(0.0)
 //    let neckInitialYEulerAngle = Float(-3.14 / 2 - 3.14 / 16)
-    let neckInitialYEulerAngle = Float(0.0)
-    let neckInitialZEulerAngle = Float(0.0)
     
     let leavesAppearAudioSource = SCNAudioSource(fileNamed: "monoLeavesAppearing.mp3")!
     let leavesEatenAudioSource = SCNAudioSource(fileNamed: "monoGetScore.mp3")!
@@ -91,9 +88,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         // 添加脖子节点
         addNeckNode(
-            neckInitialXEulerAngle: neckInitialXEulerAngle,
-            neckInitialYEulerAngle: neckInitialYEulerAngle,
-            neckInitialZEulerAngle: neckInitialZEulerAngle
+            neckInitialXEulerAngle: 0,
+            neckInitialYEulerAngle: 0,
+            neckInitialZEulerAngle: 0
         )
         
 //        loadAnimations()
@@ -120,7 +117,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
-        cameraNode.position = SCNVector3(x: 0.0, y: 5, z: 12) //y=9就能看见背景图片外的空白了
+        cameraNode.position = SCNVector3(x: 10, y: 2, z: 0) //y=9就能看见背景图片外的空白了
             //y=-3就能看见脖子底部了
             //所以y的整数区间是 [-2, 8]
         
@@ -128,7 +125,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         //x增大，视角上仰看天；
         //y增大，视角从左看向右；
         //z增大，场景顺时针转动
-        let cameraRotation = SCNVector3(x: -0.3, y: 0.0, z: 0.0)
+        let cameraRotation = SCNVector3(x: -0.0, y: +1.60, z: 0.0)
         
         cameraNode.eulerAngles = cameraRotation
         self.rootNode.addChildNode(cameraNode)
@@ -155,7 +152,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let backgroundGeometry = SCNPlane(width: 60, height: 40)
         backgroundGeometry.materials = [backgroundMaterial]
         let backgroundNode = SCNNode(geometry: backgroundGeometry)
-        backgroundNode.position = SCNVector3(0, 0, -10)
+        backgroundNode.position = SCNVector3(-10, 0, 0)
+        backgroundNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
+        
 //        backgroundNode.categoryBitMask = LightType.onBackground
         self.rootNode.addChildNode(backgroundNode)
         self.backgroundNode = backgroundNode
@@ -221,11 +220,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         leafGeometry.materials = [leafMaterial]
         
         let leafNode = SCNNode(geometry: leafGeometry)
+        
         leafNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
         leafNode.physicsBody?.categoryBitMask = 2 // Set a unique bitmask for the "leaf" node
         leafNode.physicsBody?.contactTestBitMask = 1  // Set the bitmask of nodes to be notified about contact
         
         leafNode.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
+        leafNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         leafNode.name = "leaf"
         
         //appear audio setting
@@ -242,6 +243,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         self.rootNode.addChildNode(leafNode)
         self.leafNode = leafNode
+        self.leafNode?.runAction(SCNAction.playAudio(self.leavesAppearAudioSource, waitForCompletion: false))
         
         //SCNtext +1
         let textMaterial = SCNMaterial()
@@ -265,6 +267,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         self.rootNode.addChildNode(textNode)  //add +1 text into scene
         self.textNode = textNode
+        
         
     }
     
@@ -302,6 +305,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         omniLightNode1.light?.type = SCNLight.LightType.omni
         omniLightNode1.light?.color = UIColor(white: 1.0, alpha: 0.9)
         omniLightNode1.position = SCNVector3Make(-10, 10, 20)
+        omniLightNode1.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode1.light?.categoryBitMask = LightType.onNeck
         
         let omniLightNode2 = omniLightNode1.clone()
@@ -323,6 +327,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         extraLightNode.light?.type = SCNLight.LightType.directional
         extraLightNode.light?.color = UIColor(red: 0.97, green: 1, blue: 0.76, alpha: 1)
         extraLightNode.position = SCNVector3(0, -1, -20)
+        extraLightNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         extraLightNode.light?.categoryBitMask = LightType.onBackground
         var extraLightNode2 = SCNNode()
         extraLightNode2 = extraLightNode.clone()
@@ -337,13 +342,17 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     func addNeckRotation() {
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
             guard let attitude = deviceMotion?.attitude else { return }
+            let absx: Float = abs(Float(attitude.roll))
+            let absz: Float = abs(Float(attitude.pitch))
+            let maxAngle = Float.pi / 4
                         
             
             self?.neckNode?.eulerAngles = SCNVector3(
-                x: self!.neckInitialXEulerAngle - Float(attitude.pitch),
+                x:  absx > maxAngle ? maxAngle * (-Float(attitude.roll)) / absx : -Float(attitude.roll),
                 y: 0,
-                z: self!.neckInitialZEulerAngle - Float(attitude.roll)
+                z: absz > maxAngle ? maxAngle * (Float(attitude.pitch)) / absz : Float(attitude.pitch)
             )
+            
             
         }
     }

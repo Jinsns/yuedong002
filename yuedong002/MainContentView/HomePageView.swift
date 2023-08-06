@@ -147,9 +147,9 @@ struct HomePageView: View {
                 Button {
                     print("pressed arrow up")
                     scene.cameraNode!.position = SCNVector3(
-                        x: 0,
+                        x: scene.cameraNode!.position.x,
                         y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
-                        z: 10
+                        z: scene.cameraNode!.position.z
                     )
                 } label: {
                     Image(systemName: "arrow.up")
@@ -161,9 +161,9 @@ struct HomePageView: View {
                 Button {
                     print("pressed arrow down")
                     scene.cameraNode!.position = SCNVector3(
-                        x: 0,
+                        x: scene.cameraNode!.position.x,
                         y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
-                        z: 10
+                        z: scene.cameraNode!.position.z
                     )
                 } label: {
                     Image(systemName: "arrow.down")
