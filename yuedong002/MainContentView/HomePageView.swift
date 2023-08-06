@@ -21,6 +21,8 @@ struct HomePageView: View {
     @State var isShowAirpodsReminder = false
     @State var isShowNodToEatReminder = false
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
+    @State var isShowShutterView = false
+    @State var isShowSnapEffect = false
     
     
     var body: some View {
@@ -103,6 +105,7 @@ struct HomePageView: View {
                         Button {
                             print("pressed PhotoIcon")
                             soundEffectSystem.buttonPlay()
+                            isShowShutterView = true
                         } label: {
                             Image("PhotoIcon")
                         }
@@ -134,6 +137,7 @@ struct HomePageView: View {
             }
             .foregroundColor(.clear)
             .frame(width: 393, height: 852)
+            .opacity(isShowShutterView ? 0.0 : 1.0) //if show ShutterView, icons at corners should hide
         }
         .onAppear(){
             soundEffectSystem.prepareToPlay()
@@ -144,12 +148,209 @@ struct HomePageView: View {
             homePageBgmSystem.stop()
         }
         
+        if isShowShutterView {
+            ShutterView(isShowShutterView: $isShowShutterView, isShowSnapEffect: $isShowSnapEffect)
+        }
+        
+        if isShowSnapEffect {
+            SnapEffectView(isShowSnapEffect: $isShowSnapEffect)
+        }
+        
         
     }
 }
 
 struct HomePageView_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
         HomePageView()
     }
 }
+
+
+struct ShutterView: View {
+    @Binding var isShowShutterView: Bool
+    @Binding var isShowSnapEffect: Bool
+                
+                
+    var body: some View {
+        VStack {
+            HStack(alignment: .center, spacing: 0) {
+                Button {
+                    print("pressed cancel button")
+                    isShowShutterView = false
+                } label: {
+                    Text("取消")
+                      .font(Font.custom("DFPYuanW7-GB", size: 20))
+                      .kerning(0.4)
+                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.8))
+                }
+                .padding(.top, 80)
+                .padding(.leading, 300)
+
+                
+                
+            }
+            .padding(0)
+            
+            Spacer()
+            
+            
+            HStack {
+                Button {
+                    print("pressed shutter button")
+                    isShowSnapEffect = true
+                } label: {
+                    Image("shutter")
+                    .frame(width: 66, height: 66)
+                    .shadow(color: Color(red: 0.24, green: 0.3, blue: 0.06).opacity(0.24), radius: 4, x: 4, y: 4)
+                }
+                .padding(.bottom, 100)
+                .opacity(isShowSnapEffect ? 0.0 : 1.0)
+
+                
+            }
+        }
+
+    }
+}
+
+
+struct SnapEffectView: View {
+    @Binding var isShowSnapEffect: Bool
+    var body: some View {
+        ZStack{
+            Rectangle()
+                .fill(Color.black.opacity(0.5))
+                .edgesIgnoringSafeArea(.all)
+                .reverseMask{
+                    RoundedRectangle(cornerRadius: 16)
+                        .frame(width: 340, height: 580)
+                        .blendMode(.destinationOut)
+                        .padding(.bottom, 50)
+                }
+                    
+                
+            
+            VStack {
+                HStack(alignment: .top, spacing: 12) {
+                    Text("7")
+                      .font(Font.custom("LilitaOne", size: 32))
+                      .kerning(2.56)
+                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                      .padding(.bottom, 30)
+                    
+                    Text("| 25")
+                      .font(Font.custom("LilitaOne", size: 14))
+                      .kerning(1.12)
+                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.6))
+                    
+                    Text("宜放过自己")
+                      .font(Font.custom("DFPYuanW9-GB", size: 14))
+                      .kerning(0.56)
+                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                      .frame(width: 73, height: 13, alignment: .leading)
+                }
+                .offset(x: -80, y: -200)
+                
+                
+                
+                HStack(alignment: .bottom) {
+                    Text("Yoon")
+                      .font(Font.custom("LilitaOne", size: 24))
+                      .kerning(0.48)
+                      .multilineTextAlignment(.trailing)
+                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.56))
+                }
+                .offset(x: 100, y: 200)
+               
+                
+                
+                HStack(alignment: .top, spacing: 42) {
+                    
+                    Button {
+                        print("pressed reshot button")
+                        isShowSnapEffect = false
+                    
+                        
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image("reshot")
+                                .frame(width: 36, height: 36)
+                            Text("重拍")
+                              .font(Font.custom("DFPYuanW7-GB", size: 14))
+                              .multilineTextAlignment(.center)
+                              .foregroundColor(.white)
+                        }
+                    }
+                    
+                    Button {
+                        print("pressed save button")
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image("save")
+                                .frame(width: 36, height: 36)
+                            Text("保存")
+                              .font(Font.custom("DFPYuanW7-GB", size: 14))
+                              .multilineTextAlignment(.center)
+                              .foregroundColor(.white)
+                        }
+                    }
+                    
+                    Button {
+                        print("pressed QQ login button")
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image("qqlogin")
+                                .frame(width: 36, height: 36)
+                            Text("QQ")
+                              .font(Font.custom("DFPYuanW7-GB", size: 14))
+                              .multilineTextAlignment(.center)
+                              .foregroundColor(.white)
+                        }
+                    }
+                    
+                    Button {
+                        print("pressed WeChat login button")
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image("wechatlogin")
+                                .frame(width: 36, height: 36)
+                            Text("微信")
+                              .font(Font.custom("DFPYuanW7-GB", size: 14))
+                              .multilineTextAlignment(.center)
+                              .foregroundColor(.white)
+                        }
+                    }
+                }
+                .offset(x: 0, y: 280)
+            
+                
+            }
+
+            
+            
+        }
+        
+        
+    }
+}
+
+
+extension View {
+  @inlinable
+  public func reverseMask<Mask: View>(
+    alignment: Alignment = .center,
+    @ViewBuilder _ mask: () -> Mask
+  ) -> some View {
+    self.mask {
+      Rectangle()
+        .overlay(alignment: alignment) {
+          mask()
+            .blendMode(.destinationOut)
+        }
+    }
+  }
+}
+

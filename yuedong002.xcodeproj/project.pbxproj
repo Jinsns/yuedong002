@@ -31,23 +31,23 @@
 		36027E142A7E534400A505BC /* PopupWindow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36027E132A7E534400A505BC /* PopupWindow.mp3 */; };
 		36027E152A7E534400A505BC /* PopupWindow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36027E132A7E534400A505BC /* PopupWindow.mp3 */; };
 		36027E162A7E534400A505BC /* PopupWindow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36027E132A7E534400A505BC /* PopupWindow.mp3 */; };
+		36027E2D2A7EAF8B00A505BC /* shutter.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E2C2A7EAF8B00A505BC /* shutter.png */; };
+		36027E2E2A7EAF8B00A505BC /* shutter.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E2C2A7EAF8B00A505BC /* shutter.png */; };
+		36027E2F2A7EAF8B00A505BC /* shutter.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E2C2A7EAF8B00A505BC /* shutter.png */; };
+		36027E342A7EC29D00A505BC /* reshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E302A7EC29D00A505BC /* reshot.png */; };
+		36027E352A7EC29D00A505BC /* reshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E302A7EC29D00A505BC /* reshot.png */; };
+		36027E362A7EC29D00A505BC /* reshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E302A7EC29D00A505BC /* reshot.png */; };
+		36027E372A7EC29D00A505BC /* qqlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E312A7EC29D00A505BC /* qqlogin.png */; };
+		36027E382A7EC29D00A505BC /* qqlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E312A7EC29D00A505BC /* qqlogin.png */; };
+		36027E392A7EC29D00A505BC /* qqlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E312A7EC29D00A505BC /* qqlogin.png */; };
+		36027E3A2A7EC29D00A505BC /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E322A7EC29D00A505BC /* save.png */; };
+		36027E3B2A7EC29D00A505BC /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E322A7EC29D00A505BC /* save.png */; };
+		36027E3C2A7EC29D00A505BC /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E322A7EC29D00A505BC /* save.png */; };
+		36027E3D2A7EC29D00A505BC /* wechatlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E332A7EC29D00A505BC /* wechatlogin.png */; };
+		36027E3E2A7EC29D00A505BC /* wechatlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E332A7EC29D00A505BC /* wechatlogin.png */; };
+		36027E3F2A7EC29D00A505BC /* wechatlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E332A7EC29D00A505BC /* wechatlogin.png */; };
 		361F1FE42A66CEEB00CC2F5B /* RelaxMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */; };
-		361F1FED2A66D2EB00CC2F5B /* EnterCreate.png in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */; };
-		361F1FEE2A66D2EB00CC2F5B /* EnterCreate.png in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */; };
-		361F1FEF2A66D2EB00CC2F5B /* EnterCreate.png in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */; };
-		361F1FF12A66DFF400CC2F5B /* 微信.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF02A66DFF400CC2F5B /* 微信.svg */; };
-		361F1FF22A66DFF400CC2F5B /* 微信.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF02A66DFF400CC2F5B /* 微信.svg */; };
-		361F1FF32A66DFF400CC2F5B /* 微信.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF02A66DFF400CC2F5B /* 微信.svg */; };
-		361F1FF52A66E23700CC2F5B /* 手机.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF42A66E23700CC2F5B /* 手机.svg */; };
-		361F1FF62A66E23700CC2F5B /* 手机.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF42A66E23700CC2F5B /* 手机.svg */; };
-		361F1FF72A66E23700CC2F5B /* 手机.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF42A66E23700CC2F5B /* 手机.svg */; };
-		361F1FF92A66E24200CC2F5B /* apple.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF82A66E24200CC2F5B /* apple.svg */; };
-		361F1FFA2A66E24200CC2F5B /* apple.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF82A66E24200CC2F5B /* apple.svg */; };
-		361F1FFB2A66E24200CC2F5B /* apple.svg in Resources */ = {isa = PBXBuildFile; fileRef = 361F1FF82A66E24200CC2F5B /* apple.svg */; };
 		3637F6C82A6A5763004FEB42 /* Yue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3637F6C72A6A5763004FEB42 /* Yue.swift */; };
-		3637F6CA2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */; };
-		3637F6CB2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */; };
-		3637F6CC2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */; };
 		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
@@ -91,18 +91,9 @@
 		365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF80D2A6D68760007A2CF /* SwiftUIView.swift */; };
 		365CF80F2A6D68760007A2CF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF80D2A6D68760007A2CF /* SwiftUIView.swift */; };
 		365CF8102A6D68760007A2CF /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365CF80D2A6D68760007A2CF /* SwiftUIView.swift */; };
-		3664C3E12A695E2A004486EB /* Ellipse 846.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E02A695E2A004486EB /* Ellipse 846.png */; };
-		3664C3E22A695E2A004486EB /* Ellipse 846.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E02A695E2A004486EB /* Ellipse 846.png */; };
-		3664C3E32A695E2A004486EB /* Ellipse 846.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E02A695E2A004486EB /* Ellipse 846.png */; };
-		3664C3E52A695E34004486EB /* rabbit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E42A695E34004486EB /* rabbit.png */; };
-		3664C3E62A695E34004486EB /* rabbit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E42A695E34004486EB /* rabbit.png */; };
-		3664C3E72A695E34004486EB /* rabbit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3E42A695E34004486EB /* rabbit.png */; };
 		3664C3E92A695E9D004486EB /* Relaxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664C3E82A695E9D004486EB /* Relaxing.swift */; };
 		3664C3EA2A695E9D004486EB /* Relaxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664C3E82A695E9D004486EB /* Relaxing.swift */; };
 		3664C3EB2A695E9D004486EB /* Relaxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664C3E82A695E9D004486EB /* Relaxing.swift */; };
-		3664C3ED2A6968FD004486EB /* rabbit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3EC2A6968FD004486EB /* rabbit2.png */; };
-		3664C3EE2A6968FD004486EB /* rabbit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3EC2A6968FD004486EB /* rabbit2.png */; };
-		3664C3EF2A6968FD004486EB /* rabbit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3664C3EC2A6968FD004486EB /* rabbit2.png */; };
 		366576DD2A46B6C5008C166D /* yuedong002App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366576DC2A46B6C5008C166D /* yuedong002App.swift */; };
 		366576DF2A46B6C5008C166D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366576DE2A46B6C5008C166D /* ContentView.swift */; };
 		366576E12A46B6C6008C166D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366576E02A46B6C6008C166D /* Assets.xcassets */; };
@@ -236,9 +227,6 @@
 		3698D5902A7049DF0003C037 /* gameBackgroundLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3698D58F2A7049DF0003C037 /* gameBackgroundLayer.png */; };
 		3698D5912A7049DF0003C037 /* gameBackgroundLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3698D58F2A7049DF0003C037 /* gameBackgroundLayer.png */; };
 		3698D5922A7049DF0003C037 /* gameBackgroundLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3698D58F2A7049DF0003C037 /* gameBackgroundLayer.png */; };
-		36A688592A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
-		36A6885A2A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
-		36A6885B2A68E7D300397F06 /* EnterRelax.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A688582A68E7D300397F06 /* EnterRelax.png */; };
 		36CD26BD2A76D061009FF796 /* CalculateObjectState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD26BC2A76D061009FF796 /* CalculateObjectState.swift */; };
 		36CD26BF2A7783C9009FF796 /* neckLeft.dae in Resources */ = {isa = PBXBuildFile; fileRef = 36CD26BE2A7783C9009FF796 /* neckLeft.dae */; };
 		36CD26C02A7783C9009FF796 /* neckLeft.dae in Resources */ = {isa = PBXBuildFile; fileRef = 36CD26BE2A7783C9009FF796 /* neckLeft.dae */; };
@@ -332,13 +320,13 @@
 		36027E072A7A369000A505BC /* CountScoreView_onloading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CountScoreView_onloading.mp3; sourceTree = "<group>"; };
 		36027E0B2A7E33B100A505BC /* 单个长颈鹿.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "单个长颈鹿.dae"; sourceTree = "<group>"; };
 		36027E132A7E534400A505BC /* PopupWindow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PopupWindow.mp3; sourceTree = "<group>"; };
+		36027E2C2A7EAF8B00A505BC /* shutter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shutter.png; sourceTree = "<group>"; };
+		36027E302A7EC29D00A505BC /* reshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reshot.png; sourceTree = "<group>"; };
+		36027E312A7EC29D00A505BC /* qqlogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qqlogin.png; sourceTree = "<group>"; };
+		36027E322A7EC29D00A505BC /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		36027E332A7EC29D00A505BC /* wechatlogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechatlogin.png; sourceTree = "<group>"; };
 		361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxMode.swift; sourceTree = "<group>"; };
-		361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnterCreate.png; sourceTree = "<group>"; };
-		361F1FF02A66DFF400CC2F5B /* 微信.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "微信.svg"; sourceTree = "<group>"; };
-		361F1FF42A66E23700CC2F5B /* 手机.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "手机.svg"; sourceTree = "<group>"; };
-		361F1FF82A66E24200CC2F5B /* apple.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = apple.svg; sourceTree = "<group>"; };
 		3637F6C72A6A5763004FEB42 /* Yue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yue.swift; sourceTree = "<group>"; };
-		3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RabbitEyesClosed.png; sourceTree = "<group>"; };
 		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
 		365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeckSlides.swift; sourceTree = "<group>"; };
 		365121C32A73AC700071D1C1 /* head.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = head.swift; sourceTree = "<group>"; };
@@ -354,10 +342,7 @@
 		365CF8052A6D67F90007A2CF /* head.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = head.dae; sourceTree = "<group>"; };
 		365CF8092A6D68140007A2CF /* neck.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = neck.dae; sourceTree = "<group>"; };
 		365CF80D2A6D68760007A2CF /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		3664C3E02A695E2A004486EB /* Ellipse 846.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse 846.png"; sourceTree = "<group>"; };
-		3664C3E42A695E34004486EB /* rabbit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rabbit.png; sourceTree = "<group>"; };
 		3664C3E82A695E9D004486EB /* Relaxing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relaxing.swift; sourceTree = "<group>"; };
-		3664C3EC2A6968FD004486EB /* rabbit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rabbit2.png; sourceTree = "<group>"; };
 		366576D92A46B6C5008C166D /* yuedong002.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yuedong002.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		366576DC2A46B6C5008C166D /* yuedong002App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yuedong002App.swift; sourceTree = "<group>"; };
 		366576DE2A46B6C5008C166D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -414,7 +399,6 @@
 		3698D5872A703D860003C037 /* giraffe0.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = giraffe0.dae; sourceTree = "<group>"; };
 		3698D58B2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameBackgroundSourceImage.jpeg; sourceTree = "<group>"; };
 		3698D58F2A7049DF0003C037 /* gameBackgroundLayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackgroundLayer.png; sourceTree = "<group>"; };
-		36A688582A68E7D300397F06 /* EnterRelax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnterRelax.png; sourceTree = "<group>"; };
 		36CD26BC2A76D061009FF796 /* CalculateObjectState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateObjectState.swift; sourceTree = "<group>"; };
 		36CD26BE2A7783C9009FF796 /* neckLeft.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = neckLeft.dae; sourceTree = "<group>"; };
 		36CD26C22A779289009FF796 /* 脖子左摆-模型+骨架.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "脖子左摆-模型+骨架.dae"; sourceTree = "<group>"; };
@@ -472,26 +456,22 @@
 				3696A5DD2A756BDD00B59DCB /* SettingsButton.png */,
 				3698D58B2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg */,
 				3698D58F2A7049DF0003C037 /* gameBackgroundLayer.png */,
-				3637F6C92A6A6023004FEB42 /* RabbitEyesClosed.png */,
-				3664C3E02A695E2A004486EB /* Ellipse 846.png */,
-				361F1FF82A66E24200CC2F5B /* apple.svg */,
-				361F1FF42A66E23700CC2F5B /* 手机.svg */,
-				361F1FF02A66DFF400CC2F5B /* 微信.svg */,
 				3698D5732A6E908F0003C037 /* leaf.png */,
-				3664C3E42A695E34004486EB /* rabbit.png */,
-				3664C3EC2A6968FD004486EB /* rabbit2.png */,
-				36A688582A68E7D300397F06 /* EnterRelax.png */,
 				3696A5E12A756CE400B59DCB /* EyeGlassesIcon.png */,
-				361F1FEC2A66D2EB00CC2F5B /* EnterCreate.png */,
 				3696A5E92A756DAC00B59DCB /* NeckIcon.png */,
 				36D15EA72A72674900BC1967 /* ruling.png */,
 				36D15EAB2A7280A200BC1967 /* songEnd.png */,
 				3696A5E52A756CEE00B59DCB /* PhotoIcon.png */,
 				365121D32A750BE20071D1C1 /* scorepan.png */,
+				36027E2C2A7EAF8B00A505BC /* shutter.png */,
 				365121D72A750FBD0071D1C1 /* Pause Circle.png */,
 				3696A6022A7633C400B59DCB /* airpodsReminder.png */,
 				3696A6062A76395900B59DCB /* NodToEatReminder.png */,
 				3696A5ED2A7628D900B59DCB /* EarthIcon.png */,
+				36027E332A7EC29D00A505BC /* wechatlogin.png */,
+				36027E312A7EC29D00A505BC /* qqlogin.png */,
+				36027E302A7EC29D00A505BC /* reshot.png */,
+				36027E322A7EC29D00A505BC /* save.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -844,24 +824,19 @@
 				36CD26DB2A77D8AE009FF796 /* model.dae in Resources */,
 				368726F72A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				3696A5EA2A756DAC00B59DCB /* NeckIcon.png in Resources */,
-				361F1FF52A66E23700CC2F5B /* 手机.svg in Resources */,
-				361F1FF12A66DFF400CC2F5B /* 微信.svg in Resources */,
 				36CD26DF2A77DEBC009FF796 /* test.dae in Resources */,
-				3664C3E52A695E34004486EB /* rabbit.png in Resources */,
-				36A688592A68E7D300397F06 /* EnterRelax.png in Resources */,
 				36027DF42A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				3696A5E22A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				36027E042A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
 				3665772D2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				366576E52A46B6C6008C166D /* Preview Assets.xcassets in Resources */,
-				3664C3E12A695E2A004486EB /* Ellipse 846.png in Resources */,
 				368726EB2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
-				3664C3ED2A6968FD004486EB /* rabbit2.png in Resources */,
 				3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				3698D5902A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 				3665771F2A46B723008C166D /* pianoC.mp3 in Resources */,
 				36EC1E182A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
+				36027E372A7EC29D00A505BC /* qqlogin.png in Resources */,
 				36027DF82A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
 				3698D5742A6E908F0003C037 /* leaf.png in Resources */,
 				368726DB2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
@@ -869,15 +844,16 @@
 				3696A6072A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				368726E72A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
 				368726F32A7939C7007F859C /* BGM_HomepageAndCamera.mp3 in Resources */,
+				36027E2D2A7EAF8B00A505BC /* shutter.png in Resources */,
 				36CD26D32A77D8A1009FF796 /* ani1.dae in Resources */,
 				36F4198E2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				36D15EA82A72674900BC1967 /* ruling.png in Resources */,
-				3637F6CA2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
 				368726DF2A79397D007F859C /* Overall_Dialog.mp3 in Resources */,
 				366577132A46B723008C166D /* pianoC2.mp3 in Resources */,
 				365CF80A2A6D68140007A2CF /* neck.dae in Resources */,
 				3698D5842A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				365121D82A750FBD0071D1C1 /* Pause Circle.png in Resources */,
+				36027E3D2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				3696A5F82A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				36CD26D72A77D8A7009FF796 /* ani2.dae in Resources */,
 				365121D02A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
@@ -885,14 +861,13 @@
 				3696A5FB2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				366577222A46B723008C166D /* pianoB.mp3 in Resources */,
 				3696A6032A7633C400B59DCB /* airpodsReminder.png in Resources */,
-				361F1FF92A66E24200CC2F5B /* apple.svg in Resources */,
 				365121D42A750BE20071D1C1 /* scorepan.png in Resources */,
 				368726EF2A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,
 				36027DFC2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
 				368726FB2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
+				36027E3A2A7EC29D00A505BC /* save.png in Resources */,
 				36CD26E32A77DF5D009FF796 /* test2.dae in Resources */,
-				361F1FED2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				365CF8062A6D67F90007A2CF /* head.dae in Resources */,
 				3698D5882A703D860003C037 /* giraffe0.dae in Resources */,
 				3696A5F52A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
@@ -908,6 +883,7 @@
 				36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */,
 				36027E142A7E534400A505BC /* PopupWindow.mp3 in Resources */,
 				366577102A46B723008C166D /* pianoD.mp3 in Resources */,
+				36027E342A7EC29D00A505BC /* reshot.png in Resources */,
 				3696A5DE2A756BDD00B59DCB /* SettingsButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -918,13 +894,11 @@
 			files = (
 				3698D5892A703D860003C037 /* giraffe0.dae in Resources */,
 				365121D92A750FBD0071D1C1 /* Pause Circle.png in Resources */,
-				3664C3EE2A6968FD004486EB /* rabbit2.png in Resources */,
 				368726DC2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				3696A5F62A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
-				361F1FF62A66E23700CC2F5B /* 手机.svg in Resources */,
 				365121D52A750BE20071D1C1 /* scorepan.png in Resources */,
 				36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
-				3664C3E22A695E2A004486EB /* Ellipse 846.png in Resources */,
+				36027E3E2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				36CD26E42A77DF5D009FF796 /* test2.dae in Resources */,
 				36EC1E152A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				36027DF92A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
@@ -934,12 +908,13 @@
 				3696A5EB2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				36CD26CC2A77936C009FF796 /* 脖子左摆-全部动画.dae in Resources */,
 				3665771D2A46B723008C166D /* pianoG.mp3 in Resources */,
-				36A6885A2A68E7D300397F06 /* EnterRelax.png in Resources */,
+				36027E382A7EC29D00A505BC /* qqlogin.png in Resources */,
 				365CF8072A6D67F90007A2CF /* head.dae in Resources */,
-				3637F6CB2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
 				3665771A2A46B723008C166D /* pianoE.mp3 in Resources */,
 				368726F02A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,
 				3696A5E72A756CEE00B59DCB /* PhotoIcon.png in Resources */,
+				36027E352A7EC29D00A505BC /* reshot.png in Resources */,
+				36027E3B2A7EC29D00A505BC /* save.png in Resources */,
 				36027E092A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				36027E152A7E534400A505BC /* PopupWindow.mp3 in Resources */,
 				36CD26D82A77D8A7009FF796 /* ani2.dae in Resources */,
@@ -956,6 +931,7 @@
 				366577112A46B723008C166D /* pianoD.mp3 in Resources */,
 				368726E82A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
 				36CD26C42A779289009FF796 /* 脖子左摆-模型+骨架.dae in Resources */,
+				36027E2E2A7EAF8B00A505BC /* shutter.png in Resources */,
 				36027DF52A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				36CD26E02A77DEBC009FF796 /* test.dae in Resources */,
@@ -965,13 +941,10 @@
 				3696A5DF2A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				3696A5FF2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
-				361F1FEE2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				3696A6042A7633C400B59DCB /* airpodsReminder.png in Resources */,
-				361F1FFA2A66E24200CC2F5B /* apple.svg in Resources */,
 				36D15EA92A72674900BC1967 /* ruling.png in Resources */,
 				36CD26DC2A77D8AE009FF796 /* model.dae in Resources */,
 				3698D5852A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
-				3664C3E62A695E34004486EB /* rabbit.png in Resources */,
 				36CD26C82A779294009FF796 /* 脖子左摆-骨架动画.dae in Resources */,
 				36D15EAD2A7280A200BC1967 /* songEnd.png in Resources */,
 				3698D5812A6EA7F90003C037 /* giraffe.dae in Resources */,
@@ -986,7 +959,6 @@
 				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				366577142A46B723008C166D /* pianoC2.mp3 in Resources */,
-				361F1FF22A66DFF400CC2F5B /* 微信.svg in Resources */,
 				3698D5912A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -997,13 +969,11 @@
 			files = (
 				3698D58A2A703D860003C037 /* giraffe0.dae in Resources */,
 				365121DA2A750FBD0071D1C1 /* Pause Circle.png in Resources */,
-				3664C3EF2A6968FD004486EB /* rabbit2.png in Resources */,
 				368726DD2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				3696A5F72A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
-				361F1FF72A66E23700CC2F5B /* 手机.svg in Resources */,
 				365121D62A750BE20071D1C1 /* scorepan.png in Resources */,
 				36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
-				3664C3E32A695E2A004486EB /* Ellipse 846.png in Resources */,
+				36027E3F2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				36CD26E52A77DF5D009FF796 /* test2.dae in Resources */,
 				36EC1E162A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				36027DFA2A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
@@ -1013,12 +983,13 @@
 				3696A5EC2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				36CD26CD2A77936C009FF796 /* 脖子左摆-全部动画.dae in Resources */,
 				3665771E2A46B723008C166D /* pianoG.mp3 in Resources */,
-				36A6885B2A68E7D300397F06 /* EnterRelax.png in Resources */,
+				36027E392A7EC29D00A505BC /* qqlogin.png in Resources */,
 				365CF8082A6D67F90007A2CF /* head.dae in Resources */,
-				3637F6CC2A6A6023004FEB42 /* RabbitEyesClosed.png in Resources */,
 				3665771B2A46B723008C166D /* pianoE.mp3 in Resources */,
 				368726F12A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,
 				3696A5E82A756CEE00B59DCB /* PhotoIcon.png in Resources */,
+				36027E362A7EC29D00A505BC /* reshot.png in Resources */,
+				36027E3C2A7EC29D00A505BC /* save.png in Resources */,
 				36027E0A2A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				36027E162A7E534400A505BC /* PopupWindow.mp3 in Resources */,
 				36CD26D92A77D8A7009FF796 /* ani2.dae in Resources */,
@@ -1035,6 +1006,7 @@
 				366577122A46B723008C166D /* pianoD.mp3 in Resources */,
 				368726E92A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
 				36CD26C52A779289009FF796 /* 脖子左摆-模型+骨架.dae in Resources */,
+				36027E2F2A7EAF8B00A505BC /* shutter.png in Resources */,
 				36027DF62A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				36CD26E12A77DEBC009FF796 /* test.dae in Resources */,
@@ -1044,13 +1016,10 @@
 				3696A5E02A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				3696A6002A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
-				361F1FEF2A66D2EB00CC2F5B /* EnterCreate.png in Resources */,
 				3696A6052A7633C400B59DCB /* airpodsReminder.png in Resources */,
-				361F1FFB2A66E24200CC2F5B /* apple.svg in Resources */,
 				36D15EAA2A72674900BC1967 /* ruling.png in Resources */,
 				36CD26DD2A77D8AE009FF796 /* model.dae in Resources */,
 				3698D5862A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
-				3664C3E72A695E34004486EB /* rabbit.png in Resources */,
 				36CD26C92A779294009FF796 /* 脖子左摆-骨架动画.dae in Resources */,
 				36D15EAE2A7280A200BC1967 /* songEnd.png in Resources */,
 				3698D5822A6EA7F90003C037 /* giraffe.dae in Resources */,
@@ -1065,7 +1034,6 @@
 				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				366577152A46B723008C166D /* pianoC2.mp3 in Resources */,
-				361F1FF32A66DFF400CC2F5B /* 微信.svg in Resources */,
 				3698D5922A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
