@@ -258,9 +258,6 @@
 		36CD26E32A77DF5D009FF796 /* test2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 36CD26E22A77DF5D009FF796 /* test2.dae */; };
 		36CD26E42A77DF5D009FF796 /* test2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 36CD26E22A77DF5D009FF796 /* test2.dae */; };
 		36CD26E52A77DF5D009FF796 /* test2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 36CD26E22A77DF5D009FF796 /* test2.dae */; };
-		36D15EA02A71823600BC1967 /* DottedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15E9F2A71823600BC1967 /* DottedCircleView.swift */; };
-		36D15EA12A71823600BC1967 /* DottedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15E9F2A71823600BC1967 /* DottedCircleView.swift */; };
-		36D15EA22A71823600BC1967 /* DottedCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15E9F2A71823600BC1967 /* DottedCircleView.swift */; };
 		36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15EA32A72398600BC1967 /* StyledGauge.swift */; };
 		36D15EA52A72398600BC1967 /* StyledGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15EA32A72398600BC1967 /* StyledGauge.swift */; };
 		36D15EA62A72398600BC1967 /* StyledGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D15EA32A72398600BC1967 /* StyledGauge.swift */; };
@@ -270,6 +267,9 @@
 		36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EAB2A7280A200BC1967 /* songEnd.png */; };
 		36D15EAD2A7280A200BC1967 /* songEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EAB2A7280A200BC1967 /* songEnd.png */; };
 		36D15EAE2A7280A200BC1967 /* songEnd.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15EAB2A7280A200BC1967 /* songEnd.png */; };
+		36E5F18B2A7F8B7600C11B37 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */; };
+		36E5F18C2A7F8B7600C11B37 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */; };
+		36E5F18D2A7F8B7600C11B37 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */; };
 		36EC1E102A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
 		36EC1E112A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
 		36EC1E122A6BCA82009E5351 /* SpatialAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */; };
@@ -410,10 +410,10 @@
 		36CD26DA2A77D8AE009FF796 /* model.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = model.dae; sourceTree = "<group>"; };
 		36CD26DE2A77DEBC009FF796 /* test.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = test.dae; sourceTree = "<group>"; };
 		36CD26E22A77DF5D009FF796 /* test2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = test2.dae; sourceTree = "<group>"; };
-		36D15E9F2A71823600BC1967 /* DottedCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedCircleView.swift; sourceTree = "<group>"; };
 		36D15EA32A72398600BC1967 /* StyledGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledGauge.swift; sourceTree = "<group>"; };
 		36D15EA72A72674900BC1967 /* ruling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruling.png; sourceTree = "<group>"; };
 		36D15EAB2A7280A200BC1967 /* songEnd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEnd.png; sourceTree = "<group>"; };
+		36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		36EC1E0F2A6BCA82009E5351 /* SpatialAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAudio.swift; sourceTree = "<group>"; };
 		36EC1E132A6BCEA1009E5351 /* moonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = moonriver.mp3; sourceTree = "<group>"; };
 		36EC1E172A6CBAC3009E5351 /* monoMoonriver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monoMoonriver.mp3; sourceTree = "<group>"; };
@@ -624,6 +624,7 @@
 				365121DC2A754FFB0071D1C1 /* PauseAlertView.swift */,
 				365121E02A755F710071D1C1 /* GamingView.swift */,
 				3696A5DB2A756B1300B59DCB /* HomePageView.swift */,
+				36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -669,7 +670,6 @@
 				365121C72A73B1DB0071D1C1 /* Floor.swift */,
 				365121E42A75655A0071D1C1 /* DataModel.swift */,
 				36F4198B2A46C62700B11D59 /* MotionStateView.swift */,
-				36D15E9F2A71823600BC1967 /* DottedCircleView.swift */,
 				36D15EA32A72398600BC1967 /* StyledGauge.swift */,
 				3665773F2A46B832008C166D /* CreateMode.swift */,
 				36F419912A49964D00B11D59 /* MainNavigation.swift */,
@@ -1060,7 +1060,6 @@
 				365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 				365121E52A75655A0071D1C1 /* DataModel.swift in Sources */,
 				36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */,
-				36D15EA02A71823600BC1967 /* DottedCircleView.swift in Sources */,
 				366577442A46B83F008C166D /* serverRequests.swift in Sources */,
 				365CF7FB2A6CECD30007A2CF /* GameBoard.swift in Sources */,
 				366576DD2A46B6C5008C166D /* yuedong002App.swift in Sources */,
@@ -1077,6 +1076,7 @@
 				368726CC2A7932C9007F859C /* Leaf.swift in Sources */,
 				36F419982A5718DD00B11D59 /* MusicInfo.swift in Sources */,
 				361F1FE42A66CEEB00CC2F5B /* RelaxMode.swift in Sources */,
+				36E5F18B2A7F8B7600C11B37 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,10 +1085,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3664C3EA2A695E9D004486EB /* Relaxing.swift in Sources */,
-				36D15EA12A71823600BC1967 /* DottedCircleView.swift in Sources */,
 				365121C12A73A4CA0071D1C1 /* NeckSlides.swift in Sources */,
 				36EC1E112A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
 				365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */,
+				36E5F18C2A7F8B7600C11B37 /* ProgressView.swift in Sources */,
 				365121C52A73AC700071D1C1 /* head.swift in Sources */,
 				366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */,
 				36EC1E1D2A6CCA81009E5351 /* PanView.swift in Sources */,
@@ -1117,7 +1117,6 @@
 				366577422A46B832008C166D /* CreateMode.swift in Sources */,
 				366576F92A46B6C6008C166D /* yuedong002UITests.swift in Sources */,
 				365121E32A755F710071D1C1 /* GamingView.swift in Sources */,
-				36D15EA22A71823600BC1967 /* DottedCircleView.swift in Sources */,
 				365121CA2A73B1DB0071D1C1 /* Floor.swift in Sources */,
 				365121E72A75655A0071D1C1 /* DataModel.swift in Sources */,
 				365121C62A73AC700071D1C1 /* head.swift in Sources */,
@@ -1126,6 +1125,7 @@
 				36EC1E122A6BCA82009E5351 /* SpatialAudio.swift in Sources */,
 				36F4199A2A5718DD00B11D59 /* MusicInfo.swift in Sources */,
 				36F419942A49964D00B11D59 /* MainNavigation.swift in Sources */,
+				36E5F18D2A7F8B7600C11B37 /* ProgressView.swift in Sources */,
 				365121DF2A754FFB0071D1C1 /* PauseAlertView.swift in Sources */,
 				366577392A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3665773E2A46B82A008C166D /* ContentView3.swift in Sources */,

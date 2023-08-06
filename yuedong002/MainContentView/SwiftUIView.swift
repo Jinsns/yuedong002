@@ -41,6 +41,7 @@ struct SwiftUIView: View {
     @State var scoreScale: CGFloat = 1.0
     
     @State var extraLightAdded = false
+    @State var isShowProgressBar = false
     
     
     var body: some View {
@@ -68,6 +69,8 @@ struct SwiftUIView: View {
                         scene.shouldContact = true
                         scene.physicsWorld.contactDelegate = scene
                     }
+                
+                
             }
             
             
@@ -94,10 +97,6 @@ struct SwiftUIView: View {
                         .ignoresSafeArea()
                     PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
                 }
-                
-
-                
-                
                 
                 Image("ruling")   //background
                     .resizable()
@@ -169,12 +168,21 @@ struct SwiftUIView: View {
                         
                     }
                 
+                
+                
 //                    .bounce(animCount: scoreChanged)
 //                    .onChange(of: scene.score) { newScore in     //得分，记分板弹跳
 //                        withAnimation (Animation.linear(duration: 0.8)){
 //                            scoreChanged += 1
 //                        }
 //                    }
+                
+                if isShowProgressBar {
+                    VStack{
+                        ProgressView()
+                    }
+                }
+
                 
             } // GamingView: zstack of ruling and circle
             .onAppear() {
@@ -191,6 +199,9 @@ struct SwiftUIView: View {
                 
             }
             .onChange(of: scene.isContacted, perform: { newValue in  //发生碰撞
+                if note!.isTenuto == true {
+                    
+                }
                 if note!.isTenuto == false {
                     //(eaten effect implemented in GiraffeScene)
                     //remove leaf from the scene
@@ -211,13 +222,18 @@ struct SwiftUIView: View {
                 if (newValue > note!.endTime) {
                     //if currentTime is not in the range of current note
                     //then change note to the next one
+                    isShowProgressBar = false
                     print("curtime and note.endtime: ", newValue, note!.endTime)
                     noteIterator += 1
                     note = notes[noteIterator]
+                    
                     if scene.leafNode != nil {
                         scene.leafNode?.removeFromParentNode()
                     }
                     scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z)
+                    if note!.isTenuto {
+                        isShowProgressBar = true
+                    }
                     print("addleafnode 2")
                 
                 }
