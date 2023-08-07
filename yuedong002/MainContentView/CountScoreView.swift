@@ -96,7 +96,7 @@ struct CountScoreView: View {
                       .multilineTextAlignment(.center)
                       .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
                       .frame(width: 192, alignment: .center)
-                      .lineSpacing(5)   //调整行间距
+                      .lineSpacing(8)   //调整行间距
                 } //text VStack
                 
                 

@@ -20,8 +20,8 @@ DFPYuanW9
 
 struct HomePageView: View {
     @State var isShowAirpodsReminder = false
-    @State var isShowCorrectingPositionView = true
-    @State var isShowNodToEatReminder = false
+    @State var isShowCorrectingPositionView = false
+    @State var isShowNodToEatView = true
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     
     @State var isShowShutterView = false
@@ -51,6 +51,10 @@ struct HomePageView: View {
             
             if isShowCorrectingPositionView {
                 CorrectingPositionView()
+            }
+            
+            if isShowNodToEatView {
+                NodToEatView()
             }
 
             
@@ -414,10 +418,11 @@ struct CorrectingPositionView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .center, spacing: 4) {
-                Text("摆正头部位置")
+                Text("摆正头部位置\n或适当旋转耳机")
                   .font(Font.custom("DFPYuanW9-GB", size: 20))
                   .multilineTextAlignment(.center)
                   .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
+                  .lineSpacing(12) 
                 
                 Text("x: 12.56（0）\ny: 13.44（0）\nz: 20.44（0）")
                   .font(Font.custom("DFPYuanW9-GB", size: 14))
@@ -435,5 +440,14 @@ struct CorrectingPositionView: View {
         .padding(.bottom, 390)
         
         
+    }
+}
+
+struct NodToEatView: View {
+    var body: some View {
+        VStack(alignment: .center, spacing: 0) {
+            Image("NodToEatReminder")
+        }
+        .padding(.bottom, 390)
     }
 }
