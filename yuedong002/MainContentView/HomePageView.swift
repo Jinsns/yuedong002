@@ -22,8 +22,11 @@ struct HomePageView: View {
     @State var isShowAirpodsReminder = false
     @State var isShowNodToEatReminder = false
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
+    
     @State var isShowShutterView = false
     @State var isShowSnapEffect = false
+    
+    @State var isShowShopView = false
     
     @ObservedObject var scene: GiraffeScene  //used to control camera height with button
     
@@ -123,6 +126,8 @@ struct HomePageView: View {
                         Button {
                             print("pressed EyeGlassesIcon")
                             soundEffectSystem.buttonPlay()
+                            isShowShopView = true
+                        
                         } label: {
                             Image("EyeGlassesIcon")
                         }
@@ -141,7 +146,7 @@ struct HomePageView: View {
             }
             .foregroundColor(.clear)
             .frame(width: 393, height: 852)
-            .opacity(isShowShutterView ? 0.0 : 1.0) //if show ShutterView, icons at corners should hide
+            .opacity(isShowShutterView || isShowShopView ? 0.0 : 1.0) //if show ShutterView, icons at corners should hide
             
             VStack(spacing: 30) {
                 Button {
@@ -174,6 +179,7 @@ struct HomePageView: View {
                 
             }
             .offset(x: -150, y: 0)
+            .opacity(isShowShutterView || isShowShopView ? 0.0 : 1.0) //if show ShutterView or ShopView, icons at corners should hide
 
         }
         .onAppear(){
@@ -191,6 +197,10 @@ struct HomePageView: View {
         
         if isShowSnapEffect {
             SnapEffectView(isShowSnapEffect: $isShowSnapEffect)
+        }
+        
+        if isShowShopView {
+            ShopView(isShowShopView: $isShowShopView)
         }
         
         

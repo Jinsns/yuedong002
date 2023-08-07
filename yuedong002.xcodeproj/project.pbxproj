@@ -140,6 +140,27 @@
 		366577482A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
 		366577492A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
 		3665774A2A46B8B5008C166D /* soundVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366577472A46B8B5008C166D /* soundVars.swift */; };
+		367689132A80D34F00B3C6D4 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367689122A80D34F00B3C6D4 /* ShopView.swift */; };
+		367689142A80D34F00B3C6D4 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367689122A80D34F00B3C6D4 /* ShopView.swift */; };
+		367689152A80D34F00B3C6D4 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367689122A80D34F00B3C6D4 /* ShopView.swift */; };
+		367689172A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */ = {isa = PBXBuildFile; fileRef = 367689162A80D5F700B3C6D4 /* AltArrowLeft.svg */; };
+		367689182A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */ = {isa = PBXBuildFile; fileRef = 367689162A80D5F700B3C6D4 /* AltArrowLeft.svg */; };
+		367689192A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */ = {isa = PBXBuildFile; fileRef = 367689162A80D5F700B3C6D4 /* AltArrowLeft.svg */; };
+		3676891B2A80D90300B3C6D4 /* sunglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676891A2A80D90300B3C6D4 /* sunglasses.png */; };
+		3676891C2A80D90300B3C6D4 /* sunglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676891A2A80D90300B3C6D4 /* sunglasses.png */; };
+		3676891D2A80D90300B3C6D4 /* sunglasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676891A2A80D90300B3C6D4 /* sunglasses.png */; };
+		3676891F2A80DBB200B3C6D4 /* wheat.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676891E2A80DBB200B3C6D4 /* wheat.png */; };
+		367689202A80DBB200B3C6D4 /* wheat.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676891E2A80DBB200B3C6D4 /* wheat.png */; };
+		367689212A80DBB200B3C6D4 /* wheat.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676891E2A80DBB200B3C6D4 /* wheat.png */; };
+		367689232A80DBBD00B3C6D4 /* AngleRing.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689222A80DBBD00B3C6D4 /* AngleRing.png */; };
+		367689242A80DBBD00B3C6D4 /* AngleRing.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689222A80DBBD00B3C6D4 /* AngleRing.png */; };
+		367689252A80DBBD00B3C6D4 /* AngleRing.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689222A80DBBD00B3C6D4 /* AngleRing.png */; };
+		367689272A80DBC200B3C6D4 /* DiamondRing.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689262A80DBC200B3C6D4 /* DiamondRing.png */; };
+		367689282A80DBC200B3C6D4 /* DiamondRing.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689262A80DBC200B3C6D4 /* DiamondRing.png */; };
+		367689292A80DBC200B3C6D4 /* DiamondRing.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689262A80DBC200B3C6D4 /* DiamondRing.png */; };
+		3676892B2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */; };
+		3676892C2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */; };
+		3676892D2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -334,6 +355,13 @@
 		3665773F2A46B832008C166D /* CreateMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMode.swift; sourceTree = "<group>"; };
 		366577432A46B83F008C166D /* serverRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serverRequests.swift; sourceTree = "<group>"; };
 		366577472A46B8B5008C166D /* soundVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = soundVars.swift; sourceTree = "<group>"; };
+		367689122A80D34F00B3C6D4 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		367689162A80D5F700B3C6D4 /* AltArrowLeft.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AltArrowLeft.svg; sourceTree = "<group>"; };
+		3676891A2A80D90300B3C6D4 /* sunglasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunglasses.png; sourceTree = "<group>"; };
+		3676891E2A80DBB200B3C6D4 /* wheat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheat.png; sourceTree = "<group>"; };
+		367689222A80DBBD00B3C6D4 /* AngleRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AngleRing.png; sourceTree = "<group>"; };
+		367689262A80DBC200B3C6D4 /* DiamondRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DiamondRing.png; sourceTree = "<group>"; };
+		3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoconutTree.png; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -428,6 +456,12 @@
 				36027E312A7EC29D00A505BC /* qqlogin.png */,
 				36027E302A7EC29D00A505BC /* reshot.png */,
 				36027E322A7EC29D00A505BC /* save.png */,
+				367689162A80D5F700B3C6D4 /* AltArrowLeft.svg */,
+				3676891A2A80D90300B3C6D4 /* sunglasses.png */,
+				3676891E2A80DBB200B3C6D4 /* wheat.png */,
+				367689222A80DBBD00B3C6D4 /* AngleRing.png */,
+				367689262A80DBC200B3C6D4 /* DiamondRing.png */,
+				3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -569,6 +603,7 @@
 				365121E02A755F710071D1C1 /* GamingView.swift */,
 				3696A5DB2A756B1300B59DCB /* HomePageView.swift */,
 				36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */,
+				367689122A80D34F00B3C6D4 /* ShopView.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -762,6 +797,7 @@
 			files = (
 				36027DF02A79545100A505BC /* GetScore.mp3 in Resources */,
 				36027E0C2A7E33B100A505BC /* 单个长颈鹿.dae in Resources */,
+				367689232A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				36EC1E142A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				368726F72A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				3696A5EA2A756DAC00B59DCB /* NeckIcon.png in Resources */,
@@ -773,10 +809,13 @@
 				366576E52A46B6C6008C166D /* Preview Assets.xcassets in Resources */,
 				368726EB2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
 				3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
+				367689272A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
 				3698D5902A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 				3665771F2A46B723008C166D /* pianoC.mp3 in Resources */,
+				3676891F2A80DBB200B3C6D4 /* wheat.png in Resources */,
 				36EC1E182A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				36027E372A7EC29D00A505BC /* qqlogin.png in Resources */,
+				3676891B2A80D90300B3C6D4 /* sunglasses.png in Resources */,
 				36027DF82A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
 				3698D5742A6E908F0003C037 /* leaf.png in Resources */,
 				368726DB2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
@@ -789,6 +828,7 @@
 				368726DF2A79397D007F859C /* Overall_Dialog.mp3 in Resources */,
 				366577132A46B723008C166D /* pianoC2.mp3 in Resources */,
 				3698D5842A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
+				367689172A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
 				365121D82A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				36027E3D2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				3696A5F82A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
@@ -808,6 +848,7 @@
 				3698D5882A703D860003C037 /* giraffe0.dae in Resources */,
 				3696A5F52A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				365CF7FD2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
+				3676892B2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */,
 				366576E12A46B6C6008C166D /* Assets.xcassets in Resources */,
 				3698D58C2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				3696A5E62A756CEE00B59DCB /* PhotoIcon.png in Resources */,
@@ -831,6 +872,7 @@
 				368726DC2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				3696A5F62A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				365121D52A750BE20071D1C1 /* scorepan.png in Resources */,
+				367689202A80DBB200B3C6D4 /* wheat.png in Resources */,
 				36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				36027E3E2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				36EC1E152A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
@@ -841,6 +883,7 @@
 				3696A5EB2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				3665771D2A46B723008C166D /* pianoG.mp3 in Resources */,
 				36027E382A7EC29D00A505BC /* qqlogin.png in Resources */,
+				367689282A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
 				365CF8072A6D67F90007A2CF /* head.dae in Resources */,
 				3665771A2A46B723008C166D /* pianoE.mp3 in Resources */,
 				368726F02A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,
@@ -856,6 +899,7 @@
 				365121D12A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
 				36027E052A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
 				3696A5FC2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
+				3676891C2A80D90300B3C6D4 /* sunglasses.png in Resources */,
 				365CF7FE2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				366577112A46B723008C166D /* pianoD.mp3 in Resources */,
 				368726E82A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
@@ -863,6 +907,7 @@
 				36027DF52A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				368726F82A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
+				367689182A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
 				368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				3696A5DF2A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
@@ -873,6 +918,7 @@
 				36D15EAD2A7280A200BC1967 /* songEnd.png in Resources */,
 				3696A5E32A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				368726EC2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
+				367689242A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				36027DFD2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
 				366577262A46B723008C166D /* pianoF.mp3 in Resources */,
 				368726FC2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
@@ -883,6 +929,7 @@
 				36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				366577142A46B723008C166D /* pianoC2.mp3 in Resources */,
 				3698D5912A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
+				3676892C2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +942,7 @@
 				368726DD2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				3696A5F72A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				365121D62A750BE20071D1C1 /* scorepan.png in Resources */,
+				367689212A80DBB200B3C6D4 /* wheat.png in Resources */,
 				36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				36027E3F2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				36EC1E162A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
@@ -905,6 +953,7 @@
 				3696A5EC2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				3665771E2A46B723008C166D /* pianoG.mp3 in Resources */,
 				36027E392A7EC29D00A505BC /* qqlogin.png in Resources */,
+				367689292A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
 				365CF8082A6D67F90007A2CF /* head.dae in Resources */,
 				3665771B2A46B723008C166D /* pianoE.mp3 in Resources */,
 				368726F12A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,
@@ -920,6 +969,7 @@
 				365121D22A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
 				36027E062A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
 				3696A5FD2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
+				3676891D2A80D90300B3C6D4 /* sunglasses.png in Resources */,
 				365CF7FF2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				366577122A46B723008C166D /* pianoD.mp3 in Resources */,
 				368726E92A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
@@ -927,6 +977,7 @@
 				36027DF62A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				368726F92A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
+				367689192A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
 				368726D52A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				3696A5E02A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
@@ -937,6 +988,7 @@
 				36D15EAE2A7280A200BC1967 /* songEnd.png in Resources */,
 				3696A5E42A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				368726ED2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
+				367689252A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				36027DFE2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
 				366577272A46B723008C166D /* pianoF.mp3 in Resources */,
 				368726FD2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
@@ -947,6 +999,7 @@
 				36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				366577152A46B723008C166D /* pianoC2.mp3 in Resources */,
 				3698D5922A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
+				3676892D2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,6 +1019,7 @@
 				366577372A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				36F419922A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				365121C42A73AC700071D1C1 /* head.swift in Sources */,
+				367689132A80D34F00B3C6D4 /* ShopView.swift in Sources */,
 				365121C02A73A4CA0071D1C1 /* NeckSlides.swift in Sources */,
 				365121DD2A754FFB0071D1C1 /* PauseAlertView.swift in Sources */,
 				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
@@ -1002,6 +1056,7 @@
 				365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */,
 				36E5F18C2A7F8B7600C11B37 /* ProgressView.swift in Sources */,
 				365121C52A73AC700071D1C1 /* head.swift in Sources */,
+				367689142A80D34F00B3C6D4 /* ShopView.swift in Sources */,
 				366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */,
 				36EC1E1D2A6CCA81009E5351 /* PanView.swift in Sources */,
 				366577412A46B832008C166D /* CreateMode.swift in Sources */,
@@ -1029,6 +1084,7 @@
 				366577422A46B832008C166D /* CreateMode.swift in Sources */,
 				366576F92A46B6C6008C166D /* yuedong002UITests.swift in Sources */,
 				365121E32A755F710071D1C1 /* GamingView.swift in Sources */,
+				367689152A80D34F00B3C6D4 /* ShopView.swift in Sources */,
 				365121CA2A73B1DB0071D1C1 /* Floor.swift in Sources */,
 				365121E72A75655A0071D1C1 /* DataModel.swift in Sources */,
 				365121C62A73AC700071D1C1 /* head.swift in Sources */,
