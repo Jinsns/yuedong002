@@ -325,7 +325,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let extraLightNode = SCNNode()
         extraLightNode.light = SCNLight()
         extraLightNode.light?.type = SCNLight.LightType.directional
-        extraLightNode.light?.color = UIColor(red: 0.97, green: 1, blue: 0.76, alpha: 1)
+        extraLightNode.light?.color = UIColor(red: 0.97, green: 1, blue: 0.76, alpha: 0.2)
         extraLightNode.position = SCNVector3(0, -1, -20)
         extraLightNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         extraLightNode.light?.categoryBitMask = LightType.onBackground

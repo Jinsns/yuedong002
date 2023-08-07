@@ -161,6 +161,9 @@
 		3676892B2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */; };
 		3676892C2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */; };
 		3676892D2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */; };
+		3676892F2A812F5100B3C6D4 /* DownTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892E2A812F5100B3C6D4 /* DownTriangle.png */; };
+		367689302A812F5100B3C6D4 /* DownTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892E2A812F5100B3C6D4 /* DownTriangle.png */; };
+		367689312A812F5100B3C6D4 /* DownTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676892E2A812F5100B3C6D4 /* DownTriangle.png */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -362,6 +365,7 @@
 		367689222A80DBBD00B3C6D4 /* AngleRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AngleRing.png; sourceTree = "<group>"; };
 		367689262A80DBC200B3C6D4 /* DiamondRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DiamondRing.png; sourceTree = "<group>"; };
 		3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoconutTree.png; sourceTree = "<group>"; };
+		3676892E2A812F5100B3C6D4 /* DownTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownTriangle.png; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				367689222A80DBBD00B3C6D4 /* AngleRing.png */,
 				367689262A80DBC200B3C6D4 /* DiamondRing.png */,
 				3676892A2A80DBCB00B3C6D4 /* CoconutTree.png */,
+				3676892E2A812F5100B3C6D4 /* DownTriangle.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -808,6 +813,7 @@
 				3665772D2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				366576E52A46B6C6008C166D /* Preview Assets.xcassets in Resources */,
 				368726EB2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
+				3676892F2A812F5100B3C6D4 /* DownTriangle.png in Resources */,
 				3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				367689272A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
 				3698D5902A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
@@ -884,6 +890,7 @@
 				3665771D2A46B723008C166D /* pianoG.mp3 in Resources */,
 				36027E382A7EC29D00A505BC /* qqlogin.png in Resources */,
 				367689282A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
+				367689302A812F5100B3C6D4 /* DownTriangle.png in Resources */,
 				365CF8072A6D67F90007A2CF /* head.dae in Resources */,
 				3665771A2A46B723008C166D /* pianoE.mp3 in Resources */,
 				368726F02A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,
@@ -954,6 +961,7 @@
 				3665771E2A46B723008C166D /* pianoG.mp3 in Resources */,
 				36027E392A7EC29D00A505BC /* qqlogin.png in Resources */,
 				367689292A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
+				367689312A812F5100B3C6D4 /* DownTriangle.png in Resources */,
 				365CF8082A6D67F90007A2CF /* head.dae in Resources */,
 				3665771B2A46B723008C166D /* pianoE.mp3 in Resources */,
 				368726F12A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,

@@ -20,6 +20,7 @@ DFPYuanW9
 
 struct HomePageView: View {
     @State var isShowAirpodsReminder = false
+    @State var isShowCorrectingPositionView = true
     @State var isShowNodToEatReminder = false
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     
@@ -40,12 +41,16 @@ struct HomePageView: View {
             .padding(0)
             .padding(.bottom, 390)
             .scaleEffect(isShowAirpodsReminder ? 1 : 0)
-            .animation(.spring())
+//            .animation(.spring())
             .onAppear {
                 withAnimation {
-                    isShowAirpodsReminder = true
+                    isShowAirpodsReminder = false
                 }
                 soundEffectSystem.overallDialogPlay()
+            }
+            
+            if isShowCorrectingPositionView {
+                CorrectingPositionView()
             }
 
             
@@ -148,38 +153,41 @@ struct HomePageView: View {
             .frame(width: 393, height: 852)
             .opacity(isShowShutterView || isShowShopView ? 0.0 : 1.0) //if show ShutterView, icons at corners should hide
             
-            VStack(spacing: 30) {
-                Button {
-                    print("pressed arrow up")
-                    scene.cameraNode!.position = SCNVector3(
-                        x: scene.cameraNode!.position.x,
-                        y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
-                        z: scene.cameraNode!.position.z
-                    )
-                } label: {
-                    Image(systemName: "arrow.up")
-                        .resizable()
-                        .frame(width: 30, height: 34)
-                        .foregroundColor(Color.black)
+            if (isShowShutterView || isShowShopView) == false {
+                VStack(spacing: 30) {
+                    Button {
+                        print("pressed arrow up")
+                        scene.cameraNode!.position = SCNVector3(
+                            x: scene.cameraNode!.position.x,
+                            y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
+                            z: scene.cameraNode!.position.z
+                        )
+                    } label: {
+                        Image(systemName: "arrow.up")
+                            .resizable()
+                            .frame(width: 30, height: 34)
+                            .foregroundColor(Color.black)
+                    }
+                    
+                    Button {
+                        print("pressed arrow down")
+                        scene.cameraNode!.position = SCNVector3(
+                            x: scene.cameraNode!.position.x,
+                            y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
+                            z: scene.cameraNode!.position.z
+                        )
+                    } label: {
+                        Image(systemName: "arrow.down")
+                            .resizable()
+                            .frame(width: 30, height: 34)
+                            .foregroundColor(Color.black)
+                    }
+                    
                 }
-                
-                Button {
-                    print("pressed arrow down")
-                    scene.cameraNode!.position = SCNVector3(
-                        x: scene.cameraNode!.position.x,
-                        y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
-                        z: scene.cameraNode!.position.z
-                    )
-                } label: {
-                    Image(systemName: "arrow.down")
-                        .resizable()
-                        .frame(width: 30, height: 34)
-                        .foregroundColor(Color.black)
-                }
+                .offset(x: -150, y: 0)
                 
             }
-            .offset(x: -150, y: 0)
-            .opacity(isShowShutterView || isShowShopView ? 0.0 : 1.0) //if show ShutterView or ShopView, icons at corners should hide
+            
 
         }
         .onAppear(){
@@ -401,3 +409,31 @@ extension View {
   }
 }
 
+
+struct CorrectingPositionView: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            VStack(alignment: .center, spacing: 4) {
+                Text("摆正头部位置")
+                  .font(Font.custom("DFPYuanW9-GB", size: 20))
+                  .multilineTextAlignment(.center)
+                  .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
+                
+                Text("x: 12.56（0）\ny: 13.44（0）\nz: 20.44（0）")
+                  .font(Font.custom("DFPYuanW9-GB", size: 14))
+                  .foregroundColor(Color(red: 0.32, green: 0.51, blue: 0.1))
+            }
+                .padding(.horizontal, 16)
+                .background(.white.opacity(0.7))
+                .cornerRadius(8)
+            
+            Image("DownTriangle")
+                .frame(width: 33.00003, height: 11.0933)
+                .offset(x: 0, y: -1)
+                .opacity(0.7)
+        }
+        .padding(.bottom, 390)
+        
+        
+    }
+}
