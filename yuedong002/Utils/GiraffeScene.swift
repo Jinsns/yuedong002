@@ -139,6 +139,22 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.commit()
     }
     
+    func moveCameraNodeAndNeckNodeToShopPosition() {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.cameraNode?.position = SCNVector3(x: 5, y: 2, z: -12)
+        self.neckNode?.position = SCNVector3(x: -5, y: -3 , z: -11)   //x大 屏幕外，z大 屏幕左
+        SCNTransaction.commit()
+    }
+    
+    func moveCameraNodeAndNeckNodeToGamePosition() {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.cameraNode?.position = SCNVector3(x: 10, y: 2, z: 0)
+        self.neckNode?.position = SCNVector3(0, -3, 0)
+        SCNTransaction.commit()
+    }
+    
     func addBackground() {
         //add an color or image as the background
 //        background.contents = UIColor.black

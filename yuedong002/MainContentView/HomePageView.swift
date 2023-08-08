@@ -136,6 +136,7 @@ struct HomePageView: View {
                             print("pressed EyeGlassesIcon")
                             soundEffectSystem.buttonPlay()
                             isShowShopView = true
+                            scene.moveCameraNodeAndNeckNodeToShopPosition()
                         
                         } label: {
                             Image("EyeGlassesIcon")
@@ -183,7 +184,7 @@ struct HomePageView: View {
         }
         
         if isShowShopView {
-            ShopView(isShowShopView: $isShowShopView)
+            ShopView(isShowShopView: $isShowShopView, scene: scene)
         }
         
         

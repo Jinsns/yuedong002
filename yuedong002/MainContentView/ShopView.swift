@@ -27,6 +27,8 @@ struct ShopView: View {
     @State var isMineOrShop = true
     @State var selectedItem = 1
     
+    @ObservedObject var scene: GiraffeScene
+    
     let greenTextColor = Color(red: 0.59, green: 0.74, blue: 0.43)
     
     var body: some View {
@@ -36,6 +38,7 @@ struct ShopView: View {
                     Button {
                         print("pressed back button in shop")
                         isShowShopView = false
+                        scene.moveCameraNodeAndNeckNodeToGamePosition()
                     } label: {
                         Image("AltArrowLeft")
                             .frame(width: 25.05524, height: 25.05524)
@@ -434,6 +437,6 @@ struct ShopItems: View {
 
 struct ShopView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopView(isShowShopView: .constant(true))
+        ShopView(isShowShopView: .constant(true), scene: GiraffeScene())
     }
 }

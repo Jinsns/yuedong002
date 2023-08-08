@@ -134,6 +134,7 @@ struct SwiftUIView: View {
                     trimEnd = 1.0
 
                     bgmSystem.play()
+                    scene.moveCameraNodeAndNeckNodeToGamePosition()
                     isInHomePage = false
                 }
                 
