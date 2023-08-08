@@ -157,38 +157,40 @@ struct HomePageView: View {
             .frame(width: 393, height: 852)
             .opacity(isShowShutterView || isShowShopView ? 0.0 : 1.0) //if show ShutterView, icons at corners should hide
             
+            //if not in these two view
             if (isShowShutterView || isShowShopView) == false {
-                VStack(spacing: 30) {
-                    Button {
-                        print("pressed arrow up")
-                        scene.cameraNode!.position = SCNVector3(
-                            x: scene.cameraNode!.position.x,
-                            y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
-                            z: scene.cameraNode!.position.z
-                        )
-                    } label: {
-                        Image(systemName: "arrow.up")
-                            .resizable()
-                            .frame(width: 30, height: 34)
-                            .foregroundColor(Color.black)
-                    }
-                    
-                    Button {
-                        print("pressed arrow down")
-                        scene.cameraNode!.position = SCNVector3(
-                            x: scene.cameraNode!.position.x,
-                            y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
-                            z: scene.cameraNode!.position.z
-                        )
-                    } label: {
-                        Image(systemName: "arrow.down")
-                            .resizable()
-                            .frame(width: 30, height: 34)
-                            .foregroundColor(Color.black)
-                    }
-                    
-                }
-                .offset(x: -150, y: 0)
+//                VStack(spacing: 30) {
+//                    Button {
+//                        print("pressed arrow up")
+//                        scene.cameraNode!.position = SCNVector3(
+//                            x: scene.cameraNode!.position.x,
+//                            y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
+//                            z: scene.cameraNode!.position.z
+//                        )
+//                    } label: {
+//                        Image(systemName: "arrow.up")
+//                            .resizable()
+//                            .frame(width: 30, height: 34)
+//                            .foregroundColor(Color.black)
+//                    }
+//
+//                    Button {
+//                        print("pressed arrow down")
+//                        scene.cameraNode!.position = SCNVector3(
+//                            x: scene.cameraNode!.position.x,
+//                            y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
+//                            z: scene.cameraNode!.position.z
+//                        )
+//                    } label: {
+//                        Image(systemName: "arrow.down")
+//                            .resizable()
+//                            .frame(width: 30, height: 34)
+//                            .foregroundColor(Color.black)
+//                    }
+//
+//                }
+//                .offset(x: -150, y: 0)
+                ArrowButtons(scene: scene)
                 
             }
             
@@ -422,7 +424,7 @@ struct CorrectingPositionView: View {
                   .font(Font.custom("DFPYuanW9-GB", size: 20))
                   .multilineTextAlignment(.center)
                   .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
-                  .lineSpacing(12) 
+                  .lineSpacing(12)
                 
                 Text("x: 12.56（0）\ny: 13.44（0）\nz: 20.44（0）")
                   .font(Font.custom("DFPYuanW9-GB", size: 14))
@@ -449,5 +451,71 @@ struct NodToEatView: View {
             Image("NodToEatReminder")
         }
         .padding(.bottom, 390)
+    }
+}
+
+struct ArrowButtons: View {
+    
+    @ObservedObject var scene: GiraffeScene
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading) {
+                Button {
+                    print("pressed up button2")
+                    scene.cameraNode!.position = SCNVector3(
+                        x: scene.cameraNode!.position.x,
+                        y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
+                        z: scene.cameraNode!.position.z
+                    )
+                } label: {
+                    Image("ArrowUp")
+                          .frame(width: 32, height: 32)
+                }
+              
+            }
+            .buttonStyle(MyButtonStyle(color: .green))
+            
+            VStack(alignment: .leading) {
+                Button {
+                    print("pressed down botton2")
+                    scene.cameraNode!.position = SCNVector3(
+                        x: scene.cameraNode!.position.x,
+                        y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
+                        z: scene.cameraNode!.position.z
+                    )
+                } label: {
+                    Image("ArrowDown")
+                        .frame(width: 32, height: 32)
+                }
+                .buttonStyle(MyButtonStyle(color: .green))
+                
+                
+            }
+            
+            
+
+        }
+//        .padding(0)
+        .shadow(color: .black.opacity(0.2), radius: 16, x: 0, y: 0)
+        .background(RoundedRectangle(cornerRadius: 50).fill(Color.white.opacity(0.7)))
+        .offset(x: 132, y: 200)
+    }
+}
+
+
+struct MyButtonStyle: ButtonStyle {
+    var color: Color = .green
+
+    public func makeBody(configuration: MyButtonStyle.Configuration) -> some View {
+
+        configuration.label
+            .padding(10)
+            .frame(width: 52, height: 56, alignment: .leading)
+            .scaledToFit()
+            .background(configuration.isPressed ? Color(red: 0.41, green: 0.44, blue: 0.54).opacity(0.12) : Color.clear)
+            .clipShape(Capsule())
+//            .mask(RoundedRectangle(cornerRadius: 50).fill(Color.white.opacity(0.7)))
+            
     }
 }
