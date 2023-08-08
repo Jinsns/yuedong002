@@ -159,38 +159,7 @@ struct HomePageView: View {
             
             //if not in these two view
             if (isShowShutterView || isShowShopView) == false {
-//                VStack(spacing: 30) {
-//                    Button {
-//                        print("pressed arrow up")
-//                        scene.cameraNode!.position = SCNVector3(
-//                            x: scene.cameraNode!.position.x,
-//                            y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
-//                            z: scene.cameraNode!.position.z
-//                        )
-//                    } label: {
-//                        Image(systemName: "arrow.up")
-//                            .resizable()
-//                            .frame(width: 30, height: 34)
-//                            .foregroundColor(Color.black)
-//                    }
-//
-//                    Button {
-//                        print("pressed arrow down")
-//                        scene.cameraNode!.position = SCNVector3(
-//                            x: scene.cameraNode!.position.x,
-//                            y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
-//                            z: scene.cameraNode!.position.z
-//                        )
-//                    } label: {
-//                        Image(systemName: "arrow.down")
-//                            .resizable()
-//                            .frame(width: 30, height: 34)
-//                            .foregroundColor(Color.black)
-//                    }
-//
-//                }
-//                .offset(x: -150, y: 0)
-                ArrowButtons(scene: scene)
+                ArrowButtonsView(scene: scene)
                 
             }
             
@@ -454,7 +423,7 @@ struct NodToEatView: View {
     }
 }
 
-struct ArrowButtons: View {
+struct ArrowButtonsView: View {
     
     @ObservedObject var scene: GiraffeScene
     
@@ -463,11 +432,28 @@ struct ArrowButtons: View {
             VStack(alignment: .leading) {
                 Button {
                     print("pressed up button2")
-                    scene.cameraNode!.position = SCNVector3(
-                        x: scene.cameraNode!.position.x,
-                        y: (scene.cameraNode!.position.y > 7 ? 8 : scene.cameraNode!.position.y + 1),
-                        z: scene.cameraNode!.position.z
-                    )
+                    if scene.cameraNode!.position.y >= 2 {
+                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                            x: scene.cameraNode!.position.x,
+                            y: 8.0,
+                            z: scene.cameraNode!.position.z)
+                        )
+                    } else {
+                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                            x: scene.cameraNode!.position.x,
+                            y: 2.0,
+                            z: scene.cameraNode!.position.z)
+                        )
+                    }
+                    
+//                    withAnimation(.linear(duration: 1.20)) {
+//                        scene.cameraNode!.position = SCNVector3(
+//                            x: scene.cameraNode!.position.x,
+//                            y: 8.0,
+//                            z: scene.cameraNode!.position.z
+//                        )
+//                    }
+                    
                 } label: {
                     Image("ArrowUp")
                           .frame(width: 32, height: 32)
@@ -479,11 +465,28 @@ struct ArrowButtons: View {
             VStack(alignment: .leading) {
                 Button {
                     print("pressed down botton2")
-                    scene.cameraNode!.position = SCNVector3(
-                        x: scene.cameraNode!.position.x,
-                        y: (scene.cameraNode!.position.y < -1 ? -2 : scene.cameraNode!.position.y - 1),
-                        z: scene.cameraNode!.position.z
-                    )
+                    if scene.cameraNode!.position.y > 2 {
+                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                            x: scene.cameraNode!.position.x,
+                            y: 2.0,
+                            z: scene.cameraNode!.position.z)
+                        )
+                    } else {
+                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                            x: scene.cameraNode!.position.x,
+                            y: -2.0,
+                            z: scene.cameraNode!.position.z)
+                        )
+                    }
+                    
+//                    withAnimation(.easeInOut(duration: 1.20)) {
+//                        scene.cameraNode!.position = SCNVector3(
+//                            x: scene.cameraNode!.position.x,
+//                            y: (0.0),
+//                            z: scene.cameraNode!.position.z
+//                        )
+//                    }
+                    
                 } label: {
                     Image("ArrowDown")
                         .frame(width: 32, height: 32)

@@ -132,6 +132,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.cameraNode = cameraNode
     }
     
+    func moveCameraNodeSmoothly(newPosition: SCNVector3) {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.cameraNode?.position = newPosition
+        SCNTransaction.commit()
+    }
+    
     func addBackground() {
         //add an color or image as the background
 //        background.contents = UIColor.black
