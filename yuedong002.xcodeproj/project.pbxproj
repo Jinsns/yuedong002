@@ -170,6 +170,9 @@
 		367689372A8238A000B3C6D4 /* ArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689362A8238A000B3C6D4 /* ArrowUp.png */; };
 		367689382A8238A000B3C6D4 /* ArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689362A8238A000B3C6D4 /* ArrowUp.png */; };
 		367689392A8238A000B3C6D4 /* ArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689362A8238A000B3C6D4 /* ArrowUp.png */; };
+		3676893B2A829C2700B3C6D4 /* ScorePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3676893A2A829C2700B3C6D4 /* ScorePanView.swift */; };
+		3676893C2A829C2700B3C6D4 /* ScorePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3676893A2A829C2700B3C6D4 /* ScorePanView.swift */; };
+		3676893D2A829C2700B3C6D4 /* ScorePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3676893A2A829C2700B3C6D4 /* ScorePanView.swift */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -374,6 +377,7 @@
 		3676892E2A812F5100B3C6D4 /* DownTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownTriangle.png; sourceTree = "<group>"; };
 		367689322A82389900B3C6D4 /* ArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowDown.png; sourceTree = "<group>"; };
 		367689362A8238A000B3C6D4 /* ArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowUp.png; sourceTree = "<group>"; };
+		3676893A2A829C2700B3C6D4 /* ScorePanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePanView.swift; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -619,6 +623,7 @@
 				3696A5DB2A756B1300B59DCB /* HomePageView.swift */,
 				36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */,
 				367689122A80D34F00B3C6D4 /* ShopView.swift */,
+				3676893A2A829C2700B3C6D4 /* ScorePanView.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -1049,6 +1054,7 @@
 				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
 				365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 				365121E52A75655A0071D1C1 /* DataModel.swift in Sources */,
+				3676893B2A829C2700B3C6D4 /* ScorePanView.swift in Sources */,
 				36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */,
 				366577442A46B83F008C166D /* serverRequests.swift in Sources */,
 				365CF7FB2A6CECD30007A2CF /* GameBoard.swift in Sources */,
@@ -1098,6 +1104,7 @@
 				366577452A46B83F008C166D /* serverRequests.swift in Sources */,
 				366577342A46B7E6008C166D /* MotionManager.swift in Sources */,
 				365121E62A75655A0071D1C1 /* DataModel.swift in Sources */,
+				3676893C2A829C2700B3C6D4 /* ScorePanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,6 +1127,7 @@
 				36E5F18D2A7F8B7600C11B37 /* ProgressView.swift in Sources */,
 				365121DF2A754FFB0071D1C1 /* PauseAlertView.swift in Sources */,
 				366577392A46B7EF008C166D /* SoundSystem.swift in Sources */,
+				3676893D2A829C2700B3C6D4 /* ScorePanView.swift in Sources */,
 				3665773E2A46B82A008C166D /* ContentView3.swift in Sources */,
 				36EC1E1E2A6CCA81009E5351 /* PanView.swift in Sources */,
 				36D15EA62A72398600BC1967 /* StyledGauge.swift in Sources */,

@@ -344,7 +344,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             guard let attitude = deviceMotion?.attitude else { return }
             let absx: Float = abs(Float(attitude.roll))
             let absz: Float = abs(Float(attitude.pitch))
-            let maxAngle = Float.pi / 6
+            let maxAngle = Float.pi / 8
                         
             
             self?.neckNode?.eulerAngles = SCNVector3(

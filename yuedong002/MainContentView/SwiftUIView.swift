@@ -16,16 +16,16 @@ let notes: [Note] = [
     //y 大 屏幕上
     //z 大 屏幕左， x，z和头运动方向一致
     
-    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -2, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
-    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 0, z: 2), isTenuto: true, level: 1), //左
-    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: -1.0, z: -2), isTenuto: true, level: 2), //右
-    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: -1.0, z: 2), isTenuto: true, level: 3), //左
-    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: -1.0, z: -2), isTenuto: true, level: 1), //右
-    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 1.5, y: -1.0, z: 0.5), isTenuto: true, level: 2),  //前
-    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 1.5, y: -1.0, z: 0.5), isTenuto: true, level: 3),  //前
-    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -1.5, y: -1.0, z: -0.5), isTenuto: true, level: 1),  //后
-    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -1.5, y: -1.0, z: -0.5), isTenuto: true, level: 2),  //后
+    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: -0.50, z: 2), isTenuto: true, level: 1), //左
+    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: -0.5, z: -2), isTenuto: true, level: 2), //右
+    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: -0.5, z: 2), isTenuto: true, level: 3), //左
+    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: -0.5, z: -2), isTenuto: true, level: 1), //右
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 1.5, y: -0.5, z: 0.5), isTenuto: true, level: 2),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 1.5, y: -0.5, z: 0.5), isTenuto: true, level: 3),  //前
+    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -1.5, y: -0.5, z: -0.5), isTenuto: true, level: 1),  //后
+    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -1.5, y: -0.5, z: -0.5), isTenuto: true, level: 2),  //后
     
     Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
@@ -51,7 +51,7 @@ struct SwiftUIView: View {
     
     @State var isShowPause = false
     @State var isShowCountScoreView = false
-    @State var scoreScale: CGFloat = 1.0
+//    @State var scoreScale: CGFloat = 1.0
     
     @State var extraLightAdded = false
     @State var isLeafAdded = false
@@ -115,75 +115,68 @@ struct SwiftUIView: View {
                     PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
                 }
                 
-                Image("ruling")   //background
-                    .resizable()
-                    .padding(.all, 10)  //padding must be above frame
-                    .frame(width: 150, height: 150)
-                    .offset(x: 0, y: -280)
-                    .opacity(0.2)
-                    .colorMultiply(Color.black)
-                    .colorMultiply(Color.gray)
+                ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
                 
-                Image("ruling")   //front fade-out
-                    .resizable()
-                    .padding(.all, 10)  //padding must be above frame
-                    .frame(width: 150, height: 150)
+//                Image("ruling")   //front fade-out
+//                    .resizable()
+//                    .padding(.all, 10)  //padding must be above frame
+//                    .frame(width: 194, height: 194)
+////                    .padding(.all, 10)
+//                    .opacity(1.0)
+//                    .offset(x: 0, y: -280)
+////                    .colorMultiply(Color.gray)
+//                    .mask {
+//                        Circle()
+//                            .trim(from: 0.0, to: trimEnd) //trimEnd = 1 means 360 degree
+//                            .stroke(style: StrokeStyle(lineWidth: 40, lineCap: .round))
+//                            .foregroundColor(.gray)
+//                            .frame(width: 170, height: 170)
+//                            .padding(.all, 10)
+//                            .offset(x: 280, y: 0)    //-90 degree时，x=280, y=0
+//                            .opacity(0.6)
+//                            .rotationEffect(.degrees(-90))
+//                            .scaleEffect(x: -1, y: 1) //镜像反转 （水平翻转）
+//
+//                            .onChange(of: bgmSystem.currentTime) { newValue in
+//
+//                                trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
+//                            }
+//                    }
+//
+//
+//                Image("scorePan")
+//                    .resizable()
 //                    .padding(.all, 10)
-                    .opacity(1.0)
-                    .offset(x: 0, y: -280)
-//                    .colorMultiply(Color.gray)
-                    .mask {
-                        Circle()
-                            .trim(from: 0.0, to: trimEnd) //trimEnd = 1 means 360 degree
-                            .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                            .foregroundColor(.gray)
-                            .frame(width: 120, height: 120)
-                            .padding(.all, 10)
-                            .offset(x: 280, y: 0)    //-90 degree时，x=280, y=0
-                            .opacity(0.6)
-                            .rotationEffect(.degrees(-90))
-                            .scaleEffect(x: -1, y: 1) //镜像反转 （水平翻转）
-                            
-                            .onChange(of: bgmSystem.currentTime) { newValue in
-                                
-                                trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
-                            }
-                    }
-                
-                    
-                Image("scorePan")
-                    .resizable()
-                    .padding(.all, 10)
-                    .frame(width: 150, height: 150)
-                    .offset(x: 0, y: -280)
-                
-                Text("\(scene.score)")
-                    .font(Font.custom("LilitaOne", size: 38))
-                    .foregroundStyle(
-                          LinearGradient(
-                            colors: [Color(hex: "#407800"), Color(hex: "#68A128")],  //#407800, #68A128
-                            startPoint: .leading,
-                            endPoint: .trailing
-                          )
-                    )
-                    .frame(width: 150, height: 150)
-                    .padding(.all, 10)
-                    .offset(x: 0, y: -270)
-                    .foregroundColor(Color(hex: "68A128"))
-                    .scaleEffect(scoreScale, anchor: .center)
-                    .animation(.default)
-                    .onChange(of: scene.score) { newValue in
-                        withAnimation(.easeOut(duration: 0.2)) {
-                            scoreScale = 1.2
-                        }
-                        withAnimation(.easeOut(duration: 0.2).delay(0.2)) {
-                            scoreScale = 0.9
-                        }
-                        withAnimation(.easeOut(duration: 0.2).delay(0.4)) {
-                            scoreScale = 1.0
-                        }
-                        
-                    }
+//                    .frame(width: 208, height: 208)
+//                    .offset(x: 0, y: -280)
+//
+//                Text("\(scene.score)")
+//                    .font(Font.custom("LilitaOne", size: 48))
+//                    .foregroundStyle(
+//                          LinearGradient(
+//                            colors: [Color(hex: "#407800"), Color(hex: "#68A128")],  //#407800, #68A128
+//                            startPoint: .leading,
+//                            endPoint: .trailing
+//                          )
+//                    )
+//                    .frame(width: 208, height: 208)
+//                    .padding(.all, 10)
+//                    .offset(x: 0, y: -270)
+//                    .foregroundColor(Color(hex: "68A128"))
+//                    .scaleEffect(scoreScale, anchor: .center)
+//                    .animation(.default)
+//                    .onChange(of: scene.score) { newValue in
+//                        withAnimation(.easeOut(duration: 0.2)) {
+//                            scoreScale = 1.2
+//                        }
+//                        withAnimation(.easeOut(duration: 0.2).delay(0.2)) {
+//                            scoreScale = 0.9
+//                        }
+//                        withAnimation(.easeOut(duration: 0.2).delay(0.4)) {
+//                            scoreScale = 1.0
+//                        }
+//
+//                    }
                 
                 
                 
@@ -216,28 +209,28 @@ struct SwiftUIView: View {
                 }
                 
             }
-            .onChange(of: scene.isContacted, perform: { newValue in  //发生碰撞
-                scene.runEatenEffect()
-                if note?.level == 1{
-                    scene.score += 1
-                } else if note?.level == 2 {
-                    scene.score += 2
-                } else if note?.level == 3 {
-                    scene.score += 5
-                }
-                
-                if note!.isTenuto == true {
-                    
-                }
-                if note!.isTenuto == false {
-                    //(eaten effect implemented in GiraffeScene)
-                    //remove leaf from the scene
-                    print("not a tenuto, remove immediately")
-                    
-                    scene.removeLeafNode()
-                    
-                }
-            })
+//            .onChange(of: scene.isContacted, perform: { newValue in  //发生碰撞
+//                scene.runEatenEffect()
+//                if note?.level == 1{
+//                    scene.score += 1
+//                } else if note?.level == 2 {
+//                    scene.score += 2
+//                } else if note?.level == 3 {
+//                    scene.score += 5
+//                }
+//
+//                if note!.isTenuto == true {
+//
+//                }
+//                if note!.isTenuto == false {
+//                    //(eaten effect implemented in GiraffeScene)
+//                    //remove leaf from the scene
+//                    print("not a tenuto, remove immediately")
+//
+//                    scene.removeLeafNode()
+//
+//                }
+//            })
             .onChange(of: bgmSystem.currentTime) { newValue in
                 
                 if newValue >= 15.0 && extraLightAdded == false {
@@ -255,8 +248,12 @@ struct SwiftUIView: View {
                     }
                     isShowProgressBar = false
                     print("curtime and note.endtime: ", newValue, note!.endTime)
+                    
+                    
                     noteIterator += 1
                     note = notes[noteIterator]
+                    
+                    
                     isLeafAdded = false
                 }
                 
