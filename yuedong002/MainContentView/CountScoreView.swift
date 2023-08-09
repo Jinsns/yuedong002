@@ -39,19 +39,26 @@ struct CountScoreView: View {
 
                         
                 VStack {
-                    Image("leaf")
-                        .foregroundColor(.white)
-                        .scaledToFit()
-                        .aspectRatio(contentMode: ContentMode.fit)
-                        .frame(width: 40)
-                        .offset(x: 0, y: 6)
-                        .padding(.top, 20)
+                    Rectangle()
+                      .foregroundColor(.clear)
+                      .frame(width: 36, height: 39)
+                      .background(
+                        Image("leaf")
+                          .resizable()
+                          .aspectRatio(contentMode: .fill)
+                          .frame(width: 36, height: 39)
+                          .clipped()
+                      )
  
-                    Text(" + \(scene.score)")
-                        .foregroundColor(.green)
-                        .font(.headline)
+                    Text(" +\(scene.score)")
+                        .font(Font.custom("Lilita One", size: 32))
+                        .kerning(0.64)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
+                        .frame(width: 57, height: 22, alignment: .center)
                         .offset(x: 0, y: -16)
-                        .padding(.bottom, 20)
+                        .padding(.top, 8)
+                        .padding(.trailing, 4)
                 }  //VStack of white circle containing a leaf and +finalScore
                 .background(
                     Circle()
@@ -97,8 +104,9 @@ struct CountScoreView: View {
                       .multilineTextAlignment(.center)
                       .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
                       .frame(width: 192, alignment: .center)
-                      .lineSpacing(8)   //调整行间距
+                      .lineSpacing(10)   //调整行间距
                 } //text VStack
+//                .padding(.top, 180)
                 .onAppear() {
                     let dNeckLength = Int(scene.score / 5)
                     neckLength = String(Int(neckLength)! + dNeckLength)
@@ -130,6 +138,7 @@ struct CountScoreView: View {
                 .padding(.bottom, 100)
 
             }
+            .offset(x: 0, y: 10)
                         
             
             

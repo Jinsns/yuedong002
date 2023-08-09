@@ -32,108 +32,130 @@ struct ShopView: View {
     let greenTextColor = Color(red: 0.59, green: 0.74, blue: 0.43)
     
     var body: some View {
-        VStack {
-            HStack(alignment: .center, spacing: 200) {
-                HStack {
-                    Button {
-                        print("pressed back button in shop")
-                        isShowShopView = false
-                        scene.moveCameraNodeAndNeckNodeToGamePosition()
-                    } label: {
-                        Image("AltArrowLeft")
-                            .frame(width: 25.05524, height: 25.05524)
-                        Text("返回")
-                            .font(Font.custom("DFPYuanW7-GB", size: 20))
-                            .kerning(0.4)
-                            .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                    }
-                }
-                
-                HStack(spacing: 4) {
-                    Text("1,443")
-                      .font(Font.custom("LilitaOne", size: 25.05524))
-                      .kerning(0.5011)
-                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                    Rectangle()
-                      .foregroundColor(.clear)
-                      .frame(width: 31, height: 33)
-    //                  .position(x:40.5, y:16.5)
-                      .background(
-                        Image("leaf")
-                          .resizable()
-                          .aspectRatio(contentMode: .fill)
-                          .frame(width: 31, height: 33)
-                          .clipped()
-                      )
-                }
+        ZStack {
+            VStack(alignment: .leading, spacing: 0) {
+                Rectangle()
+                    .foregroundColor(.black.opacity(0.4))
             }
-            .padding(.top, 80)
-            
-            Spacer()
+            .padding(0)
+            .cornerRadius(13)
+            .frame(width: 170, height: 696)
+            .offset(x: 104, y: 68)
+            .blur(radius: 10)
             
             VStack {
-                HStack(alignment: .center, spacing: 0) {
-                    HStack(alignment: .center, spacing: 0) {
+                HStack(alignment: .center, spacing: 200) {
+                    HStack {
                         Button {
-                            print("pressed shop")
-                            isMineOrShop = false
+                            print("pressed back button in shop")
+                            isShowShopView = false
+                            scene.moveCameraNodeAndNeckNodeToGamePosition()
                         } label: {
-                            Text("商店")
-                              .font(Font.custom("DFPYuanW9-GB", size: 16))
-                              .multilineTextAlignment(.center)
-                              .foregroundColor(!isMineOrShop ? .white : greenTextColor)
-                              .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
+                            Image("AltArrowLeft")
+                                .frame(width: 25.05524, height: 25.05524)
+                            Text("返回")
+                                .font(Font.custom("DFPYuanW7-GB", size: 20))
+                                .kerning(0.4)
+                                .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
                         }
-
-                        
                     }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 3)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                    .background(!isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
-                    .cornerRadius(9)
                     
-                    HStack(alignment: .center, spacing: 0) {
-                        Button {
-                            print("pressed mine")
-                            isMineOrShop = true
-                        } label: {
-                            Text("我的")
-                              .font(Font.custom("DFPYuanW9-GB", size: 16))
-                              .multilineTextAlignment(.center)
-//                              .foregroundColor(.white)
-                              .foregroundColor(isMineOrShop ? .white : greenTextColor)
-                              .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
-                        }
-
-                        
+                    HStack(spacing: 4) {
+                        Text("1,443")
+                          .font(Font.custom("LilitaOne", size: 25.05524))
+                          .kerning(0.5011)
+                          .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                        Rectangle()
+                          .foregroundColor(.clear)
+                          .frame(width: 31, height: 33)
+        //                  .position(x:40.5, y:16.5)
+                          .background(
+                            Image("leaf")
+                              .resizable()
+                              .aspectRatio(contentMode: .fill)
+                              .frame(width: 31, height: 33)
+                              .clipped()
+                          )
                     }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 3)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                    .background(isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
-                    .cornerRadius(9)
                 }
-                .padding(7)
-                .frame(width: 168, height: 48, alignment: .center)
-                .background(.white.opacity(0.6))
-                .cornerRadius(8)
+                .padding(.top, 80)
                 
-                if isMineOrShop {
-                    MyItems()
-                        .offset(x: 10)
-                } else {
-                    ShopItems(selectedItem: $selectedItem)
-                        .offset(x: 10)
-                }
+                Spacer()
                 
-                
-                
-                
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .top, spacing: -1.044) {
+                        HStack(alignment: .center, spacing: 0) {
+                            HStack(alignment: .center, spacing: 0) {
+                                Button {
+                                    print("pressed shop")
+                                    isMineOrShop = false
+                                } label: {
+                                    Text("商店")
+                                      .font(Font.custom("DFPYuanW9-GB", size: 16))
+                                      .multilineTextAlignment(.center)
+                                      .foregroundColor(!isMineOrShop ? .white : greenTextColor)
+                                      .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
+                                }
 
+                                
+                            }
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 3)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                            .background(!isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
+                            .cornerRadius(9)
+    //                        .cornerRadius(isMineOrShop ? 0 : 9)
+                            
+                            HStack(alignment: .center, spacing: 0) {
+                                Button {
+                                    print("pressed mine")
+                                    isMineOrShop = true
+                                } label: {
+                                    Text("我的")
+                                      .font(Font.custom("DFPYuanW9-GB", size: 16))
+                                      .multilineTextAlignment(.center)
+                                      .foregroundColor(isMineOrShop ? .white : greenTextColor)
+                                      .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
+                                }
+
+                                
+                            }
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 3)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                            .background(isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
+                            .cornerRadius(9)
+    //                        .cornerRadius(isMineOrShop ? 9 : 0)
+                            
+                        }
+                        .padding(7)
+                        .frame(width: 160, height: 48, alignment: .center)
+                        .background(.white.opacity(0.7))
+    //                    .background(.black)
+                        .cornerRadius(8)
+                    }
+                    .padding(0)
+                    .padding(.leading, 7.8)
+    //                .cornerRadius(10)
+                    
+                    
+                    if isMineOrShop {
+                        MyItems()
+                            .offset(x: 8, y: -8)
+    //                        .background(.black)
+                    } else {
+                        ShopItems(selectedItem: $selectedItem)
+                            .offset(x: 8, y: -8)
+                    }
+                    
+
+                }  //outer stack containing 商店，我的，items
+                .padding(0)
+                .cornerRadius(13)
+                .offset(x:100)
             }
-            .offset(x:100)
         }
+        
     }
     
 }
@@ -171,7 +193,7 @@ struct MyItems: View {
             }
             .padding(.horizontal, 28)
             .padding(.vertical, 15.41345)
-            .frame(width: 154, height: 65, alignment: .trailing)
+            .frame(width: 150, height: 60, alignment: .trailing)
             .background(Color(red: 0.41, green: 0.63, blue: 0.16))
             .cornerRadius(9)
             .overlay(
@@ -418,7 +440,7 @@ struct ShopItems: View {
             }
             .padding(.horizontal, 28)
             .padding(.vertical, 25.41345)
-            .frame(width: 154, height: 65, alignment: .trailing)
+            .frame(width: 150, height: 60, alignment: .trailing)
             .background(Color(red: 0.41, green: 0.63, blue: 0.16))
             .cornerRadius(9)
             .overlay(
