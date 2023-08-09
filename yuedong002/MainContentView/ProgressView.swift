@@ -17,24 +17,28 @@ struct ProgressView: View {
             Spacer()
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 22) // The base track of the progress bar
+                    // The base track of the progress bar
+                    RoundedRectangle(cornerRadius: 22)
                         .frame(width: geometry.size.width * 0.6, height: 10)
                         .foregroundColor(Color(red: 0.88, green: 1, blue: 0.8))
                     
-                    RoundedRectangle(cornerRadius: 22) // The animated progress bar
+                    // The animated progress bar
+                    RoundedRectangle(cornerRadius: 22)
                         .frame(width: geometry.size.width * 0.6 * progress, height: 10)
                         .foregroundColor(Color(red: 0.43, green: 0.65, blue: 0.3))
-                        .animation(.linear(duration: 4.0)) // Animate the progress bar
+//                        .animation(.linear(duration: 4.0)) // Animate the progress bar
                 }
             }
             Spacer()
-            .onAppear {
-//                startTimer()
-                withAnimation(.linear(duration: 4.0)) {
-                    progress = 1.0
-                }
-                
-            }
+//            .onAppear {
+////                startTimer()
+//                //progress should equal to
+//                //(bgmsystem.audioplayer.currentTime - starttime) / 4.0
+//                withAnimation(.linear(duration: 4.0)) {
+//                    progress = 1.0
+//                }
+//
+//            }
             .onDisappear() {
                 progress = 0.0
             }

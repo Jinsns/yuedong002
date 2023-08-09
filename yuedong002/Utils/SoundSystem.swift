@@ -68,7 +68,7 @@ class BgmSystem: ObservableObject {
             self.audioPlayer?.play()
         }
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             if self.isPlaying == true {
                 self.currentTime = self.audioPlayer!.currentTime  //之后的更新时间
                 //                    print("change currentTime to ", self.currentTime)
