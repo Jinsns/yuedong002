@@ -102,6 +102,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         //control rotation
         addNeckRotation()
         
+//        addExtraLight()  //only for testing
+        
         
     }
     
@@ -171,11 +173,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         //add a SCNPlane as the background
         let backgroundMaterial = SCNMaterial()
         backgroundMaterial.lightingModel = .constant
-        backgroundMaterial.diffuse.contents = UIImage(named: "gameBackgroundSourceImage") //3000 * 2000
-        let backgroundGeometry = SCNPlane(width: 60, height: 40)
+//        backgroundMaterial.diffuse.contents = UIImage(named: "gameBackgroundSourceImage") //3000 * 2000
+        backgroundMaterial.diffuse.contents = UIImage(named: "LongBackGround2") //3000 * 2000
+        let backgroundGeometry = SCNPlane(width: 60, height: 284.44)
         backgroundGeometry.materials = [backgroundMaterial]
         let backgroundNode = SCNNode(geometry: backgroundGeometry)
-        backgroundNode.position = SCNVector3(-10, 0, 0)
+//        backgroundNode.position = SCNVector3(-10, 0, 0)
+        backgroundNode.position = SCNVector3(-35, 114, 0)
         backgroundNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
         
 //        backgroundNode.categoryBitMask = LightType.onBackground
@@ -365,27 +369,52 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let omniLightNode1 = SCNNode()
         omniLightNode1.light = SCNLight()
         omniLightNode1.light?.type = SCNLight.LightType.omni
-        omniLightNode1.light?.color = UIColor(white: 1.0, alpha: 0.9)
-        omniLightNode1.position = SCNVector3Make(10, 5, 0)  //x大 屏幕外，y大 屏幕上，z大 屏幕左
+        omniLightNode1.light?.color = UIColor(white: 1.0, alpha: 1.0)
+//        omniLightNode1.light?.color =  UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
+        omniLightNode1.position = SCNVector3Make(10, 15, 0)  //x大 屏幕外，y大 屏幕上，z大 屏幕左
         omniLightNode1.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode1.light?.categoryBitMask = LightType.onNeck
-        omniLightNode1.light?.intensity = 1000
+        omniLightNode1.light?.intensity = 2000
         
         let omniLightNode2 = SCNNode()
         omniLightNode2.light = SCNLight()
         omniLightNode2.light?.type = SCNLight.LightType.omni
-        omniLightNode2.light?.color = UIColor(white: 1.0, alpha: 0.9)
-        omniLightNode2.position = SCNVector3(10, 5, -2)
+        omniLightNode2.light?.color = UIColor(white: 1.0, alpha: 1.0)
+//        omniLightNode2.light?.color = UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
+        omniLightNode2.position = SCNVector3(10, 5, -6)
         omniLightNode2.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode2.light?.categoryBitMask = LightType.onNeck
+        omniLightNode2.light?.intensity = 2500
 
         let omniLightNode3 = SCNNode()
         omniLightNode3.light = SCNLight()
         omniLightNode3.light?.type = SCNLight.LightType.omni
-        omniLightNode3.light?.color = UIColor(white: 1.0, alpha: 0.9)
-        omniLightNode3.position = SCNVector3(10, 5, 2)
+        omniLightNode3.light?.color = UIColor(white: 1.0, alpha: 1.0)
+        omniLightNode3.position = SCNVector3(10, 5, 6)
         omniLightNode3.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode3.light?.categoryBitMask = LightType.onNeck
+        omniLightNode3.light?.intensity = 2500
+        
+        let omniLightNode4 = SCNNode()
+        omniLightNode4.light = SCNLight()
+        omniLightNode4.light?.type = SCNLight.LightType.omni
+//        omniLightNode4.light?.color = UIColor(white: 1.0, alpha: 1.0)
+        omniLightNode4.light?.color = UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
+        omniLightNode4.position = SCNVector3(20, 20, 0)
+        omniLightNode4.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
+        omniLightNode4.light?.categoryBitMask = LightType.onNeck
+        omniLightNode4.light?.intensity = 4000
+        
+        let omniLightNode5 = SCNNode()
+        omniLightNode5.light = SCNLight()
+        omniLightNode5.light?.type = SCNLight.LightType.omni
+//        omniLightNode4.light?.color = UIColor(white: 1.0, alpha: 1.0)
+        omniLightNode5.light?.color = UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
+        omniLightNode5.position = SCNVector3(10, 5, 6)
+        omniLightNode5.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
+        omniLightNode5.light?.categoryBitMask = LightType.onNeck
+        omniLightNode5.light?.intensity = 4000
+        
         
         self.rootNode.addChildNode(omniLightNode1)
         self.rootNode.addChildNode(omniLightNode2)
@@ -394,20 +423,25 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func addExtraLight() {
-        self.backgroundNode?.geometry?.materials.first?.lightingModel = .phong    //change background material lignting model here.
+        self.backgroundNode?.geometry?.materials.first?.lightingModel = .phong  //change background material lignting model here.
         let extraLightNode = SCNNode()
         extraLightNode.light = SCNLight()
-        extraLightNode.light?.type = SCNLight.LightType.directional
-        extraLightNode.light?.color = UIColor(red: 0.97, green: 1, blue: 0.76, alpha: 0.2)
-        extraLightNode.light?.intensity = 600
-        extraLightNode.position = SCNVector3(0, -1, -20)
+        extraLightNode.light?.type = SCNLight.LightType.omni
+        extraLightNode.light?.color = UIColor(red: 0.89, green: 0.97, blue: 0.91, alpha: 1.0)  //green like
+        extraLightNode.light?.intensity = 700
+        extraLightNode.position = SCNVector3(30, -10, 0)
         extraLightNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         extraLightNode.light?.categoryBitMask = LightType.onBackground
-        var extraLightNode2 = SCNNode()
-        extraLightNode2 = extraLightNode.clone()
-        extraLightNode2.position = SCNVector3(0, 1, -20)
-        extraLightNode2.light?.categoryBitMask = LightType.onBackground
         self.rootNode.addChildNode(extraLightNode)
+        
+        let extraLightNode2 = SCNNode()
+        extraLightNode2.light = SCNLight()
+        extraLightNode2.light?.type = SCNLight.LightType.omni
+        extraLightNode2.light?.color = UIColor(red: 0.96, green: 1.0, blue: 0.75, alpha: 1.0) //yellow like
+        extraLightNode2.light?.intensity = 700
+        extraLightNode2.position = SCNVector3(30, 0, 0)
+        extraLightNode2.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
+        extraLightNode2.light?.categoryBitMask = LightType.onBackground
         self.rootNode.addChildNode(extraLightNode2)
     }
 

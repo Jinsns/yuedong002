@@ -185,6 +185,9 @@
 		3676894B2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */; };
 		3676894C2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */; };
 		3676894D2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */; };
+		3676894F2A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */; };
+		367689502A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */; };
+		367689512A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -394,6 +397,7 @@
 		367689422A83952200B3C6D4 /* eatLeaf.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeaf.dae; sourceTree = "<group>"; };
 		367689462A83960400B3C6D4 /* eatLeaf2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeaf2.dae; sourceTree = "<group>"; };
 		3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeafNoLight.dae; sourceTree = "<group>"; };
+		3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LongBackGround2.png; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -497,6 +501,7 @@
 				3676892E2A812F5100B3C6D4 /* DownTriangle.png */,
 				367689322A82389900B3C6D4 /* ArrowDown.png */,
 				367689362A8238A000B3C6D4 /* ArrowUp.png */,
+				3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -889,6 +894,7 @@
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
 				36027E3A2A7EC29D00A505BC /* save.png in Resources */,
 				365CF8062A6D67F90007A2CF /* head.dae in Resources */,
+				3676894F2A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */,
 				3698D5882A703D860003C037 /* giraffe0.dae in Resources */,
 				3676893F2A83915700B3C6D4 /* 吃叶子.dae in Resources */,
 				3696A5F52A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
@@ -944,6 +950,7 @@
 				36027E152A7E534400A505BC /* PopupWindow.mp3 in Resources */,
 				3698D58D2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				36027DF12A79545100A505BC /* GetScore.mp3 in Resources */,
+				367689502A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */,
 				3698D5752A6E908F0003C037 /* leaf.png in Resources */,
 				366577232A46B723008C166D /* pianoB.mp3 in Resources */,
 				365121D12A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
@@ -1021,6 +1028,7 @@
 				36027E162A7E534400A505BC /* PopupWindow.mp3 in Resources */,
 				3698D58E2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				36027DF22A79545100A505BC /* GetScore.mp3 in Resources */,
+				367689512A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */,
 				3698D5762A6E908F0003C037 /* leaf.png in Resources */,
 				366577242A46B723008C166D /* pianoB.mp3 in Resources */,
 				365121D22A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
