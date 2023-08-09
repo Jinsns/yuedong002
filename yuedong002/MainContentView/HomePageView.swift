@@ -19,6 +19,8 @@ DFPYuanW9
 
 
 struct HomePageView: View {
+    @Binding var neckLength: String
+    
     @State var isShowAirpodsReminder = false
     @State var isShowCorrectingPositionView = false
     @State var isShowNodToEatView = true
@@ -79,7 +81,7 @@ struct HomePageView: View {
                         HStack(alignment: .center, spacing: 8) {  //NeckIcon  123cm
                             Image("NeckIcon")
                             .frame(width: 32, height: 32)
-                            Text("123")
+                            Text("\(neckLength)")
                               .font(Font.custom("DFPYuanW9-GB", size: 20))
                               .foregroundColor(Color(red: 0.32, green: 0.51, blue: 0.1))
                             Text("cm")
@@ -195,7 +197,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(scene: GiraffeScene())
+        HomePageView(neckLength: .constant("100"), scene: GiraffeScene())
     }
 }
 

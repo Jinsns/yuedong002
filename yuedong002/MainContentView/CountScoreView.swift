@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CountScoreView: View {
+    @Binding var neckLength: String
 //    @Binding var finalScore: Int
     @ObservedObject var scene: GiraffeScene
     
@@ -90,7 +91,7 @@ struct CountScoreView: View {
                         .font(Font.custom("DFPYuanW9-GB", size: 25.05524))
                         .kerning(0.5011)
                         .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                    Text("现在我有128cm长的脖子\n可以看到日出风景啦")
+                    Text("现在我有\(neckLength)cm长的脖子\n可以看到日出风景啦")
                       .font(Font.custom("DFPYuanW7-GB", size: 16))
                       .kerning(0.64)
                       .multilineTextAlignment(.center)
@@ -98,6 +99,10 @@ struct CountScoreView: View {
                       .frame(width: 192, alignment: .center)
                       .lineSpacing(8)   //调整行间距
                 } //text VStack
+                .onAppear() {
+                    let dNeckLength = Int(scene.score / 5)
+                    neckLength = String(Int(neckLength)! + dNeckLength)
+                }
                 
                 
                 
@@ -137,7 +142,7 @@ struct CountScoreView: View {
 
 struct CountScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        CountScoreView(scene: GiraffeScene(), isInHomePage: .constant(false))
+        CountScoreView(neckLength: .constant("100"), scene: GiraffeScene(), isInHomePage: .constant(false))
     }
 }
 
