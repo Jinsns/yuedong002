@@ -19,6 +19,7 @@ DFPYuanW9
 
 
 struct HomePageView: View {
+    @Binding var totalLeaves: String
     @Binding var neckLength: String
     
     @State var isShowAirpodsReminder = false
@@ -186,7 +187,7 @@ struct HomePageView: View {
         }
         
         if isShowShopView {
-            ShopView(isShowShopView: $isShowShopView, scene: scene)
+            ShopView(totalLeaves: $totalLeaves, isShowShopView: $isShowShopView, scene: scene)
         }
         
         
@@ -197,7 +198,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(neckLength: .constant("100"), scene: GiraffeScene())
+        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), scene: GiraffeScene())
     }
 }
 

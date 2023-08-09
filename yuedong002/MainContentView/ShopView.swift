@@ -23,6 +23,7 @@ var shopItems = [
 ]
 
 struct ShopView: View {
+    @Binding var totalLeaves: String
     @Binding var isShowShopView: Bool
     @State var isMineOrShop = true
     @State var selectedItem = 1
@@ -33,15 +34,15 @@ struct ShopView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 0) {
-                Rectangle()
-                    .foregroundColor(.black.opacity(0.4))
-            }
-            .padding(0)
-            .cornerRadius(13)
-            .frame(width: 170, height: 696)
-            .offset(x: 104, y: 68)
-            .blur(radius: 10)
+//            VStack(alignment: .leading, spacing: 0) {
+//                Rectangle()
+//                    .foregroundColor(.black.opacity(0.4))
+//            }
+//            .padding(0)
+//            .cornerRadius(13)
+//            .frame(width: 170, height: 696)
+//            .offset(x: 104, y: 68)
+//            .blur(radius: 10)
             
             VStack {
                 HStack(alignment: .center, spacing: 200) {
@@ -61,7 +62,7 @@ struct ShopView: View {
                     }
                     
                     HStack(spacing: 4) {
-                        Text("1,443")
+                        Text("\(totalLeaves)")
                           .font(Font.custom("LilitaOne", size: 25.05524))
                           .kerning(0.5011)
                           .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
@@ -459,6 +460,6 @@ struct ShopItems: View {
 
 struct ShopView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopView(isShowShopView: .constant(true), scene: GiraffeScene())
+        ShopView(totalLeaves: .constant("1443"), isShowShopView: .constant(true), scene: GiraffeScene())
     }
 }

@@ -228,6 +228,17 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float, level: Int) {
         
+//        guard let scene = SCNScene(named: "eatLeafNoLight") else {
+//            print("Failed to load 'eatLeafNoLight'")
+//            return
+//        }
+//        
+//        guard let leafNode = scene.rootNode.childNodes.first else {
+//            print("Failed to find the first child node in 'eatLeafNoLight'")
+//            return
+//        }
+        
+        
         let leafMaterial = SCNMaterial()
         if level == 1 {
             leafMaterial.diffuse.contents = UIImage(named: "leaf")
@@ -236,12 +247,12 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         } else if level == 3 {
             leafMaterial.diffuse.contents = UIImage(named: "PhotoIcon")
         }
-        
+
         leafMaterial.lightingModel = .constant  //not affected by light
 
         let leafGeometry = SCNPlane(width: 1.0, height: 1.0)
         leafGeometry.materials = [leafMaterial]
-        
+
         let leafNode = SCNNode(geometry: leafGeometry)
         
         leafNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)
@@ -250,6 +261,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         leafNode.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
         leafNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
+//        leafNode.eulerAngles = SCNVector3(0, 0, 0)
         leafNode.name = "leaf"
         
         //appear audio setting
@@ -268,36 +280,62 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.leafNode = leafNode
         self.leafNode?.runAction(SCNAction.playAudio(self.leavesAppearAudioSource, waitForCompletion: false))
         
-        //SCNtext +1
-        let textMaterial = SCNMaterial()
-        textMaterial.diffuse.contents = UIColor(red: 0.41, green: 0.63, blue: 0.16, alpha: 0.38)
-        let textGeometry = SCNText(string: "+1", extrusionDepth: 0.2)
-//        textGeometry.font = UIFont(name: "DFPYuanW9", size: 1.0)
-        textGeometry.materials = [textMaterial]
+//        //SCNtext +1
+//        let textMaterial = SCNMaterial()
+//        textMaterial.diffuse.contents = UIColor(red: 0.41, green: 0.63, blue: 0.16, alpha: 0.38)
+//        let textGeometry = SCNText(string: "+1", extrusionDepth: 0.2)
+////        textGeometry.font = UIFont(name: "DFPYuanW9", size: 1.0)
+//        textGeometry.materials = [textMaterial]
+//
+//        let textNode = SCNNode(geometry: textGeometry)
+//        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
+//        let textXPosition = Float((self.leafNode?.position.x)!) + 0.04
+//        let textYPosition = Float((self.leafNode?.position.y)!) + 0.04
+//        let textZPosition = Float(4.0)
+//        textNode.position = SCNVector3(x: textXPosition, y: textYPosition, z: textZPosition)
+//
+//        textNode.opacity = 0.0
+//        let fadeInAction = SCNAction.fadeOpacity(to: 0.8, duration: 0.4)
+//        let fadeOutAction = SCNAction.fadeOpacity(to: 0.0, duration: 0.4)
+//        self.textActionEffectGroup = SCNAction.sequence([fadeInAction, fadeOutAction])
+////        textNode.runAction(actionEffectGroup)  //when eat
+//
+//        self.rootNode.addChildNode(textNode)  //add +1 text into scene
+//        self.textNode = textNode
         
-        let textNode = SCNNode(geometry: textGeometry)
-        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
-        let textXPosition = Float((self.leafNode?.position.x)!) + 0.04
-        let textYPosition = Float((self.leafNode?.position.y)!) + 0.04
-        let textZPosition = Float(4.0)
-        textNode.position = SCNVector3(x: textXPosition, y: textYPosition, z: textZPosition)
         
-        textNode.opacity = 0.0
-        let fadeInAction = SCNAction.fadeOpacity(to: 0.8, duration: 0.4)
-        let fadeOutAction = SCNAction.fadeOpacity(to: 0.0, duration: 0.4)
-        self.textActionEffectGroup = SCNAction.sequence([fadeInAction, fadeOutAction])
-//        textNode.runAction(actionEffectGroup)  //when eat
-        
-        self.rootNode.addChildNode(textNode)  //add +1 text into scene
-        self.textNode = textNode
-        
-        
+    }
+    
+    func loadLeafAnimation() {
+        var animationGroups: [CAAnimation] = []
+        if let url = Bundle.main.url(forResource: "eatLeafNoLight", withExtension: "dae") {
+            let sceneSource = SCNSceneSource(url: url, options: [:])
+            let animationIDs = sceneSource?.identifiersOfEntries(withClass: CAAnimation.self)
+            var maxDuration: CFTimeInterval = 0.0
+            if let animations = animationIDs {
+                for item in animations {
+                    print("animation1: \(item)")
+                    if let ani = sceneSource?.entryWithIdentifier(item, withClass: CAAnimation.self) {
+                        maxDuration = max(maxDuration, ani.duration)
+                        animationGroups.append(ani)
+                    }
+                }
+            }
+            
+            let group = CAAnimationGroup()
+            group.animations = animationGroups
+            group.duration = maxDuration
+            group.repeatCount = MAXFLOAT
+            group.autoreverses = false
+            self.leafNode?.addAnimation(group, forKey: "leafEatenAnimation")
+            
+        }
     }
     
     func removeLeafNode() {
         print("parent of leaf: ", self.leafNode!.parent)
         self.leafNode!.removeFromParentNode()
-        self.textNode!.removeFromParentNode()
+//        self.textNode!.removeFromParentNode()
     }
 
     func changeLeafNodePosition() {
@@ -316,7 +354,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func runEatenEffect() {
-        self.textNode?.runAction(self.textActionEffectGroup) //+1 appear and disappear
+//        self.textNode?.runAction(self.textActionEffectGroup) //+1 appear and disappear
+//        loadLeafAnimation()
         self.leafNode?.runAction(SCNAction.playAudio(self.leavesEatenAudioSource, waitForCompletion: false))
     }
 

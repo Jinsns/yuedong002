@@ -173,6 +173,18 @@
 		3676893B2A829C2700B3C6D4 /* ScorePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3676893A2A829C2700B3C6D4 /* ScorePanView.swift */; };
 		3676893C2A829C2700B3C6D4 /* ScorePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3676893A2A829C2700B3C6D4 /* ScorePanView.swift */; };
 		3676893D2A829C2700B3C6D4 /* ScorePanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3676893A2A829C2700B3C6D4 /* ScorePanView.swift */; };
+		3676893F2A83915700B3C6D4 /* 吃叶子.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676893E2A83915600B3C6D4 /* 吃叶子.dae */; };
+		367689402A83915700B3C6D4 /* 吃叶子.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676893E2A83915600B3C6D4 /* 吃叶子.dae */; };
+		367689412A83915700B3C6D4 /* 吃叶子.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676893E2A83915600B3C6D4 /* 吃叶子.dae */; };
+		367689432A83952200B3C6D4 /* eatLeaf.dae in Resources */ = {isa = PBXBuildFile; fileRef = 367689422A83952200B3C6D4 /* eatLeaf.dae */; };
+		367689442A83952200B3C6D4 /* eatLeaf.dae in Resources */ = {isa = PBXBuildFile; fileRef = 367689422A83952200B3C6D4 /* eatLeaf.dae */; };
+		367689452A83952200B3C6D4 /* eatLeaf.dae in Resources */ = {isa = PBXBuildFile; fileRef = 367689422A83952200B3C6D4 /* eatLeaf.dae */; };
+		367689472A83960400B3C6D4 /* eatLeaf2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 367689462A83960400B3C6D4 /* eatLeaf2.dae */; };
+		367689482A83960400B3C6D4 /* eatLeaf2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 367689462A83960400B3C6D4 /* eatLeaf2.dae */; };
+		367689492A83960400B3C6D4 /* eatLeaf2.dae in Resources */ = {isa = PBXBuildFile; fileRef = 367689462A83960400B3C6D4 /* eatLeaf2.dae */; };
+		3676894B2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */; };
+		3676894C2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */; };
+		3676894D2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -378,6 +390,10 @@
 		367689322A82389900B3C6D4 /* ArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowDown.png; sourceTree = "<group>"; };
 		367689362A8238A000B3C6D4 /* ArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArrowUp.png; sourceTree = "<group>"; };
 		3676893A2A829C2700B3C6D4 /* ScorePanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePanView.swift; sourceTree = "<group>"; };
+		3676893E2A83915600B3C6D4 /* 吃叶子.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "吃叶子.dae"; sourceTree = "<group>"; };
+		367689422A83952200B3C6D4 /* eatLeaf.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeaf.dae; sourceTree = "<group>"; };
+		367689462A83960400B3C6D4 /* eatLeaf2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeaf2.dae; sourceTree = "<group>"; };
+		3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeafNoLight.dae; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -500,6 +516,10 @@
 		365CF8002A6D67C70007A2CF /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				367689422A83952200B3C6D4 /* eatLeaf.dae */,
+				367689462A83960400B3C6D4 /* eatLeaf2.dae */,
+				3676893E2A83915600B3C6D4 /* 吃叶子.dae */,
+				3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */,
 				36027E0B2A7E33B100A505BC /* 单个长颈鹿.dae */,
 				365121CF2A74EFCC0071D1C1 /* rotatingCube.dae */,
 				3698D5872A703D860003C037 /* giraffe0.dae */,
@@ -816,6 +836,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36027DF02A79545100A505BC /* GetScore.mp3 in Resources */,
+				3676894B2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */,
 				36027E0C2A7E33B100A505BC /* 单个长颈鹿.dae in Resources */,
 				367689232A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				36EC1E142A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
@@ -869,14 +890,17 @@
 				36027E3A2A7EC29D00A505BC /* save.png in Resources */,
 				365CF8062A6D67F90007A2CF /* head.dae in Resources */,
 				3698D5882A703D860003C037 /* giraffe0.dae in Resources */,
+				3676893F2A83915700B3C6D4 /* 吃叶子.dae in Resources */,
 				3696A5F52A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				365CF7FD2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
 				3676892B2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */,
 				366576E12A46B6C6008C166D /* Assets.xcassets in Resources */,
+				367689472A83960400B3C6D4 /* eatLeaf2.dae in Resources */,
 				3698D58C2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				3696A5E62A756CEE00B59DCB /* PhotoIcon.png in Resources */,
 				366577192A46B723008C166D /* pianoE.mp3 in Resources */,
 				3665771C2A46B723008C166D /* pianoG.mp3 in Resources */,
+				367689432A83952200B3C6D4 /* eatLeaf.dae in Resources */,
 				36027E082A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */,
 				36027E142A7E534400A505BC /* PopupWindow.mp3 in Resources */,
@@ -903,6 +927,7 @@
 				368726E02A79397D007F859C /* Overall_Dialog.mp3 in Resources */,
 				36027E0D2A7E33B100A505BC /* 单个长颈鹿.dae in Resources */,
 				366577202A46B723008C166D /* pianoC.mp3 in Resources */,
+				367689442A83952200B3C6D4 /* eatLeaf.dae in Resources */,
 				3696A5EB2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				367689382A8238A000B3C6D4 /* ArrowUp.png in Resources */,
 				3665771D2A46B723008C166D /* pianoG.mp3 in Resources */,
@@ -926,7 +951,9 @@
 				3696A5FC2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				3676891C2A80D90300B3C6D4 /* sunglasses.png in Resources */,
 				365CF7FE2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
+				367689402A83915700B3C6D4 /* 吃叶子.dae in Resources */,
 				366577112A46B723008C166D /* pianoD.mp3 in Resources */,
+				3676894C2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */,
 				368726E82A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
 				36027E2E2A7EAF8B00A505BC /* shutter.png in Resources */,
 				36027DF52A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
@@ -949,6 +976,7 @@
 				368726FC2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3696A5EF2A7628D900B59DCB /* EarthIcon.png in Resources */,
 				368726F42A7939C7007F859C /* BGM_HomepageAndCamera.mp3 in Resources */,
+				367689482A83960400B3C6D4 /* eatLeaf2.dae in Resources */,
 				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
@@ -976,6 +1004,7 @@
 				368726E12A79397D007F859C /* Overall_Dialog.mp3 in Resources */,
 				36027E0E2A7E33B100A505BC /* 单个长颈鹿.dae in Resources */,
 				366577212A46B723008C166D /* pianoC.mp3 in Resources */,
+				367689452A83952200B3C6D4 /* eatLeaf.dae in Resources */,
 				3696A5EC2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				367689392A8238A000B3C6D4 /* ArrowUp.png in Resources */,
 				3665771E2A46B723008C166D /* pianoG.mp3 in Resources */,
@@ -999,7 +1028,9 @@
 				3696A5FD2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				3676891D2A80D90300B3C6D4 /* sunglasses.png in Resources */,
 				365CF7FF2A6D0EF10007A2CF /* pianoA.mp3 in Resources */,
+				367689412A83915700B3C6D4 /* 吃叶子.dae in Resources */,
 				366577122A46B723008C166D /* pianoD.mp3 in Resources */,
+				3676894D2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */,
 				368726E92A793997007F859C /* Shop_BuyItBtn.mp3 in Resources */,
 				36027E2F2A7EAF8B00A505BC /* shutter.png in Resources */,
 				36027DF62A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
@@ -1022,6 +1053,7 @@
 				368726FD2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3696A5F02A7628D900B59DCB /* EarthIcon.png in Resources */,
 				368726F52A7939C7007F859C /* BGM_HomepageAndCamera.mp3 in Resources */,
+				367689492A83960400B3C6D4 /* eatLeaf2.dae in Resources */,
 				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,

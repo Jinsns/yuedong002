@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CountScoreView: View {
     @Binding var neckLength: String
+    @State var dNeckLength: Int = 0
+    @Binding var totalLeaves: String
+    @State var dLeaves: Int = 1443
 //    @Binding var finalScore: Int
     @ObservedObject var scene: GiraffeScene
     
@@ -50,12 +53,12 @@ struct CountScoreView: View {
                           .clipped()
                       )
  
-                    Text(" +\(scene.score)")
+                    Text("+\(dLeaves)")
                         .font(Font.custom("Lilita One", size: 32))
                         .kerning(0.64)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
-                        .frame(width: 57, height: 22, alignment: .center)
+                        .frame(width: 100, height: 22, alignment: .center)  //宽度能容纳四位数
                         .offset(x: 0, y: -16)
                         .padding(.top, 8)
                         .padding(.trailing, 4)
@@ -108,7 +111,9 @@ struct CountScoreView: View {
                 } //text VStack
 //                .padding(.top, 180)
                 .onAppear() {
-                    let dNeckLength = Int(scene.score / 5)
+                    dLeaves = scene.score
+                    totalLeaves = String(Int(totalLeaves)! + dLeaves)
+                    dNeckLength = Int(scene.score / 5)
                     neckLength = String(Int(neckLength)! + dNeckLength)
                 }
                 
@@ -151,7 +156,7 @@ struct CountScoreView: View {
 
 struct CountScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        CountScoreView(neckLength: .constant("100"), scene: GiraffeScene(), isInHomePage: .constant(false))
+        CountScoreView(neckLength: .constant("100"), totalLeaves: .constant("1443"), scene: GiraffeScene(), isInHomePage: .constant(false))
     }
 }
 

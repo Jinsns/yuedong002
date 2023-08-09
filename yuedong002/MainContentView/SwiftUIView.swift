@@ -35,6 +35,7 @@ var noteIterator = 0
 
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: String = "100"
+    @AppStorage("totalLeaves") var totalLeaves: String = "0"
     
     @State var isInHomePage = true
     @State var isGaming = false
@@ -65,14 +66,14 @@ struct SwiftUIView: View {
         ZStack{
             
             SceneView(
-                scene: scene
-//                options: [.allowsCameraControl]
+                scene: scene,
+                options: [.allowsCameraControl]
             )
                 .ignoresSafeArea()
             
             
             if isInHomePage {
-                HomePageView(neckLength: $neckLength, scene: scene)
+                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, scene: scene)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
                         soundEffectSystem.prepareToPlay()
@@ -206,7 +207,7 @@ struct SwiftUIView: View {
                 }
             })
             .fullScreenCover(isPresented: $isShowCountScoreView, content: {
-                CountScoreView(neckLength: $neckLength, scene: scene, isInHomePage: $isInHomePage)
+                CountScoreView(neckLength: $neckLength, totalLeaves: $totalLeaves, scene: scene, isInHomePage: $isInHomePage)
                     .onAppear(){
                         print("countscoreview appear")
                         bgmSystem.stop()
