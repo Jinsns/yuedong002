@@ -8,25 +8,26 @@
 import SwiftUI
 import SceneKit
 
-//struct LeafInGame: View {
-//    var scene = GiraffeScene()
-//    var body: some View {
-//        ZStack {
+struct LeafInGame: View {
+    var scene = GiraffeScene()
+    var body: some View {
+        ZStack {
 //            SceneView(scene: scene)
 //                .ignoresSafeArea()
 //            leaf1(leafPosition: .constant("fore"), leafLevel: .constant(1))
-//        }
-//
-//    }
-//}
-//
-//struct LeafInGame_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//
-//        LeafInGame()
-//    }
-//}
+            Rectangle()
+        }
+
+    }
+}
+
+struct LeafInGame_Previews: PreviewProvider {
+
+    static var previews: some View {
+
+        LeafInGame()
+    }
+}
 
 
 struct leaf1: View {

@@ -49,6 +49,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     private var neckNode: SCNNode?
     private var backgroundNode: SCNNode?
+    private var cloudNode: SCNNode?
     
     private var KAnimationKey: String = "Animation"
     
@@ -138,11 +139,22 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func moveCameraNodeSmoothly(newPosition: SCNVector3) {
+        //originalposition of cloud
+        //cloudNode.position = SCNVector3(1, 9.4, 0)
+        var cloudNewPositionY: Float = 9.4
+        if newPosition.y == 8.0 {
+            cloudNewPositionY = 7.4//down to the border between two world
+        } else if newPosition.y <= 2.0 {
+            cloudNewPositionY = 9.4   //back to originalPosition
+        }
+        
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = newPosition
+        self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
         SCNTransaction.commit()
     }
+    
     
     func moveCameraNodeAndNeckNodeToShopPosition() {
         SCNTransaction.begin()
@@ -204,9 +216,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             let cloudGeometry = SCNPlane(width: desiredPlaneWidth, height: desiredPlaneHeight)
             cloudGeometry.materials = [cloudMaterial]
             let cloudNode = SCNNode(geometry: cloudGeometry)
-            cloudNode.position = SCNVector3(1, 7.4, 0)
+            cloudNode.position = SCNVector3(1, 9.4, 0)
             cloudNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
             self.rootNode.addChildNode(cloudNode)
+            self.cloudNode = cloudNode
         }
         
         
@@ -214,19 +227,46 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        guard let scene = SCNScene(named: "giraffe0.dae") else {
+        guard let scene = SCNScene(named: "长颈鹿0810-2.dae") else {
             print("Failed to load 'giraffe0.dae'")
             return
         }
-        guard let neckNode = scene.rootNode.childNodes.first else {
-            print("Failed to find the first child node in 'giraffe0.dae'")
-            return
+        
+        print("scene.rootNode.childNodes: ", scene.rootNode.childNodes)
+        let giraffeNode10 = scene.rootNode.childNodes.first!
+        for childNode in giraffeNode10.childNodes {
+            print("子节点的名称：", childNode.name ?? "无")
+            print("子节点的类型：", type(of: childNode))
         }
+//        print("giraffeNode childnodes1: ", giraffeNode10.childNodes.first?.childNodes.first)
+//        print("giraffeNode childnodes2: ", giraffeNode10.childNodes.first?.childNodes.last)
+        
+        var giraffeNode = SCNNode()
+        
+//        let headNode = giraffeNode10.childNode(withName: "鹿", recursively: true)!
+//        print("lu added")
+//        let headNodeMaterial = SCNMaterial()
+//        headNodeMaterial.diffuse.contents = UIImage(named: "giraffeHeadSkin")
+//        headNode.geometry?.materials = [headNodeMaterial]
+//
+//
+//        let neckNode = giraffeNode10.childNode(withName: "脖子", recursively: true)!
+//        print("bozi added")
+//        let neckNodeMaterial = SCNMaterial()
+//        neckNodeMaterial.diffuse.contents = UIImage(named: "giraffeNeckSkin")
+//        neckNode.geometry?.materials = [neckNodeMaterial]
+        
+
+        
+//        giraffeNode10.geometry?.materials = [neckNodeMaterial]
         
         // 根据需要对脖子模型进行缩放和位置调整
-//        neckNode.scale = SCNVector3(0.2, 0.2, 1.0)   //缩放
-        neckNode.position = SCNVector3(0, -2.4, 0.2) // 设置位置，根据需要调整
-//        neckNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
+        giraffeNode10.scale = SCNVector3(0.8, 1.0, 0.8)   //缩放
+        giraffeNode10.position = SCNVector3(0, -2.4, 0.3) // 设置位置，根据需要调整
+        giraffeNode10.eulerAngles = SCNVector3(-Float.pi / 2, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
+        
+        
+        
 //        neckNode.orientation = SCNVector4(0, 1, 0, -Float.pi / 2) // 设置旋转角度，根据需要调整
 //        let rotateAction = SCNAction.rotateBy(x: 0, y: -CGFloat.pi / 2, z: 0, duration: 0)
 //        neckNode.runAction(rotateAction)
@@ -241,14 +281,14 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        neckNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: SCNBox(width: CGFloat(neckSize.x), height: CGFloat(neckSize.y), length: CGFloat(neckSize.z), chamferRadius: 0.0), options: nil))
         
         //line below creates more accurate physics body than the line above, with more computation costs
-        neckNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .static, can't collide
-        neckNode.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
-        neckNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
-        neckNode.name = "neck"
-        neckNode.categoryBitMask = LightType.onNeck
-        neckNode.geometry?.materials.first?.lightingModel = .phong
-        self.rootNode.addChildNode(neckNode)
-        self.neckNode = neckNode
+        giraffeNode10.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .statgiraffecan't collide
+        giraffeNode10.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
+        giraffeNode10.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
+        giraffeNode10.name = "neck"
+        giraffeNode10.categoryBitMask = LightType.onNeck
+        giraffeNode10.geometry?.materials.first?.lightingModel = .constant
+        self.rootNode.addChildNode(giraffeNode10)
+        self.neckNode = giraffeNode10
         
     
     }
@@ -277,8 +317,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
 
         leafMaterial.lightingModel = .constant  //not affected by light
-        leafMaterial.transparency = 0.5
-
+        leafMaterial.transparency = 0.6
         let leafGeometry = SCNPlane(width: 1.6, height: 1.6)
         leafGeometry.materials = [leafMaterial]
 

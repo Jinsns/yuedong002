@@ -29,12 +29,19 @@ struct CountScoreView: View {
     
     var body: some View {
         ZStack{
-            Image("songEnd")
+            
+            Image("SongEndGiraffe")
+                .resizable()
+                .scaledToFit()
+            
+            Image("SongEndBG")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
 //                .padding(.horizontal, 14)
 //                .padding(.trailing, 10)
+            
+            
             
             
             
@@ -94,7 +101,7 @@ struct CountScoreView: View {
             
             
             
-            VStack(spacing: 60){
+            VStack(spacing: 40){
                 Spacer()
                 VStack(alignment: .center, spacing: 23) {
                     Text("哦哦～脖子长度+\(Int(scene.score / 5))cm")

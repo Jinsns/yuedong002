@@ -33,7 +33,7 @@ struct ShopView: View {
     let greenTextColor = Color(red: 0.59, green: 0.74, blue: 0.43)
     
     var body: some View {
-        ZStack {
+        VStack {
 //            VStack(alignment: .leading, spacing: 0) {
 //                Rectangle()
 //                    .foregroundColor(.black.opacity(0.4))
@@ -46,14 +46,14 @@ struct ShopView: View {
             
             VStack {
                 HStack(alignment: .center, spacing: 200) {
-                    HStack {
+                    HStack(spacing: 2) {
                         Button {
                             print("pressed back button in shop")
                             isShowShopView = false
                             scene.moveCameraNodeAndNeckNodeToGamePosition()
                         } label: {
-                            Image("AltArrowLeft")
-                                .frame(width: 25.05524, height: 25.05524)
+                            Image("backFromShop")
+                                .frame(width: 6.26382, height: 12.94523)
                             Text("返回")
                                 .font(Font.custom("DFPYuanW7-GB", size: 20))
                                 .kerning(0.4)
@@ -79,12 +79,16 @@ struct ShopView: View {
                           )
                     }
                 }
-                .padding(.top, 80)
+                .padding(.top, 60)
                 
+            }
+            
+            Spacer()
+            
+            HStack(alignment: .center) {
                 Spacer()
-                
-                VStack(alignment: .leading, spacing: 0) {
-                    HStack(alignment: .top, spacing: -1.044) {
+                VStack(alignment: .trailing, spacing: 0) {
+                    HStack(alignment: .center , spacing: -1.044) {
                         HStack(alignment: .center, spacing: 0) {
                             HStack(alignment: .center, spacing: 0) {
                                 Button {
@@ -151,10 +155,13 @@ struct ShopView: View {
                     
 
                 }  //outer stack containing 商店，我的，items
-                .padding(0)
+//                .padding(0)
                 .cornerRadius(13)
-                .offset(x:100)
+                .padding(.trailing, 20)
+    //                .offset(x:100, y: -10)
+    //                .scaleEffect(<#T##scale: CGSize##CGSize#>)
             }
+            
         }
         
     }
@@ -186,27 +193,38 @@ struct MyItems: View {
             Spacer()
             
             HStack(alignment: .center, spacing: 7.33974) {
-                Text("就它！")
-                  .font(Font.custom("DFPYuanW9-GB", size: 24))
-                  .kerning(2.88)
-                  .multilineTextAlignment(.center)
-                  .foregroundColor(.white)
+                Button {
+                    print("pressed jiu ta")
+                } label: {
+                    Text("就它!")
+                      .font(Font.custom("DFPYuanW9-GB", size: 24))
+                      .kerning(2.88)
+                      .padding(.leading, 1.8)
+                      .multilineTextAlignment(.center)
+                      .foregroundColor(.white)
+                }
+
+                
             }
             .padding(.horizontal, 28)
             .padding(.vertical, 15.41345)
-            .frame(width: 150, height: 60, alignment: .trailing)
+            .frame(width: 140, height: 60, alignment: .center)
             .background(Color(red: 0.41, green: 0.63, blue: 0.16))
             .cornerRadius(9)
-            .overlay(
-              RoundedRectangle(cornerRadius: 9)
-                .inset(by: 0.52)
-                .stroke(Color(red: 0.41, green: 0.63, blue: 0.16), lineWidth: 1.04)
-            )
+            .offset(x: -4)
+//            .overlay(
+//              RoundedRectangle(cornerRadius: 9)
+//                .inset(by: 0.52)
+//                .stroke(Color(red: 0.41, green: 0.63, blue: 0.16), lineWidth: 1.04)
+//                .offset(x: -8)
+//
+//            )
         }
         .padding(.horizontal, 0)
         .padding(.vertical, 25.05524)
         .frame(width: 168, height: 650, alignment: .top)
-        .background(.white.opacity(0.6))
+//        .background(.black.opacity(0.6))
+        .background(Image("blurredbg"))
         .cornerRadius(8)
         
     }

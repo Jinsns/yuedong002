@@ -253,7 +253,10 @@ struct ShutterView: View {
             HStack {
                 Button {
                     print("pressed shutter button")
-                    isShowSnapEffect = true
+                    withAnimation(.linear(duration: 0.6)) {
+                        isShowSnapEffect = true
+                    }
+                    
                 } label: {
                     Image("shutter")
                     .frame(width: 66, height: 66)
@@ -283,6 +286,7 @@ struct SnapEffectView: View {
                         .blendMode(.destinationOut)
                         .padding(.bottom, 50)
                 }
+                .offset(x: 0, y: -10)
                     
                 
             

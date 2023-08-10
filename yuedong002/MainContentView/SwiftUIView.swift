@@ -79,9 +79,10 @@ struct SwiftUIView: View {
     @State var isLeafAdded = false
     @State var leafPosition: String = "fore"
     @State var leafLevel: Int = 1
+    @State var leafChangingScale = 1.0
     
-    @State var isShowProgressBar = false
-    @State private var progress: Double = 0.0
+//    @State var isShowProgressBar = false
+//    @State private var progress: Double = 0.0
     
     
     var body: some View {
@@ -125,6 +126,16 @@ struct SwiftUIView: View {
                 
                 if isLeafAdded {
                     leaf1(leafPosition: $leafPosition, leafLevel: $leafLevel)
+                        .scaleEffect(leafChangingScale)
+                        .onChange(of: scene.score, perform: { newValue in
+                            withAnimation(.easeOut(duration: 0.15)) {
+                                leafChangingScale = 1.2
+                            }
+                            withAnimation(.easeOut(duration: 0.10)) {
+                                leafChangingScale = 0.8
+                            }
+                            
+                        })
 //                        .scaleEffect(
 //                            (leafPosition == "left" || leafPosition == "right") ? 1.2 :
 //                                        ( (leafPosition == "fore") ? 1.4
@@ -163,14 +174,14 @@ struct SwiftUIView: View {
                 
                 ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
                 
-                if isShowProgressBar {
-                    VStack{
-                        ProgressView(progress: $progress)
-                            .onChange(of: bgmSystem.currentTime) { newValue in
-                                progress = (newValue - note!.startTime) / 4.0
-                            }
-                    }
-                }
+//                if isShowProgressBar {
+//                    VStack{
+//                        ProgressView(progress: $progress)
+//                            .onChange(of: bgmSystem.currentTime) { newValue in
+//                                progress = (newValue - note!.startTime) / 4.0
+//                            }
+//                    }
+//                }
 
                 
             } // GamingView: zstack of ruling and circle
@@ -204,7 +215,7 @@ struct SwiftUIView: View {
                         scene.leafNode!.removeFromParentNode()
                         print("removed leaf")
                     }
-                    isShowProgressBar = false
+//                    isShowProgressBar = false
                     print("curtime and note.endtime: ", newValue, note!.endTime)
                     
                     
@@ -223,7 +234,7 @@ struct SwiftUIView: View {
                         
                         print("addleafnode 2")
                         if note!.isTenuto {
-                            isShowProgressBar = true
+//                            isShowProgressBar = true
                         }
                     }
                     
