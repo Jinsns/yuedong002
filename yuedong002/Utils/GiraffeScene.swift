@@ -39,7 +39,11 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     
 //    private let motionManager = CMMotionManager()
-    private let motionManager = CMHeadphoneMotionManager() //use airpods
+    let motionManager = CMHeadphoneMotionManager() //use airpods
+    @Published var isAirpodsAvailable: Bool = false
+    @Published var headphoneAnglex: Double = 0.0
+    @Published var headphoneAnglez: Double = 0.0
+    @Published var isPositionReady: Bool = false
     
     @Published var cameraNode: SCNNode?
     
@@ -84,7 +88,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         self.score = 0
         addBackground()
-//        addPlanetNode()
         
         // 添加脖子节点
         addNeckNode(
@@ -100,7 +103,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         addOmniLight()
         
         //control rotation
-        addNeckRotation()
+//        addNeckRotation()
         
 //        addExtraLight()  //only for testing
         
@@ -444,7 +447,61 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         extraLightNode2.light?.categoryBitMask = LightType.onBackground
         self.rootNode.addChildNode(extraLightNode2)
     }
+    
+    
+    
+    func checkingAirpods() {
+        func isUsingHeadphones() -> Bool {
+            let session = AVAudioSession.sharedInstance()
+            
+            do {
+                let currentRoute = session.currentRoute
+                
+                for output in currentRoute.outputs {
+                    if output.portType == AVAudioSession.Port.headphones || output.portType == AVAudioSession.Port.bluetoothA2DP {
+                        return true
+                    }
+                }
+            } catch {
+                print("Error setting audio session category: \(error)")
+            }
+            
+            return false
+        }
+        
+        var i = 0
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            var isUsingHeadphones = isUsingHeadphones()
+            if self.motionManager.isDeviceMotionAvailable && isUsingHeadphones {
+                self.isAirpodsAvailable = true
+                print("Airpods are available: ", i)
+                i += 1
+            }
+        }
+        timer.fire()
+        
+    }
 
+    func checkingPosition() {
+        let readyRange = Double.pi / 32.0
+        
+        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
+            guard let attitude = deviceMotion?.attitude else { return }
+            self!.headphoneAnglex = attitude.roll
+            self!.headphoneAnglez = attitude.pitch
+            
+            if abs(self!.headphoneAnglex) < readyRange && abs(self!.headphoneAnglez) < readyRange {
+                self!.isPositionReady = true
+            }
+        }
+        
+        
+        
+    }
+    
+    func stopMotionUpdates() {
+        motionManager.stopDeviceMotionUpdates()
+    }
     
     
     func addNeckRotation() {

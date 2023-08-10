@@ -22,9 +22,9 @@ struct HomePageView: View {
     @Binding var totalLeaves: String
     @Binding var neckLength: String
     
-    @State var isShowAirpodsReminder = false
+    @State var isShowAirpodsReminder = true
     @State var isShowCorrectingPositionView = false
-    @State var isShowNodToEatView = true
+    @State var isShowNodToEatView = false
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     
     @State var isShowShutterView = false
@@ -38,22 +38,12 @@ struct HomePageView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .center, spacing: 0) {
-                Image("AirpodsReminder")
-            }
-            .padding(0)
-            .padding(.bottom, 390)
-            .scaleEffect(isShowAirpodsReminder ? 1 : 0)
-//            .animation(.spring())
-            .onAppear {
-                withAnimation {
-                    isShowAirpodsReminder = false
-                }
-                soundEffectSystem.overallDialogPlay()
+            if isShowAirpodsReminder {
+                WearAirpodsReminderView(isShowAirpodsReminder: $isShowAirpodsReminder)
             }
             
             if isShowCorrectingPositionView {
-                CorrectingPositionView()
+                CorrectingPositionView(scene: scene)
             }
             
             if isShowNodToEatView {
@@ -172,7 +162,31 @@ struct HomePageView: View {
         .onAppear(){
             soundEffectSystem.prepareToPlay()
             homePageBgmSystem.play()
+            scene.checkingAirpods()
         }
+        .onChange(of: scene.isAirpodsAvailable, perform: { newValue in
+            if newValue == false {
+                withAnimation(.default) {
+                    isShowAirpodsReminder = true
+                }
+            } else if newValue == true {
+                scene.checkingPosition()
+                withAnimation(.default) {
+                    isShowAirpodsReminder = false
+                    isShowCorrectingPositionView = true
+                }
+            }
+        })
+        .onChange(of: scene.isPositionReady, perform: { newValue in
+            if newValue == true {
+                withAnimation(.default) {
+                    isShowCorrectingPositionView = false
+                    isShowNodToEatView = true
+                }
+                scene.stopMotionUpdates()
+                scene.addNeckRotation()
+            }
+        })
         .onDisappear() {
             print("homepage disappear, stop homepage bgm")
             homePageBgmSystem.stop()
@@ -388,18 +402,41 @@ extension View {
   }
 }
 
+struct WearAirpodsReminderView: View {
+    @Binding var isShowAirpodsReminder: Bool
+    
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 0) {
+            Image("AirpodsReminder")
+        }
+        .padding(0)
+        .padding(.bottom, 390)
+        .scaleEffect(isShowAirpodsReminder ? 1 : 0)
+        .onAppear {
+            withAnimation {
+                isShowAirpodsReminder = true
+            }
+            soundEffectSystem.overallDialogPlay()
+        }
+    }
+}
+
 
 struct CorrectingPositionView: View {
+    @ObservedObject var scene: GiraffeScene
+    
+    
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .center, spacing: 4) {
-                Text("摆正头部位置\n或适当旋转耳机")
+                Text("摆正头部位置\n或适当旋转耳机至接近\n(0, 0)")
                   .font(Font.custom("DFPYuanW9-GB", size: 20))
                   .multilineTextAlignment(.center)
                   .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
                   .lineSpacing(12)
                 
-                Text("x: 12.56（0）\ny: 13.44（0）\nz: 20.44（0）")
+                Text(String(format: "(左右方向 %.1f, 前后方向 %.1f)", Float(scene.headphoneAnglex), Float(scene.headphoneAnglez) ) )
                   .font(Font.custom("DFPYuanW9-GB", size: 14))
                   .foregroundColor(Color(red: 0.32, green: 0.51, blue: 0.1))
             }
