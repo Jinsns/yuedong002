@@ -19,19 +19,39 @@ let notes: [Note] = [
     
     Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -0.1, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
-    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: -0.3, z: 2), isTenuto: true, level: 1), //左
-    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: -0.3, z: -2), isTenuto: true, level: 2), //右
-    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: -0.3, z: 2), isTenuto: true, level: 3), //左
-    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: -0.3, z: -2), isTenuto: true, level: 1), //右
-    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 1.5, y: -0.3, z: 0.5), isTenuto: true, level: 2),  //前
-    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 1.5, y: -0.3, z: 0.5), isTenuto: true, level: 3),  //前
-    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -1.5, y: -0.3, z: -0.5), isTenuto: true, level: 1),  //后
-    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -1.5, y: -0.3, z: -0.5), isTenuto: true, level: 2),  //后
+    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: 1.8), isTenuto: true, level: 1), //左
+    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: -1.8), isTenuto: true, level: 2), //右
+    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: 1.8), isTenuto: true, level: 3), //左
+    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: -1.8), isTenuto: true, level: 1), //右
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 2.0, y: -0.1, z: 0.0), isTenuto: true, level: 2),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 2.0, y: -0.1, z: 0.0), isTenuto: true, level: 3),  //前
+    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -1.0, y: -0.1, z: -0.0), isTenuto: true, level: 1),  //后
+    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -1.0, y: -0.1, z: -0.0), isTenuto: true, level: 2),  //后
     
     Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
+
+let noteUIs: [NoteUI] = [
+    NoteUI(startTime: 0.0, endTime: 0.01, leafPosition: "fore", isTenuto: false, level: 1),   //平面ui 不要第一个叶子，第一个叶子用三维模型做
+    
+    NoteUI(startTime: 4.0, endTime: 8.0, leafPosition: "left", isTenuto: true, level: 1),
+    NoteUI(startTime: 10.0, endTime: 14.0, leafPosition: "right", isTenuto: true, level: 1),
+    NoteUI(startTime: 16.0, endTime: 20.0, leafPosition: "left", isTenuto: true, level: 1),
+    NoteUI(startTime: 22.0, endTime: 26.0, leafPosition: "right", isTenuto: true, level: 1),
+    NoteUI(startTime: 30.0, endTime: 34.0, leafPosition: "fore", isTenuto: true, level: 1),
+    NoteUI(startTime: 36.0, endTime: 40.0, leafPosition: "fore", isTenuto: true, level: 1),
+    NoteUI(startTime: 42.0, endTime: 46.0, leafPosition: "back", isTenuto: true, level: 1),
+    NoteUI(startTime: 48.0, endTime: 52.0, leafPosition: "back", isTenuto: true, level: 1),
+    
+    NoteUI(startTime: 65.0, endTime: 75.0, leafPosition: "left", isTenuto: true, level: 1),
+    NoteUI(startTime: 85.0, endTime: 95.0, leafPosition: "left", isTenuto: true, level: 1),
+]
+
 var note: Note?
+var noteUI: NoteUI?
 var noteIterator = 0
+
+
 
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: String = "100"
@@ -57,6 +77,8 @@ struct SwiftUIView: View {
     
     @State var extraLightAdded = false
     @State var isLeafAdded = false
+    @State var leafPosition: String = "fore"
+    @State var leafLevel: Int = 1
     
     @State var isShowProgressBar = false
     @State private var progress: Double = 0.0
@@ -84,6 +106,8 @@ struct SwiftUIView: View {
                         
                         noteIterator = 0
                         note = notes[noteIterator]  //init note to be notes[0]
+                        noteUI = noteUIs[noteIterator]
+                        isLeafAdded = true
                         scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level)
                         
                         print("addleafnode1")
@@ -99,7 +123,24 @@ struct SwiftUIView: View {
             
             ZStack {  //gaming view
                 
-              
+                if isLeafAdded {
+                    leaf1(leafPosition: $leafPosition, leafLevel: $leafLevel)
+//                        .scaleEffect(
+//                            (leafPosition == "left" || leafPosition == "right") ? 1.2 :
+//                                        ( (leafPosition == "fore") ? 1.4
+//                                          : 0.8 )
+//                        )
+//                        .offset(
+//                            x: (leafPosition == "left") ? -120 : ((leafPosition == "right") ? 120 : 0),
+//                                y: (leafPosition == "fore") ? 130 : ((leafPosition == "back") ? -1035 : 0)
+//                        )
+                            
+
+                        .onAppear() {
+                            leafPosition = noteUI!.leafPosition
+                            leafLevel = noteUI!.level
+                        }
+                }
                 
                 Button {
                     print("pressed pause button")
@@ -151,7 +192,7 @@ struct SwiftUIView: View {
             .onChange(of: bgmSystem.currentTime) { newValue in
                 
                 if newValue >= 15.0 && extraLightAdded == false {
-                    scene.addExtraLight() 
+                    scene.addExtraLight()
                     extraLightAdded = true
                     print("extra light added")
                 }
@@ -169,6 +210,7 @@ struct SwiftUIView: View {
                     
                     noteIterator += 1
                     note = notes[noteIterator]
+                    noteUI = noteUIs[noteIterator]
                     
                     
                     isLeafAdded = false

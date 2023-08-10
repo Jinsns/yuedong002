@@ -32,6 +32,14 @@ struct Note {
     let level: Int   //1, 2, 3, 三个级别，分别加 1，2，5 分
 }
 
+struct NoteUI {
+    let startTime: Double
+    let endTime: Double
+    let leafPosition: String   //left, right, fore, back
+    let isTenuto: Bool
+    let level: Int
+}
+
 
 
 //var notes = [note]()

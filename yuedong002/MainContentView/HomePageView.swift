@@ -36,6 +36,7 @@ struct HomePageView: View {
     
     
     
+    
     var body: some View {
         ZStack {
             if isShowAirpodsReminder {
@@ -49,6 +50,7 @@ struct HomePageView: View {
             if isShowNodToEatView {
                 NodToEatView()
             }
+            
 
             
 //            VStack(alignment: .center, spacing: 0) {

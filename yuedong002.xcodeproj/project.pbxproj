@@ -191,6 +191,9 @@
 		367689532A84CAD700B3C6D4 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689522A84CAD700B3C6D4 /* clouds.png */; };
 		367689542A84CAD700B3C6D4 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689522A84CAD700B3C6D4 /* clouds.png */; };
 		367689552A84CAD700B3C6D4 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689522A84CAD700B3C6D4 /* clouds.png */; };
+		367689572A84D62500B3C6D4 /* LeafInGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367689562A84D62500B3C6D4 /* LeafInGame.swift */; };
+		367689582A84D62500B3C6D4 /* LeafInGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367689562A84D62500B3C6D4 /* LeafInGame.swift */; };
+		367689592A84D62500B3C6D4 /* LeafInGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367689562A84D62500B3C6D4 /* LeafInGame.swift */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -402,6 +405,7 @@
 		3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeafNoLight.dae; sourceTree = "<group>"; };
 		3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LongBackGround2.png; sourceTree = "<group>"; };
 		367689522A84CAD700B3C6D4 /* clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds.png; sourceTree = "<group>"; };
+		367689562A84D62500B3C6D4 /* LeafInGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeafInGame.swift; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -654,6 +658,7 @@
 				36E5F18A2A7F8B7600C11B37 /* ProgressView.swift */,
 				367689122A80D34F00B3C6D4 /* ShopView.swift */,
 				3676893A2A829C2700B3C6D4 /* ScorePanView.swift */,
+				367689562A84D62500B3C6D4 /* LeafInGame.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -1102,6 +1107,7 @@
 				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
 				365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 				365121E52A75655A0071D1C1 /* DataModel.swift in Sources */,
+				367689572A84D62500B3C6D4 /* LeafInGame.swift in Sources */,
 				3676893B2A829C2700B3C6D4 /* ScorePanView.swift in Sources */,
 				36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */,
 				366577442A46B83F008C166D /* serverRequests.swift in Sources */,
@@ -1142,6 +1148,7 @@
 				365121E22A755F710071D1C1 /* GamingView.swift in Sources */,
 				366577382A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3665773D2A46B82A008C166D /* ContentView3.swift in Sources */,
+				367689582A84D62500B3C6D4 /* LeafInGame.swift in Sources */,
 				365121C92A73B1DB0071D1C1 /* Floor.swift in Sources */,
 				365CF80F2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 				36D15EA52A72398600BC1967 /* StyledGauge.swift in Sources */,
@@ -1185,6 +1192,7 @@
 				3665774A2A46B8B5008C166D /* soundVars.swift in Sources */,
 				365121C22A73A4CA0071D1C1 /* NeckSlides.swift in Sources */,
 				365CF8102A6D68760007A2CF /* SwiftUIView.swift in Sources */,
+				367689592A84D62500B3C6D4 /* LeafInGame.swift in Sources */,
 				3696A60D2A76C41100B59DCB /* EulerAngle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -225,7 +225,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         // 根据需要对脖子模型进行缩放和位置调整
 //        neckNode.scale = SCNVector3(0.2, 0.2, 1.0)   //缩放
-        neckNode.position = SCNVector3(0, -2.4, 0) // 设置位置，根据需要调整
+        neckNode.position = SCNVector3(0, -2.4, 0.2) // 设置位置，根据需要调整
 //        neckNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
 //        neckNode.orientation = SCNVector4(0, 1, 0, -Float.pi / 2) // 设置旋转角度，根据需要调整
 //        let rotateAction = SCNAction.rotateBy(x: 0, y: -CGFloat.pi / 2, z: 0, duration: 0)
@@ -277,8 +277,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
 
         leafMaterial.lightingModel = .constant  //not affected by light
+        leafMaterial.transparency = 0.5
 
-        let leafGeometry = SCNPlane(width: 1.0, height: 1.0)
+        let leafGeometry = SCNPlane(width: 1.6, height: 1.6)
         leafGeometry.materials = [leafMaterial]
 
         let leafNode = SCNNode(geometry: leafGeometry)
@@ -307,29 +308,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.rootNode.addChildNode(leafNode)
         self.leafNode = leafNode
         self.leafNode?.runAction(SCNAction.playAudio(self.leavesAppearAudioSource, waitForCompletion: false))
-        
-//        //SCNtext +1
-//        let textMaterial = SCNMaterial()
-//        textMaterial.diffuse.contents = UIColor(red: 0.41, green: 0.63, blue: 0.16, alpha: 0.38)
-//        let textGeometry = SCNText(string: "+1", extrusionDepth: 0.2)
-////        textGeometry.font = UIFont(name: "DFPYuanW9", size: 1.0)
-//        textGeometry.materials = [textMaterial]
-//
-//        let textNode = SCNNode(geometry: textGeometry)
-//        textNode.scale = SCNVector3(0.01, 0.01, 0.01)
-//        let textXPosition = Float((self.leafNode?.position.x)!) + 0.04
-//        let textYPosition = Float((self.leafNode?.position.y)!) + 0.04
-//        let textZPosition = Float(4.0)
-//        textNode.position = SCNVector3(x: textXPosition, y: textYPosition, z: textZPosition)
-//
-//        textNode.opacity = 0.0
-//        let fadeInAction = SCNAction.fadeOpacity(to: 0.8, duration: 0.4)
-//        let fadeOutAction = SCNAction.fadeOpacity(to: 0.0, duration: 0.4)
-//        self.textActionEffectGroup = SCNAction.sequence([fadeInAction, fadeOutAction])
-////        textNode.runAction(actionEffectGroup)  //when eat
-//
-//        self.rootNode.addChildNode(textNode)  //add +1 text into scene
-//        self.textNode = textNode
         
         
     }
@@ -530,13 +508,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             guard let attitude = deviceMotion?.attitude else { return }
             let absx: Float = abs(Float(attitude.roll))
             let absz: Float = abs(Float(attitude.pitch))
-            let maxAngle = Float.pi / 8
+            let maxAngle = Float.pi / 4
                         
             
             self?.neckNode?.eulerAngles = SCNVector3(
-                x:  absx > maxAngle ? maxAngle * (-Float(attitude.roll)) / absx : -Float(attitude.roll),
+                x:  (absx > maxAngle ? maxAngle * (-Float(attitude.roll)) / absx : -Float(attitude.roll)) / 2,
                 y: 0,
-                z: absz > maxAngle ? maxAngle * (Float(attitude.pitch)) / absz : Float(attitude.pitch)
+                z: (absz > maxAngle ? maxAngle * (Float(attitude.pitch)) / absz : Float(attitude.pitch)) / 2
             )
             
             
