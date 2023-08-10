@@ -30,9 +30,6 @@ struct CountScoreView: View {
     var body: some View {
         ZStack{
             
-            Image("SongEndGiraffe")
-                .resizable()
-                .scaledToFit()
             
             Image("SongEndBG")
                 .resizable()
@@ -40,6 +37,11 @@ struct CountScoreView: View {
                 .edgesIgnoringSafeArea(.all)
 //                .padding(.horizontal, 14)
 //                .padding(.trailing, 10)
+            
+            Image("SongEndGiraffe")
+//                .resizable()
+//                .scaledToFit()
+
             
             
             

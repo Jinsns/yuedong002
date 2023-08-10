@@ -227,7 +227,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        guard let scene = SCNScene(named: "长颈鹿0810-2.dae") else {
+        guard let scene = SCNScene(named: "giraffe0.dae") else {
             print("Failed to load 'giraffe0.dae'")
             return
         }
@@ -261,9 +261,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        giraffeNode10.geometry?.materials = [neckNodeMaterial]
         
         // 根据需要对脖子模型进行缩放和位置调整
-        giraffeNode10.scale = SCNVector3(0.8, 1.0, 0.8)   //缩放
+        giraffeNode10.scale = SCNVector3(0.65, 0.65, 0.65)   //缩放
         giraffeNode10.position = SCNVector3(0, -2.4, 0.3) // 设置位置，根据需要调整
-        giraffeNode10.eulerAngles = SCNVector3(-Float.pi / 2, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
+        giraffeNode10.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
         
         
         
