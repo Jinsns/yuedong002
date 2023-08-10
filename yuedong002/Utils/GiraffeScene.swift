@@ -145,7 +145,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = SCNVector3(x: 5, y: 2, z: -12)
-        self.neckNode?.position = SCNVector3(x: -5, y: -3 , z: -11)   //x大 屏幕外，z大 屏幕左
+        self.neckNode?.position = SCNVector3(x: -5, y: -2.4 , z: -11)   //x大 屏幕外，z大 屏幕左
         SCNTransaction.commit()
     }
     
@@ -153,7 +153,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = SCNVector3(x: 10, y: 2, z: 0)
-        self.neckNode?.position = SCNVector3(0, -3, 0)
+        self.neckNode?.position = SCNVector3(0, -2.4, 0)
         SCNTransaction.commit()
     }
     
@@ -201,7 +201,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         // 根据需要对脖子模型进行缩放和位置调整
 //        neckNode.scale = SCNVector3(0.2, 0.2, 1.0)   //缩放
-        neckNode.position = SCNVector3(0, -3, 0) // 设置位置，根据需要调整
+        neckNode.position = SCNVector3(0, -2.4, 0) // 设置位置，根据需要调整
 //        neckNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
 //        neckNode.orientation = SCNVector4(0, 1, 0, -Float.pi / 2) // 设置旋转角度，根据需要调整
 //        let rotateAction = SCNAction.rotateBy(x: 0, y: -CGFloat.pi / 2, z: 0, duration: 0)

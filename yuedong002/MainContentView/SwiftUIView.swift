@@ -17,7 +17,7 @@ let notes: [Note] = [
     //y 大 屏幕上
     //z 大 屏幕左， x，z和头运动方向一致
     
-    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -0.1, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
     Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: -0.3, z: 2), isTenuto: true, level: 1), //左
     Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: -0.3, z: -2), isTenuto: true, level: 2), //右
