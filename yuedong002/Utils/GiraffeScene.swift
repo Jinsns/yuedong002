@@ -190,6 +190,27 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.backgroundNode = backgroundNode
         self.backgroundNode?.categoryBitMask = LightType.onBackground
         
+        let cloudMaterial = SCNMaterial()
+        cloudMaterial.lightingModel = .constant
+        cloudMaterial.diffuse.contents = UIImage(named: "clouds")
+        if let image = UIImage(named: "clouds") {
+            //want width = 60, calculate corresponding height
+            let imageWidth = image.size.width
+            let imageHeight = image.size.height
+            let aspectRatio = imageWidth / imageHeight
+            let desiredPlaneWidth: CGFloat = 24.0
+            let desiredPlaneHeight = desiredPlaneWidth / aspectRatio
+            
+            let cloudGeometry = SCNPlane(width: desiredPlaneWidth, height: desiredPlaneHeight)
+            cloudGeometry.materials = [cloudMaterial]
+            let cloudNode = SCNNode(geometry: cloudGeometry)
+            cloudNode.position = SCNVector3(1, 7.4, 0)
+            cloudNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
+            self.rootNode.addChildNode(cloudNode)
+        }
+        
+        
+        
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
@@ -239,7 +260,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //            print("Failed to load 'eatLeafNoLight'")
 //            return
 //        }
-//        
+//
 //        guard let leafNode = scene.rootNode.childNodes.first else {
 //            print("Failed to find the first child node in 'eatLeafNoLight'")
 //            return

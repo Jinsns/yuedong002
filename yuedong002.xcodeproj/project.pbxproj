@@ -188,6 +188,9 @@
 		3676894F2A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */; };
 		367689502A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */; };
 		367689512A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */; };
+		367689532A84CAD700B3C6D4 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689522A84CAD700B3C6D4 /* clouds.png */; };
+		367689542A84CAD700B3C6D4 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689522A84CAD700B3C6D4 /* clouds.png */; };
+		367689552A84CAD700B3C6D4 /* clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = 367689522A84CAD700B3C6D4 /* clouds.png */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -398,6 +401,7 @@
 		367689462A83960400B3C6D4 /* eatLeaf2.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeaf2.dae; sourceTree = "<group>"; };
 		3676894A2A839C4F00B3C6D4 /* eatLeafNoLight.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = eatLeafNoLight.dae; sourceTree = "<group>"; };
 		3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LongBackGround2.png; sourceTree = "<group>"; };
+		367689522A84CAD700B3C6D4 /* clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds.png; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 				367689322A82389900B3C6D4 /* ArrowDown.png */,
 				367689362A8238A000B3C6D4 /* ArrowUp.png */,
 				3676894E2A83CDE900B3C6D4 /* LongBackGround2.png */,
+				367689522A84CAD700B3C6D4 /* clouds.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -879,6 +884,7 @@
 				3698D5842A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				367689172A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
 				365121D82A750FBD0071D1C1 /* Pause Circle.png in Resources */,
+				367689532A84CAD700B3C6D4 /* clouds.png in Resources */,
 				36027E3D2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				3696A5F82A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				365121D02A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
@@ -927,6 +933,7 @@
 				365121D52A750BE20071D1C1 /* scorepan.png in Resources */,
 				367689202A80DBB200B3C6D4 /* wheat.png in Resources */,
 				36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
+				367689542A84CAD700B3C6D4 /* clouds.png in Resources */,
 				36027E3E2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				36EC1E152A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				36027DF92A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
@@ -1005,6 +1012,7 @@
 				365121D62A750BE20071D1C1 /* scorepan.png in Resources */,
 				367689212A80DBB200B3C6D4 /* wheat.png in Resources */,
 				36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
+				367689552A84CAD700B3C6D4 /* clouds.png in Resources */,
 				36027E3F2A7EC29D00A505BC /* wechatlogin.png in Resources */,
 				36EC1E162A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				36027DFA2A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
