@@ -39,17 +39,20 @@ struct HomePageView: View {
     
     var body: some View {
         ZStack {
-            if isShowAirpodsReminder {
-                WearAirpodsReminderView(isShowAirpodsReminder: $isShowAirpodsReminder)
+            if isShowShopView == false && isShowShutterView == false {
+                if isShowAirpodsReminder {
+                    WearAirpodsReminderView(isShowAirpodsReminder: $isShowAirpodsReminder)
+                }
+                
+                if isShowCorrectingPositionView {
+                    CorrectingPositionView(scene: scene)
+                }
+                
+                if isShowNodToEatView {
+                    NodToEatView()
+                }
             }
             
-            if isShowCorrectingPositionView {
-                CorrectingPositionView(scene: scene)
-            }
-            
-            if isShowNodToEatView {
-                NodToEatView()
-            }
             
 
             
