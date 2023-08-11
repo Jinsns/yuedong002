@@ -20,6 +20,7 @@ struct CountScoreView: View {
     
     @State private var isScorePanSizeSwitching = false
     @State var scoreScale: CGFloat = 1.0
+    @State var giraffeDHeight = 0.0
     
     @Environment(\.presentationMode) var presentationMode //used to close this sheet view
     
@@ -31,16 +32,36 @@ struct CountScoreView: View {
         ZStack{
             
             
-            Image("SongEndBG")
+            Image("songEndBG2")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
 //                .padding(.horizontal, 14)
 //                .padding(.trailing, 10)
             
-            Image("SongEndGiraffe")
-//                .resizable()
-//                .scaledToFit()
+            ZStack(alignment: .centerFirstTextBaseline) {
+                Image("songEndCircle")
+                    .padding(.bottom, 160)
+                Image("SongEndGiraffe")
+                    .offset(x: 0, y: giraffeDHeight)
+//                    .padding(.bottom, 220.0)
+    //                .resizable()
+    //                .scaledToFit()
+                    .mask(
+                        RoundedRectangle(cornerRadius: 120)
+                            .foregroundColor(.white)
+                            .frame(width: 200, height: 700)
+                            .padding(.bottom, 420)
+                    )
+            }
+            
+            
+            
+            
+//            RoundedRectangle(cornerRadius: 120.0)
+//                .foregroundColor(.white)
+//                .frame(width: 240, height: 400)
+//                .padding(.bottom, 130)
 
             
             
@@ -85,14 +106,18 @@ struct CountScoreView: View {
                     
                 }
                 .onChange(of: isScorePanSizeSwitching) { newValue in
-                    withAnimation(.easeOut(duration: 0.5)) {
+                    withAnimation(.easeOut(duration: 0.5).delay(0.5)) {
                         scoreScale = 1.2
                     }
-                    withAnimation(.easeOut(duration: 0.3).delay(0.5)) {
+                    withAnimation(.easeOut(duration: 0.3).delay(1.0)) {
                         scoreScale = 0.8
                     }
-                    withAnimation(.easeOut(duration: 0.2).delay(0.8)) {
+                    withAnimation(.easeOut(duration: 0.2).delay(1.3)) {
                         scoreScale = 1.0
+                    }
+                    withAnimation(.linear(duration: 0.6).delay(1.5)) {
+                        giraffeDHeight = -110.0
+                    
                     }
                 }
                 
