@@ -34,6 +34,8 @@ struct HomePageView: View {
     
     @ObservedObject var scene: GiraffeScene  //used to control camera height with button
     
+    @Binding var isLeafAdded: Bool
+    
     
     
     
@@ -46,10 +48,24 @@ struct HomePageView: View {
                 
                 if isShowCorrectingPositionView {
                     CorrectingPositionView(scene: scene)
+                        .onAppear(){
+                            scene.stopMotionUpdates()
+                            print("checkingposition start")
+                            scene.checkingPosition()
+                        }
+                        .onDisappear {
+                            scene.stopMotionUpdates()
+                            scene.addNeckRotation()
+                        }
                 }
                 
                 if isShowNodToEatView {
                     NodToEatView()
+                    leaf1(leafPosition: .constant("fore"), leafLevel: .constant(1))
+                        .onAppear() {
+                            isLeafAdded = true
+                            scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level, noteUIPosition: noteUI!.leafPosition)
+                        }
                 }
             }
             
@@ -168,14 +184,27 @@ struct HomePageView: View {
             soundEffectSystem.prepareToPlay()
             homePageBgmSystem.play()
             scene.checkingAirpods()
+            scene.isPositionReady = false
+//            isShowCorrectingPositionView = false
+            isShowAirpodsReminder = true
+            if scene.isAirpodsAvailable {
+                isShowAirpodsReminder = false
+                isShowCorrectingPositionView = true
+            }
+            
+            scene.physicsWorld.contactDelegate = nil  //先消除碰撞检测，不让他开始
+            
+            
+            
         }
         .onChange(of: scene.isAirpodsAvailable, perform: { newValue in
             if newValue == false {
+                isShowCorrectingPositionView = false
                 withAnimation(.default) {
                     isShowAirpodsReminder = true
                 }
             } else if newValue == true {
-                scene.checkingPosition()
+//                scene.checkingPosition()
                 withAnimation(.default) {
                     isShowAirpodsReminder = false
                     isShowCorrectingPositionView = true
@@ -188,13 +217,20 @@ struct HomePageView: View {
                     isShowCorrectingPositionView = false
                     isShowNodToEatView = true
                 }
-                scene.stopMotionUpdates()
-                scene.addNeckRotation()
+//                scene.stopMotionUpdates()
+//                scene.addNeckRotation()
+                scene.physicsWorld.contactDelegate = scene
             }
         })
         .onDisappear() {
             print("homepage disappear, stop homepage bgm")
             homePageBgmSystem.stop()
+            isShowShopView = false
+            isShowSnapEffect = false
+            isShowShutterView = false
+            isShowAirpodsReminder = false
+            isShowCorrectingPositionView = false
+            isShowNodToEatView = false
         }
         
         if isShowShutterView {
@@ -217,7 +253,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), scene: GiraffeScene())
+        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), scene: GiraffeScene(), isLeafAdded: .constant(true))
     }
 }
 
@@ -423,9 +459,9 @@ struct WearAirpodsReminderView: View {
         .padding(.bottom, 390)
         .scaleEffect(isShowAirpodsReminder ? 1 : 0)
         .onAppear {
-            withAnimation {
-                isShowAirpodsReminder = true
-            }
+//            withAnimation {
+//                isShowAirpodsReminder = true
+//            }
             soundEffectSystem.overallDialogPlay()
         }
     }

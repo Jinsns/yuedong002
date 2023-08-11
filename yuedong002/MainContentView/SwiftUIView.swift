@@ -17,7 +17,7 @@ let notes: [Note] = [
     //y 大 屏幕上
     //z 大 屏幕左， x，z和头运动方向一致
     
-    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -0.1, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
     Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: 1.8), isTenuto: true, level: 1), //左
     Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: -1.8), isTenuto: true, level: 2), //右
@@ -96,10 +96,11 @@ struct SwiftUIView: View {
             
             
             if isInHomePage {
-                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, scene: scene)
+                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, scene: scene, isLeafAdded: $isLeafAdded)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
                         soundEffectSystem.prepareToPlay()
+                        scene.score = 0
                         
                         if scene.leafNode != nil {  //清空之前的叶子
                             scene.leafNode?.removeFromParentNode()
@@ -108,13 +109,12 @@ struct SwiftUIView: View {
                         noteIterator = 0
                         note = notes[noteIterator]  //init note to be notes[0]
                         noteUI = noteUIs[noteIterator]
-                        isLeafAdded = true
-                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level, noteUIPosition: noteUI!.leafPosition)
+                        
+                        
                         
                         print("addleafnode1")
                         
                         scene.shouldContact = true
-                        scene.physicsWorld.contactDelegate = scene
                     }
                 
                 
@@ -124,7 +124,7 @@ struct SwiftUIView: View {
             
             ZStack {  //gaming view
                 
-                if isLeafAdded {
+                if isLeafAdded && noteIterator > 0 {
                     leaf1(leafPosition: $leafPosition, leafLevel: $leafLevel)
                         .scaleEffect(leafChangingScale)
                         .onChange(of: scene.score, perform: { newValue in
@@ -242,9 +242,10 @@ struct SwiftUIView: View {
                 }
                 
                 
-                if newValue == 0.0 && scene.score >= 1 {   //when game ends
+                if newValue >= bgmSystem.audioPlayer!.duration - 0.2 && scene.score >= 1 {   //when game ends
                     //bgmSystem.stop() will let bgmSystem.audioPlayer!.currentTime turns to 0.0
                     //and if scene.score >= 1 means game once started
+                    bgmSystem.stop()
                     isShowCountScoreView = true
                     
                 }
@@ -264,8 +265,11 @@ struct SwiftUIView: View {
                     .onAppear(){
                         print("countscoreview appear")
                         bgmSystem.stop()
+                        scene.removeExtraLight()
                         soundEffectSystem.showCountScoreViewPlay()
                         scene.shouldContact = false
+                        scene.physicsWorld.contactDelegate = nil
+                        scene.leafNode?.removeFromParentNode()
                         
                     }
                     .onDisappear(){

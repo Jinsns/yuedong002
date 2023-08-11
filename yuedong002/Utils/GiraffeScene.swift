@@ -73,6 +73,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     @Published var isContacted = false
     @Published var shouldContact = true
+    
+    @Published var extraLightNode1: SCNNode?
+    @Published var extraLightNode2: SCNNode?
+    
      
     
     
@@ -82,7 +86,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        setupAudioEngine()
         
         
-        self.physicsWorld.contactDelegate = self   //both this line and next line OK, also can set delegate in View onAppear
+        self.physicsWorld.contactDelegate = nil   //both this line and next line OK, also can set delegate in View onAppear
 //        physicsWorld.contactDelegate = self
         
 //        self.physicsWorld.speed = 1.0
@@ -473,15 +477,16 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     func addExtraLight() {
         self.backgroundNode?.geometry?.materials.first?.lightingModel = .phong  //change background material lignting model here.
-        let extraLightNode = SCNNode()
-        extraLightNode.light = SCNLight()
-        extraLightNode.light?.type = SCNLight.LightType.omni
-        extraLightNode.light?.color = UIColor(red: 0.89, green: 0.97, blue: 0.91, alpha: 1.0)  //green like
-        extraLightNode.light?.intensity = 700
-        extraLightNode.position = SCNVector3(30, -10, 0)
-        extraLightNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
-        extraLightNode.light?.categoryBitMask = LightType.onBackground
-        self.rootNode.addChildNode(extraLightNode)
+        let extraLightNode1 = SCNNode()
+        extraLightNode1.light = SCNLight()
+        extraLightNode1.light?.type = SCNLight.LightType.omni
+        extraLightNode1.light?.color = UIColor(red: 0.89, green: 0.97, blue: 0.91, alpha: 1.0)  //green like
+        extraLightNode1.light?.intensity = 700
+        extraLightNode1.position = SCNVector3(30, -10, 0)
+        extraLightNode1.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
+        extraLightNode1.light?.categoryBitMask = LightType.onBackground
+        self.extraLightNode1 = extraLightNode1
+        self.rootNode.addChildNode(extraLightNode1)
         
         let extraLightNode2 = SCNNode()
         extraLightNode2.light = SCNLight()
@@ -491,12 +496,20 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         extraLightNode2.position = SCNVector3(30, 0, 0)
         extraLightNode2.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         extraLightNode2.light?.categoryBitMask = LightType.onBackground
+        self.extraLightNode2 = extraLightNode2
         self.rootNode.addChildNode(extraLightNode2)
+    }
+    
+    func removeExtraLight() {
+        self.backgroundNode?.geometry?.materials.first?.lightingModel = .constant
+        self.extraLightNode1?.removeFromParentNode()
+        self.extraLightNode2?.removeFromParentNode()
     }
     
     
     
     func checkingAirpods() {
+        self.isAirpodsAvailable = false
         func isUsingHeadphones() -> Bool {
             let session = AVAudioSession.sharedInstance()
             
@@ -516,25 +529,32 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
         
         var i = 0
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+        var timer: Timer?
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             var isUsingHeadphones = isUsingHeadphones()
             if self.motionManager.isDeviceMotionAvailable && isUsingHeadphones {
                 self.isAirpodsAvailable = true
+                
                 print("Airpods are available: ", i)
                 i += 1
+                timer!.invalidate()
             }
         }
-        timer.fire()
+        timer!.fire()
+        
         
     }
 
     func checkingPosition() {
+        self.isPositionReady = false
         let readyRange = Double.pi / 32.0
         
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
             guard let attitude = deviceMotion?.attitude else { return }
             self!.headphoneAnglex = attitude.roll
             self!.headphoneAnglez = attitude.pitch
+            print("new headphonex: ", self!.headphoneAnglex)
+            print("new headphonez: ", self!.headphoneAnglez)
             
             if abs(self!.headphoneAnglex) < readyRange && abs(self!.headphoneAnglez) < readyRange {
                 self!.isPositionReady = true

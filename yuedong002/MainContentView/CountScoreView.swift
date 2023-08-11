@@ -58,10 +58,6 @@ struct CountScoreView: View {
             
             
             
-//            RoundedRectangle(cornerRadius: 120.0)
-//                .foregroundColor(.white)
-//                .frame(width: 240, height: 400)
-//                .padding(.bottom, 130)
 
             
             
@@ -157,7 +153,6 @@ struct CountScoreView: View {
                     Button {
                         print("want to go back to main page")
                         soundEffectSystem.buttonPlay()
-                        scene.score = 0        
                         isInHomePage = true
                         
                         presentationMode.wrappedValue.dismiss()  //close this sheet view
