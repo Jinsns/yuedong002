@@ -48,6 +48,9 @@
 		36027E3F2A7EC29D00A505BC /* wechatlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E332A7EC29D00A505BC /* wechatlogin.png */; };
 		361F1FE42A66CEEB00CC2F5B /* RelaxMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */; };
 		3637F6C82A6A5763004FEB42 /* Yue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3637F6C72A6A5763004FEB42 /* Yue.swift */; };
+		364A66722A8624FE007C2103 /* 长颈鹿0811.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66712A8624FE007C2103 /* 长颈鹿0811.dae */; };
+		364A66732A8624FE007C2103 /* 长颈鹿0811.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66712A8624FE007C2103 /* 长颈鹿0811.dae */; };
+		364A66742A8624FE007C2103 /* 长颈鹿0811.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66712A8624FE007C2103 /* 长颈鹿0811.dae */; };
 		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
@@ -393,6 +396,7 @@
 		36027E332A7EC29D00A505BC /* wechatlogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechatlogin.png; sourceTree = "<group>"; };
 		361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxMode.swift; sourceTree = "<group>"; };
 		3637F6C72A6A5763004FEB42 /* Yue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yue.swift; sourceTree = "<group>"; };
+		364A66712A8624FE007C2103 /* 长颈鹿0811.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "长颈鹿0811.dae"; sourceTree = "<group>"; };
 		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
 		365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeckSlides.swift; sourceTree = "<group>"; };
 		365121C32A73AC700071D1C1 /* head.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = head.swift; sourceTree = "<group>"; };
@@ -594,6 +598,7 @@
 			children = (
 				3676899A2A853A0B00B3C6D4 /* giraffeHeadSkin.jpg */,
 				367689922A8536E100B3C6D4 /* giraffeNeckSkin.jpg */,
+				364A66712A8624FE007C2103 /* 长颈鹿0811.dae */,
 				3676899E2A854FFB00B3C6D4 /* 长颈鹿0810-10.dae */,
 				3676898E2A85369D00B3C6D4 /* 长颈鹿0810-9.dae */,
 				3676898A2A8535E600B3C6D4 /* 长颈鹿0810-8.dae */,
@@ -990,6 +995,7 @@
 				368726FB2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3676899F2A854FFC00B3C6D4 /* 长颈鹿0810-10.dae in Resources */,
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
+				364A66722A8624FE007C2103 /* 长颈鹿0811.dae in Resources */,
 				36027E3A2A7EC29D00A505BC /* save.png in Resources */,
 				365CF8062A6D67F90007A2CF /* head.dae in Resources */,
 				3676894F2A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */,
@@ -1096,6 +1102,7 @@
 				367689602A850DF600B3C6D4 /* 长颈鹿0810-1.dae in Resources */,
 				367689702A8516B400B3C6D4 /* 长颈鹿0810-5.dae in Resources */,
 				36027DFD2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
+				364A66732A8624FE007C2103 /* 长颈鹿0811.dae in Resources */,
 				366577262A46B723008C166D /* pianoF.mp3 in Resources */,
 				368726FC2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3696A5EF2A7628D900B59DCB /* EarthIcon.png in Resources */,
@@ -1190,6 +1197,7 @@
 				367689612A850DF600B3C6D4 /* 长颈鹿0810-1.dae in Resources */,
 				367689712A8516B400B3C6D4 /* 长颈鹿0810-5.dae in Resources */,
 				36027DFE2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
+				364A66742A8624FE007C2103 /* 长颈鹿0811.dae in Resources */,
 				366577272A46B723008C166D /* pianoF.mp3 in Resources */,
 				368726FD2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3696A5F02A7628D900B59DCB /* EarthIcon.png in Resources */,

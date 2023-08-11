@@ -109,7 +109,7 @@ struct SwiftUIView: View {
                         note = notes[noteIterator]  //init note to be notes[0]
                         noteUI = noteUIs[noteIterator]
                         isLeafAdded = true
-                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level)
+                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level, noteUIPosition: noteUI!.leafPosition)
                         
                         print("addleafnode1")
                         
@@ -229,7 +229,7 @@ struct SwiftUIView: View {
                 
                 if newValue > note!.startTime && isLeafAdded == false {
                     if noteIterator > 0 {
-                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level)
+                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level, noteUIPosition: noteUI!.leafPosition)
                         isLeafAdded = true
                         
                         print("addleafnode 2")

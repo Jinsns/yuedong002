@@ -241,7 +241,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        print("giraffeNode childnodes1: ", giraffeNode10.childNodes.first?.childNodes.first)
 //        print("giraffeNode childnodes2: ", giraffeNode10.childNodes.first?.childNodes.last)
         
-        var giraffeNode = SCNNode()
+//        var giraffeNode = SCNNode()
         
 //        let headNode = giraffeNode10.childNode(withName: "鹿", recursively: true)!
 //        print("lu added")
@@ -254,7 +254,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        print("bozi added")
 //        let neckNodeMaterial = SCNMaterial()
 //        neckNodeMaterial.diffuse.contents = UIImage(named: "giraffeNeckSkin")
-//        neckNode.geometry?.materials = [neckNodeMaterial]
+//        giraffeNode10.geometry?.materials = [neckNodeMaterial]
         
 
         
@@ -294,7 +294,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
 
     
-    func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float, level: Int) {
+    func addLeafNode(xPosition: Float, yPosition: Float, zPosition: Float, level: Int, noteUIPosition: String) {
         
 //        guard let scene = SCNScene(named: "eatLeafNoLight") else {
 //            print("Failed to load 'eatLeafNoLight'")
@@ -317,8 +317,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
 
         leafMaterial.lightingModel = .constant  //not affected by light
-        leafMaterial.transparency = 0.6
-        let leafGeometry = SCNPlane(width: 1.6, height: 1.6)
+        leafMaterial.transparency = 0.01
+//        let leafGeometry = SCNPlane(width: 1.6, height: 1.6)
+        let leafGeometry = SCNPlane(width: 6, height: 6)
+        
         leafGeometry.materials = [leafMaterial]
 
         let leafNode = SCNNode(geometry: leafGeometry)
@@ -327,8 +329,14 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         leafNode.physicsBody?.categoryBitMask = 2 // Set a unique bitmask for the "leaf" node
         leafNode.physicsBody?.contactTestBitMask = 1  // Set the bitmask of nodes to be notified about contact
         
+        
         leafNode.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
-        leafNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
+        if noteUIPosition == "fore" || noteUIPosition == "back" {
+            leafNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)  // fore and back
+        } else {
+            leafNode.eulerAngles = SCNVector3(0, 0, 0)  //left and right
+        }
+        
 //        leafNode.eulerAngles = SCNVector3(0, 0, 0)
         leafNode.name = "leaf"
         
