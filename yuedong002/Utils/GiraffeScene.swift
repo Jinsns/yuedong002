@@ -332,7 +332,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
 
         leafMaterial.lightingModel = .constant  //not affected by light
-        leafMaterial.transparency = 0.6
+        leafMaterial.transparency = 0.0
 //        let leafGeometry = SCNPlane(width: 1.6, height: 1.6)
 //        let leafGeometry = SCNPlane(width: 6, height: 6)
         let leafGeometry = SCNBox(width: 6, height: 3, length: 3, chamferRadius: 0)

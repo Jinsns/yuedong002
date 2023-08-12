@@ -25,8 +25,8 @@ let notes: [Note] = [
     Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 1), //右
     Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 2), //左
     Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 2), //右
-    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.4, y: 1.2, z: 0.0), isTenuto: true, level: 3),  //前
-    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.4, y: 1.2, z: 0.0), isTenuto: true, level: 3),  //前
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.8, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.8, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
     Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.8, y: 1.2, z: -0.0), isTenuto: true, level: 2),  //后
     Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -3.8, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //后
     
@@ -78,6 +78,13 @@ struct SwiftUIView: View {
     @State var isShowCountScoreView = false
 //    @State var scoreScale: CGFloat = 1.0
     @State var isShowStage2Reminder = false
+    @State var isShowWow = false
+    @State var isShowedWow = false
+    @State var isShowTaikula = false
+    @State var isShowedTaikula = false
+    @State var isShowLikeyou = false
+    @State var isShowedLikeyou = false
+    
     @State var extraLightAdded = false
     @State var isLeafAdded = false
     @State var leafPosition: String = "fore"
@@ -92,8 +99,8 @@ struct SwiftUIView: View {
         ZStack{
             
             SceneView(
-                scene: scene,
-                options: [.allowsCameraControl]
+                scene: scene
+//                options: [.allowsCameraControl]
             )
                 .ignoresSafeArea()
             
@@ -186,6 +193,44 @@ struct SwiftUIView: View {
                         }
                 }
                 
+                if isShowWow == true && isShowedWow == false {
+                    Wow()
+                        .onAppear() {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                withAnimation(.default) {
+                                    isShowWow = false
+                                    isShowedWow = true
+                                }
+                            }
+                        }
+                }
+                
+                if isShowTaikula == true && isShowedTaikula == false{
+                    Taikula()
+                        .onAppear() {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                withAnimation(.default) {
+                                    isShowTaikula = false
+                                    isShowedTaikula = true
+                                }
+                            }
+                        }
+                }
+                
+                if isShowLikeyou == true && isShowedLikeyou == false{
+                    Likeyou()
+                        .onAppear() {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                withAnimation(.default) {
+                                    isShowLikeyou = false
+                                    isShowedLikeyou = true
+                                }
+                            }
+                        }
+                }
+                
+                
+                
                 ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
                 
 //                if isShowProgressBar {
@@ -212,6 +257,27 @@ struct SwiftUIView: View {
                     scene.moveCameraNodeAndNeckNodeToGamePosition()
                     isInHomePage = false
                     scene.leafNode?.removeFromParentNode()
+                }
+                
+                if newScore >= 30 {
+                    withAnimation(.default) {
+                        isShowWow = true
+                    }
+                    
+                }
+                
+                if newScore >= 50 {
+                    withAnimation(.default) {
+                        isShowTaikula = true
+                    }
+                    
+                }
+                
+                if newScore >= 80 {
+                    withAnimation(.default) {
+                        isShowLikeyou = true
+                    }
+                    
                 }
                 
             }

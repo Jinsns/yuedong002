@@ -84,6 +84,15 @@
 		364A66A22A8756E7007C2103 /* 第二阶段前图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A12A8756E7007C2103 /* 第二阶段前图片.png */; };
 		364A66A32A8756E7007C2103 /* 第二阶段前图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A12A8756E7007C2103 /* 第二阶段前图片.png */; };
 		364A66A42A8756E7007C2103 /* 第二阶段前图片.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A12A8756E7007C2103 /* 第二阶段前图片.png */; };
+		364A66A62A875BBF007C2103 /* likeyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A52A875BBE007C2103 /* likeyou.png */; };
+		364A66A72A875BBF007C2103 /* likeyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A52A875BBE007C2103 /* likeyou.png */; };
+		364A66A82A875BBF007C2103 /* likeyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A52A875BBE007C2103 /* likeyou.png */; };
+		364A66AA2A875BCD007C2103 /* taikula.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A92A875BCD007C2103 /* taikula.png */; };
+		364A66AB2A875BCD007C2103 /* taikula.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A92A875BCD007C2103 /* taikula.png */; };
+		364A66AC2A875BCD007C2103 /* taikula.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66A92A875BCD007C2103 /* taikula.png */; };
+		364A66AE2A875BD8007C2103 /* wow.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66AD2A875BD8007C2103 /* wow.png */; };
+		364A66AF2A875BD8007C2103 /* wow.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66AD2A875BD8007C2103 /* wow.png */; };
+		364A66B02A875BD8007C2103 /* wow.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66AD2A875BD8007C2103 /* wow.png */; };
 		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
@@ -441,6 +450,9 @@
 		364A66992A875430007C2103 /* 花.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "花.png"; sourceTree = "<group>"; };
 		364A669D2A8756AE007C2103 /* Stage2Remind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage2Remind.swift; sourceTree = "<group>"; };
 		364A66A12A8756E7007C2103 /* 第二阶段前图片.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "第二阶段前图片.png"; sourceTree = "<group>"; };
+		364A66A52A875BBE007C2103 /* likeyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeyou.png; sourceTree = "<group>"; };
+		364A66A92A875BCD007C2103 /* taikula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taikula.png; sourceTree = "<group>"; };
+		364A66AD2A875BD8007C2103 /* wow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wow.png; sourceTree = "<group>"; };
 		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
 		365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeckSlides.swift; sourceTree = "<group>"; };
 		365121C32A73AC700071D1C1 /* head.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = head.swift; sourceTree = "<group>"; };
@@ -626,6 +638,9 @@
 				364A66952A875427007C2103 /* apple.png */,
 				364A66992A875430007C2103 /* 花.png */,
 				364A66A12A8756E7007C2103 /* 第二阶段前图片.png */,
+				364A66A52A875BBE007C2103 /* likeyou.png */,
+				364A66A92A875BCD007C2103 /* taikula.png */,
+				364A66AD2A875BD8007C2103 /* wow.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1014,11 +1029,13 @@
 				367689772A85226900B3C6D4 /* blurredbg.jpg in Resources */,
 				36EC1E182A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				3676896F2A8516B400B3C6D4 /* 长颈鹿0810-5.dae in Resources */,
+				364A66AA2A875BCD007C2103 /* taikula.png in Resources */,
 				36027E372A7EC29D00A505BC /* qqlogin.png in Resources */,
 				3676891B2A80D90300B3C6D4 /* sunglasses.png in Resources */,
 				367689372A8238A000B3C6D4 /* ArrowUp.png in Resources */,
 				367689332A82389900B3C6D4 /* ArrowDown.png in Resources */,
 				36027DF82A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
+				364A66AE2A875BD8007C2103 /* wow.png in Resources */,
 				3698D5742A6E908F0003C037 /* leaf.png in Resources */,
 				368726DB2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				364A66862A867779007C2103 /* GetScore0811.mp3 in Resources */,
@@ -1036,6 +1053,7 @@
 				3676898F2A85369D00B3C6D4 /* 长颈鹿0810-9.dae in Resources */,
 				367689172A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
 				364A668E2A867DE9007C2103 /* headSkin0811.jpg in Resources */,
+				364A66A62A875BBF007C2103 /* likeyou.png in Resources */,
 				365121D82A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				367689532A84CAD700B3C6D4 /* clouds.png in Resources */,
 				364A66962A875427007C2103 /* apple.png in Resources */,
@@ -1092,6 +1110,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				364A66AF2A875BD8007C2103 /* wow.png in Resources */,
 				3698D5892A703D860003C037 /* giraffe0.dae in Resources */,
 				365121D92A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				367689782A85226900B3C6D4 /* blurredbg.jpg in Resources */,
@@ -1141,6 +1160,7 @@
 				364A66972A875427007C2103 /* apple.png in Resources */,
 				3676898C2A8535E600B3C6D4 /* 长颈鹿0810-8.dae in Resources */,
 				36027E052A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
+				364A66AB2A875BCD007C2103 /* taikula.png in Resources */,
 				3696A5FC2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				3676896C2A8514A800B3C6D4 /* 长颈鹿0810-4.dae in Resources */,
 				3676891C2A80D90300B3C6D4 /* sunglasses.png in Resources */,
@@ -1187,6 +1207,7 @@
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				367689342A82389900B3C6D4 /* ArrowDown.png in Resources */,
+				364A66A72A875BBF007C2103 /* likeyou.png in Resources */,
 				366577142A46B723008C166D /* pianoC2.mp3 in Resources */,
 				3698D5912A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 				3676892C2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */,
@@ -1197,6 +1218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				364A66B02A875BD8007C2103 /* wow.png in Resources */,
 				3698D58A2A703D860003C037 /* giraffe0.dae in Resources */,
 				365121DA2A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				367689792A85226900B3C6D4 /* blurredbg.jpg in Resources */,
@@ -1246,6 +1268,7 @@
 				364A66982A875427007C2103 /* apple.png in Resources */,
 				3676898D2A8535E600B3C6D4 /* 长颈鹿0810-8.dae in Resources */,
 				36027E062A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
+				364A66AC2A875BCD007C2103 /* taikula.png in Resources */,
 				3696A5FD2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				3676896D2A8514A800B3C6D4 /* 长颈鹿0810-4.dae in Resources */,
 				3676891D2A80D90300B3C6D4 /* sunglasses.png in Resources */,
@@ -1292,6 +1315,7 @@
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				367689352A82389900B3C6D4 /* ArrowDown.png in Resources */,
+				364A66A82A875BBF007C2103 /* likeyou.png in Resources */,
 				366577152A46B723008C166D /* pianoC2.mp3 in Resources */,
 				3698D5922A7049DF0003C037 /* gameBackgroundLayer.png in Resources */,
 				3676892D2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */,
