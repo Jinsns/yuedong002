@@ -135,7 +135,7 @@ struct ShopView: View {
                         }
                         .padding(7)
                         .frame(width: 160, height: 48, alignment: .center)
-                        .background(.white.opacity(0.7))
+//                        .background(.white.opacity(0.7))
     //                    .background(.black)
                         .cornerRadius(8)
                     }
@@ -160,6 +160,13 @@ struct ShopView: View {
                 .padding(.trailing, 20)
     //                .offset(x:100, y: -10)
     //                .scaleEffect(<#T##scale: CGSize##CGSize#>)
+                .background(
+                    Image("blurredbg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 170, height: 696)
+                        .clipped()
+                )
             }
             
         }
@@ -224,7 +231,7 @@ struct MyItems: View {
         .padding(.vertical, 25.05524)
         .frame(width: 168, height: 650, alignment: .top)
 //        .background(.black.opacity(0.6))
-        .background(Image("blurredbg"))
+//        .background(Image("blurredbg"))
         .cornerRadius(8)
         
     }
@@ -471,7 +478,8 @@ struct ShopItems: View {
         .padding(.horizontal, 0)
         .padding(.vertical, 25.05524)
         .frame(width: 168, height: 650, alignment: .bottom)
-        .background(.white.opacity(0.6))
+//        .background(.white.opacity(0.6))
+//        .background(Image("blurredbg"))
         .cornerRadius(8)
     }
 }

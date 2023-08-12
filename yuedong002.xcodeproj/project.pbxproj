@@ -135,6 +135,12 @@
 		364A66FE2A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364A66FD2A87C499007C2103 /* Camera_PressShutter.mp3 */; };
 		364A66FF2A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364A66FD2A87C499007C2103 /* Camera_PressShutter.mp3 */; };
 		364A67002A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364A66FD2A87C499007C2103 /* Camera_PressShutter.mp3 */; };
+		364A67022A87C969007C2103 /* headskin0812-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67012A87C969007C2103 /* headskin0812-3.jpg */; };
+		364A67032A87C969007C2103 /* headskin0812-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67012A87C969007C2103 /* headskin0812-3.jpg */; };
+		364A67042A87C969007C2103 /* headskin0812-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67012A87C969007C2103 /* headskin0812-3.jpg */; };
+		364A67062A87C988007C2103 /* neckskin0812-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67052A87C988007C2103 /* neckskin0812-3.jpg */; };
+		364A67072A87C988007C2103 /* neckskin0812-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67052A87C988007C2103 /* neckskin0812-3.jpg */; };
+		364A67082A87C988007C2103 /* neckskin0812-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67052A87C988007C2103 /* neckskin0812-3.jpg */; };
 		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
@@ -509,6 +515,8 @@
 		364A66F52A87C209007C2103 /* headskin0812-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "headskin0812-2.jpg"; sourceTree = "<group>"; };
 		364A66F92A87C223007C2103 /* neckskin0812-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "neckskin0812-2.jpg"; sourceTree = "<group>"; };
 		364A66FD2A87C499007C2103 /* Camera_PressShutter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Camera_PressShutter.mp3; sourceTree = "<group>"; };
+		364A67012A87C969007C2103 /* headskin0812-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "headskin0812-3.jpg"; sourceTree = "<group>"; };
+		364A67052A87C988007C2103 /* neckskin0812-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "neckskin0812-3.jpg"; sourceTree = "<group>"; };
 		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
 		365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeckSlides.swift; sourceTree = "<group>"; };
 		365121C32A73AC700071D1C1 /* head.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = head.swift; sourceTree = "<group>"; };
@@ -719,6 +727,8 @@
 		365CF8002A6D67C70007A2CF /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				364A67052A87C988007C2103 /* neckskin0812-3.jpg */,
+				364A67012A87C969007C2103 /* headskin0812-3.jpg */,
 				364A66F92A87C223007C2103 /* neckskin0812-2.jpg */,
 				364A66F52A87C209007C2103 /* headskin0812-2.jpg */,
 				364A66F12A87BFDE007C2103 /* headskin0812.jpg */,
@@ -1075,6 +1085,7 @@
 				3676894B2A839C4F00B3C6D4 /* eatLeafNoLight.dae in Resources */,
 				36027E0C2A7E33B100A505BC /* 单个长颈鹿.dae in Resources */,
 				367689232A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
+				364A67062A87C988007C2103 /* neckskin0812-3.jpg in Resources */,
 				36EC1E142A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				368726F72A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				3696A5EA2A756DAC00B59DCB /* NeckIcon.png in Resources */,
@@ -1143,6 +1154,7 @@
 				365121D02A74EFCC0071D1C1 /* rotatingCube.dae in Resources */,
 				3696A5EE2A7628D900B59DCB /* EarthIcon.png in Resources */,
 				364A66E72A879324007C2103 /* 2-cool.mp3 in Resources */,
+				364A67022A87C969007C2103 /* headskin0812-3.jpg in Resources */,
 				367689672A85115500B3C6D4 /* 长颈鹿0810-3.dae in Resources */,
 				3696A5FB2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				36E5F1932A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
@@ -1237,6 +1249,7 @@
 				36027E3B2A7EC29D00A505BC /* save.png in Resources */,
 				36027E092A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				367689642A850EF700B3C6D4 /* 长颈鹿0810-2.dae in Resources */,
+				364A67032A87C969007C2103 /* headskin0812-3.jpg in Resources */,
 				3698D58D2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				364A66FF2A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */,
 				36027DF12A79545100A505BC /* GetScore.mp3 in Resources */,
@@ -1270,6 +1283,7 @@
 				364A66CF2A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				364A66E22A879324007C2103 /* surprise.mp3 in Resources */,
+				364A67072A87C988007C2103 /* neckskin0812-3.jpg in Resources */,
 				3696A5DF2A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				364A669B2A875430007C2103 /* 花.png in Resources */,
@@ -1359,6 +1373,7 @@
 				36027E3C2A7EC29D00A505BC /* save.png in Resources */,
 				36027E0A2A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				367689652A850EF700B3C6D4 /* 长颈鹿0810-2.dae in Resources */,
+				364A67042A87C969007C2103 /* headskin0812-3.jpg in Resources */,
 				3698D58E2A7048BE0003C037 /* gameBackgroundSourceImage.jpeg in Resources */,
 				364A67002A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */,
 				36027DF22A79545100A505BC /* GetScore.mp3 in Resources */,
@@ -1392,6 +1407,7 @@
 				364A66D02A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D52A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				364A66E32A879324007C2103 /* surprise.mp3 in Resources */,
+				364A67082A87C988007C2103 /* neckskin0812-3.jpg in Resources */,
 				3696A5E02A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				364A669C2A875430007C2103 /* 花.png in Resources */,
