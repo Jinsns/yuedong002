@@ -25,7 +25,8 @@ struct LeafInGame_Previews: PreviewProvider {
 
     static var previews: some View {
 
-        LeafInGame()
+//        LeafInGame()
+        leaf1(leafPosition: .constant("left"), leafLevel: .constant(3), isTenuto: .constant(true))
     }
 }
 
@@ -61,20 +62,20 @@ struct leaf1: View {
 //                .rotationEffect(.degrees(-87))
               
             if leafLevel == 1 {
-                Image("leaf")
+                Image("leaf0812")
                     .resizable()
                     .frame(width: 74, height: 74)
-                    .colorMultiply(.yellow)
+//                    .colorMultiply(.yellow)
             } else if leafLevel == 2 {
-                Image("flower")
+                Image("orange0812")
                     .resizable()
                     .frame(width: 74, height: 74)
-                    .colorMultiply(.yellow)
+//                    .colorMultiply(.yellow)
             } else {
-                Image("apple")
+                Image("pitaya0812")
                     .resizable()
                     .frame(width: 74, height: 74)
-                    .colorMultiply(.yellow)
+//                    .colorMultiply(.yellow)
             }
             
         }

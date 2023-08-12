@@ -222,6 +222,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             cloudGeometry.materials = [cloudMaterial]
             let cloudNode = SCNNode(geometry: cloudGeometry)
             cloudNode.position = SCNVector3(1, 9.4, 0)
+//            cloudNode.position = SCNVector3(1, -6.4, 0)
             cloudNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
             self.rootNode.addChildNode(cloudNode)
             self.cloudNode = cloudNode
@@ -233,6 +234,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+        self.cloudNode?.position = SCNVector3(1, -6.4, 0)
         SCNTransaction.commit()
     }
     
