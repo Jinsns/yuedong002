@@ -514,7 +514,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         extraLightNode1.light = SCNLight()
         extraLightNode1.light?.type = SCNLight.LightType.omni
         extraLightNode1.light?.color = UIColor(red: 0.89, green: 0.97, blue: 0.91, alpha: 1.0)  //green like
-        extraLightNode1.light?.intensity = 400
+        extraLightNode1.light?.intensity = 700
         extraLightNode1.position = SCNVector3(30, -10, 0)
         extraLightNode1.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         extraLightNode1.light?.categoryBitMask = LightType.onBackground
@@ -525,7 +525,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         extraLightNode2.light = SCNLight()
         extraLightNode2.light?.type = SCNLight.LightType.omni
         extraLightNode2.light?.color = UIColor(red: 0.96, green: 1.0, blue: 0.75, alpha: 1.0) //yellow like
-        extraLightNode2.light?.intensity = 400
+        extraLightNode2.light?.intensity = 700
         extraLightNode2.position = SCNVector3(30, 0, 0)
         extraLightNode2.eulerAngles = SCNVector3(0, Float.pi / 2, 0)
         extraLightNode2.light?.categoryBitMask = LightType.onBackground

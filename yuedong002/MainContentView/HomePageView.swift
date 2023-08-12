@@ -248,14 +248,26 @@ struct HomePageView: View {
         
         if isShowShutterView {
             ShutterView(isShowShutterView: $isShowShutterView, isShowSnapEffect: $isShowSnapEffect)
+                .onDisappear() {
+                    scene.rotateBackNeckNode()
+                }
         }
         
         if isShowSnapEffect {
             SnapEffectView(isShowSnapEffect: $isShowSnapEffect)
+                .onAppear() {
+                    scene.physicsWorld.contactDelegate = nil
+                }
+                .onDisappear() {
+                    scene.physicsWorld.contactDelegate = scene
+                }
         }
         
         if isShowShopView {
             ShopView(totalLeaves: $totalLeaves, isShowShopView: $isShowShopView, scene: scene)
+                .onDisappear() {
+                    scene.rotateBackNeckNode()
+                }
         }
         
         
@@ -496,7 +508,7 @@ struct CorrectingPositionView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .center, spacing: 4) {
-                Text("摆正头部位置\n或适当旋转耳机至接近\n(0, 0)")
+                Text("摆正头部位置至\n(0, 0)")
                   .font(Font.custom("DFPYuanW9-GB", size: 20))
                   .multilineTextAlignment(.center)
                   .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
@@ -505,6 +517,7 @@ struct CorrectingPositionView: View {
                 Text(String(format: "(左右方向 %.1f, 前后方向 %.1f)", Float(scene.headphoneAnglex), Float(scene.headphoneAnglez) ) )
                   .font(Font.custom("DFPYuanW9-GB", size: 14))
                   .foregroundColor(Color(red: 0.32, green: 0.51, blue: 0.1))
+                  .padding(10)
                   
             }
                 .padding(.horizontal, 16)

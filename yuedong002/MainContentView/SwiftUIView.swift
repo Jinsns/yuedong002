@@ -100,8 +100,8 @@ struct SwiftUIView: View {
         ZStack{
             
             SceneView(
-                scene: scene,
-                options: [.allowsCameraControl]
+                scene: scene
+//                options: [.allowsCameraControl]
             )
                 .ignoresSafeArea()
             
@@ -380,7 +380,7 @@ struct SwiftUIView: View {
                         bgmSystem.stop()
                         scene.removeExtraLight()
 //                        soundEffectSystem.showCountScoreViewPlay()
-                        if let url = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "wav") {
+                        if let url = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "mp3") {
                                     let player = AVAudioPlayerPool().playerWithURL(url: url)
                                     player?.play()
                                 }

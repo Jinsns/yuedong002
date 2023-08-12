@@ -4,14 +4,14 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2023-08-12T14:07:51Z</created>
-  <modified>2023-08-12T14:07:51Z</modified>
+  <created>2023-08-12T14:26:44Z</created>
+  <modified>2023-08-12T14:26:44Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
  <library_images>
   <image id="image1">
-   <init_from>neckskin0812-3.jpg</init_from>
+   <init_from>neckskin0812-4.jpg</init_from>
   </image>
   <image id="image2">
    <init_from>headskin0812-3.jpg</init_from>
@@ -79,20 +79,21 @@
      </sampler2D>
     </newparam>
     <technique sid="common">
-     <lambert>
-      <diffuse>
-       <texture texture="ID4_image1" texcoord="CHANNEL2"/>
-      </diffuse>
+     <constant>
       <reflective>
        <color>0 0 0 1</color>
       </reflective>
       <transparency>
        <float>1</float>
       </transparency>
-      <index_of_refraction>
-       <float>1</float>
-      </index_of_refraction>
-     </lambert>
+     </constant>
+     <extra>
+      <technique profile="SceneKit">
+       <constant_diffuse>
+        <texture texture="ID4_image1" texcoord="CHANNEL2"/>
+       </constant_diffuse>
+      </technique>
+     </extra>
     </technique>
    </profile_COMMON>
    <extra>
@@ -143,20 +144,21 @@
      </sampler2D>
     </newparam>
     <technique sid="common">
-     <lambert>
-      <diffuse>
-       <texture texture="ID5_image2" texcoord="CHANNEL2"/>
-      </diffuse>
+     <constant>
       <reflective>
        <color>0 0 0 1</color>
       </reflective>
       <transparency>
        <float>1</float>
       </transparency>
-      <index_of_refraction>
-       <float>1</float>
-      </index_of_refraction>
-     </lambert>
+     </constant>
+     <extra>
+      <technique profile="SceneKit">
+       <constant_diffuse>
+        <texture texture="ID5_image2" texcoord="CHANNEL2"/>
+       </constant_diffuse>
+      </technique>
+     </extra>
     </technique>
    </profile_COMMON>
    <extra>
