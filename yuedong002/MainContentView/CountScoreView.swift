@@ -152,7 +152,11 @@ struct CountScoreView: View {
                 HStack(alignment: .center, spacing: 0) {
                     Button {
                         print("want to go back to main page")
-                        soundEffectSystem.buttonPlay()
+//                        soundEffectSystem.buttonPlay()
+                        if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                    player?.play()
+                                }
                         isInHomePage = true
                         
                         presentationMode.wrappedValue.dismiss()  //close this sheet view

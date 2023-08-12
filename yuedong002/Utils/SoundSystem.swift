@@ -101,6 +101,11 @@ class SoundEffectSystem {
     var overallDialogAudioPlayer: AVAudioPlayer?
     var popUpWindowAudioPlayer: AVAudioPlayer?
     
+    var wowAudioPlayer: AVAudioPlayer?
+    var taikulaAudioPlayer: AVAudioPlayer?
+    var likeyouAudioPlayer: AVAudioPlayer?
+    var surpriseAudioPlayer: AVAudioPlayer?
+    
     init() {
 //        let buttonSoundFileName = "Overall_ClickButton"
 //        let showCountScoreViewSoundFileName = "CountScoreView_onloading"
@@ -110,6 +115,10 @@ class SoundEffectSystem {
         let showCountScoreViewSoundURL = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "mp3")!
         let overallDialogSoundURL = Bundle.main.url(forResource: "Overall_Dialog", withExtension: "mp3")!
         let popUpWindowSoundURL = Bundle.main.url(forResource: "PopupWindow", withExtension: "mp3")!
+        let wowSound = Bundle.main.url(forResource: "1-wow", withExtension: "mp3")!
+        let taikulaSound = Bundle.main.url(forResource: "2-cool", withExtension: "mp3")!
+        let likeyouSound = Bundle.main.url(forResource: "3-ShenShou", withExtension: "mp3")!
+        let surpriseSound = Bundle.main.url(forResource: "surprise", withExtension: "mp3")!
         
         do {
             self.buttonAudioPlayer = try AVAudioPlayer(contentsOf: buttonSoundURL)
@@ -117,10 +126,17 @@ class SoundEffectSystem {
             self.overallDialogAudioPlayer = try AVAudioPlayer(contentsOf: overallDialogSoundURL)
             self.popUpWindowAudioPlayer = try AVAudioPlayer(contentsOf: popUpWindowSoundURL)
             
+            self.wowAudioPlayer = try AVAudioPlayer(contentsOf: wowSound)
+            self.taikulaAudioPlayer = try AVAudioPlayer(contentsOf: taikulaSound)
+            self.likeyouAudioPlayer = try AVAudioPlayer(contentsOf: likeyouSound)
+            self.surpriseAudioPlayer = try AVAudioPlayer(contentsOf: surpriseSound)
+            
         } catch {
             print("error when initializing audioplayer")
-
+            print("Error initializing buttonAudioPlayer: \(error.localizedDescription)")
         }
+        
+        
     }
     
     func prepareToPlay() {
@@ -128,6 +144,11 @@ class SoundEffectSystem {
         self.showCountScoreViewAudioPlayer?.prepareToPlay()
         self.overallDialogAudioPlayer?.prepareToPlay()
         self.popUpWindowAudioPlayer?.prepareToPlay()
+        
+        self.wowAudioPlayer?.prepareToPlay()
+        self.taikulaAudioPlayer?.prepareToPlay()
+        self.likeyouAudioPlayer?.prepareToPlay()
+        self.surpriseAudioPlayer?.prepareToPlay()
         
     }
     
@@ -149,10 +170,63 @@ class SoundEffectSystem {
         
     }
     
+    func wowPlay() {
+        self.wowAudioPlayer?.volume = 4.0
+        self.wowAudioPlayer?.play()
+    }
+    
+    func taikulaPlay() {
+        self.taikulaAudioPlayer?.volume = 4.0
+        
+        self.taikulaAudioPlayer?.play()
+    }
+    
+    func likeyouPlay() {
+        self.likeyouAudioPlayer?.volume = 4.0
+        self.likeyouAudioPlayer?.play()
+    }
+    
+    func surprisePlay() {
+        self.surpriseAudioPlayer?.volume = 4.0
+        self.surpriseAudioPlayer?.play()
+    }
+    
+    
     
     
     
 }
+
+private var players:[AVAudioPlayer] = []
+
+class AVAudioPlayerPool: NSObject {
+    
+
+    //指定声音文件URL，有空闲重用，没空闲创建AVAudioPlayer
+    func playerWithURL(url:URL) -> AVAudioPlayer? {
+        
+        //查找一个空闲的AVAudioPlayer
+        let availabelPlayers = players.filter { (player) -> Bool in
+            return player.isPlaying == false && player.url == url
+        }
+        
+        //如果找到，返回AVAudioPlayer对象
+        if let playerToUse = availabelPlayers.first{
+            return playerToUse
+        }
+        
+        //没有找到，新建一个AVAudioPlayer对象
+        do {
+            let newPlayer = try AVAudioPlayer(contentsOf: url)
+            players.append(newPlayer)
+            return newPlayer
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+}
+
 
 
 

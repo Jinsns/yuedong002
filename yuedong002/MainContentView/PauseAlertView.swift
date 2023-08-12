@@ -50,7 +50,11 @@ struct PauseAlertView: View {
                         HStack(alignment: .center, spacing: 0) {
                             Button(action: {
                                 print("pressed end this game")
-                                soundEffectSystem.buttonPlay()
+//                                soundEffectSystem.buttonPlay()
+                                if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                            player?.play()
+                                        }
                                 self.isShowPause = false
                                 self.isShowCountScoreView = true
                                 
@@ -71,7 +75,11 @@ struct PauseAlertView: View {
                         HStack(alignment: .center, spacing: 0) {
                             Button {
                                 print("pressed continue")
-                                soundEffectSystem.buttonPlay()
+//                                soundEffectSystem.buttonPlay()
+                                if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                            player?.play()
+                                        }
                                 self.isShowPause = false
                             } label: {
                                 Text("继续")

@@ -4,17 +4,17 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2023-08-12T09:21:11Z</created>
-  <modified>2023-08-12T09:21:11Z</modified>
+  <created>2023-08-12T13:36:06Z</created>
+  <modified>2023-08-12T13:36:06Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
  <library_images>
   <image id="image1">
-   <init_from>neckSkin0811.jpg</init_from>
+   <init_from>neckskin0812-2.jpg</init_from>
   </image>
   <image id="image2">
-   <init_from>headSkin0811.jpg</init_from>
+   <init_from>headskin0812-2.jpg</init_from>
   </image>
  </library_images>
  <library_materials>
@@ -40,10 +40,10 @@
     <technique sid="common">
      <lambert>
       <emission>
-       <color>0.059 0.146 1 1</color>
+       <color>0.970735 0.909715 0.578766 1</color>
       </emission>
       <diffuse>
-       <color>1 1 1 1</color>
+       <color>1.00476 0.977559 0.695373 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
@@ -170,6 +170,12 @@
    <profile_COMMON>
     <technique sid="common">
      <constant>
+      <emission>
+       <color>0.239221 0.223472 -0.00188262 1</color>
+      </emission>
+      <reflective>
+       <color>0.196417 0.197044 0.145273 1</color>
+      </reflective>
       <transparency>
        <float>1</float>
       </transparency>
@@ -177,7 +183,7 @@
      <extra>
       <technique profile="SceneKit">
        <constant_diffuse>
-        <color>0.882929 0.769223 0.277682 1</color>
+        <color>0.79422 0.788649 0.586099 1</color>
        </constant_diffuse>
       </technique>
      </extra>

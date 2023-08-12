@@ -119,7 +119,11 @@ struct HomePageView: View {
                     HStack(alignment: .center, spacing: 9.85389) {  //button hstack
                         Button {
                             print("pressed settings button")
-                            soundEffectSystem.buttonPlay()
+//                            soundEffectSystem.buttonPlay()
+                            if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
                         } label: {
                             Image("SettingsButton")
                         }
@@ -134,7 +138,11 @@ struct HomePageView: View {
                     HStack(alignment: .top, spacing: 10) {
                         Button {
                             print("pressed PhotoIcon")
-                            soundEffectSystem.buttonPlay()
+//                            soundEffectSystem.buttonPlay()
+                            if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
                             isShowShutterView = true
                         } label: {
                             Image("PhotoIcon")
@@ -148,7 +156,11 @@ struct HomePageView: View {
                     HStack(alignment: .top, spacing: 10) {
                         Button {
                             print("pressed EyeGlassesIcon")
-                            soundEffectSystem.buttonPlay()
+//                            soundEffectSystem.buttonPlay()
+                            if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
                             isShowShopView = true
                             scene.moveCameraNodeAndNeckNodeToShopPosition()
                         
@@ -181,7 +193,8 @@ struct HomePageView: View {
 
         }
         .onAppear(){
-            soundEffectSystem.prepareToPlay()
+//            soundEffectSystem.prepareToPlay()
+            
             homePageBgmSystem.play()
             scene.checkingAirpods()
             scene.isPositionReady = false
@@ -289,6 +302,10 @@ struct ShutterView: View {
             HStack {
                 Button {
                     print("pressed shutter button")
+                    if let url = Bundle.main.url(forResource: "Camera_PressShutter", withExtension: "mp3") {
+                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                        player?.play()
+                    }
                     withAnimation(.linear(duration: 0.6)) {
                         isShowSnapEffect = true
                     }
@@ -462,7 +479,11 @@ struct WearAirpodsReminderView: View {
 //            withAnimation {
 //                isShowAirpodsReminder = true
 //            }
-            soundEffectSystem.overallDialogPlay()
+//            soundEffectSystem.overallDialogPlay()
+            if let url = Bundle.main.url(forResource: "Overall_Dialog", withExtension: "mp3") {
+                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                        player?.play()
+                    }
         }
     }
 }

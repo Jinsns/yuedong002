@@ -10,7 +10,7 @@ import SceneKit
 
 let neckLengthLevel: [Int] = [120, 200]
 
-let soundEffectSystem = SoundEffectSystem()
+//let soundEffectSystem = SoundEffectSystem()
 
 
 //延音时长统一为4秒，bgm虫儿飞时长58秒
@@ -100,8 +100,8 @@ struct SwiftUIView: View {
         ZStack{
             
             SceneView(
-                scene: scene
-//                options: [.allowsCameraControl]
+                scene: scene,
+                options: [.allowsCameraControl]
             )
                 .ignoresSafeArea()
             
@@ -110,7 +110,7 @@ struct SwiftUIView: View {
                 HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, scene: scene, isLeafAdded: $isLeafAdded)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
-                        soundEffectSystem.prepareToPlay()
+//                        soundEffectSystem.prepareToPlay()
                         scene.score = 0
                         
                         if scene.leafNode != nil {  //清空之前的叶子
@@ -167,8 +167,14 @@ struct SwiftUIView: View {
                 
                 Button {
                     print("pressed pause button")
-                    soundEffectSystem.buttonPlay()
-                    soundEffectSystem.popUpWindowPlay()
+//                    soundEffectSystem.buttonPlay()
+//                    soundEffectSystem.popUpWindowPlay()
+                    if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.play()
+                            }
+                    
+                    
                     isShowPause = true
                     
                 } label: {
@@ -187,6 +193,11 @@ struct SwiftUIView: View {
                 if isShowStage2Reminder {
                     Stage2Remind()
                         .onAppear() {
+//                            soundEffectSystem.surprisePlay()
+                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 withAnimation(.default) {
                                     isShowStage2Reminder = false
@@ -198,6 +209,12 @@ struct SwiftUIView: View {
                 if isShowWow == true && isShowedWow == false {
                     Wow()
                         .onAppear() {
+//                            soundEffectSystem.wowPlay()
+                            if let url = Bundle.main.url(forResource: "1-wow", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 withAnimation(.default) {
                                     isShowWow = false
@@ -210,6 +227,11 @@ struct SwiftUIView: View {
                 if isShowTaikula == true && isShowedTaikula == false{
                     Taikula()
                         .onAppear() {
+//                            soundEffectSystem.taikulaPlay()
+                            if let url = Bundle.main.url(forResource: "2-cool", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 withAnimation(.default) {
                                     isShowTaikula = false
@@ -222,6 +244,11 @@ struct SwiftUIView: View {
                 if isShowLikeyou == true && isShowedLikeyou == false{
                     Likeyou()
                         .onAppear() {
+//                            soundEffectSystem.likeyouPlay()
+                            if let url = Bundle.main.url(forResource: "3-ShenShou", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 withAnimation(.default) {
                                     isShowLikeyou = false
@@ -352,7 +379,11 @@ struct SwiftUIView: View {
                         print("countscoreview appear")
                         bgmSystem.stop()
                         scene.removeExtraLight()
-                        soundEffectSystem.showCountScoreViewPlay()
+//                        soundEffectSystem.showCountScoreViewPlay()
+                        if let url = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "wav") {
+                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                    player?.play()
+                                }
                         scene.shouldContact = false
                         scene.physicsWorld.contactDelegate = nil
                         scene.leafNode?.removeFromParentNode()
