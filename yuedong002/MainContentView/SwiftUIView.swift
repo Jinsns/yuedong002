@@ -25,10 +25,10 @@ let notes: [Note] = [
     Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 2), //右
     Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 3), //左
     Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 1), //右
-    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.6, y: 1, z: 0.0), isTenuto: true, level: 2),  //前
-    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.6, y: 1, z: 0.0), isTenuto: true, level: 3),  //前
-    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.6, y: 1, z: -0.0), isTenuto: true, level: 1),  //后
-    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -3.6, y: 1, z: -0.0), isTenuto: true, level: 2),  //后
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.9, y: 1.2, z: 0.0), isTenuto: true, level: 2),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.9, y: 1.2, z: 0.0), isTenuto: true, level: 3),  //前
+    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.8, y: 1.2, z: -0.0), isTenuto: true, level: 1),  //后
+    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -3.8, y: 1.2, z: -0.0), isTenuto: true, level: 2),  //后
     
     Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
@@ -38,12 +38,12 @@ let noteUIs: [NoteUI] = [
     
     NoteUI(startTime: 4.0, endTime: 8.0, leafPosition: "left", isTenuto: true, level: 1),
     NoteUI(startTime: 10.0, endTime: 14.0, leafPosition: "right", isTenuto: true, level: 1),
-    NoteUI(startTime: 16.0, endTime: 20.0, leafPosition: "left", isTenuto: true, level: 1),
-    NoteUI(startTime: 22.0, endTime: 26.0, leafPosition: "right", isTenuto: true, level: 1),
-    NoteUI(startTime: 30.0, endTime: 34.0, leafPosition: "fore", isTenuto: true, level: 1),
-    NoteUI(startTime: 36.0, endTime: 40.0, leafPosition: "fore", isTenuto: true, level: 1),
-    NoteUI(startTime: 42.0, endTime: 46.0, leafPosition: "back", isTenuto: true, level: 1),
-    NoteUI(startTime: 48.0, endTime: 52.0, leafPosition: "back", isTenuto: true, level: 1),
+    NoteUI(startTime: 16.0, endTime: 20.0, leafPosition: "left", isTenuto: true, level: 2),
+    NoteUI(startTime: 22.0, endTime: 26.0, leafPosition: "right", isTenuto: true, level: 2),
+    NoteUI(startTime: 30.0, endTime: 34.0, leafPosition: "fore", isTenuto: true, level: 3),
+    NoteUI(startTime: 36.0, endTime: 40.0, leafPosition: "fore", isTenuto: true, level: 3),
+    NoteUI(startTime: 42.0, endTime: 46.0, leafPosition: "back", isTenuto: true, level: 2),
+    NoteUI(startTime: 48.0, endTime: 52.0, leafPosition: "back", isTenuto: true, level: 3),
     
     NoteUI(startTime: 65.0, endTime: 75.0, leafPosition: "left", isTenuto: true, level: 1),
     NoteUI(startTime: 85.0, endTime: 95.0, leafPosition: "left", isTenuto: true, level: 1),
@@ -77,7 +77,7 @@ struct SwiftUIView: View {
     @State var isShowPause = false
     @State var isShowCountScoreView = false
 //    @State var scoreScale: CGFloat = 1.0
-    
+    @State var isShowStage2Reminder = false
     @State var extraLightAdded = false
     @State var isLeafAdded = false
     @State var leafPosition: String = "fore"
@@ -175,6 +175,17 @@ struct SwiftUIView: View {
                     PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
                 }
                 
+                if isShowStage2Reminder {
+                    Stage2Remind()
+                        .onAppear() {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                withAnimation(.default) {
+                                    isShowStage2Reminder = false
+                                }
+                            }
+                        }
+                }
+                
                 ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
                 
 //                if isShowProgressBar {
@@ -210,6 +221,9 @@ struct SwiftUIView: View {
                     scene.addExtraLight()
                     extraLightAdded = true
                     print("extra light added")
+                    withAnimation(.default) {
+                        isShowStage2Reminder = true
+                    }
                 }
                 
                 if (newValue > note!.endTime) {

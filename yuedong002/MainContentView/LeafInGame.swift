@@ -55,11 +55,24 @@ struct leaf1: View {
 //                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt))
 //                .frame(width: 90, height: 90)
 //                .rotationEffect(.degrees(-87))
-                
-            Image("leaf")
-                .resizable()
-                .frame(width: 74, height: 74)
-                .colorMultiply(.yellow)
+              
+            if leafLevel == 1 {
+                Image("leaf")
+                    .resizable()
+                    .frame(width: 74, height: 74)
+                    .colorMultiply(.yellow)
+            } else if leafLevel == 2 {
+                Image("flower")
+                    .resizable()
+                    .frame(width: 74, height: 74)
+                    .colorMultiply(.yellow)
+            } else {
+                Image("apple")
+                    .resizable()
+                    .frame(width: 74, height: 74)
+                    .colorMultiply(.yellow)
+            }
+            
         }
         .scaleEffect(
             (leafPosition == "left" || leafPosition == "right") ? 1.2 :
