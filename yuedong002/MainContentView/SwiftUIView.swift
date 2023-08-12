@@ -8,6 +8,8 @@
 import SwiftUI
 import SceneKit
 
+let neckLengthLevel: [Int] = [120, 200]
+
 let soundEffectSystem = SoundEffectSystem()
 
 
@@ -17,16 +19,16 @@ let notes: [Note] = [
     //y 大 屏幕上
     //z 大 屏幕左， x，z和头运动方向一致
     
-    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 1.5, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
-    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: 1.8), isTenuto: true, level: 1), //左
-    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: -1.8), isTenuto: true, level: 2), //右
-    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: 1.8), isTenuto: true, level: 3), //左
-    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: -0.1, z: -1.8), isTenuto: true, level: 1), //右
-    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 2.0, y: -0.1, z: 0.0), isTenuto: true, level: 2),  //前
-    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 2.0, y: -0.1, z: 0.0), isTenuto: true, level: 3),  //前
-    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -1.0, y: -0.1, z: -0.0), isTenuto: true, level: 1),  //后
-    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -1.0, y: -0.1, z: -0.0), isTenuto: true, level: 2),  //后
+    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 1), //左
+    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 2), //右
+    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 3), //左
+    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 1), //右
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.6, y: 1, z: 0.0), isTenuto: true, level: 2),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.6, y: 1, z: 0.0), isTenuto: true, level: 3),  //前
+    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.6, y: 1, z: -0.0), isTenuto: true, level: 1),  //后
+    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -3.6, y: 1, z: -0.0), isTenuto: true, level: 2),  //后
     
     Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
@@ -56,6 +58,7 @@ var noteIterator = 0
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: String = "100"
     @AppStorage("totalLeaves") var totalLeaves: String = "0"
+    
     
     @State var isInHomePage = true
     @State var isGaming = false
@@ -197,6 +200,7 @@ struct SwiftUIView: View {
                     bgmSystem.play()
                     scene.moveCameraNodeAndNeckNodeToGamePosition()
                     isInHomePage = false
+                    scene.leafNode?.removeFromParentNode()
                 }
                 
             }
@@ -275,6 +279,10 @@ struct SwiftUIView: View {
                     .onDisappear(){
                         print("countscoreview disappear")
                         isShowCountScoreView = false
+                        if Int(neckLength)! >= neckLengthLevel[0] {
+                            scene.moveBackGroundPosition()
+                        }
+                        
                     }
             })
             .opacity(!isInHomePage ? 1.0 : 0.0)

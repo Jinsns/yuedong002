@@ -67,7 +67,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //    let neckInitialYEulerAngle = Float(-3.14 / 2 - 3.14 / 16)
     
     let leavesAppearAudioSource = SCNAudioSource(fileNamed: "monoLeavesAppearing.mp3")!
-    let leavesEatenAudioSource = SCNAudioSource(fileNamed: "monoGetScore.mp3")!
+    let leavesEatenAudioSource = SCNAudioSource(fileNamed: "monoGetScore0811.mp3")!
     var textActionEffectGroup = SCNAction()  //+1 appears and disappears when eat
     var timer: Timer?
     
@@ -172,7 +172,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = SCNVector3(x: 10, y: 2, z: 0)
-        self.neckNode?.position = SCNVector3(0, -2.4, 0)
+        self.neckNode?.position = SCNVector3(0.0, -1.8, 0)
         SCNTransaction.commit()
     }
     
@@ -198,7 +198,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         backgroundGeometry.materials = [backgroundMaterial]
         let backgroundNode = SCNNode(geometry: backgroundGeometry)
 //        backgroundNode.position = SCNVector3(-10, 0, 0)
-        backgroundNode.position = SCNVector3(-35, 114, 0)
+        backgroundNode.position = SCNVector3(-35, 114, 0)    //original
+//        backgroundNode.position = SCNVector3(-35, 66, 0)    //test move
         backgroundNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
         
 //        backgroundNode.categoryBitMask = LightType.onBackground
@@ -226,71 +227,81 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             self.cloudNode = cloudNode
         }
         
-        
-        
+    }
+    
+    func moveBackGroundPosition() {
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+        SCNTransaction.commit()
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        guard let scene = SCNScene(named: "giraffe0.dae") else {
+        guard let scene = SCNScene(named: "长颈鹿0811-1.dae") else {
             print("Failed to load 'giraffe0.dae'")
             return
         }
         
         print("scene.rootNode.childNodes: ", scene.rootNode.childNodes)
-        let giraffeNode10 = scene.rootNode.childNodes.first!
-        for childNode in giraffeNode10.childNodes {
-            print("子节点的名称：", childNode.name ?? "无")
-            print("子节点的类型：", type(of: childNode))
-        }
+        let giraffeNode10 = scene.rootNode
+//        for childNode in scene.rootNode.childNodes {
+//            print("子节点的名称：", childNode.name ?? "无")
+//            print("子节点的类型：", type(of: childNode))
+//        }
 //        print("giraffeNode childnodes1: ", giraffeNode10.childNodes.first?.childNodes.first)
 //        print("giraffeNode childnodes2: ", giraffeNode10.childNodes.first?.childNodes.last)
         
-//        var giraffeNode = SCNNode()
+
         
 //        let headNode = giraffeNode10.childNode(withName: "鹿", recursively: true)!
-//        print("lu added")
-//        let headNodeMaterial = SCNMaterial()
-//        headNodeMaterial.diffuse.contents = UIImage(named: "giraffeHeadSkin")
-//        headNode.geometry?.materials = [headNodeMaterial]
-//
-//
+////        print("lu added")
+////        let headNodeMaterial = SCNMaterial()
+////        headNodeMaterial.diffuse.contents = UIImage(named: "giraffeHeadSkin")
+////        headNode.geometry?.materials = [headNodeMaterial]
+////
+////
 //        let neckNode = giraffeNode10.childNode(withName: "脖子", recursively: true)!
 //        print("bozi added")
 //        let neckNodeMaterial = SCNMaterial()
-//        neckNodeMaterial.diffuse.contents = UIImage(named: "giraffeNeckSkin")
-//        giraffeNode10.geometry?.materials = [neckNodeMaterial]
+//        neckNodeMaterial.diffuse.contents = UIImage(named: "leaf")
+//        neckNode.geometry?.materials = [neckNodeMaterial]
         
 
         
 //        giraffeNode10.geometry?.materials = [neckNodeMaterial]
         
         // 根据需要对脖子模型进行缩放和位置调整
-        giraffeNode10.scale = SCNVector3(0.65, 0.65, 0.65)   //缩放
-        giraffeNode10.position = SCNVector3(0, -2.4, 0.3) // 设置位置，根据需要调整
+        giraffeNode10.scale = SCNVector3(1.0, 1.0, 1.0)   //缩放
+        giraffeNode10.position = SCNVector3(0.0, -1.8, 0.0) // 设置位置，根据需要调整
         giraffeNode10.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
-        
-        
-        
-//        neckNode.orientation = SCNVector4(0, 1, 0, -Float.pi / 2) // 设置旋转角度，根据需要调整
-//        let rotateAction = SCNAction.rotateBy(x: 0, y: -CGFloat.pi / 2, z: 0, duration: 0)
-//        neckNode.runAction(rotateAction)
-//        neckNode.rotation = SCNVector4(0, 1, 0, -Float.pi / 2 - Float.pi / 16)
-        
-        
-        
-//        let neckBoundingBox = neckNode.boundingBox
-//        let neckSize = SCNVector3(neckBoundingBox.max.x - neckBoundingBox.min.x,
-//                                  neckBoundingBox.max.y - neckBoundingBox.min.y,
-//                                  neckBoundingBox.max.z - neckBoundingBox.min.z)
-//        neckNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: SCNBox(width: CGFloat(neckSize.x), height: CGFloat(neckSize.y), length: CGFloat(neckSize.z), chamferRadius: 0.0), options: nil))
-        
-        //line below creates more accurate physics body than the line above, with more computation costs
-        giraffeNode10.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .statgiraffecan't collide
+
+
+        giraffeNode10.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .statgiffecan't collide
         giraffeNode10.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
         giraffeNode10.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         giraffeNode10.name = "neck"
         giraffeNode10.categoryBitMask = LightType.onNeck
-        giraffeNode10.geometry?.materials.first?.lightingModel = .constant
+//        giraffeNode10.geometry?.materials.first?.lightingModel = .constant
+        
+
+//
+        
+//        var giraffeNode = SCNNode()
+//        giraffeNode.scale = SCNVector3(0.65, 0.65, 0.65)   //缩放
+//        giraffeNode.position = SCNVector3(0, -2.4, 0.3) // 设置位置，根据需要调整
+//        giraffeNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
+//
+//
+//        giraffeNode.addChildNode(headNode)
+//        giraffeNode.addChildNode(neckNode)
+//        //line below creates more accurate physics body than the line above, with more computation costs
+//        giraffeNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .statgiffecan't collide
+//        giraffeNode.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
+//        giraffeNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
+//        giraffeNode.name = "neck"
+//        giraffeNode.categoryBitMask = LightType.onNeck
+//        giraffeNode.geometry?.materials.first?.lightingModel = .constant
+        
         self.rootNode.addChildNode(giraffeNode10)
         self.neckNode = giraffeNode10
         
@@ -321,9 +332,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
 
         leafMaterial.lightingModel = .constant  //not affected by light
-        leafMaterial.transparency = 0.01
+        leafMaterial.transparency = 0.6
 //        let leafGeometry = SCNPlane(width: 1.6, height: 1.6)
-        let leafGeometry = SCNPlane(width: 6, height: 6)
+//        let leafGeometry = SCNPlane(width: 6, height: 6)
+        let leafGeometry = SCNBox(width: 6, height: 3, length: 3, chamferRadius: 0)
         
         leafGeometry.materials = [leafMaterial]
 
@@ -335,11 +347,23 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         
         leafNode.position = SCNVector3(x: xPosition, y: yPosition, z: zPosition)
-        if noteUIPosition == "fore" || noteUIPosition == "back" {
+//        if noteUIPosition == "fore" || noteUIPosition == "back" {
+//            leafNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)  // fore and back
+//        } else {
+//            leafNode.eulerAngles = SCNVector3(0, 0, 0)  //left and right
+//        }
+        
+        if noteUIPosition == "fore" {
             leafNode.eulerAngles = SCNVector3(0, Float.pi / 2, 0)  // fore and back
-        } else {
+        } else if noteUIPosition == "back" {
+            leafNode.eulerAngles = SCNVector3(0, -Float.pi / 2.0, 0)
+        } else if noteUIPosition == "left" {
+            leafNode.eulerAngles = SCNVector3(0, 0, Float.pi)
+        } else {  //right
             leafNode.eulerAngles = SCNVector3(0, 0, 0)  //left and right
         }
+        
+        
         
 //        leafNode.eulerAngles = SCNVector3(0, 0, 0)
         leafNode.name = "leaf"
@@ -553,8 +577,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             guard let attitude = deviceMotion?.attitude else { return }
             self!.headphoneAnglex = attitude.roll
             self!.headphoneAnglez = attitude.pitch
-            print("new headphonex: ", self!.headphoneAnglex)
-            print("new headphonez: ", self!.headphoneAnglez)
+//            print("new headphonex: ", self!.headphoneAnglex)
+//            print("new headphonez: ", self!.headphoneAnglez)
             
             if abs(self!.headphoneAnglex) < readyRange && abs(self!.headphoneAnglez) < readyRange {
                 self!.isPositionReady = true
@@ -579,7 +603,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                         
             
             self?.neckNode?.eulerAngles = SCNVector3(
-                x:  (absx > maxAngle ? maxAngle * (-Float(attitude.roll)) / absx : -Float(attitude.roll)) / 2,
+                x:  (absx > maxAngle ? maxAngle * (-Float(attitude.roll)) / absx : -Float(attitude.roll)) / 2 ,
                 y: 0,
                 z: (absz > maxAngle ? maxAngle * (Float(attitude.pitch)) / absz : Float(attitude.pitch)) / 2
             )
