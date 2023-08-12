@@ -484,8 +484,10 @@ struct CorrectingPositionView: View {
                 Text(String(format: "(左右方向 %.1f, 前后方向 %.1f)", Float(scene.headphoneAnglex), Float(scene.headphoneAnglez) ) )
                   .font(Font.custom("DFPYuanW9-GB", size: 14))
                   .foregroundColor(Color(red: 0.32, green: 0.51, blue: 0.1))
+                  
             }
                 .padding(.horizontal, 16)
+                .padding(.vertical, 16)
                 .background(.white.opacity(0.7))
                 .cornerRadius(8)
             
@@ -494,7 +496,7 @@ struct CorrectingPositionView: View {
                 .offset(x: 0, y: -1)
                 .opacity(0.7)
         }
-        .padding(.bottom, 390)
+        .padding(.bottom, 370)
         
         
     }
