@@ -93,6 +93,9 @@
 		364A66AE2A875BD8007C2103 /* wow.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66AD2A875BD8007C2103 /* wow.png */; };
 		364A66AF2A875BD8007C2103 /* wow.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66AD2A875BD8007C2103 /* wow.png */; };
 		364A66B02A875BD8007C2103 /* wow.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66AD2A875BD8007C2103 /* wow.png */; };
+		364A66B22A876502007C2103 /* 长颈鹿0812.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66B12A876502007C2103 /* 长颈鹿0812.dae */; };
+		364A66B32A876502007C2103 /* 长颈鹿0812.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66B12A876502007C2103 /* 长颈鹿0812.dae */; };
+		364A66B42A876502007C2103 /* 长颈鹿0812.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66B12A876502007C2103 /* 长颈鹿0812.dae */; };
 		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
@@ -453,6 +456,7 @@
 		364A66A52A875BBE007C2103 /* likeyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeyou.png; sourceTree = "<group>"; };
 		364A66A92A875BCD007C2103 /* taikula.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taikula.png; sourceTree = "<group>"; };
 		364A66AD2A875BD8007C2103 /* wow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wow.png; sourceTree = "<group>"; };
+		364A66B12A876502007C2103 /* 长颈鹿0812.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "长颈鹿0812.dae"; sourceTree = "<group>"; };
 		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
 		365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeckSlides.swift; sourceTree = "<group>"; };
 		365121C32A73AC700071D1C1 /* head.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = head.swift; sourceTree = "<group>"; };
@@ -664,6 +668,7 @@
 				364A668D2A867DE9007C2103 /* headSkin0811.jpg */,
 				3676899A2A853A0B00B3C6D4 /* giraffeHeadSkin.jpg */,
 				367689922A8536E100B3C6D4 /* giraffeNeckSkin.jpg */,
+				364A66B12A876502007C2103 /* 长颈鹿0812.dae */,
 				364A66812A86696A007C2103 /* 长颈鹿0811-1.dae */,
 				364A66712A8624FE007C2103 /* 长颈鹿0811.dae */,
 				3676899E2A854FFB00B3C6D4 /* 长颈鹿0810-10.dae */,
@@ -1076,6 +1081,7 @@
 				368726FB2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3676899F2A854FFC00B3C6D4 /* 长颈鹿0810-10.dae in Resources */,
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
+				364A66B22A876502007C2103 /* 长颈鹿0812.dae in Resources */,
 				364A66822A86696A007C2103 /* 长颈鹿0811-1.dae in Resources */,
 				364A66722A8624FE007C2103 /* 长颈鹿0811.dae in Resources */,
 				36027E3A2A7EC29D00A505BC /* save.png in Resources */,
@@ -1190,6 +1196,7 @@
 				3698D5852A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				36D15EAD2A7280A200BC1967 /* songEnd.png in Resources */,
 				3696A5E32A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
+				364A66B32A876502007C2103 /* 长颈鹿0812.dae in Resources */,
 				368726EC2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
 				367689242A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				364A66832A86696A007C2103 /* 长颈鹿0811-1.dae in Resources */,
@@ -1298,6 +1305,7 @@
 				3698D5862A6FDA510003C037 /* monoPianoD.mp3 in Resources */,
 				36D15EAE2A7280A200BC1967 /* songEnd.png in Resources */,
 				3696A5E42A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
+				364A66B42A876502007C2103 /* 长颈鹿0812.dae in Resources */,
 				368726ED2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
 				367689252A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				364A66842A86696A007C2103 /* 长颈鹿0811-1.dae in Resources */,

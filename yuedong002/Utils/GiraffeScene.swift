@@ -237,7 +237,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        guard let scene = SCNScene(named: "长颈鹿0811-1.dae") else {
+        guard let scene = SCNScene(named: "长颈鹿0812.dae") else {
             print("Failed to load 'giraffe0.dae'")
             return
         }
@@ -280,8 +280,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         giraffeNode10.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
         giraffeNode10.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         giraffeNode10.name = "neck"
+        
+        giraffeNode10.geometry?.materials.first?.lightingModel = .constant
         giraffeNode10.categoryBitMask = LightType.onNeck
-//        giraffeNode10.geometry?.materials.first?.lightingModel = .constant
         
 
 //
@@ -306,6 +307,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.neckNode = giraffeNode10
         
     
+    }
+    
+    func rotateBackNeckNode() {
+        self.neckNode?.eulerAngles = SCNVector3(x: 0, y: 0, z: 0)
     }
 
     
@@ -445,13 +450,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.neckNode?.geometry?.materials.first?.lightingModel = .phong
         let omniLightNode1 = SCNNode()
         omniLightNode1.light = SCNLight()
-        omniLightNode1.light?.type = SCNLight.LightType.omni
+        omniLightNode1.light?.type = SCNLight.LightType.ambient
         omniLightNode1.light?.color = UIColor(white: 1.0, alpha: 1.0)
 //        omniLightNode1.light?.color =  UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
         omniLightNode1.position = SCNVector3Make(10, 15, 0)  //x大 屏幕外，y大 屏幕上，z大 屏幕左
         omniLightNode1.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode1.light?.categoryBitMask = LightType.onNeck
-        omniLightNode1.light?.intensity = 2000
+        omniLightNode1.light?.intensity = 1000
         
         let omniLightNode2 = SCNNode()
         omniLightNode2.light = SCNLight()
@@ -461,7 +466,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         omniLightNode2.position = SCNVector3(10, 5, -6)
         omniLightNode2.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode2.light?.categoryBitMask = LightType.onNeck
-        omniLightNode2.light?.intensity = 2500
+        omniLightNode2.light?.intensity = 1800
 
         let omniLightNode3 = SCNNode()
         omniLightNode3.light = SCNLight()
@@ -470,7 +475,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         omniLightNode3.position = SCNVector3(10, 5, 6)
         omniLightNode3.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode3.light?.categoryBitMask = LightType.onNeck
-        omniLightNode3.light?.intensity = 2500
+        omniLightNode3.light?.intensity = 1800
         
         let omniLightNode4 = SCNNode()
         omniLightNode4.light = SCNLight()

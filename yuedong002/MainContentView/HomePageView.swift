@@ -61,7 +61,7 @@ struct HomePageView: View {
                 
                 if isShowNodToEatView {
                     NodToEatView()
-                    leaf1(leafPosition: .constant("fore"), leafLevel: .constant(1))
+                    leaf1(leafPosition: .constant("fore"), leafLevel: .constant(1), isTenuto: .constant(false))
                         .onAppear() {
                             isLeafAdded = true
                             scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level, noteUIPosition: noteUI!.leafPosition)
@@ -562,7 +562,7 @@ struct ArrowButtonsView: View {
                     } else {
                         scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
                             x: scene.cameraNode!.position.x,
-                            y: -2.0,
+                            y: -1.5,
                             z: scene.cameraNode!.position.z)
                         )
                     }

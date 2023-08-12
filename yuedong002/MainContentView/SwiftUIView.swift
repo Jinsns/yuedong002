@@ -88,6 +88,7 @@ struct SwiftUIView: View {
     @State var extraLightAdded = false
     @State var isLeafAdded = false
     @State var leafPosition: String = "fore"
+    @State var isTenuto = false
     @State var leafLevel: Int = 1
     @State var leafChangingScale = 1.0
     
@@ -135,7 +136,7 @@ struct SwiftUIView: View {
             ZStack {  //gaming view
                 
                 if isLeafAdded && noteIterator > 0 {
-                    leaf1(leafPosition: $leafPosition, leafLevel: $leafLevel)
+                    leaf1(leafPosition: $leafPosition, leafLevel: $leafLevel, isTenuto: $isTenuto)
                         .scaleEffect(leafChangingScale)
                         .onChange(of: scene.score, perform: { newValue in
                             withAnimation(.easeOut(duration: 0.15)) {
@@ -160,6 +161,7 @@ struct SwiftUIView: View {
                         .onAppear() {
                             leafPosition = noteUI!.leafPosition
                             leafLevel = noteUI!.level
+                            isTenuto = noteUI!.isTenuto
                         }
                 }
                 
@@ -362,6 +364,7 @@ struct SwiftUIView: View {
                         if Int(neckLength)! >= neckLengthLevel[0] {
                             scene.moveBackGroundPosition()
                         }
+                        scene.rotateBackNeckNode()
                         
                     }
             })

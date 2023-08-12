@@ -35,21 +35,25 @@ struct leaf1: View {
     @State var trimEnd: CGFloat = 0.3
     @Binding var leafPosition: String
     @Binding var leafLevel: Int
+    @Binding var isTenuto: Bool
     
     var body: some View {
         ZStack {
 //            Text("isLeafAdded: \(String(isLeafAdded)) ")
-            Image("ruling")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .reverseMask {
-                    Circle()
-                        .trim(from: 0.0, to: trimEnd)
-                        .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt))
-                        .frame(width: 90, height: 90)
-                        .rotationEffect(.degrees(-87))
-                }
-            
+            if isTenuto {
+                Image("ruling")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .reverseMask {
+                        Circle()
+                            .trim(from: 0.0, to: trimEnd)
+                            .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt))
+                            .frame(width: 90, height: 90)
+                            .rotationEffect(.degrees(-87))
+                    }
+
+            }
+                        
 //            Circle()
 //                .trim(from: 0.0, to: trimEnd)
 //                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt))
