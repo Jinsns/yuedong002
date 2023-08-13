@@ -210,12 +210,12 @@ struct SwiftUIView: View {
                     Wow()
                         .onAppear() {
 //                            soundEffectSystem.wowPlay()
-                            if let url = Bundle.main.url(forResource: "1-wow", withExtension: "mp3") {
+                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
                                         let player = AVAudioPlayerPool().playerWithURL(url: url)
                                         player?.play()
                                     }
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 withAnimation(.default) {
                                     isShowWow = false
                                     isShowedWow = true
@@ -228,11 +228,11 @@ struct SwiftUIView: View {
                     Taikula()
                         .onAppear() {
 //                            soundEffectSystem.taikulaPlay()
-                            if let url = Bundle.main.url(forResource: "2-cool", withExtension: "mp3") {
+                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
                                         let player = AVAudioPlayerPool().playerWithURL(url: url)
                                         player?.play()
                                     }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 withAnimation(.default) {
                                     isShowTaikula = false
                                     isShowedTaikula = true
@@ -245,11 +245,11 @@ struct SwiftUIView: View {
                     Likeyou()
                         .onAppear() {
 //                            soundEffectSystem.likeyouPlay()
-                            if let url = Bundle.main.url(forResource: "3-ShenShou", withExtension: "mp3") {
+                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
                                         let player = AVAudioPlayerPool().playerWithURL(url: url)
                                         player?.play()
                                     }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 withAnimation(.default) {
                                     isShowLikeyou = false
                                     isShowedLikeyou = true
