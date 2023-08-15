@@ -146,8 +146,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func moveCameraNodeSmoothly(newPosition: SCNVector3) {
-        //originalposition of cloud
-        //cloudNode.position = SCNVector3(1, 9.4, 0)
+//        //originalposition of cloud
+//        //cloudNode.position = SCNVector3(1, 9.4, 0)
         var cloudNewPositionY: Float = 9.4
         if newPosition.y == 8.0 {
             cloudNewPositionY = 7.4//down to the border between two world
@@ -155,11 +155,34 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             cloudNewPositionY = 9.4   //back to originalPosition
         }
         
-        SCNTransaction.begin()
-        SCNTransaction.animationDuration = 1.2
-        self.cameraNode?.position = newPosition
-        self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
-        SCNTransaction.commit()
+//        SCNTransaction.begin()
+//        SCNTransaction.animationDuration = 1.2
+//        self.cameraNode?.position = newPosition
+//        self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
+//        SCNTransaction.commit()
+        
+        if newPosition.y >= 2.0 {
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 1.2
+            self.cameraNode?.position = newPosition
+            self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
+            SCNTransaction.commit()
+        } else { //go down world
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 0.6
+            self.neckNode?.position = SCNVector3(x: 0.0, y: -3.0, z: 0.0)
+            
+            SCNTransaction.completionBlock = {
+                SCNTransaction.begin()
+                SCNTransaction.animationDuration = 1.2
+                self.backgroundNode?.position = SCNVector3(x: -35, y: 114, z: 0)
+                self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
+                self.neckNode?.position = SCNVector3(x: 0.0, y: -1.8, z: 0.0)
+                SCNTransaction.commit()
+            }
+                
+            SCNTransaction.commit()
+        }
     }
     
     
@@ -250,8 +273,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             SCNTransaction.commit()
         }
         SCNTransaction.commit()
-        
-        
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {

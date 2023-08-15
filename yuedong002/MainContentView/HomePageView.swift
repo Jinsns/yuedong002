@@ -21,6 +21,7 @@ DFPYuanW9
 struct HomePageView: View {
     @Binding var totalLeaves: String
     @Binding var neckLength: String
+    @Binding var worldName: String
     
     @State var isShowAirpodsReminder = true
     @State var isShowCorrectingPositionView = false
@@ -282,7 +283,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), scene: GiraffeScene(), isLeafAdded: .constant(true))
+        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(), isLeafAdded: .constant(true))
             .previewDevice("iPhone 13 mini")
 //        ShutterView(isShowShutterView: .constant(true), isShowSnapEffect: .constant(false))
 //            .previewDevice("iPhone 13 mini")
@@ -576,13 +577,6 @@ struct ArrowButtonsView: View {
                         )
                     }
                     
-//                    withAnimation(.linear(duration: 1.20)) {
-//                        scene.cameraNode!.position = SCNVector3(
-//                            x: scene.cameraNode!.position.x,
-//                            y: 8.0,
-//                            z: scene.cameraNode!.position.z
-//                        )
-//                    }
                     
                 } label: {
                     Image("ArrowUp")
@@ -608,15 +602,7 @@ struct ArrowButtonsView: View {
                             z: scene.cameraNode!.position.z)
                         )
                     }
-                    
-//                    withAnimation(.easeInOut(duration: 1.20)) {
-//                        scene.cameraNode!.position = SCNVector3(
-//                            x: scene.cameraNode!.position.x,
-//                            y: (0.0),
-//                            z: scene.cameraNode!.position.z
-//                        )
-//                    }
-                    
+                                        
                 } label: {
                     Image("ArrowDown")
                         .frame(width: 32, height: 32)

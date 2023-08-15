@@ -58,6 +58,7 @@ var noteIterator = 0
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: String = "100"
     @AppStorage("totalLeaves") var totalLeaves: String = "0"
+    @State var worldName: String = "地面"
     
     
     @State var isInHomePage = true
@@ -107,7 +108,7 @@ struct SwiftUIView: View {
             
             
             if isInHomePage {
-                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, scene: scene, isLeafAdded: $isLeafAdded)
+                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, isLeafAdded: $isLeafAdded)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
 //                        soundEffectSystem.prepareToPlay()
@@ -394,6 +395,9 @@ struct SwiftUIView: View {
                         isShowCountScoreView = false
                         if Int(neckLength)! >= neckLengthLevel[0] {
                             scene.upWorld()
+                            worldName = "云中秘境"
+                        } else {
+                            worldName = "地面"
                         }
                         scene.rotateBackNeckNode()
                         
