@@ -248,7 +248,11 @@ struct HomePageView: View {
         
         if isShowShutterView {
             ShutterView(isShowShutterView: $isShowShutterView, isShowSnapEffect: $isShowSnapEffect)
+                .onAppear() {
+                    scene.addCameraRotation()
+                }
                 .onDisappear() {
+                    scene.stopCameraRotation()
                     scene.rotateBackNeckNode()
                 }
         }
@@ -279,6 +283,10 @@ struct HomePageView_Previews: PreviewProvider {
     
     static var previews: some View {
         HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), scene: GiraffeScene(), isLeafAdded: .constant(true))
+            .previewDevice("iPhone 13 mini")
+//        ShutterView(isShowShutterView: .constant(true), isShowSnapEffect: .constant(false))
+//            .previewDevice("iPhone 13 mini")
+    
     }
 }
 

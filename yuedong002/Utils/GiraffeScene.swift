@@ -40,6 +40,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
 //    private let motionManager = CMMotionManager()
     let motionManager = CMHeadphoneMotionManager() //use airpods
+    let iphoneMotionManager = CMMotionManager()  //use iphone to control camera view angle in snapview
+    
     @Published var isAirpodsAvailable: Bool = false
     @Published var headphoneAnglex: Double = 0.0
     @Published var headphoneAnglez: Double = 0.0
@@ -107,7 +109,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         addCameraNode()
         addOmniLight()
         
-//        moveBackGroundPosition()
         
         //control rotation
 //        addNeckRotation()
@@ -636,6 +637,27 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             
         }
+    }
+    
+    func addCameraRotation() {
+        iphoneMotionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
+            guard let attitude = deviceMotion?.attitude else {return}
+            let absx = abs(Float(attitude.pitch))
+            let absy = abs(Float(attitude.yaw))
+            let absz = abs(Float(attitude.roll))
+            let maxAngle = Float.pi / 12
+             //原来角度是 cameraNode.eulerAngles = SCNVector3(x: -0.0, y: +1.60, z: 0.0)
+            self?.cameraNode?.eulerAngles = SCNVector3(
+                x: 0.0,
+                y: 1.60 + (absy > maxAngle ? maxAngle * (Float(attitude.yaw)) / absy : Float(attitude.yaw)) / 2,
+                z: 0.0
+            )
+        }
+    }
+    
+    func stopCameraRotation() {
+        self.cameraNode?.eulerAngles = SCNVector3(x: -0.0, y: +1.60, z: 0.0)
+        iphoneMotionManager.stopDeviceMotionUpdates()
     }
     
     
