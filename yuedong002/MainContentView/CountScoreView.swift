@@ -42,10 +42,12 @@ struct CountScoreView: View {
             ZStack(alignment: .centerFirstTextBaseline) {
                 Image("songEndCircle")
                     .padding(.bottom, 160)
-                Image("SongEndGiraffe")
-                    .offset(x: 0, y: giraffeDHeight)
+                //237 × 595
+                Image("giraffeInCountScoreView")
+                    .offset(x: 12, y: giraffeDHeight)
 //                    .padding(.bottom, 220.0)
-    //                .resizable()
+//                    .resizable()
+                    .frame(width: 237, height: 595)
     //                .scaledToFit()
                     .mask(
                         RoundedRectangle(cornerRadius: 120)

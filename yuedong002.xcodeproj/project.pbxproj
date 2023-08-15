@@ -144,6 +144,9 @@
 		364A670A2A87CCEA007C2103 /* neckskin0812-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67092A87CCEA007C2103 /* neckskin0812-4.jpg */; };
 		364A670B2A87CCEA007C2103 /* neckskin0812-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67092A87CCEA007C2103 /* neckskin0812-4.jpg */; };
 		364A670C2A87CCEA007C2103 /* neckskin0812-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 364A67092A87CCEA007C2103 /* neckskin0812-4.jpg */; };
+		364A670E2A8B4D8B007C2103 /* giraffeInCountScoreView.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A670D2A8B4D8B007C2103 /* giraffeInCountScoreView.png */; };
+		364A670F2A8B4D8B007C2103 /* giraffeInCountScoreView.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A670D2A8B4D8B007C2103 /* giraffeInCountScoreView.png */; };
+		364A67102A8B4D8B007C2103 /* giraffeInCountScoreView.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A670D2A8B4D8B007C2103 /* giraffeInCountScoreView.png */; };
 		365121BC2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BD2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
 		365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365121BB2A7285950071D1C1 /* CountScoreView.swift */; };
@@ -521,6 +524,7 @@
 		364A67012A87C969007C2103 /* headskin0812-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "headskin0812-3.jpg"; sourceTree = "<group>"; };
 		364A67052A87C988007C2103 /* neckskin0812-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "neckskin0812-3.jpg"; sourceTree = "<group>"; };
 		364A67092A87CCEA007C2103 /* neckskin0812-4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "neckskin0812-4.jpg"; sourceTree = "<group>"; };
+		364A670D2A8B4D8B007C2103 /* giraffeInCountScoreView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = giraffeInCountScoreView.png; sourceTree = "<group>"; };
 		365121BB2A7285950071D1C1 /* CountScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountScoreView.swift; sourceTree = "<group>"; };
 		365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeckSlides.swift; sourceTree = "<group>"; };
 		365121C32A73AC700071D1C1 /* head.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = head.swift; sourceTree = "<group>"; };
@@ -712,6 +716,7 @@
 				364A66D52A87865D007C2103 /* leaf0812.png */,
 				364A66CD2A87862F007C2103 /* Pitaya.png */,
 				364A66D12A878636007C2103 /* Orange.png */,
+				364A670D2A8B4D8B007C2103 /* giraffeInCountScoreView.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1117,6 +1122,7 @@
 				364A66922A867DF1007C2103 /* neckSkin0811.jpg in Resources */,
 				367689772A85226900B3C6D4 /* blurredbg.jpg in Resources */,
 				36EC1E182A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
+				364A670E2A8B4D8B007C2103 /* giraffeInCountScoreView.png in Resources */,
 				364A66FE2A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */,
 				3676896F2A8516B400B3C6D4 /* 长颈鹿0810-5.dae in Resources */,
 				364A66AA2A875BCD007C2103 /* taikula.png in Resources */,
@@ -1268,6 +1274,7 @@
 				3676898C2A8535E600B3C6D4 /* 长颈鹿0810-8.dae in Resources */,
 				36027E052A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
 				364A66C72A8784C5007C2103 /* 长颈鹿0812-1.dae in Resources */,
+				364A670F2A8B4D8B007C2103 /* giraffeInCountScoreView.png in Resources */,
 				364A66AB2A875BCD007C2103 /* taikula.png in Resources */,
 				3696A5FC2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				3676896C2A8514A800B3C6D4 /* 长颈鹿0810-4.dae in Resources */,
@@ -1393,6 +1400,7 @@
 				3676898D2A8535E600B3C6D4 /* 长颈鹿0810-8.dae in Resources */,
 				36027E062A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
 				364A66C82A8784C5007C2103 /* 长颈鹿0812-1.dae in Resources */,
+				364A67102A8B4D8B007C2103 /* giraffeInCountScoreView.png in Resources */,
 				364A66AC2A875BCD007C2103 /* taikula.png in Resources */,
 				3696A5FD2A76293F00B59DCB /* 43HuaKangYuanTiW9.ttf in Resources */,
 				3676896D2A8514A800B3C6D4 /* 长颈鹿0810-4.dae in Resources */,

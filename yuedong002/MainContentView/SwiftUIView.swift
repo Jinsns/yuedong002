@@ -288,21 +288,21 @@ struct SwiftUIView: View {
                     scene.leafNode?.removeFromParentNode()
                 }
                 
-                if newScore >= 30 {
+                if newScore >= 50 {
                     withAnimation(.default) {
                         isShowWow = true
                     }
                     
                 }
                 
-                if newScore >= 50 {
+                if newScore >= 100 {
                     withAnimation(.default) {
                         isShowTaikula = true
                     }
                     
                 }
                 
-                if newScore >= 80 {
+                if newScore >= 150 {
                     withAnimation(.default) {
                         isShowLikeyou = true
                     }
