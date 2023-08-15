@@ -643,8 +643,16 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     
     func addNeckRotation() {
+        self.isPositionReady = false
+        let readyRange = Double.pi / 32.0
+
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] deviceMotion, error in
             guard let attitude = deviceMotion?.attitude else { return }
+            
+            self!.headphoneAnglex = attitude.roll
+            self!.headphoneAnglez = attitude.pitch
+            
+            
             let absx: Float = abs(Float(attitude.roll))
             let absz: Float = abs(Float(attitude.pitch))
             let maxAngle = Float.pi / 4
@@ -656,8 +664,11 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                 z: (absz > maxAngle ? maxAngle * (Float(attitude.pitch)) / absz : Float(attitude.pitch)) / 2
             )
             
-            
+            if abs(self!.headphoneAnglex) < readyRange && abs(self!.headphoneAnglez) < readyRange {
+                self!.isPositionReady = true
+            }
         }
+        
     }
     
     func addCameraRotation() {

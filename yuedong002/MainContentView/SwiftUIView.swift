@@ -196,9 +196,10 @@ struct SwiftUIView: View {
                         .onAppear() {
 //                            soundEffectSystem.surprisePlay()
                             if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                        player?.play()
-                                    }
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.volume = 0.6
+                                player?.play()
+                            }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 withAnimation(.default) {
                                     isShowStage2Reminder = false
@@ -212,9 +213,10 @@ struct SwiftUIView: View {
                         .onAppear() {
 //                            soundEffectSystem.wowPlay()
                             if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                        player?.play()
-                                    }
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.volume = 0.6
+                                player?.play()
+                            }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 withAnimation(.default) {
@@ -228,11 +230,11 @@ struct SwiftUIView: View {
                 if isShowTaikula == true && isShowedTaikula == false{
                     Taikula()
                         .onAppear() {
-//                            soundEffectSystem.taikulaPlay()
                             if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                        player?.play()
-                                    }
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.volume = 0.6
+                                player?.play()
+                            }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 withAnimation(.default) {
                                     isShowTaikula = false
@@ -247,9 +249,10 @@ struct SwiftUIView: View {
                         .onAppear() {
 //                            soundEffectSystem.likeyouPlay()
                             if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                        player?.play()
-                                    }
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.volume = 0.6
+                                player?.play()
+                            }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                 withAnimation(.default) {
                                     isShowLikeyou = false

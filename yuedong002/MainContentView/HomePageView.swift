@@ -50,13 +50,14 @@ struct HomePageView: View {
                 if isShowCorrectingPositionView {
                     CorrectingPositionView(scene: scene)
                         .onAppear(){
-                            scene.stopMotionUpdates()
+//                            scene.stopMotionUpdates()
+                            scene.addNeckRotation()
                             print("checkingposition start")
-                            scene.checkingPosition()
+//                            scene.checkingPosition()
                         }
                         .onDisappear {
-                            scene.stopMotionUpdates()
-                            scene.addNeckRotation()
+//                            scene.stopMotionUpdates()
+//                            scene.addNeckRotation()
                         }
                 }
                 
@@ -107,7 +108,7 @@ struct HomePageView: View {
                         HStack(alignment: .center, spacing: 8) { //EarthIcon 地面
                             Image("EarthIcon")
                             .frame(width: 32, height: 32)
-                            Text("地面")
+                            Text("\(worldName)")
                               .font(.custom("DFPYuanW9-GB", size: 16))
                               .kerning(1.28)
                               .foregroundColor(Color(red: 0.32, green: 0.51, blue: 0.1))
