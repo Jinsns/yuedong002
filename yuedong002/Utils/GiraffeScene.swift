@@ -107,6 +107,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         addCameraNode()
         addOmniLight()
         
+//        moveBackGroundPosition()
+        
         //control rotation
 //        addNeckRotation()
         
@@ -230,12 +232,25 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
     }
     
-    func moveBackGroundPosition() {
+    func upWorld() {
         SCNTransaction.begin()
-        SCNTransaction.animationDuration = 1.2
-        self.backgroundNode?.position = SCNVector3(-35, 66, 0)
-        self.cloudNode?.position = SCNVector3(1, -6.4, 0)
+        SCNTransaction.animationDuration = 0.6
+        self.neckNode?.position = SCNVector3(0.0, 1.5, 0.0)
+        
+        SCNTransaction.completionBlock = {
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 1.2
+            
+            //原来在 giraffeNode10.position = SCNVector3(0.0, -1.8, 0.0)
+    //        self.neckNode?.position = SCNVector3(0.0, 5, 0.0)
+            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+            self.cloudNode?.position = SCNVector3(1, -6.4, 0)
+            self.neckNode?.position = SCNVector3(0.0, -1.8, 0.0)
+            SCNTransaction.commit()
+        }
         SCNTransaction.commit()
+        
+        
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
@@ -283,7 +298,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         giraffeNode10.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         giraffeNode10.name = "neck"
         
-        giraffeNode10.geometry?.materials.first?.lightingModel = .constant
+//        giraffeNode10.childNode(withName: "脖子", recursively: false)?.geometry?.materials.first?.lightingModel = .lambert
+//        giraffeNode10.childNode(withName: "鹿", recursively: false)?.geometry?.materials.first?.lightingModel = .lambert
+        giraffeNode10.geometry?.materials.first?.lightingModel = .lambert
         giraffeNode10.categoryBitMask = LightType.onNeck
         
 

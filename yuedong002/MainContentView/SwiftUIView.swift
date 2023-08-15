@@ -100,8 +100,8 @@ struct SwiftUIView: View {
         ZStack{
             
             SceneView(
-                scene: scene
-//                options: [.allowsCameraControl]
+                scene: scene,
+                options: [.allowsCameraControl]
             )
                 .ignoresSafeArea()
             
@@ -393,7 +393,7 @@ struct SwiftUIView: View {
                         print("countscoreview disappear")
                         isShowCountScoreView = false
                         if Int(neckLength)! >= neckLengthLevel[0] {
-                            scene.moveBackGroundPosition()
+                            scene.upWorld()
                         }
                         scene.rotateBackNeckNode()
                         
