@@ -188,7 +188,7 @@ struct HomePageView: View {
             
             //if not in these two view
             if (isShowShutterView || isShowShopView) == false {
-                ArrowButtonsView(scene: scene)
+                ArrowButtonsView(scene: scene, isShowAirpodsReminder: $isShowAirpodsReminder, isShowCorrectingPositionView: $isShowCorrectingPositionView, isShowNodToEatView: $isShowNodToEatView )
                 
             }
             
@@ -558,25 +558,77 @@ struct NodToEatView: View {
 struct ArrowButtonsView: View {
     
     @ObservedObject var scene: GiraffeScene
+    @Binding var isShowAirpodsReminder: Bool
+    @Binding var isShowCorrectingPositionView: Bool
+    @Binding var isShowNodToEatView: Bool
+    
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading) {
                 Button {
-                    print("pressed up button2")
-                    if scene.cameraNode!.position.y >= 2 {
-                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                            x: scene.cameraNode!.position.x,
-                            y: 8.0,
-                            z: scene.cameraNode!.position.z)
-                        )
-                    } else {
-                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                            x: scene.cameraNode!.position.x,
-                            y: 2.0,
-                            z: scene.cameraNode!.position.z)
-                        )
+                    print("pressed up arrow button")
+                    if isShowAirpodsReminder == true {
+                        isShowAirpodsReminder = false
+                        if scene.cameraNode!.position.y >= 2 {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 8.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        } else {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 2.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            isShowAirpodsReminder = true
+                        }
+                    } else if isShowCorrectingPositionView == true {
+                        isShowCorrectingPositionView = false
+                        if scene.cameraNode!.position.y >= 2 {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 8.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        } else {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 2.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            isShowCorrectingPositionView = true
+                        }
+                        isShowCorrectingPositionView = true
+                    } else if isShowNodToEatView == true {
+                        isShowNodToEatView = false
+                        if scene.cameraNode!.position.y >= 2 {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 8.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        } else {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 2.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            isShowNodToEatView = true
+                        }
+                        
                     }
+                    
+                    
+                    
                     
                     
                 } label: {
@@ -589,19 +641,55 @@ struct ArrowButtonsView: View {
             
             VStack(alignment: .leading) {
                 Button {
-                    print("pressed down botton2")
-                    if scene.cameraNode!.position.y > 2 {
-                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                            x: scene.cameraNode!.position.x,
-                            y: 2.0,
-                            z: scene.cameraNode!.position.z)
-                        )
-                    } else {
-                        scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                            x: scene.cameraNode!.position.x,
-                            y: -1.5,
-                            z: scene.cameraNode!.position.z)
-                        )
+                    print("pressed down arrow botton")
+                    if isShowAirpodsReminder {
+                        isShowAirpodsReminder = false
+                        if scene.cameraNode!.position.y > 2 {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 2.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        } else {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: -1.5,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        }
+                        isShowAirpodsReminder = true
+                    } else if isShowCorrectingPositionView {
+                        isShowCorrectingPositionView = false
+                        if scene.cameraNode!.position.y > 2 {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 2.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        } else {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: -1.5,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        }
+                        isShowCorrectingPositionView = true
+                    } else if isShowNodToEatView {
+                        isShowNodToEatView = false
+                        if scene.cameraNode!.position.y > 2 {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: 2.0,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        } else {
+                            scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+                                x: scene.cameraNode!.position.x,
+                                y: -1.5,
+                                z: scene.cameraNode!.position.z)
+                            )
+                        }
+                        isShowNodToEatView = true
                     }
                                         
                 } label: {

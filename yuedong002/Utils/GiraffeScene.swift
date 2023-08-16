@@ -276,7 +276,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
-        guard let scene = SCNScene(named: "长颈鹿0812.dae") else {
+        guard let scene = SCNScene(named: "长颈鹿0816.dae") else {
             print("Failed to load 'giraffe0.dae'")
             return
         }
