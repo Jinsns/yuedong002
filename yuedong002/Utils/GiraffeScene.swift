@@ -177,7 +177,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                 SCNTransaction.animationDuration = 1.2
                 self.backgroundNode?.position = SCNVector3(x: -35, y: 114, z: 0)
                 self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
-                self.neckNode?.position = SCNVector3(x: 0.0, y: -1.8, z: 0.0)
+                self.neckNode?.position = SCNVector3(x: 0.0, y: -2.8, z: 0.0)
                 SCNTransaction.commit()
             }
                 
@@ -190,7 +190,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = SCNVector3(x: 5, y: 2, z: -12)
-        self.neckNode?.position = SCNVector3(x: -5, y: -2.4 , z: -11)   //x大 屏幕外，z大 屏幕左
+        self.neckNode?.position = SCNVector3(x: -5, y: -1.6 , z: -11)   //x大 屏幕外，z大 屏幕左
         SCNTransaction.commit()
     }
     
@@ -198,7 +198,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = SCNVector3(x: 10, y: 2, z: 0)
-        self.neckNode?.position = SCNVector3(0.0, -1.8, 0)
+        self.neckNode?.position = SCNVector3(0.0, -2.8, 0)
         SCNTransaction.commit()
     }
     
@@ -269,7 +269,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     //        self.neckNode?.position = SCNVector3(0.0, 5, 0.0)
             self.backgroundNode?.position = SCNVector3(-35, 66, 0)
             self.cloudNode?.position = SCNVector3(1, -6.4, 0)
-            self.neckNode?.position = SCNVector3(0.0, -1.8, 0.0)
+            self.neckNode?.position = SCNVector3(0.0, -2.8, 0.0)
             SCNTransaction.commit()
         }
         SCNTransaction.commit()
@@ -311,7 +311,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         // 根据需要对脖子模型进行缩放和位置调整
         giraffeNode10.scale = SCNVector3(1.0, 1.0, 1.0)   //缩放
-        giraffeNode10.position = SCNVector3(0.0, -1.8, 0.0) // 设置位置，根据需要调整
+        giraffeNode10.position = SCNVector3(0.0, -2.8, 0.0) // 设置位置，根据需要调整
         giraffeNode10.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
 
 
