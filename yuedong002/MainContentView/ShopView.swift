@@ -145,11 +145,11 @@ struct ShopView: View {
                     
                     
                     if isMineOrShop {
-                        MyItems()
+                        MyItems(scene: scene)
                             .offset(x: 8, y: -8)
     //                        .background(.black)
                     } else {
-                        ShopItems(selectedItem: $selectedItem)
+                        ShopItems(selectedItem: $selectedItem, scene: scene)
                             .offset(x: 8, y: -8)
                     }
                     
@@ -176,20 +176,29 @@ struct ShopView: View {
 }
 
 struct MyItems: View {
+    @ObservedObject var scene: GiraffeScene
+    
     var body: some View {
         VStack(alignment: .center, spacing: 20.87937) {
             VStack(alignment: .center, spacing: 2.08794) {
-                Rectangle()
-                  .foregroundColor(.clear)
-                  .frame(width: 89.78129, height: 51.15445)
-                  .background(
-                    Image("sunglasses")
-                      .resizable()
-                      .aspectRatio(contentMode: .fill)
-                      .frame(width: 89.78128814697266, height: 51.15445327758789)
-                      .clipped()
-                  )
-            }
+                
+                Button {
+                    print("pressed sunglasses button")
+                    scene.addOrnament(ornamentName: "墨镜")
+                } label: {
+                    Rectangle()
+                      .foregroundColor(.clear)
+                      .frame(width: 89.78129, height: 51.15445)
+                      .background(
+                        Image("sunglasses")
+                          .resizable()
+                          .aspectRatio(contentMode: .fill)
+                          .frame(width: 89.78128814697266, height: 51.15445327758789)
+                          .clipped()
+                      )
+                }
+
+                            }
             .padding(.horizontal, 0)
             .padding(.vertical, 12.52762)
             .frame(width: 107.52875, height: 107.52875, alignment: .center)
@@ -240,53 +249,16 @@ struct MyItems: View {
 
 struct ShopItems: View {
     @Binding var selectedItem: Int
+    @ObservedObject var scene: GiraffeScene
     
     var body: some View {
         VStack(alignment: .center, spacing: 20.87937) {
-            
-            //a list to contains shopItems
-//            List {
-//                ForEach(shopItems) { shopItem in
-//                    VStack(alignment: .center, spacing: 2.08794) {
-//                        Rectangle()
-//                          .foregroundColor(.clear)
-//                          .frame(width: 61.59414, height: 63.68208)
-//                          .background(
-//                            Image(shopItem.imageName)
-//                              .resizable()
-//                              .aspectRatio(contentMode: .fill)
-//                              .frame(width: 61.594139099121094, height: 63.68207550048828)
-//                              .clipped()
-//                          )
-//                        HStack {
-//                            Text(shopItem.price)
-//                              .font(Font.custom("Lilita One", size: 20.87937))
-//                              .kerning(0.41759)
-//                              .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-//                            Rectangle()
-//                              .foregroundColor(.clear)
-//                              .frame(width: 19.8354, height: 19.8354)
-//                              .background(
-//                                Image("leaf")
-//                                  .resizable()
-//                                  .aspectRatio(contentMode: .fill)
-//                                  .frame(width: 19.835399627685547, height: 19.835399627685547)
-//                                  .clipped()
-//                              )
-//                        }
-//                    }
-//                    .padding(.horizontal, 0)
-//                    .padding(.vertical, 12.52762)
-//                    .frame(width: 107.52875, height: 107.52875, alignment: .bottom)
-//                    .background(.white.opacity(0.5))
-//                    .cornerRadius(16)
-//                }
-//            }
             
             //first item
             Button(action: {
                 print("pressed shop item 1")
                 selectedItem = 1
+                scene.addOrnament(ornamentName: "戒指")
             }, label: {
                 VStack(alignment: .center, spacing: 2.08794) {
                     Rectangle()

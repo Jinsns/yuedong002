@@ -50,6 +50,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     @Published var cameraNode: SCNNode?
     
     private var neckNode: SCNNode?
+    private var ornamentNode: SCNNode?
     private var backgroundNode: SCNNode?
     private var cloudNode: SCNNode?
     
@@ -348,6 +349,34 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.neckNode = giraffeNode10
         
     
+    }
+    
+    func addOrnament(ornamentName: String) {
+        self.ornamentNode?.removeFromParentNode()
+        
+        var scene: SCNScene?
+        var ornament: SCNNode!
+        if ornamentName == "墨镜" {
+            scene = SCNScene(named: "墨镜.dae")!
+            ornament = scene!.rootNode
+            ornament.scale = SCNVector3(1.6, 1.6, 1.6)
+            ornament.position = SCNVector3(x: 0, y: 3 , z: -6)
+            ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: Float.pi / 2)
+        } else if ornamentName == "戒指" {
+            scene = SCNScene(named: "戒指.dae")!
+            ornament = scene!.rootNode
+            ornament.scale = SCNVector3(1.6, 1.6, 1.6)
+            ornament.position = SCNVector3(x: 0, y: 3 , z: -6)
+        }
+        
+
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 0.4
+        self.ornamentNode = ornament
+        self.neckNode?.addChildNode(ornament)
+//        self.rootNode.addChildNode(ornament)
+        
+        SCNTransaction.commit()
     }
     
     func rotateBackNeckNode() {
