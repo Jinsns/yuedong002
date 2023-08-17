@@ -109,7 +109,7 @@ struct SwiftUIView: View {
             
             
             if isInHomePage {
-                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, isLeafAdded: $isLeafAdded)
+                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, dataModel: dataModel, isLeafAdded: $isLeafAdded)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
 //                        soundEffectSystem.prepareToPlay()
@@ -395,7 +395,14 @@ struct SwiftUIView: View {
                         print("countscoreview disappear")
                         isShowCountScoreView = false
                         if Int(neckLength)! >= neckLengthLevel[0] {
-                            scene.upWorld()
+                            if dataModel.isShowCorrectingPositionView {
+                                dataModel.isShowCorrectingPositionView = false
+                                scene.upWorld()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    dataModel.isShowCorrectingPositionView = true
+                                }
+                            }
+                            
                             worldName = "云中秘境"
                         } else {
                             worldName = "地面"

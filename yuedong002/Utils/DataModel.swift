@@ -9,5 +9,7 @@ import Foundation
 
 class DataModel: ObservableObject {
    @Published var isShowFilter15s = false
-    
+   @Published var isShowAirpodsReminder = true
+   @Published var isShowCorrectingPositionView = false
+   @Published var isShowNodToEatView = false
 }

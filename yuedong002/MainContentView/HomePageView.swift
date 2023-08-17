@@ -23,9 +23,9 @@ struct HomePageView: View {
     @Binding var neckLength: String
     @Binding var worldName: String
     
-    @State var isShowAirpodsReminder = true
-    @State var isShowCorrectingPositionView = false
-    @State var isShowNodToEatView = false
+//    @State var isShowAirpodsReminder = true
+//    @State var isShowCorrectingPositionView = false
+//    @State var isShowNodToEatView = false
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     
     @State var isShowShutterView = false
@@ -34,6 +34,7 @@ struct HomePageView: View {
     @State var isShowShopView = false
     
     @ObservedObject var scene: GiraffeScene  //used to control camera height with button
+    @ObservedObject var dataModel: DataModel
     
     @Binding var isLeafAdded: Bool
     
@@ -43,11 +44,11 @@ struct HomePageView: View {
     var body: some View {
         ZStack {
             if isShowShopView == false && isShowShutterView == false {
-                if isShowAirpodsReminder {
-                    WearAirpodsReminderView(isShowAirpodsReminder: $isShowAirpodsReminder)
+                if dataModel.isShowAirpodsReminder {
+                    WearAirpodsReminderView(isShowAirpodsReminder: $dataModel.isShowAirpodsReminder)
                 }
                 
-                if isShowCorrectingPositionView {
+                if dataModel.isShowCorrectingPositionView {
                     CorrectingPositionView(scene: scene)
                         .onAppear(){
 //                            scene.stopMotionUpdates()
@@ -61,7 +62,7 @@ struct HomePageView: View {
                         }
                 }
                 
-                if isShowNodToEatView {
+                if dataModel.isShowNodToEatView {
                     NodToEatView()
                     leaf1(leafPosition: .constant("fore"), leafLevel: .constant(1), isTenuto: .constant(false))
                         .onAppear() {
@@ -188,7 +189,7 @@ struct HomePageView: View {
             
             //if not in these two view
             if (isShowShutterView || isShowShopView) == false {
-                ArrowButtonsView(scene: scene, isShowAirpodsReminder: $isShowAirpodsReminder, isShowCorrectingPositionView: $isShowCorrectingPositionView, isShowNodToEatView: $isShowNodToEatView )
+                ArrowButtonsView(scene: scene, dataModel: dataModel)
                 
             }
             
@@ -201,10 +202,10 @@ struct HomePageView: View {
             scene.checkingAirpods()
             scene.isPositionReady = false
 //            isShowCorrectingPositionView = false
-            isShowAirpodsReminder = true
+            dataModel.isShowAirpodsReminder = true
             if scene.isAirpodsAvailable {
-                isShowAirpodsReminder = false
-                isShowCorrectingPositionView = true
+                dataModel.isShowAirpodsReminder = false
+                dataModel.isShowCorrectingPositionView = true
             }
             
             scene.physicsWorld.contactDelegate = nil  //先消除碰撞检测，不让他开始
@@ -214,23 +215,23 @@ struct HomePageView: View {
         }
         .onChange(of: scene.isAirpodsAvailable, perform: { newValue in
             if newValue == false {
-                isShowCorrectingPositionView = false
+                dataModel.isShowCorrectingPositionView = false
                 withAnimation(.default) {
-                    isShowAirpodsReminder = true
+                    dataModel.isShowAirpodsReminder = true
                 }
             } else if newValue == true {
 //                scene.checkingPosition()
                 withAnimation(.default) {
-                    isShowAirpodsReminder = false
-                    isShowCorrectingPositionView = true
+                    dataModel.isShowAirpodsReminder = false
+                    dataModel.isShowCorrectingPositionView = true
                 }
             }
         })
         .onChange(of: scene.isPositionReady, perform: { newValue in
             if newValue == true {
                 withAnimation(.default) {
-                    isShowCorrectingPositionView = false
-                    isShowNodToEatView = true
+                    dataModel.isShowCorrectingPositionView = false
+                    dataModel.isShowNodToEatView = true
                 }
 //                scene.stopMotionUpdates()
 //                scene.addNeckRotation()
@@ -243,9 +244,9 @@ struct HomePageView: View {
             isShowShopView = false
             isShowSnapEffect = false
             isShowShutterView = false
-            isShowAirpodsReminder = false
-            isShowCorrectingPositionView = false
-            isShowNodToEatView = false
+            dataModel.isShowAirpodsReminder = false
+            dataModel.isShowCorrectingPositionView = false
+            dataModel.isShowNodToEatView = false
         }
         
         if isShowShutterView {
@@ -284,7 +285,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(), isLeafAdded: .constant(true))
+        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(), dataModel: DataModel(), isLeafAdded: .constant(true))
             .previewDevice("iPhone 13 mini")
 //        ShutterView(isShowShutterView: .constant(true), isShowSnapEffect: .constant(false))
 //            .previewDevice("iPhone 13 mini")
@@ -558,9 +559,10 @@ struct NodToEatView: View {
 struct ArrowButtonsView: View {
     
     @ObservedObject var scene: GiraffeScene
-    @Binding var isShowAirpodsReminder: Bool
-    @Binding var isShowCorrectingPositionView: Bool
-    @Binding var isShowNodToEatView: Bool
+    @ObservedObject var dataModel: DataModel
+//    @Binding var isShowAirpodsReminder: Bool
+//    @Binding var isShowCorrectingPositionView: Bool
+//    @Binding var isShowNodToEatView: Bool
     
     
     
@@ -569,8 +571,8 @@ struct ArrowButtonsView: View {
             VStack(alignment: .leading) {
                 Button {
                     print("pressed up arrow button")
-                    if isShowAirpodsReminder == true {
-                        isShowAirpodsReminder = false
+                    if dataModel.isShowAirpodsReminder == true {
+                        dataModel.isShowAirpodsReminder = false
                         if scene.cameraNode!.position.y >= 2 {
                             scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
                                 x: scene.cameraNode!.position.x,
@@ -585,10 +587,10 @@ struct ArrowButtonsView: View {
                             )
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            isShowAirpodsReminder = true
+                            dataModel.isShowAirpodsReminder = true
                         }
-                    } else if isShowCorrectingPositionView == true {
-                        isShowCorrectingPositionView = false
+                    } else if dataModel.isShowCorrectingPositionView == true {
+                        dataModel.isShowCorrectingPositionView = false
                         if scene.cameraNode!.position.y >= 2 {
                             scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
                                 x: scene.cameraNode!.position.x,
@@ -603,11 +605,11 @@ struct ArrowButtonsView: View {
                             )
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            isShowCorrectingPositionView = true
+                            dataModel.isShowCorrectingPositionView = true
                         }
-                        isShowCorrectingPositionView = true
-                    } else if isShowNodToEatView == true {
-                        isShowNodToEatView = false
+//                        dataModel.isShowCorrectingPositionView = true
+                    } else if dataModel.isShowNodToEatView == true {
+                        dataModel.isShowNodToEatView = false
                         if scene.cameraNode!.position.y >= 2 {
                             scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
                                 x: scene.cameraNode!.position.x,
@@ -622,7 +624,7 @@ struct ArrowButtonsView: View {
                             )
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            isShowNodToEatView = true
+                            dataModel.isShowNodToEatView = true
                         }
                         
                     }
@@ -642,8 +644,8 @@ struct ArrowButtonsView: View {
             VStack(alignment: .leading) {
                 Button {
                     print("pressed down arrow botton")
-                    if isShowAirpodsReminder {
-                        isShowAirpodsReminder = false
+                    if dataModel.isShowAirpodsReminder {
+                        dataModel.isShowAirpodsReminder = false
                         if scene.cameraNode!.position.y > 2 {
                             scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
                                 x: scene.cameraNode!.position.x,
@@ -657,9 +659,11 @@ struct ArrowButtonsView: View {
                                 z: scene.cameraNode!.position.z)
                             )
                         }
-                        isShowAirpodsReminder = true
-                    } else if isShowCorrectingPositionView {
-                        isShowCorrectingPositionView = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            dataModel.isShowAirpodsReminder = true
+                        }
+                    } else if dataModel.isShowCorrectingPositionView {
+                        dataModel.isShowCorrectingPositionView = false
                         if scene.cameraNode!.position.y > 2 {
                             scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
                                 x: scene.cameraNode!.position.x,
@@ -673,9 +677,12 @@ struct ArrowButtonsView: View {
                                 z: scene.cameraNode!.position.z)
                             )
                         }
-                        isShowCorrectingPositionView = true
-                    } else if isShowNodToEatView {
-                        isShowNodToEatView = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            dataModel.isShowCorrectingPositionView = true
+                        }
+                        
+                    } else if dataModel.isShowNodToEatView {
+                        dataModel.isShowNodToEatView = false
                         if scene.cameraNode!.position.y > 2 {
                             scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
                                 x: scene.cameraNode!.position.x,
@@ -689,7 +696,10 @@ struct ArrowButtonsView: View {
                                 z: scene.cameraNode!.position.z)
                             )
                         }
-                        isShowNodToEatView = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            dataModel.isShowNodToEatView = true
+                        }
+                        
                     }
                                         
                 } label: {
