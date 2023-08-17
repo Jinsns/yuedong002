@@ -31,6 +31,14 @@ struct Stage2Remind: View {
     }
 }
 
+struct Filter15s: View {
+    var body: some View {
+        Image("filter15s")
+            .resizable()
+            .edgesIgnoringSafeArea(.all)
+    }
+}
+
 struct Wow: View {
     var body: some View {
         VStack {
@@ -70,8 +78,9 @@ struct Stage2Remind_Previews: PreviewProvider {
     static var previews: some View {
 //        Stage2Remind()
 //        Wow()
-        Taikula()
+//        Taikula()
 //        Likeyou()
+        Filter15s()
         
     }
 }

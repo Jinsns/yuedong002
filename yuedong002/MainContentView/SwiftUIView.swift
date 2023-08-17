@@ -58,6 +58,7 @@ var noteIterator = 0
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: String = "100"
     @AppStorage("totalLeaves") var totalLeaves: String = "0"
+    @ObservedObject var dataModel = DataModel()
     @State var worldName: String = "地面"
     
     
@@ -148,22 +149,17 @@ struct SwiftUIView: View {
                             }
                             
                         })
-//                        .scaleEffect(
-//                            (leafPosition == "left" || leafPosition == "right") ? 1.2 :
-//                                        ( (leafPosition == "fore") ? 1.4
-//                                          : 0.8 )
-//                        )
-//                        .offset(
-//                            x: (leafPosition == "left") ? -120 : ((leafPosition == "right") ? 120 : 0),
-//                                y: (leafPosition == "fore") ? 130 : ((leafPosition == "back") ? -1035 : 0)
-//                        )
-                            
-
+                    
+                    
                         .onAppear() {
                             leafPosition = noteUI!.leafPosition
                             leafLevel = noteUI!.level
                             isTenuto = noteUI!.isTenuto
                         }
+                }
+                
+                if dataModel.isShowFilter15s {
+                    Filter15s()
                 }
                 
                 Button {
@@ -317,11 +313,12 @@ struct SwiftUIView: View {
             .onChange(of: bgmSystem.currentTime) { newValue in
                 
                 if newValue >= 15.0 && extraLightAdded == false {
-                    scene.addExtraLight()
+//                    scene.addExtraLight()
                     extraLightAdded = true
                     print("extra light added")
                     withAnimation(.default) {
                         isShowStage2Reminder = true
+                        dataModel.isShowFilter15s = true
                     }
                 }
                 
@@ -382,7 +379,8 @@ struct SwiftUIView: View {
                     .onAppear(){
                         print("countscoreview appear")
                         bgmSystem.stop()
-                        scene.removeExtraLight()
+//                        scene.removeExtraLight()
+                        dataModel.isShowFilter15s = false
 //                        soundEffectSystem.showCountScoreViewPlay()
                         if let url = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "mp3") {
                                     let player = AVAudioPlayerPool().playerWithURL(url: url)

@@ -65,17 +65,14 @@ struct leaf1: View {
                 Image("leaf0812")
                     .resizable()
                     .frame(width: 74, height: 74)
-//                    .colorMultiply(.yellow)
             } else if leafLevel == 2 {
                 Image("orange0812")
                     .resizable()
                     .frame(width: 74, height: 74)
-//                    .colorMultiply(.yellow)
             } else {
                 Image("pitaya0812")
                     .resizable()
                     .frame(width: 74, height: 74)
-//                    .colorMultiply(.yellow)
             }
             
         }
@@ -91,28 +88,6 @@ struct leaf1: View {
             x: (leafPosition == "left") ? -140 : ((leafPosition == "right") ? 140 : 0),
                 y: (leafPosition == "fore") ? 130 : ((leafPosition == "back") ? -135 : 0)
         )
-//        .offset(
-//            {
-//                let offset: CGSize
-//                switch leafPosition {
-//                    case "left":
-//                        offset = CGSize(width: -120, height: 0)
-//                    case "right":
-//                        offset = CGSize(width: 120, height: 0)
-//                    case "fore":
-//                        offset = CGSize(width: 0, height: 130)
-//                    default:
-//                        offset = CGSize(width: 0, height: -135)
-//                }
-//                return offset
-//            }()
-//        )
-        
-//        CGSize
-//        .offset(x: -120, y: 0)  //left
-//        .offset(x: 120, y: 0)   //right
-//        .offset(x: 0, y: 130)   //forward
-//        .offset(x:0, y: -135)     //backward
         
         .onAppear() {
             trimEnd = 0.0

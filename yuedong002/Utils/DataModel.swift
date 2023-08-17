@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataMode: ObservableObject {
-   
+class DataModel: ObservableObject {
+   @Published var isShowFilter15s = false
     
 }

@@ -338,6 +338,12 @@
 		3676899F2A854FFC00B3C6D4 /* 长颈鹿0810-10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676899E2A854FFB00B3C6D4 /* 长颈鹿0810-10.dae */; };
 		367689A02A854FFC00B3C6D4 /* 长颈鹿0810-10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676899E2A854FFB00B3C6D4 /* 长颈鹿0810-10.dae */; };
 		367689A12A854FFC00B3C6D4 /* 长颈鹿0810-10.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3676899E2A854FFB00B3C6D4 /* 长颈鹿0810-10.dae */; };
+		368225042A8DE7E10090A7A6 /* filter15s.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225032A8DE7E10090A7A6 /* filter15s.png */; };
+		368225052A8DE7E10090A7A6 /* filter15s.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225032A8DE7E10090A7A6 /* filter15s.png */; };
+		368225062A8DE7E10090A7A6 /* filter15s.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225032A8DE7E10090A7A6 /* filter15s.png */; };
+		368225082A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */; };
+		368225092A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */; };
+		3682250A2A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -613,6 +619,8 @@
 		367689922A8536E100B3C6D4 /* giraffeNeckSkin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = giraffeNeckSkin.jpg; sourceTree = "<group>"; };
 		3676899A2A853A0B00B3C6D4 /* giraffeHeadSkin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = giraffeHeadSkin.jpg; sourceTree = "<group>"; };
 		3676899E2A854FFB00B3C6D4 /* 长颈鹿0810-10.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = "长颈鹿0810-10.dae"; path = "../../../../../../../Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/6c77fa06c12ce6a4892329c31a083246/Message/MessageTemp/cb39215740669b1cc015ff0a2e7c5540/File/长颈鹿0810-10.dae"; sourceTree = "<group>"; };
+		368225032A8DE7E10090A7A6 /* filter15s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter15s.png; sourceTree = "<group>"; };
+		368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "第二阶段前图片2.png"; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -730,6 +738,7 @@
 				364A66952A875427007C2103 /* apple.png */,
 				364A66992A875430007C2103 /* 花.png */,
 				364A66A12A8756E7007C2103 /* 第二阶段前图片.png */,
+				368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */,
 				364A66A52A875BBE007C2103 /* likeyou.png */,
 				364A66A92A875BCD007C2103 /* taikula.png */,
 				364A66AD2A875BD8007C2103 /* wow.png */,
@@ -737,6 +746,7 @@
 				364A66CD2A87862F007C2103 /* Pitaya.png */,
 				364A66D12A878636007C2103 /* Orange.png */,
 				364A670D2A8B4D8B007C2103 /* giraffeInCountScoreView.png */,
+				368225032A8DE7E10090A7A6 /* filter15s.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -894,6 +904,7 @@
 		366577312A46B7CC008C166D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				365121E42A75655A0071D1C1 /* DataModel.swift */,
 				366577362A46B7EF008C166D /* SoundSystem.swift */,
 				366577322A46B7E6008C166D /* MotionManager.swift */,
 				3698D5712A6D76350003C037 /* GiraffeScene.swift */,
@@ -925,6 +936,7 @@
 		368726CD2A793917007F859C /* SoundEffects */ = {
 			isa = PBXGroup;
 			children = (
+				368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */,
 				364A66E02A879324007C2103 /* 1-wow.mp3 */,
 				364A66DF2A879324007C2103 /* 2-cool.mp3 */,
 				364A66DE2A879324007C2103 /* 3-ShenShou.mp3 */,
@@ -938,7 +950,6 @@
 				368726F22A7939C7007F859C /* BGM_HomepageAndCamera.mp3 */,
 				368726D22A793950007F859C /* LeavesAppearing.mp3 */,
 				36027DEF2A79545100A505BC /* GetScore.mp3 */,
-				368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */,
 				36027E072A7A369000A505BC /* CountScoreView_onloading.mp3 */,
 				368726DE2A79397D007F859C /* Overall_Dialog.mp3 */,
 				36027E032A7A367200A505BC /* Overall_ClickButton.mp3 */,
@@ -968,7 +979,6 @@
 				365121BF2A73A4CA0071D1C1 /* NeckSlides.swift */,
 				365121C32A73AC700071D1C1 /* head.swift */,
 				365121C72A73B1DB0071D1C1 /* Floor.swift */,
-				365121E42A75655A0071D1C1 /* DataModel.swift */,
 				36F4198B2A46C62700B11D59 /* MotionStateView.swift */,
 				36D15EA32A72398600BC1967 /* StyledGauge.swift */,
 				3665773F2A46B832008C166D /* CreateMode.swift */,
@@ -1217,6 +1227,7 @@
 				365CF8062A6D67F90007A2CF /* head.dae in Resources */,
 				3676894F2A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */,
 				3676897F2A8534DF00B3C6D4 /* 长颈鹿0810-7.dae in Resources */,
+				368225082A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */,
 				3698D5882A703D860003C037 /* giraffe0.dae in Resources */,
 				364A66EE2A87B9B5007C2103 /* 长颈鹿0812-2.dae in Resources */,
 				3676893F2A83915700B3C6D4 /* 吃叶子.dae in Resources */,
@@ -1239,6 +1250,7 @@
 				366577102A46B723008C166D /* pianoD.mp3 in Resources */,
 				364A66C62A8784C5007C2103 /* 长颈鹿0812-1.dae in Resources */,
 				36027E342A7EC29D00A505BC /* reshot.png in Resources */,
+				368225042A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A5DE2A756BDD00B59DCB /* SettingsButton.png in Resources */,
 				364A66A22A8756E7007C2103 /* 第二阶段前图片.png in Resources */,
 			);
@@ -1260,6 +1272,7 @@
 				36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				367689802A8534DF00B3C6D4 /* 长颈鹿0810-7.dae in Resources */,
 				364A66932A867DF1007C2103 /* neckSkin0811.jpg in Resources */,
+				368225092A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */,
 				364A66D72A87865D007C2103 /* leaf0812.png in Resources */,
 				367689542A84CAD700B3C6D4 /* clouds.png in Resources */,
 				36027E3E2A7EC29D00A505BC /* wechatlogin.png in Resources */,
@@ -1361,6 +1374,7 @@
 				367689482A83960400B3C6D4 /* eatLeaf2.dae in Resources */,
 				364A66D32A878636007C2103 /* Orange.png in Resources */,
 				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
+				368225052A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				367689342A82389900B3C6D4 /* ArrowDown.png in Resources */,
@@ -1391,6 +1405,7 @@
 				36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				367689812A8534DF00B3C6D4 /* 长颈鹿0810-7.dae in Resources */,
 				364A66942A867DF1007C2103 /* neckSkin0811.jpg in Resources */,
+				3682250A2A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */,
 				364A66D82A87865D007C2103 /* leaf0812.png in Resources */,
 				367689552A84CAD700B3C6D4 /* clouds.png in Resources */,
 				36027E3F2A7EC29D00A505BC /* wechatlogin.png in Resources */,
@@ -1492,6 +1507,7 @@
 				367689492A83960400B3C6D4 /* eatLeaf2.dae in Resources */,
 				364A66D42A878636007C2103 /* Orange.png in Resources */,
 				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
+				368225062A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				367689352A82389900B3C6D4 /* ArrowDown.png in Resources */,
