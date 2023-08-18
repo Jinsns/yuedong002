@@ -18,6 +18,8 @@ struct ScorePanView: View {
     @State var isShowPlus2 = false
     @State var isShowPlus5 = false
     
+    @State private var scoreTimer: Timer? = nil
+    
     var body: some View {
         ZStack {
             Image("ruling")   //front fade-out
@@ -103,14 +105,14 @@ struct ScorePanView: View {
                       .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.38))
 //                      .opacity(isShowPlus1 ? 1.0 : 0.0)
                       .offset(x: 0, y: -170)
-                      .onAppear {
-                          DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
-                              withAnimation(.easeOut(duration: 0.01)) {
-                                  isShowPlus1 = false
-                              }
-                          }
-                      
-                      }
+//                      .onAppear {
+//                          DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
+//                              withAnimation(.easeOut(duration: 0.01)) {
+//                                  isShowPlus1 = false
+//                              }
+//                          }
+//                      
+//                      }
                 } else if isShowPlus2 {
                     Text("+2")
                       .font(Font.custom("LilitaOne", size: 37.58286))
@@ -118,14 +120,13 @@ struct ScorePanView: View {
                       .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.38))
 //                      .opacity(isShowPlus2 ? 1.0 : 0.0)
                       .offset(x: 0, y: -170)
-                      .onAppear {
-                          DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
-                              withAnimation(.easeOut(duration: 0.01)) {
-                                  isShowPlus2 = false
-                              }
-                          }
-                      
-                      }
+//                      .onAppear {
+//                          DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
+//                              withAnimation(.easeOut(duration: 0.01)) {
+//                                  isShowPlus2 = false
+//                              }
+//                          }
+//                      }
                 } else if isShowPlus5 {
                     Text("+5")
                       .font(Font.custom("LilitaOne", size: 37.58286))
@@ -133,51 +134,72 @@ struct ScorePanView: View {
                       .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.38))
 //                      .opacity(isShowPlus5 ? 1.0 : 0.0)
                       .offset(x: 0, y: -170)
-                      .onAppear {
-                          DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
-                              withAnimation(.easeOut(duration: 0.01)) {
-                                  isShowPlus5 = false
-                              }
-                          }
-                      
-                      }
+//                      .onAppear {
+//                          DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
+//                              withAnimation(.easeOut(duration: 0.01)) {
+//                                  isShowPlus5 = false
+//                              }
+//                          }
+//
+//                      }
                 }
             }
-            
-            
-            
         }
-        .onChange(of: scene.isContacted, perform: { newValue in  //发生碰撞
-            scene.runEatenEffect()
-            if note?.level == 1{
-                scene.score += 1
-                withAnimation(.easeIn(duration: 0.24)) {
-                    isShowPlus1 = true
-                }
-                
-            } else if note?.level == 2 {
-                scene.score += 2
-                withAnimation(.easeIn(duration: 0.24)) {
-                    isShowPlus2 = true
-                }
-            } else if note?.level == 3 {
-                scene.score += 5
-                withAnimation(.easeIn(duration: 0.24)) {
-                    isShowPlus5 = true
-                }
-            }
+        .onChange(of: scene.isContacting, perform: { newValue in  //发生碰撞
             
-            if note!.isTenuto == true {
+            if newValue == true {
+                if note!.isTenuto == true {
+                    //do nothing here, will remove when reaching endtime
+                }
+                if note!.isTenuto == false {
+                    //(eaten effect implemented in GiraffeScene)
+                    //remove leaf from the scene
+                    print("not a tenuto, remove immediately")
+
+                    scene.removeLeafNode()
+
+                }
+                scoreTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
+                    scene.runEatenEffect()
+                    if note?.level == 1{
+                        scene.score += 1
+                        withAnimation(.easeIn(duration: 0.24)) {
+                            isShowPlus1 = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
+                            isShowPlus1 = false
+                        }
+                        
+                    } else if note?.level == 2 {
+                        scene.score += 2
+                        withAnimation(.easeIn(duration: 0.24)) {
+                            isShowPlus2 = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
+                            isShowPlus2 = false
+                        }
+                    } else if note?.level == 3 {
+                        scene.score += 5
+                        withAnimation(.easeIn(duration: 0.24)) {
+                            isShowPlus5 = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.24) {
+                            isShowPlus5 = false
+                        }
+                    }
+                    
+
+                }
                 
+                
+                
+            } else {
+                print("invalidate timer")
+                scoreTimer?.invalidate()
+                scoreTimer = nil
             }
-            if note!.isTenuto == false {
-                //(eaten effect implemented in GiraffeScene)
-                //remove leaf from the scene
-                print("not a tenuto, remove immediately")
-                
-                scene.removeLeafNode()
-                
-            }
+                        
+            
         })
     }
 }

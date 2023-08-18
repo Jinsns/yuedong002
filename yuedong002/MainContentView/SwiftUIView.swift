@@ -19,7 +19,7 @@ let notes: [Note] = [
     //y 大 屏幕上
     //z 大 屏幕左， x，z和头运动方向一致
     
-    Note(startTime: 0.0, endTime: 1.0, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 0.0, endTime: 0.01, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
     Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 1), //左
     Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 1), //右
@@ -60,6 +60,7 @@ struct SwiftUIView: View {
     @AppStorage("totalLeaves") var totalLeaves: String = "0"
     @ObservedObject var dataModel = DataModel()
     @State var worldName: String = "地面"
+//    @State var worldName: String = "云中秘境"  //for testing
     
     
     @State var isInHomePage = true
@@ -93,9 +94,6 @@ struct SwiftUIView: View {
     @State var isTenuto = false
     @State var leafLevel: Int = 1
     @State var leafChangingScale = 1.0
-    
-//    @State var isShowProgressBar = false
-//    @State private var progress: Double = 0.0
     
     
     var body: some View {
@@ -262,14 +260,6 @@ struct SwiftUIView: View {
                 
                 ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
                 
-//                if isShowProgressBar {
-//                    VStack{
-//                        ProgressView(progress: $progress)
-//                            .onChange(of: bgmSystem.currentTime) { newValue in
-//                                progress = (newValue - note!.startTime) / 4.0
-//                            }
-//                    }
-//                }
 
                 
             } // GamingView: zstack of ruling and circle
@@ -327,6 +317,7 @@ struct SwiftUIView: View {
                     //then change note to the next one
                     if scene.leafNode != nil {
                         scene.leafNode!.removeFromParentNode()
+                        scene.isContacting = false
                         print("removed leaf")
                     }
 //                    isShowProgressBar = false

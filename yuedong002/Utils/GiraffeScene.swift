@@ -53,6 +53,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     private var ornamentNode: SCNNode?
     private var backgroundNode: SCNNode?
     private var cloudNode: SCNNode?
+    @Published var inWorld: Int = 1
     
     private var KAnimationKey: String = "Animation"
     
@@ -76,6 +77,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     @Published var isContacted = false
     @Published var shouldContact = true
+    @Published var isContacting = false
     
     @Published var extraLightNode1: SCNNode?
     @Published var extraLightNode2: SCNNode?
@@ -109,6 +111,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        configureCamera()
         addCameraNode()
         addOmniLight()
+        
+//        upWorld() //only for testing
         
         
         //control rotation
@@ -186,6 +190,49 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
     }
     
+    /* 在“地面”，有三种状态，下，中，上
+     从中到下时，camera下移，背景和鹿不动
+     从下到中时，camera上一到中间位置，背景和鹿不懂
+     从中到上时，camera上移，背景和鹿不动
+     从上到中时，camera回到中间位置，背景和鹿不懂
+     
+     在“云中秘境”，有三种状态，下，中，上
+     从中到下时（到能看到脖子和地面的风景），背景上移 + camera下移，鹿不动
+     从下到中时，背景下移 + camera上移，鹿不懂
+     从中到上时，camera上移，背景和鹿不懂
+     从上到中时，camera回到中间位置，背景和鹿不动
+     
+     */
+    
+    func moveCameraNodeUp2() {  //2 means worldname == 云中秘境
+        //original cameranode position SCNVector3(x: 10, y: 2, z: 0)
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        if self.inWorld == 1 {
+            self.cameraNode!.position = SCNVector3(x: 10, y: 20, z: 0 )
+            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+        } else if self.inWorld == 2 {
+            self.cameraNode!.position = SCNVector3(x: 10, y: 8.0, z: 0)
+            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+        }
+        SCNTransaction.commit()
+        self.inWorld = 2
+    }
+    
+    func moveCameraNodeDown2() { //2 means worldname == 云中秘境
+        
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        if self.inWorld == 1 {
+            self.cameraNode!.position = SCNVector3(x: 10, y: -1.5, z: 0)
+        } else if self.inWorld == 2 {
+            self.cameraNode!.position = SCNVector3(x: 10, y: -14, z: 0)
+            self.backgroundNode?.position = SCNVector3(x: -35, y: 90, z: 0)
+        }
+        SCNTransaction.commit()
+        self.inWorld = 1
+    }
+    
     
     func moveCameraNodeAndNeckNodeToShopPosition() {
         SCNTransaction.begin()
@@ -199,7 +246,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = SCNVector3(x: 10, y: 2, z: 0)
-        self.neckNode?.position = SCNVector3(0.0, -2.8, 0)
+        self.neckNode?.position = SCNVector3(0.0, -3.2, 0)
         SCNTransaction.commit()
     }
     
@@ -258,6 +305,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     }
     
     func upWorld() {
+        self.inWorld = 2
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 0.6
         self.neckNode?.position = SCNVector3(0.0, 1.5, 0.0)
@@ -284,31 +332,6 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         print("scene.rootNode.childNodes: ", scene.rootNode.childNodes)
         let giraffeNode10 = scene.rootNode
-//        for childNode in scene.rootNode.childNodes {
-//            print("子节点的名称：", childNode.name ?? "无")
-//            print("子节点的类型：", type(of: childNode))
-//        }
-//        print("giraffeNode childnodes1: ", giraffeNode10.childNodes.first?.childNodes.first)
-//        print("giraffeNode childnodes2: ", giraffeNode10.childNodes.first?.childNodes.last)
-        
-
-        
-//        let headNode = giraffeNode10.childNode(withName: "鹿", recursively: true)!
-////        print("lu added")
-////        let headNodeMaterial = SCNMaterial()
-////        headNodeMaterial.diffuse.contents = UIImage(named: "giraffeHeadSkin")
-////        headNode.geometry?.materials = [headNodeMaterial]
-////
-////
-//        let neckNode = giraffeNode10.childNode(withName: "脖子", recursively: true)!
-//        print("bozi added")
-//        let neckNodeMaterial = SCNMaterial()
-//        neckNodeMaterial.diffuse.contents = UIImage(named: "leaf")
-//        neckNode.geometry?.materials = [neckNodeMaterial]
-        
-
-        
-//        giraffeNode10.geometry?.materials = [neckNodeMaterial]
         
         // 根据需要对脖子模型进行缩放和位置调整
         giraffeNode10.scale = SCNVector3(1.0, 1.0, 1.0)   //缩放
@@ -321,29 +344,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         giraffeNode10.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         giraffeNode10.name = "neck"
         
-//        giraffeNode10.childNode(withName: "脖子", recursively: false)?.geometry?.materials.first?.lightingModel = .lambert
-//        giraffeNode10.childNode(withName: "鹿", recursively: false)?.geometry?.materials.first?.lightingModel = .lambert
         giraffeNode10.geometry?.materials.first?.lightingModel = .lambert
         giraffeNode10.categoryBitMask = LightType.onNeck
-        
-
-//
-        
-//        var giraffeNode = SCNNode()
-//        giraffeNode.scale = SCNVector3(0.65, 0.65, 0.65)   //缩放
-//        giraffeNode.position = SCNVector3(0, -2.4, 0.3) // 设置位置，根据需要调整
-//        giraffeNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
-//
-//
-//        giraffeNode.addChildNode(headNode)
-//        giraffeNode.addChildNode(neckNode)
-//        //line below creates more accurate physics body than the line above, with more computation costs
-//        giraffeNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .statgiffecan't collide
-//        giraffeNode.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
-//        giraffeNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
-//        giraffeNode.name = "neck"
-//        giraffeNode.categoryBitMask = LightType.onNeck
-//        giraffeNode.geometry?.materials.first?.lightingModel = .constant
         
         self.rootNode.addChildNode(giraffeNode10)
         self.neckNode = giraffeNode10
@@ -362,11 +364,13 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             ornament.scale = SCNVector3(1.6, 1.6, 1.6)
             ornament.position = SCNVector3(x: 0, y: 3 , z: -6)
             ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: Float.pi / 2)
+            
         } else if ornamentName == "戒指" {
             scene = SCNScene(named: "戒指.dae")!
             ornament = scene!.rootNode
             ornament.scale = SCNVector3(1.6, 1.6, 1.6)
             ornament.position = SCNVector3(x: 0, y: 3 , z: -6)
+            ornament.geometry?.firstMaterial?.lightingModel
         }
         
 
@@ -407,7 +411,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
 
         leafMaterial.lightingModel = .constant  //not affected by light
-        leafMaterial.transparency = 0.0
+        leafMaterial.transparency = 0.5
 //        let leafGeometry = SCNPlane(width: 1.6, height: 1.6)
 //        let leafGeometry = SCNPlane(width: 6, height: 6)
         let leafGeometry = SCNBox(width: 6, height: 3, length: 3, chamferRadius: 0)
@@ -517,36 +521,37 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
     
     func addOmniLight() {
-        self.neckNode?.geometry?.materials.first?.lightingModel = .constant
+//        self.neckNode?.geometry?.materials.first?.lightingModel = .constant
+//        self.neckNode?.geometry?.firstMaterial?.lightingModel = .lambert
         let omniLightNode1 = SCNNode()
         omniLightNode1.light = SCNLight()
-        omniLightNode1.light?.type = SCNLight.LightType.ambient
+        omniLightNode1.light?.type = SCNLight.LightType.omni
 //        omniLightNode1.light?.color = UIColor(white: 1.0, alpha: 1.0)
-        omniLightNode1.light?.color = UIColor(red: 0.96, green: 1.0, blue: 0.75, alpha: 1.0)
+        omniLightNode1.light?.color = UIColor(white: 1.0,  alpha: 1.0)
 //        omniLightNode1.light?.color =  UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
-        omniLightNode1.position = SCNVector3Make(10, 0, 0)  //x大 屏幕外，y大 屏幕上，z大 屏幕左
+        omniLightNode1.position = SCNVector3Make(30, 0, 0)  //x大 屏幕外，y大 屏幕上，z大 屏幕左
         omniLightNode1.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode1.light?.categoryBitMask = LightType.onNeck
-        omniLightNode1.light?.intensity = 600
+        omniLightNode1.light?.intensity = 1600
         
         let omniLightNode2 = SCNNode()
         omniLightNode2.light = SCNLight()
-        omniLightNode2.light?.type = SCNLight.LightType.ambient
-        omniLightNode2.light?.color = UIColor(white: 1.0, alpha: 1.0)
+        omniLightNode2.light?.type = SCNLight.LightType.omni
+        omniLightNode2.light?.color = UIColor(red: 1.0, green: 0.733, blue: 0.273, alpha: 1.0)
 //        omniLightNode2.light?.color = UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
-        omniLightNode2.position = SCNVector3(10, 15, -6)
-        omniLightNode2.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
+        omniLightNode2.position = SCNVector3(30, 25, -6)
+        omniLightNode2.eulerAngles = SCNVector3(x: 0, y: -Float.pi / 2, z: 0)
         omniLightNode2.light?.categoryBitMask = LightType.onNeck
-        omniLightNode2.light?.intensity = 100
+        omniLightNode2.light?.intensity = 1000
 
         let omniLightNode3 = SCNNode()
         omniLightNode3.light = SCNLight()
-        omniLightNode3.light?.type = SCNLight.LightType.ambient
-        omniLightNode3.light?.color = UIColor(white: 1.0, alpha: 1.0)
-        omniLightNode3.position = SCNVector3(10, 15, 6)
+        omniLightNode3.light?.type = SCNLight.LightType.omni
+        omniLightNode3.light?.color = UIColor(red: 1.0, green: 0.399, blue: 0.452, alpha: 1.0)
+        omniLightNode3.position = SCNVector3(30, 5, 6)
         omniLightNode3.eulerAngles = SCNVector3Make(0, Float.pi / 2, 0)
         omniLightNode3.light?.categoryBitMask = LightType.onNeck
-        omniLightNode3.light?.intensity = 100
+        omniLightNode3.light?.intensity = 500
         
         let omniLightNode4 = SCNNode()
         omniLightNode4.light = SCNLight()
@@ -569,9 +574,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         omniLightNode5.light?.intensity = 4000
         
         
-//        self.rootNode.addChildNode(omniLightNode1)
-//        self.rootNode.addChildNode(omniLightNode2)
-//        self.rootNode.addChildNode(omniLightNode3)
+        self.rootNode.addChildNode(omniLightNode1)
+        self.rootNode.addChildNode(omniLightNode2)
+        self.rootNode.addChildNode(omniLightNode3)
 //        self.rootNode.addChildNode(omniLightNode4)
         
     }
@@ -688,9 +693,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                         
             
             self?.neckNode?.eulerAngles = SCNVector3(
-                x:  (absx > maxAngle ? maxAngle * (-Float(attitude.roll)) / absx : -Float(attitude.roll)) / 2 ,
+                x:  (absx > maxAngle ? maxAngle * (-Float(attitude.roll)) / absx : -Float(attitude.roll)) / 2.0 ,
                 y: 0,
-                z: (absz > maxAngle ? maxAngle * (Float(attitude.pitch)) / absz : Float(attitude.pitch)) / 2
+                z: (absz > maxAngle ? maxAngle * (Float(attitude.pitch)) / absz : Float(attitude.pitch)) / 2.0
             )
             
             if abs(self!.headphoneAnglex) < readyRange && abs(self!.headphoneAnglez) < readyRange {
@@ -724,34 +729,45 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
 //        print("contact begin time: ", Date())
+        if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
+            print("contact begin")
+            // get 1 score when "neck" and "leaf" collide
+//            self.score += 1   //operate in SwiftUIView
+//            self.runEatenEffect()
+            
+//            physicsWorld.contactDelegate = nil
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { //最快0.25秒进行一次碰撞检测
+//                if self.shouldContact {
+//                    self.isContacted.toggle()
+//                    self.physicsWorld.contactDelegate = self
+//
+//                    print("延时执行时间：\(Date())")
+//                }
+//
+//            }
+            
+            self.isContacting = true
+        }
+        else {
+            self.isContacting = false
+        
+        }
         
     }
 
     func physicsWorld(_ world: SCNPhysicsWorld, didUpdate contact: SCNPhysicsContact) {
         print("contact update")
-        if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
-            // get 1 score when "neck" and "leaf" collide
-//            self.score += 1   //operate in SwiftUIView
-//            self.runEatenEffect()
-            
-            physicsWorld.contactDelegate = nil
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { //最快0.25秒进行一次碰撞检测
-                if self.shouldContact {
-                    self.isContacted.toggle()
-                    self.physicsWorld.contactDelegate = self
-                        
-                    print("延时执行时间：\(Date())")
-                }
-                
-            }
-                       
-            
-        }
+//        if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
+//            self.isContacting = true
+//        } else {
+//            self.isContacting = false
+//        }
     }
 
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
         print("contact end")
+        self.isContacting = false
     }
     
     
