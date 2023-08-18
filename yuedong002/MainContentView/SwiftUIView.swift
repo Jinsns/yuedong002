@@ -62,8 +62,9 @@ struct SwiftUIView: View {
     @State var worldName: String = "地面"
 //    @State var worldName: String = "云中秘境"  //for testing
     
-    
-    @State var isInHomePage = true
+    @State var isShowInitBlackBackground = true
+    @State var isShowIntroVideoView = true
+    @State var isInHomePage = false
     @State var isGaming = false
     
     @ObservedObject var scene = GiraffeScene()
@@ -408,11 +409,24 @@ struct SwiftUIView: View {
             })
             .opacity(!isInHomePage ? 1.0 : 0.0)
             
+            if isShowInitBlackBackground {
+                Rectangle()
+                    .edgesIgnoringSafeArea(.all)
+            }
             
             
 
             
         }
+        .fullScreenCover(isPresented: $isShowIntroVideoView, content: {
+            IntroVideoView()
+                .onDisappear(){
+                    isShowIntroVideoView = false
+                    isInHomePage = true
+                    isShowInitBlackBackground = false
+                }
+            
+        })
         
         
         
