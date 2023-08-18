@@ -38,6 +38,8 @@ struct HomePageView: View {
     
     @Binding var isLeafAdded: Bool
     
+    @State var viewState: Int = 2
+    
     
     
     
@@ -48,7 +50,7 @@ struct HomePageView: View {
                     WearAirpodsReminderView(isShowAirpodsReminder: $dataModel.isShowAirpodsReminder)
                 }
                 
-                if dataModel.isShowCorrectingPositionView {
+                if dataModel.isShowCorrectingPositionView && viewState == 2 {
                     CorrectingPositionView(scene: scene)
                         .onAppear(){
 //                            scene.stopMotionUpdates()
@@ -189,7 +191,7 @@ struct HomePageView: View {
             
             //if not in these two view
             if (isShowShutterView || isShowShopView) == false {
-                ArrowButtonsView(scene: scene, dataModel: dataModel, worldName: $worldName)
+                ArrowButtonsView(scene: scene, dataModel: dataModel, worldName: $worldName, viewState: $viewState)
                 
             }
             
@@ -561,6 +563,7 @@ struct ArrowButtonsView: View {
     @ObservedObject var scene: GiraffeScene
     @ObservedObject var dataModel: DataModel
     @Binding var worldName: String
+    @Binding var viewState: Int   // 下1 中2 上3
 //    @Binding var isShowAirpodsReminder: Bool
 //    @Binding var isShowCorrectingPositionView: Bool
 //    @Binding var isShowNodToEatView: Bool
@@ -576,56 +579,79 @@ struct ArrowButtonsView: View {
                     if worldName == "地面" {
                         if dataModel.isShowAirpodsReminder == true {
                             dataModel.isShowAirpodsReminder = false
-                            if scene.cameraNode!.position.y >= 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 8.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y >= 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 8.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 2 {
+                                scene.world1ViewMid2Up()
+                                viewState = 3
+                            } else if viewState == 1 {
+                                scene.world1ViewDown2Mid()
+                                viewState = 2
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowAirpodsReminder = true
                             }
                         } else if dataModel.isShowCorrectingPositionView == true {
                             dataModel.isShowCorrectingPositionView = false
-                            if scene.cameraNode!.position.y >= 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 8.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y >= 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 8.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 2 {
+                                scene.world1ViewMid2Up()
+                                viewState = 3
+                            } else if viewState == 1 {
+                                scene.world1ViewDown2Mid()
+                                viewState = 2
                             }
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 dataModel.isShowCorrectingPositionView = true
                             }
     //                        dataModel.isShowCorrectingPositionView = true
                         } else if dataModel.isShowNodToEatView == true {
                             dataModel.isShowNodToEatView = false
-                            if scene.cameraNode!.position.y >= 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 8.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y >= 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 8.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 2 {
+                                scene.world1ViewMid2Up()
+                                viewState = 3
+                            } else if viewState == 1 {
+                                scene.world1ViewDown2Mid()
+                                viewState = 2
                             }
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 dataModel.isShowNodToEatView = true
                             }
@@ -635,56 +661,80 @@ struct ArrowButtonsView: View {
                     } else if worldName == "云中秘境" {
                         if dataModel.isShowAirpodsReminder == true {
                             dataModel.isShowAirpodsReminder = false
-                            if scene.cameraNode!.position.y >= 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 8.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y >= 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 8.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 2 {
+                                scene.world2ViewMid2Up()
+                                viewState = 3
+                            } else if viewState == 1 {
+                                scene.world2ViewDown2Mid()
+                                viewState = 2
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowAirpodsReminder = true
                             }
                         } else if dataModel.isShowCorrectingPositionView == true {
                             dataModel.isShowCorrectingPositionView = false
-                            if scene.cameraNode!.position.y >= 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 8.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y >= 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 8.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 2 {
+                                scene.world2ViewMid2Up()
+                                viewState = 3
+                            } else if viewState == 1 {
+                                scene.world2ViewDown2Mid()
+                                viewState = 2
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowCorrectingPositionView = true
                             }
     //                        dataModel.isShowCorrectingPositionView = true
                         } else if dataModel.isShowNodToEatView == true {
                             dataModel.isShowNodToEatView = false
-                            if scene.cameraNode!.position.y >= 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 8.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y >= 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 8.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 2 {
+                                scene.world2ViewMid2Up()
+                                viewState = 3
+                            } else if viewState == 1 {
+                                scene.world2ViewDown2Mid()
+                                viewState = 2
                             }
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 dataModel.isShowNodToEatView = true
                             }
@@ -711,57 +761,81 @@ struct ArrowButtonsView: View {
                     if worldName == "地面" {
                         if dataModel.isShowAirpodsReminder {
                             dataModel.isShowAirpodsReminder = false
-                            if scene.cameraNode!.position.y > 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: -1.5,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y > 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: -1.5,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 3 {
+                                scene.world1ViewUp2Mid()
+                                viewState = 2
+                            } else if viewState == 2 {
+                                scene.world1ViewMid2Down()
+                                viewState = 1
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowAirpodsReminder = true
                             }
                         } else if dataModel.isShowCorrectingPositionView {
                             dataModel.isShowCorrectingPositionView = false
-                            if scene.cameraNode!.position.y > 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: -1.5,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y > 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: -1.5,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            if viewState == 3 {
+                                scene.world1ViewUp2Mid()
+                                viewState = 2
+                            } else if viewState == 2 {
+                                scene.world1ViewMid2Down()
+                                viewState = 1
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowCorrectingPositionView = true
                             }
                             
                         } else if dataModel.isShowNodToEatView {
                             dataModel.isShowNodToEatView = false
-                            if scene.cameraNode!.position.y > 2 {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: 2.0,
-                                    z: scene.cameraNode!.position.z)
-                                )
-                            } else {
-                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
-                                    x: scene.cameraNode!.position.x,
-                                    y: -1.5,
-                                    z: scene.cameraNode!.position.z)
-                                )
+//                            if scene.cameraNode!.position.y > 2 {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: 2.0,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            } else {
+//                                scene.moveCameraNodeSmoothly(newPosition: SCNVector3(
+//                                    x: scene.cameraNode!.position.x,
+//                                    y: -1.5,
+//                                    z: scene.cameraNode!.position.z)
+//                                )
+//                            }
+                            
+                            if viewState == 3 {
+                                scene.world1ViewUp2Mid()
+                                viewState = 2
+                            } else if viewState == 2 {
+                                scene.world1ViewMid2Down()
+                                viewState = 1
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowNodToEatView = true
                             }
                             
@@ -770,25 +844,45 @@ struct ArrowButtonsView: View {
                     } else if worldName == "云中秘境" {
                         if dataModel.isShowAirpodsReminder {
                             dataModel.isShowAirpodsReminder = false
-                            scene.moveCameraNodeDown2()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            
+                            if viewState == 3 {
+                                scene.world2ViewUp2Mid()
+                                viewState = 2
+                            } else if viewState == 2 {
+                                scene.world2ViewMid2Down()
+                                viewState = 1
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowAirpodsReminder = true
                             }
                         } else if dataModel.isShowCorrectingPositionView {
                             dataModel.isShowCorrectingPositionView = false
                             
-                            scene.moveCameraNodeDown2()
+                            if viewState == 3 {
+                                scene.world2ViewUp2Mid()
+                                viewState = 2
+                            } else if viewState == 2 {
+                                scene.world2ViewMid2Down()
+                                viewState = 1
+                            }
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowCorrectingPositionView = true
                             }
                             
                         } else if dataModel.isShowNodToEatView {
                             dataModel.isShowNodToEatView = false
                             
-                            scene.moveCameraNodeDown2()
+                            if viewState == 3 {
+                                scene.world2ViewUp2Mid()
+                                viewState = 2
+                            } else if viewState == 2 {
+                                scene.world2ViewMid2Down()
+                                viewState = 1
+                            }
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
                                 dataModel.isShowNodToEatView = true
                             }
                             
@@ -812,6 +906,14 @@ struct ArrowButtonsView: View {
         .shadow(color: .black.opacity(0.2), radius: 16, x: 0, y: 0)
         .background(RoundedRectangle(cornerRadius: 50).fill(Color.white.opacity(0.7)))
         .offset(x: 132, y: 200)
+//        .onChange(of: viewState) { newValue in
+//            if newValue != 2 {
+//                scene.rotateBackNeckNode()
+//                scene.stopMotionUpdates()
+//            } else {
+//                scene.addNeckRotation()
+//            }
+//        }
     }
 }
 

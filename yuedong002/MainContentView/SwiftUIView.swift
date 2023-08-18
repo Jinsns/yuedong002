@@ -125,7 +125,8 @@ struct SwiftUIView: View {
                         
                         print("addleafnode1")
                         
-                        scene.shouldContact = true
+//                        scene.shouldContact = true
+                        scene.physicsWorld.contactDelegate = scene
                     }
                 
                 
@@ -358,10 +359,12 @@ struct SwiftUIView: View {
             .onChange(of: isShowPause, perform: { newValue in  //when game pauses
                 if newValue == true { //show pause
                     bgmSystem.pause()
-                    scene.shouldContact = false
+//                    scene.shouldContact = false
+                    scene.isContacting = false
+                    scene.physicsWorld.contactDelegate = nil
                 } else {  //resume from pause
                     bgmSystem.play()
-                    scene.shouldContact = true //恢复碰撞检测
+//                    scene.shouldContact = true //恢复碰撞检测
                     scene.physicsWorld.contactDelegate = scene
                 }
             })
@@ -377,7 +380,8 @@ struct SwiftUIView: View {
                                     let player = AVAudioPlayerPool().playerWithURL(url: url)
                                     player?.play()
                                 }
-                        scene.shouldContact = false
+//                        scene.shouldContact = false
+                        scene.isContacting = false
                         scene.physicsWorld.contactDelegate = nil
                         scene.leafNode?.removeFromParentNode()
                         

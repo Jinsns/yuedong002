@@ -344,6 +344,18 @@
 		368225082A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */; };
 		368225092A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */; };
 		3682250A2A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */ = {isa = PBXBuildFile; fileRef = 368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */; };
+		368225102A8F64E00090A7A6 /* neckskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3682250F2A8F64E00090A7A6 /* neckskin0818.jpg */; };
+		368225112A8F64E00090A7A6 /* neckskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3682250F2A8F64E00090A7A6 /* neckskin0818.jpg */; };
+		368225122A8F64E00090A7A6 /* neckskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3682250F2A8F64E00090A7A6 /* neckskin0818.jpg */; };
+		368225142A8F64E70090A7A6 /* headskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 368225132A8F64E70090A7A6 /* headskin0818.jpg */; };
+		368225152A8F64E70090A7A6 /* headskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 368225132A8F64E70090A7A6 /* headskin0818.jpg */; };
+		368225162A8F64E70090A7A6 /* headskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 368225132A8F64E70090A7A6 /* headskin0818.jpg */; };
+		368225182A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 368225172A8F64EF0090A7A6 /* earphoneskin0818.jpg */; };
+		368225192A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 368225172A8F64EF0090A7A6 /* earphoneskin0818.jpg */; };
+		3682251A2A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 368225172A8F64EF0090A7A6 /* earphoneskin0818.jpg */; };
+		3682251C2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3682251B2A8F687F0090A7A6 /* 长颈鹿0816.dae */; };
+		3682251D2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3682251B2A8F687F0090A7A6 /* 长颈鹿0816.dae */; };
+		3682251E2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3682251B2A8F687F0090A7A6 /* 长颈鹿0816.dae */; };
 		368726CC2A7932C9007F859C /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368726CB2A7932C9007F859C /* Leaf.swift */; };
 		368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
 		368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726D22A793950007F859C /* LeavesAppearing.mp3 */; };
@@ -378,9 +390,6 @@
 		368D16FB2A8D2C940088BC5F /* 墨镜.dae in Resources */ = {isa = PBXBuildFile; fileRef = 368D16FA2A8D2C940088BC5F /* 墨镜.dae */; };
 		368D16FC2A8D2C940088BC5F /* 墨镜.dae in Resources */ = {isa = PBXBuildFile; fileRef = 368D16FA2A8D2C940088BC5F /* 墨镜.dae */; };
 		368D16FD2A8D2C940088BC5F /* 墨镜.dae in Resources */ = {isa = PBXBuildFile; fileRef = 368D16FA2A8D2C940088BC5F /* 墨镜.dae */; };
-		368D16FF2A8D2CA60088BC5F /* 长颈鹿0816.dae in Resources */ = {isa = PBXBuildFile; fileRef = 368D16FE2A8D2CA60088BC5F /* 长颈鹿0816.dae */; };
-		368D17002A8D2CA60088BC5F /* 长颈鹿0816.dae in Resources */ = {isa = PBXBuildFile; fileRef = 368D16FE2A8D2CA60088BC5F /* 长颈鹿0816.dae */; };
-		368D17012A8D2CA60088BC5F /* 长颈鹿0816.dae in Resources */ = {isa = PBXBuildFile; fileRef = 368D16FE2A8D2CA60088BC5F /* 长颈鹿0816.dae */; };
 		368D17032A8D2CBA0088BC5F /* neckskin0816.png in Resources */ = {isa = PBXBuildFile; fileRef = 368D17022A8D2CBA0088BC5F /* neckskin0816.png */; };
 		368D17042A8D2CBA0088BC5F /* neckskin0816.png in Resources */ = {isa = PBXBuildFile; fileRef = 368D17022A8D2CBA0088BC5F /* neckskin0816.png */; };
 		368D17052A8D2CBA0088BC5F /* neckskin0816.png in Resources */ = {isa = PBXBuildFile; fileRef = 368D17022A8D2CBA0088BC5F /* neckskin0816.png */; };
@@ -621,6 +630,10 @@
 		3676899E2A854FFB00B3C6D4 /* 长颈鹿0810-10.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = "长颈鹿0810-10.dae"; path = "../../../../../../../Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/6c77fa06c12ce6a4892329c31a083246/Message/MessageTemp/cb39215740669b1cc015ff0a2e7c5540/File/长颈鹿0810-10.dae"; sourceTree = "<group>"; };
 		368225032A8DE7E10090A7A6 /* filter15s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter15s.png; sourceTree = "<group>"; };
 		368225072A8DF2D60090A7A6 /* 第二阶段前图片2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "第二阶段前图片2.png"; sourceTree = "<group>"; };
+		3682250F2A8F64E00090A7A6 /* neckskin0818.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = neckskin0818.jpg; sourceTree = "<group>"; };
+		368225132A8F64E70090A7A6 /* headskin0818.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headskin0818.jpg; sourceTree = "<group>"; };
+		368225172A8F64EF0090A7A6 /* earphoneskin0818.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earphoneskin0818.jpg; sourceTree = "<group>"; };
+		3682251B2A8F687F0090A7A6 /* 长颈鹿0816.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "长颈鹿0816.dae"; sourceTree = "<group>"; };
 		368726CB2A7932C9007F859C /* Leaf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		368726D22A793950007F859C /* LeavesAppearing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LeavesAppearing.mp3; sourceTree = "<group>"; };
 		368726DA2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homepage_HeadPositionCorrect.mp3; sourceTree = "<group>"; };
@@ -633,7 +646,6 @@
 		368726FA2A7939EB007F859C /* CountDownClock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CountDownClock.mp3; sourceTree = "<group>"; };
 		368D16F62A8D2C650088BC5F /* 戒指.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "戒指.dae"; sourceTree = "<group>"; };
 		368D16FA2A8D2C940088BC5F /* 墨镜.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "墨镜.dae"; sourceTree = "<group>"; };
-		368D16FE2A8D2CA60088BC5F /* 长颈鹿0816.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "长颈鹿0816.dae"; sourceTree = "<group>"; };
 		368D17022A8D2CBA0088BC5F /* neckskin0816.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = neckskin0816.png; sourceTree = "<group>"; };
 		368D17062A8D2DE60088BC5F /* 材质BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "材质BaseColor.png"; sourceTree = "<group>"; };
 		3696A5DB2A756B1300B59DCB /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
@@ -766,9 +778,12 @@
 		365CF8002A6D67C70007A2CF /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				3682250F2A8F64E00090A7A6 /* neckskin0818.jpg */,
+				368225132A8F64E70090A7A6 /* headskin0818.jpg */,
+				368225172A8F64EF0090A7A6 /* earphoneskin0818.jpg */,
+				3682251B2A8F687F0090A7A6 /* 长颈鹿0816.dae */,
 				368D17062A8D2DE60088BC5F /* 材质BaseColor.png */,
 				368D17022A8D2CBA0088BC5F /* neckskin0816.png */,
-				368D16FE2A8D2CA60088BC5F /* 长颈鹿0816.dae */,
 				368D16FA2A8D2C940088BC5F /* 墨镜.dae */,
 				368D16F62A8D2C650088BC5F /* 戒指.dae */,
 				364A67092A87CCEA007C2103 /* neckskin0812-4.jpg */,
@@ -1136,6 +1151,7 @@
 				3696A5EA2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				36027DF42A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */,
+				3682251C2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
 				3696A5E22A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				3676898B2A8535E600B3C6D4 /* 长颈鹿0810-8.dae in Resources */,
 				3676895F2A850DF600B3C6D4 /* 长颈鹿0810-1.dae in Resources */,
@@ -1168,6 +1184,7 @@
 				367689332A82389900B3C6D4 /* ArrowDown.png in Resources */,
 				36027DF82A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
 				364A66AE2A875BD8007C2103 /* wow.png in Resources */,
+				368225142A8F64E70090A7A6 /* headskin0818.jpg in Resources */,
 				3698D5742A6E908F0003C037 /* leaf.png in Resources */,
 				368726DB2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				364A66862A867779007C2103 /* GetScore0811.mp3 in Resources */,
@@ -1187,7 +1204,9 @@
 				3676898F2A85369D00B3C6D4 /* 长颈鹿0810-9.dae in Resources */,
 				364A66F22A87BFDF007C2103 /* headskin0812.jpg in Resources */,
 				367689172A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
+				368225102A8F64E00090A7A6 /* neckskin0818.jpg in Resources */,
 				364A668E2A867DE9007C2103 /* headSkin0811.jpg in Resources */,
+				368225182A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */,
 				364A66A62A875BBF007C2103 /* likeyou.png in Resources */,
 				364A66CA2A878525007C2103 /* 新单个长颈鹿-带耳机.dae in Resources */,
 				364A66D22A878636007C2103 /* Orange.png in Resources */,
@@ -1218,7 +1237,6 @@
 				368D16FB2A8D2C940088BC5F /* 墨镜.dae in Resources */,
 				3676899F2A854FFC00B3C6D4 /* 长颈鹿0810-10.dae in Resources */,
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
-				368D16FF2A8D2CA60088BC5F /* 长颈鹿0816.dae in Resources */,
 				364A66B22A876502007C2103 /* 长颈鹿0812.dae in Resources */,
 				364A66E42A879324007C2103 /* 3-ShenShou.mp3 in Resources */,
 				364A66822A86696A007C2103 /* 长颈鹿0811-1.dae in Resources */,
@@ -1283,9 +1301,11 @@
 				36027DF92A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
 				368D17082A8D2DE60088BC5F /* 材质BaseColor.png in Resources */,
 				368726E02A79397D007F859C /* Overall_Dialog.mp3 in Resources */,
+				368225152A8F64E70090A7A6 /* headskin0818.jpg in Resources */,
 				36027E0D2A7E33B100A505BC /* 单个长颈鹿.dae in Resources */,
 				366577202A46B723008C166D /* pianoC.mp3 in Resources */,
 				364A66EF2A87B9B5007C2103 /* 长颈鹿0812-2.dae in Resources */,
+				368225112A8F64E00090A7A6 /* neckskin0818.jpg in Resources */,
 				367689442A83952200B3C6D4 /* eatLeaf.dae in Resources */,
 				3696A5EB2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				367689382A8238A000B3C6D4 /* ArrowUp.png in Resources */,
@@ -1304,7 +1324,6 @@
 				3696A5E72A756CEE00B59DCB /* PhotoIcon.png in Resources */,
 				36027E352A7EC29D00A505BC /* reshot.png in Resources */,
 				36027E3B2A7EC29D00A505BC /* save.png in Resources */,
-				368D17002A8D2CA60088BC5F /* 长颈鹿0816.dae in Resources */,
 				36027E092A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				367689642A850EF700B3C6D4 /* 长颈鹿0810-2.dae in Resources */,
 				364A67032A87C969007C2103 /* headskin0812-3.jpg in Resources */,
@@ -1339,6 +1358,7 @@
 				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				368726F82A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				367689182A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
+				3682251D2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
 				364A66CF2A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				364A66E22A879324007C2103 /* surprise.mp3 in Resources */,
@@ -1376,6 +1396,7 @@
 				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				368225052A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
+				368225192A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */,
 				36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				367689342A82389900B3C6D4 /* ArrowDown.png in Resources */,
 				364A66A72A875BBF007C2103 /* likeyou.png in Resources */,
@@ -1416,9 +1437,11 @@
 				36027DFA2A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
 				368D17092A8D2DE60088BC5F /* 材质BaseColor.png in Resources */,
 				368726E12A79397D007F859C /* Overall_Dialog.mp3 in Resources */,
+				368225162A8F64E70090A7A6 /* headskin0818.jpg in Resources */,
 				36027E0E2A7E33B100A505BC /* 单个长颈鹿.dae in Resources */,
 				366577212A46B723008C166D /* pianoC.mp3 in Resources */,
 				364A66F02A87B9B5007C2103 /* 长颈鹿0812-2.dae in Resources */,
+				368225122A8F64E00090A7A6 /* neckskin0818.jpg in Resources */,
 				367689452A83952200B3C6D4 /* eatLeaf.dae in Resources */,
 				3696A5EC2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				367689392A8238A000B3C6D4 /* ArrowUp.png in Resources */,
@@ -1437,7 +1460,6 @@
 				3696A5E82A756CEE00B59DCB /* PhotoIcon.png in Resources */,
 				36027E362A7EC29D00A505BC /* reshot.png in Resources */,
 				36027E3C2A7EC29D00A505BC /* save.png in Resources */,
-				368D17012A8D2CA60088BC5F /* 长颈鹿0816.dae in Resources */,
 				36027E0A2A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				367689652A850EF700B3C6D4 /* 长颈鹿0810-2.dae in Resources */,
 				364A67042A87C969007C2103 /* headskin0812-3.jpg in Resources */,
@@ -1472,6 +1494,7 @@
 				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				368726F92A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				367689192A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
+				3682251E2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
 				364A66D02A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D52A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				364A66E32A879324007C2103 /* surprise.mp3 in Resources */,
@@ -1509,6 +1532,7 @@
 				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				368225062A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
+				3682251A2A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */,
 				36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
 				367689352A82389900B3C6D4 /* ArrowDown.png in Resources */,
 				364A66A82A875BBF007C2103 /* likeyou.png in Resources */,

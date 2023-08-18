@@ -76,7 +76,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     var timer: Timer?
     
     @Published var isContacted = false
-    @Published var shouldContact = true
+//    @Published var shouldContact = true
     @Published var isContacting = false
     
     @Published var extraLightNode1: SCNNode?
@@ -195,14 +195,109 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
      从下到中时，camera上一到中间位置，背景和鹿不懂
      从中到上时，camera上移，背景和鹿不动
      从上到中时，camera回到中间位置，背景和鹿不懂
-     
+     */
+    
+//     初始位置
+//    cameraNode.position = SCNVector3(x: 10, y: 2, z: 0)
+//    cloudNode.position = SCNVector3(1, 9.4, 0)
+//    backgroundNode.position = SCNVector3(-35, 114, 0)    //original
+//    self.backgroundNode?.position = SCNVector3(-35, 66, 0) // in world 2
+//    giraffeNode10.position = SCNVector3(0.0, -3.2, 0.0)
+
+    
+    func world1ViewMid2Up() {
+        rotateBackNeckNode()
+        stopMotionUpdates()
+
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.cameraNode?.position = SCNVector3(x: 10, y: 8.0, z: 0)
+//        self.cloudNode?.position = SCNVector3(x: 1, y: 7.4, z: 0)  //先不动云的位置试试视觉效果
+        SCNTransaction.commit()
+    }
+    
+    func world1ViewUp2Mid() {
+        addNeckRotation()
+        
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0)
+//        self.cloudNode?.position = SCNVector3(x: 1, y: 9.4, z: 0)
+        SCNTransaction.commit()
+    }
+    
+    func world1ViewMid2Down() {
+        rotateBackNeckNode()
+        stopMotionUpdates()
+        
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.cameraNode?.position = SCNVector3(x: 10, y: -2.0, z: 0)
+        SCNTransaction.commit()
+    }
+    
+    func world1ViewDown2Mid() {
+        addNeckRotation()
+        
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.2
+        self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0)
+        SCNTransaction.commit()
+    }
+    
+    /*
      在“云中秘境”，有三种状态，下，中，上
      从中到下时（到能看到脖子和地面的风景），背景上移 + camera下移，鹿不动
-     从下到中时，背景下移 + camera上移，鹿不懂
+     从下到中时，背景下移 + camera上移，鹿不动
      从中到上时，camera上移，背景和鹿不懂
      从上到中时，camera回到中间位置，背景和鹿不动
-     
      */
+    
+    func world2ViewMid2Up() {
+        world1ViewMid2Up()
+    }
+    
+    func world2ViewUp2Mid() {
+        world1ViewUp2Mid()
+    }
+    
+    func world2ViewMid2Down() {
+        rotateBackNeckNode()
+        stopMotionUpdates()
+        
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 0.6
+        self.cameraNode?.position = SCNVector3(x: 10, y: 1.0, z: 0)
+        SCNTransaction.completionBlock = {
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 1.2
+            self.backgroundNode?.position = SCNVector3(x: -35, y: 114, z: 0)    //back to original position
+            self.neckNode?.position = SCNVector3(x: 0.0, y: 6.0, z: 0 )//长颈鹿上去才能看到下面的脖子
+            self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0)
+            SCNTransaction.commit()
+        }
+        SCNTransaction.commit()
+    }
+    
+    func world2ViewDown2Mid() {
+        addNeckRotation()
+        
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 0.6
+        self.cameraNode?.position = SCNVector3(x: 10, y: 3.0, z: 0)
+        SCNTransaction.completionBlock = {
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 1.2
+            self.neckNode?.position = SCNVector3(x: 0.0, y: -3.2, z: 0)
+            self.backgroundNode?.position = SCNVector3(x: -35, y: 66, z: 0)
+            self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0.0)
+            SCNTransaction.commit()
+        }
+        SCNTransaction.commit()
+    }
+    
+    
+    
     
     func moveCameraNodeUp2() {  //2 means worldname == 云中秘境
         //original cameranode position SCNVector3(x: 10, y: 2, z: 0)
@@ -334,8 +429,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let giraffeNode10 = scene.rootNode
         
         // 根据需要对脖子模型进行缩放和位置调整
+        //in game position: self.neckNode?.position = SCNVector3(0.0, -3.2, 0)
         giraffeNode10.scale = SCNVector3(1.0, 1.0, 1.0)   //缩放
-        giraffeNode10.position = SCNVector3(0.0, -2.8, 0.0) // 设置位置，根据需要调整
+        giraffeNode10.position = SCNVector3(0.0, -3.2, 0.0) // 设置位置，根据需要调整
         giraffeNode10.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
 
 
@@ -746,11 +842,16 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //                }
 //
 //            }
-            
-            self.isContacting = true
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.isContacting = true
+            }
+//            self.isContacting = true
         }
         else {
-            self.isContacting = false
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.isContacting = false
+            }
+//            self.isContacting = false
         
         }
         
@@ -767,7 +868,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
         print("contact end")
-        self.isContacting = false
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.isContacting = false
+        }
+//        self.isContacting = false
     }
     
     
