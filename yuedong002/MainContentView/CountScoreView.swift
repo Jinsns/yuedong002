@@ -113,7 +113,7 @@ struct CountScoreView: View {
                     withAnimation(.easeOut(duration: 0.2).delay(1.3)) {
                         scoreScale = 1.0
                     }
-                    withAnimation(.linear(duration: 0.6).delay(1.5)) {
+                    withAnimation(.easeOut(duration: 0.5).delay(1.5)) {
                         giraffeDHeight = -110.0
                     
                     }
