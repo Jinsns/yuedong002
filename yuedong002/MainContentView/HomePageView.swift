@@ -34,7 +34,7 @@ struct HomePageView: View {
     @State var isShowShopView = false
     
     @ObservedObject var scene: GiraffeScene  //used to control camera height with button
-    @ObservedObject var dataModel: DataModel
+    @EnvironmentObject var dataModel: DataModel
     
     @Binding var isLeafAdded: Bool
     
@@ -287,7 +287,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(), dataModel: DataModel(), isLeafAdded: .constant(true))
+        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(),  isLeafAdded: .constant(true))
             .previewDevice("iPhone 13 mini")
 //        ShutterView(isShowShutterView: .constant(true), isShowSnapEffect: .constant(false))
 //            .previewDevice("iPhone 13 mini")
@@ -353,18 +353,20 @@ struct ShutterView: View {
 
 struct SnapEffectView: View {
     @Binding var isShowSnapEffect: Bool
+    @EnvironmentObject var dataModel: DataModel
+    
     var body: some View {
         ZStack{
             Rectangle()
-                .fill(Color.black.opacity(0.5))
                 .edgesIgnoringSafeArea(.all)
+                .foregroundColor(Color.black.opacity(0.5))
                 .reverseMask{
                     RoundedRectangle(cornerRadius: 16)
                         .frame(width: 340, height: 580)
                         .blendMode(.destinationOut)
-                        .padding(.bottom, 50)
+//                        .padding(.bottom, 50)
                 }
-                .offset(x: 0, y: -10)
+//                .offset(x: 0, y: -10)
                     
                 
             
@@ -422,6 +424,8 @@ struct SnapEffectView: View {
                     
                     Button {
                         print("pressed save button")
+                        dataModel.isSnapShotted.toggle()
+                        
                     } label: {
                         VStack(spacing: 4) {
                             Image("save")
@@ -466,6 +470,10 @@ struct SnapEffectView: View {
 
             
             
+        }
+        .edgesIgnoringSafeArea(.all)
+        .onAppear() {
+//            dataModel.isSnapShotted.toggle()
         }
         
         

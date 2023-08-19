@@ -70,7 +70,7 @@ struct leaf1: View {
                     .resizable()
                     .frame(width: 74, height: 74)
             } else {
-                Image("pitaya0812")
+                Image("kiwi")
                     .resizable()
                     .frame(width: 74, height: 74)
             }
@@ -85,7 +85,7 @@ struct leaf1: View {
 //        .scaleEffect(1.4)  //forward
 //        .scaleEffect(0.8)  //backward
         .offset(
-            x: (leafPosition == "left") ? -140 : ((leafPosition == "right") ? 140 : 0),
+            x: (leafPosition == "left") ? -150 : ((leafPosition == "right") ? 150 : 0),
                 y: (leafPosition == "fore") ? 130 : ((leafPosition == "back") ? -135 : 0)
         )
         

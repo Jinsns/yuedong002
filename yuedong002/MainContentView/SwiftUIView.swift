@@ -58,7 +58,7 @@ var noteIterator = 0
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: String = "100"
     @AppStorage("totalLeaves") var totalLeaves: String = "0"
-    @ObservedObject var dataModel = DataModel()
+    @StateObject var dataModel = DataModel()
     @State var worldName: String = "地面"
 //    @State var worldName: String = "云中秘境"  //for testing
     
@@ -97,6 +97,8 @@ struct SwiftUIView: View {
     @State var leafChangingScale = 1.0
     
     
+    @State var isShowCapturedImage = false
+    
     var body: some View {
         ZStack{
             
@@ -108,7 +110,7 @@ struct SwiftUIView: View {
             
             
             if isInHomePage {
-                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, dataModel: dataModel, isLeafAdded: $isLeafAdded)
+                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, isLeafAdded: $isLeafAdded)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
 //                        soundEffectSystem.prepareToPlay()
@@ -425,8 +427,36 @@ struct SwiftUIView: View {
                     isInHomePage = true
                     isShowInitBlackBackground = false
                 }
-            
+
         })
+        
+//        .fullScreenCover(isPresented: $isShowCapturedImage, content: {  //this screen is only for testing
+//            CapturedImageView()
+//                .onDisappear(){
+//                    isShowCapturedImage = false
+//                }
+//        })
+        
+        .environmentObject(dataModel)
+//        .onChange(of: dataModel.isSnapShotted) { newValue in
+//            print("snap1")
+//            isShowCapturedImage = true
+////            var renderer = ImageRenderer(content: SwiftUIView())
+////            print("snap2")
+////            if let image = renderer.cgImage {
+////                isShowCapturedImage = true
+////                print("snap3")
+////                dataModel.capturedImage = image
+////                print("snap4")
+////            }
+//            let screenshot = takeScreenshot()   //return UIImage
+//            let croppedImage = cropImage(
+//                image: screenshot,
+//                cropRect: CGRect()
+//            )
+//            dataModel.capturedImage = croppedImage
+//            print("snap5")
+//        }
         
         
         
@@ -501,4 +531,62 @@ extension View {
                              amplitude: amplitude,
                              bouncingTimes: bouncingTimes))
     }
+}
+
+
+import UIKit
+/// 截取当前屏幕
+func takeScreenshot() -> UIImage {
+    var imageSize = CGSize.zero
+    let screenSize = UIScreen.main.bounds.size
+    let orientation = UIApplication.shared.statusBarOrientation
+    if orientation.isPortrait {
+        imageSize = screenSize
+    } else {
+        imageSize = CGSize(width: screenSize.height, height: screenSize.width)
+    }
+//    
+    UIGraphicsBeginImageContextWithOptions(imageSize, false, 0)
+    if let context = UIGraphicsGetCurrentContext() {
+        for window in UIApplication.shared.windows {
+            context.saveGState()
+            context.translateBy(x: window.center.x, y: window.center.y)
+            context.concatenate(window.transform)
+            context.translateBy(x: -window.bounds.size.width * window.layer.anchorPoint.x, y: -window.bounds.size.height * window.layer.anchorPoint.y)
+            
+            if orientation == UIInterfaceOrientation.landscapeLeft {
+                context.rotate(by: .pi / 2)
+                context.translateBy(x: 0, y: -imageSize.width)
+            } else if orientation == UIInterfaceOrientation.landscapeRight {
+                context.rotate(by: -.pi / 2)
+                context.translateBy(x: -imageSize.height, y: 0)
+            } else if orientation == UIInterfaceOrientation.portraitUpsideDown {
+                context.rotate(by: .pi)
+                context.translateBy(x: -imageSize.width, y: -imageSize.height)
+            }
+            if window.responds(to: #selector(UIView.drawHierarchy(in:afterScreenUpdates:))) {
+                window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+            } else {
+                window.layer.render(in: context)
+            }
+            context.restoreGState()
+        }
+    }
+    
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    if let image = image {
+        return image
+    } else {
+        return UIImage()
+    }
+}
+
+func cropImage(image: UIImage, cropRect: CGRect) -> UIImage? {
+    if let cgImage = image.cgImage,
+       let croppedCGImage = cgImage.cropping(to: cropRect) {
+        return UIImage(cgImage: croppedCGImage, scale: image.scale, orientation: image.imageOrientation)
+    }
+    return nil
 }

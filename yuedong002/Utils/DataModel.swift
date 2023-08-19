@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import CoreGraphics
+import UIKit
 
 class DataModel: ObservableObject {
-   @Published var isShowFilter15s = false
-   @Published var isShowAirpodsReminder = true
-   @Published var isShowCorrectingPositionView = false
-   @Published var isShowNodToEatView = false
+    @Published var isShowFilter15s = false
+    @Published var isShowAirpodsReminder = true
+    @Published var isShowCorrectingPositionView = false
+    @Published var isShowNodToEatView = false
+    @Published var isSnapShotted = false
+    @Published var capturedImage: UIImage?
 }

@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2023-08-18T13:39:13Z</created>
-  <modified>2023-08-18T13:39:13Z</modified>
+  <created>2023-08-19T12:41:33Z</created>
+  <modified>2023-08-19T12:41:33Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -17,7 +17,7 @@
    <init_from>neckskin0818-2.png</init_from>
   </image>
   <image id="image3">
-   <init_from>headskin0818-3.png</init_from>
+   <init_from>headskin0819-3.png</init_from>
   </image>
   <image id="image4">
    <init_from>eyeskin.png</init_from>

@@ -77,7 +77,7 @@ struct IntroVideoView: View {
                           .foregroundColor(Color(red: 1, green: 1, blue: 1))
                           .opacity(0.7)
                     })
-                    .padding(.bottom, 100)
+                    .padding(.bottom, 90)
                     .padding(.trailing, 30)
                 }
             }
