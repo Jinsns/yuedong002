@@ -924,11 +924,12 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
     func physicsWorld(_ world: SCNPhysicsWorld, didUpdate contact: SCNPhysicsContact) {
         print("contact update")
-//        if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) {
-//            self.isContacting = true
-//        } else {
-//            self.isContacting = false
-//        }
+        if ((contact.nodeA.name == "neck" && contact.nodeB.name == "leaf") || (contact.nodeA.name == "leaf" && contact.nodeB.name == "neck")) && (self.isContacting == false) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.isContacting = true
+            }
+            
+        }
     }
 
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
