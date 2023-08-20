@@ -45,6 +45,9 @@
 		36027E3F2A7EC29D00A505BC /* wechatlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36027E332A7EC29D00A505BC /* wechatlogin.png */; };
 		361F1FE42A66CEEB00CC2F5B /* RelaxMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */; };
 		3637F6C82A6A5763004FEB42 /* Yue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3637F6C72A6A5763004FEB42 /* Yue.swift */; };
+		3639F2252A925606002E1BA2 /* appicon0820.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2242A925606002E1BA2 /* appicon0820.png */; };
+		3639F2262A925606002E1BA2 /* appicon0820.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2242A925606002E1BA2 /* appicon0820.png */; };
+		3639F2272A925606002E1BA2 /* appicon0820.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2242A925606002E1BA2 /* appicon0820.png */; };
 		364A66722A8624FE007C2103 /* 长颈鹿0811.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66712A8624FE007C2103 /* 长颈鹿0811.dae */; };
 		364A66732A8624FE007C2103 /* 长颈鹿0811.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66712A8624FE007C2103 /* 长颈鹿0811.dae */; };
 		364A66742A8624FE007C2103 /* 长颈鹿0811.dae in Resources */ = {isa = PBXBuildFile; fileRef = 364A66712A8624FE007C2103 /* 长颈鹿0811.dae */; };
@@ -572,6 +575,7 @@
 		36027E332A7EC29D00A505BC /* wechatlogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechatlogin.png; sourceTree = "<group>"; };
 		361F1FE32A66CEEB00CC2F5B /* RelaxMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelaxMode.swift; sourceTree = "<group>"; };
 		3637F6C72A6A5763004FEB42 /* Yue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yue.swift; sourceTree = "<group>"; };
+		3639F2242A925606002E1BA2 /* appicon0820.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon0820.png; sourceTree = "<group>"; };
 		364A66712A8624FE007C2103 /* 长颈鹿0811.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "长颈鹿0811.dae"; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
@@ -829,6 +833,7 @@
 				368225032A8DE7E10090A7A6 /* filter15s.png */,
 				368225302A8FA1810090A7A6 /* logo0818.png */,
 				368225582A90F9EB0090A7A6 /* kiwi.png */,
+				3639F2242A925606002E1BA2 /* appicon0820.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1337,6 +1342,7 @@
 				36027DFC2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
 				3676896B2A8514A800B3C6D4 /* 长颈鹿0810-4.dae in Resources */,
 				368225492A90A70B0090A7A6 /* headskin0819.png in Resources */,
+				3639F2252A925606002E1BA2 /* appicon0820.png in Resources */,
 				368726FB2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				368D16FB2A8D2C940088BC5F /* 墨镜.dae in Resources */,
 				3676899F2A854FFC00B3C6D4 /* 长颈鹿0810-10.dae in Resources */,
@@ -1420,6 +1426,7 @@
 				3696A5EB2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				367689382A8238A000B3C6D4 /* ArrowUp.png in Resources */,
 				3665771D2A46B723008C166D /* pianoG.mp3 in Resources */,
+				3639F2262A925606002E1BA2 /* appicon0820.png in Resources */,
 				36027E382A7EC29D00A505BC /* qqlogin.png in Resources */,
 				367689282A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
 				364A66872A867779007C2103 /* GetScore0811.mp3 in Resources */,
@@ -1571,6 +1578,7 @@
 				3696A5EC2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				367689392A8238A000B3C6D4 /* ArrowUp.png in Resources */,
 				3665771E2A46B723008C166D /* pianoG.mp3 in Resources */,
+				3639F2272A925606002E1BA2 /* appicon0820.png in Resources */,
 				36027E392A7EC29D00A505BC /* qqlogin.png in Resources */,
 				367689292A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
 				364A66882A867779007C2103 /* GetScore0811.mp3 in Resources */,
@@ -1937,6 +1945,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = yuedong002/yuedong002.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1946,7 +1955,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = yuedong002/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐动";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMotionUsageDescription = "detect head movement to play";
@@ -1956,6 +1965,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = appicon;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1980,7 +1990,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = yuedong002/yuedong002.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1990,7 +2002,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = yuedong002/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐动";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMotionUsageDescription = "detect head movement to play";
@@ -2000,6 +2012,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = appicon;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
