@@ -45,6 +45,7 @@ struct ScorePanView: View {
                             trimEnd = (bgmSystem.duration - newValue) / bgmSystem.duration
                         }
                 }
+                .zIndex(1.0)
             
             
             //testing mask position

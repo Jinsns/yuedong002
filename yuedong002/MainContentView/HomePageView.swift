@@ -266,9 +266,11 @@ struct HomePageView: View {
             SnapEffectView(isShowSnapEffect: $isShowSnapEffect)
                 .onAppear() {
                     scene.physicsWorld.contactDelegate = nil
+                    scene.stopMotionUpdates()
                 }
                 .onDisappear() {
                     scene.physicsWorld.contactDelegate = scene
+                    scene.addNeckRotation()
                 }
         }
         

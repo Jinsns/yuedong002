@@ -71,7 +71,7 @@ struct IntroVideoView: View {
                         print("button pressed")
                         presentationMode.wrappedValue.dismiss()  //close this sheet view
                     }, label: {
-                        Text("点击这里")
+                        Text("冲!")
                           .font(Font.custom("DFPYuanW9-GB", size: 20))
                           .multilineTextAlignment(.center)
                           .foregroundColor(Color(red: 1, green: 1, blue: 1))

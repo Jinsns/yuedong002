@@ -160,9 +160,7 @@ struct SwiftUIView: View {
                         }
                 }
                 
-                if dataModel.isShowFilter15s {
-                    Filter15s()
-                }
+                
                 
                 Button {
                     print("pressed pause button")
@@ -182,29 +180,11 @@ struct SwiftUIView: View {
                 }
                 .frame(width: 48, height: 48)
                 .offset(x: 160, y: -330)
+                .zIndex(10.0)
                 
-                if isShowPause {
-                    Color.black.opacity(0.1)  //darken background of PauseAlertView
-                        .ignoresSafeArea()
-                    PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
-                }
                 
-                if isShowStage2Reminder {
-                    Stage2Remind()
-                        .onAppear() {
-//                            soundEffectSystem.surprisePlay()
-                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                player?.volume = 0.6
-                                player?.play()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                withAnimation(.default) {
-                                    isShowStage2Reminder = false
-                                }
-                            }
-                        }
-                }
+                
+                
                 
                 if isShowWow == true && isShowedWow == false {
                     Wow()
@@ -263,6 +243,35 @@ struct SwiftUIView: View {
                 
                 
                 ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
+                
+                if isShowStage2Reminder {
+                    Stage2Remind()
+                        .onAppear() {
+//                            soundEffectSystem.surprisePlay()
+                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.volume = 0.6
+                                player?.play()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                withAnimation(.default) {
+                                    isShowStage2Reminder = false
+                                }
+                            }
+                        }
+                }
+                
+                if dataModel.isShowFilter15s {
+                    Filter15s()
+                        .zIndex(1.0)
+                }
+                
+                if isShowPause {
+                    Color.black.opacity(0.1)  //darken background of PauseAlertView
+                        .ignoresSafeArea()
+                    PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
+                        .zIndex(11)
+                }
                 
 
                 
@@ -406,6 +415,7 @@ struct SwiftUIView: View {
                             worldName = "地面"
                         }
                         scene.rotateBackNeckNode()
+                        extraLightAdded = false
                         
                     }
             })
