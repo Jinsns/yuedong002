@@ -19,7 +19,7 @@ let notes: [Note] = [
     //y 大 屏幕上
     //z 大 屏幕左， x，z和头运动方向一致
     
-    Note(startTime: 0.0, endTime: 0.01, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 0.0, endTime: 0.01, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: true, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
     Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 1), //左
     Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 1), //右
@@ -287,7 +287,10 @@ struct SwiftUIView: View {
 
                     bgmSystem.play()
                     scene.moveCameraNodeAndNeckNodeToGamePosition()
-                    isInHomePage = false
+                    withAnimation {
+                        isInHomePage = false
+                    }
+                    
                     scene.leafNode?.removeFromParentNode()
                 }
                 
