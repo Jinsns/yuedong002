@@ -475,11 +475,63 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         } else if ornamentName == "香蕉" {
             scene = SCNScene(named: "香蕉.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
+            let rootNode = scene!.rootNode
+            var geometryNode: SCNNode?
+            for childNode in rootNode.childNodes {
+                if childNode.geometry != nil {
+                    geometryNode = childNode
+                    break
+                }
+            }
+            if let ornamentGeometry = geometryNode?.geometry {
+                print("found geometry: ", ornamentGeometry)
+                let ornamentMaterial1 = SCNMaterial()
+                ornamentMaterial1.diffuse.contents = UIColor(.yellow)
+                ornamentMaterial1.lightingModel = .lambert
+                let ornamentMaterial2 = SCNMaterial()
+                ornamentMaterial2.diffuse.contents = UIColor(.red)
+                ornamentMaterial2.lightingModel = .lambert
+                ornamentGeometry.materials = [ornamentMaterial1, ornamentMaterial2]
+                ornament = SCNNode(geometry: ornamentGeometry)
+            } else {
+                print("no geometry found")
+            }
+            
+            ornament.scale = SCNVector3(2.0, 2.0, 2.0)
+            ornament.position = SCNVector3(x: -8, y: 0, z: -1)
+            ornament.eulerAngles = SCNVector3(x: Float.pi , y: 0, z: -Float.pi / 2)
+            ornament.categoryBitMask = LightType.onNeck
         } else if ornamentName == "椰子树" {
             scene = SCNScene(named: "椰子树.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
+            let rootNode = scene!.rootNode
+            var geometryNode: SCNNode?
+            for childNode in rootNode.childNodes {
+                if childNode.geometry != nil {
+                    geometryNode = childNode
+                    break
+                }
+            }
+            if let ornamentGeometry = geometryNode?.geometry {
+                print("found geometry: ", ornamentGeometry)
+                let ornamentMaterial1 = SCNMaterial()
+                ornamentMaterial1.diffuse.contents = UIColor(.gray)
+                ornamentMaterial1.lightingModel = .lambert
+                let ornamentMaterial2 = SCNMaterial()
+                ornamentMaterial2.diffuse.contents = UIColor(.green)
+                ornamentMaterial2.lightingModel = .lambert
+                ornamentGeometry.materials = [ornamentMaterial1, ornamentMaterial2]
+                ornament = SCNNode(geometry: ornamentGeometry)
+            } else {
+                print("no geometry found")
+            }
+            
+            ornament.scale = SCNVector3(5.0, 5.0, 5.0)
+            ornament.position = SCNVector3(x: -8, y: 0, z: 10)
+            ornament.eulerAngles = SCNVector3(x: 0, y: -Float.pi / 2, z: 0)
+            ornament.categoryBitMask = LightType.onNeck
+            
+            // self.backgroundNode?.geometry?.materials.first?.lightingModel = .lambert
         }
         
 
