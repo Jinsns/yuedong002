@@ -455,18 +455,31 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         var scene: SCNScene?
         var ornament: SCNNode!
         if ornamentName == "墨镜" {
-            scene = SCNScene(named: "墨镜.dae")!
+            scene = SCNScene(named: "墨镜0820.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.6, 1.6, 1.6)
-            ornament.position = SCNVector3(x: 0, y: 3 , z: -6)
-            ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: Float.pi / 2)
+            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
+            ornament.position = SCNVector3(x: 0, y: 2 , z: 0)
+//            ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: Float.pi / 2)
             
         } else if ornamentName == "戒指" {
-            scene = SCNScene(named: "戒指.dae")!
+            scene = SCNScene(named: "戒指0820.dae")!
             ornament = scene!.rootNode
             ornament.scale = SCNVector3(1.6, 1.6, 1.6)
-            ornament.position = SCNVector3(x: 0, y: 3 , z: -6)
-            ornament.geometry?.firstMaterial?.lightingModel
+            ornament.position = SCNVector3(x: 0, y: 2 , z: 0)
+        } else if ornamentName == "天使" {
+            scene = SCNScene(named: "天使.dae")!
+            ornament = scene!.rootNode
+            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
+            ornament.position = SCNVector3(x: 0, y: 6.4, z: 0.28)
+            ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
+        } else if ornamentName == "香蕉" {
+            scene = SCNScene(named: "香蕉.dae")!
+            ornament = scene!.rootNode
+            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
+        } else if ornamentName == "椰子树" {
+            scene = SCNScene(named: "椰子树.dae")!
+            ornament = scene!.rootNode
+            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
         }
         
 

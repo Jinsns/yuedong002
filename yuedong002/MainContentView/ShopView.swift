@@ -272,7 +272,7 @@ struct ShopItems: View {
                           .clipped()
                       )
                     HStack {
-                        Text("370")
+                        Text("3700")
                           .font(Font.custom("Lilita One", size: 20.87937))
                           .kerning(0.41759)
                           .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
@@ -300,6 +300,7 @@ struct ShopItems: View {
             Button(action: {
                 print("pressed shop item 2")
                 selectedItem = 2
+                scene.addOrnament(ornamentName: "椰子树")
             
             }, label: {
                 VStack(alignment: .center, spacing: 2.08794) {
@@ -315,7 +316,7 @@ struct ShopItems: View {
                       )
 
                     HStack {
-                        Text("160")
+                        Text("1600")
                           .font(Font.custom("Lilita One", size: 20.87937))
                           .kerning(0.41759)
                           .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
@@ -344,6 +345,7 @@ struct ShopItems: View {
             Button(action: {
                 print("pressed shop item 3")
                 selectedItem = 3
+                scene.addOrnament(ornamentName: "香蕉")
             
             }, label: {
                 VStack(alignment: .center, spacing: 2.08794) {
@@ -359,7 +361,7 @@ struct ShopItems: View {
                       )
 
                     HStack {
-                        Text("70")
+                        Text("700")
                           .font(Font.custom("Lilita One", size: 20.87937))
                           .kerning(0.41759)
                           .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
@@ -387,6 +389,7 @@ struct ShopItems: View {
             Button {
                 print("pressed shop item 4")
                 selectedItem = 4
+                scene.addOrnament(ornamentName: "天使")
             } label: {
                 VStack(alignment: .center, spacing: 2.08794) {
                     Rectangle()
@@ -401,7 +404,7 @@ struct ShopItems: View {
                       )
 
                     HStack {
-                        Text("42")
+                        Text("420")
                           .font(Font.custom("Lilita One", size: 20.87937))
                           .kerning(0.41759)
                           .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))

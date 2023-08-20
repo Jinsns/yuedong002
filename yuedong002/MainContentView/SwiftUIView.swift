@@ -424,24 +424,24 @@ struct SwiftUIView: View {
             })
             .opacity(!isInHomePage ? 1.0 : 0.0)
             
-            if isShowInitBlackBackground {
-                Rectangle()
-                    .edgesIgnoringSafeArea(.all)
-            }
+//            if isShowInitBlackBackground {
+//                Rectangle()
+//                    .edgesIgnoringSafeArea(.all)
+//            }
             
             
 
             
         }
-        .fullScreenCover(isPresented: $isShowIntroVideoView, content: {
-            IntroVideoView()
-                .onDisappear(){
-                    isShowIntroVideoView = false
-                    isInHomePage = true
-                    isShowInitBlackBackground = false
-                }
-
-        })
+//        .fullScreenCover(isPresented: $isShowIntroVideoView, content: {
+//            IntroVideoView()
+//                .onDisappear(){
+//                    isShowIntroVideoView = false
+//                    isInHomePage = true
+//                    isShowInitBlackBackground = false
+//                }
+//
+//        })
         
 //        .fullScreenCover(isPresented: $isShowCapturedImage, content: {  //this screen is only for testing
 //            CapturedImageView()
