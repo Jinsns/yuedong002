@@ -10,6 +10,7 @@ import AVKit
 
 
 struct IntroVideoView: View {
+    @Binding var isShowIntroVideoView: Bool
     @Environment(\.presentationMode) var presentationMode //used to close this sheet view
     
     @State var player = AVPlayer(url: Bundle.main.url(forResource: "引导页_4", withExtension: "mp4")!)
@@ -69,6 +70,11 @@ struct IntroVideoView: View {
                     
                     Button(action: {
                         print("button pressed")
+                        withAnimation {
+                            isShowIntroVideoView = false
+                        }
+                        
+                        
                         presentationMode.wrappedValue.dismiss()  //close this sheet view
                     }, label: {
                         Text("冲!")
@@ -90,6 +96,6 @@ struct IntroVideoView: View {
 
 struct IntroVideoView_Previews: PreviewProvider {
     static var previews: some View {
-        IntroVideoView()
+        IntroVideoView(isShowIntroVideoView: .constant(true))
     }
 }

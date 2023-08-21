@@ -267,10 +267,11 @@ struct HomePageView: View {
                 .onAppear() {
                     scene.physicsWorld.contactDelegate = nil
                     scene.stopMotionUpdates()
-                }
+                    scene.stopCameraRotation()                }
                 .onDisappear() {
                     scene.physicsWorld.contactDelegate = scene
                     scene.addNeckRotation()
+                    scene.addCameraRotation()
                 }
         }
         

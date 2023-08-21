@@ -836,6 +836,11 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         motionManager.stopDeviceMotionUpdates()
     }
     
+    func stopIphoneMotionUpdates() {
+        iphoneMotionManager.stopDeviceMotionUpdates()
+    }
+    
+    
     
     func addNeckRotation() {
         self.isPositionReady = false
