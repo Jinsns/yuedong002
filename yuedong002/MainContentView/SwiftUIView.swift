@@ -74,6 +74,7 @@ struct SwiftUIView: View {
     @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlCaterpillarsFly!)
     
         
+    @State var isShowScorePanView = false
     
     //show the progress of bgm
     @State var trimEnd: CGFloat = 0.0
@@ -132,326 +133,353 @@ struct SwiftUIView: View {
 //                        scene.shouldContact = true
                         scene.physicsWorld.contactDelegate = scene
                     }
-                
-                
-            }
-            
-            
-            
-            ZStack {  //gaming view
-                
-                if isLeafAdded && noteIterator > 0 {
-                    leaf1(leafPosition: $leafPosition, leafLevel: $leafLevel, isTenuto: $isTenuto)
-                        .scaleEffect(leafChangingScale)
-                        .onChange(of: scene.score, perform: { newValue in
-                            withAnimation(.easeOut(duration: 0.15)) {
-                                leafChangingScale = 1.2
-                            }
-                            withAnimation(.easeOut(duration: 0.10)) {
-                                leafChangingScale = 0.8
+                    .onChange(of: scene.isContacting, perform: { newValue in
+                        if newValue == true && scene.score == 0 {                 // game starts
+                            print("start the game: ", newValue, scene.score)
+                            scene.score = 1
+                            withAnimation {
+                                isInHomePage = false
                             }
                             
-                        })
-                    
-                    
-                        .onAppear() {
-                            leafPosition = noteUI!.leafPosition
-                            leafLevel = noteUI!.level
-                            isTenuto = noteUI!.isTenuto
-                        }
-                }
-                
-                
-                
-                Button {
-                    print("pressed pause button")
-//                    soundEffectSystem.buttonPlay()
-//                    soundEffectSystem.popUpWindowPlay()
-                    if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
-                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                player?.play()
-                            }
-                    
-                    
-                    isShowPause = true
-                    
-                } label: {
-                    Image("pauseCircle")
-                        .resizable()
-                }
-                .frame(width: 48, height: 48)
-                .offset(x: 160, y: -330)
-                .zIndex(10.0)
-                
-                
-                
-                
-                
-                if isShowWow == true && isShowedWow == false {
-                    Wow()
-                        .onAppear() {
-//                            soundEffectSystem.wowPlay()
-                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                player?.volume = 0.6
-                                player?.play()
-                            }
+                            //game starts
+                            trimEnd = 1.0
+                            isShowScorePanView = true
+                            bgmSystem.play()
+                            scene.moveCameraNodeAndNeckNodeToGamePosition()
+                            scene.leafNode?.removeFromParentNode()
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                                withAnimation(.default) {
-                                    isShowWow = false
-                                    isShowedWow = true
-                                }
-                            }
                         }
-                }
+                    })
                 
-                if isShowTaikula == true && isShowedTaikula == false{
-                    Taikula()
-                        .onAppear() {
-                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                player?.volume = 0.6
-                                player?.play()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                                withAnimation(.default) {
-                                    isShowTaikula = false
-                                    isShowedTaikula = true
-                                }
-                            }
-                        }
-                }
-                
-                if isShowLikeyou == true && isShowedLikeyou == false{
-                    Likeyou()
-                        .onAppear() {
-//                            soundEffectSystem.likeyouPlay()
-                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                player?.volume = 0.6
-                                player?.play()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                                withAnimation(.default) {
-                                    isShowLikeyou = false
-                                    isShowedLikeyou = true
-                                }
-                            }
-                        }
-                }
-                
-                
-                
-                ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
-                
-                if isShowStage2Reminder {
-                    Stage2Remind()
-                        .onAppear() {
-//                            soundEffectSystem.surprisePlay()
-                            if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
-                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                player?.volume = 0.6
-                                player?.play()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                withAnimation(.default) {
-                                    isShowStage2Reminder = false
-                                }
-                            }
-                        }
-                }
-                
-                if dataModel.isShowFilter15s {
-                    Filter15s()
-                        .zIndex(1.0)
-                }
-                
-                if isShowPause {
-                    Color.black.opacity(0.1)  //darken background of PauseAlertView
-                        .ignoresSafeArea()
-                    PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
-                        .zIndex(11)
-                }
-                
-
-                
-            } // GamingView: zstack of ruling and circle
-            .onAppear() {
-                bgmSystem.audioPlayer?.volume = 0.3
-                print("bgm duration: ", bgmSystem.audioPlayer?.duration)
                 
             }
-            .onChange(of: scene.score) { newScore in
-                if newScore == 1 {                       //game starts
-                    trimEnd = 1.0
+            
+            
+            if !isInHomePage {
+                ZStack {  //gaming view
+                    
+                    if isLeafAdded && noteIterator > 0 {
+                        leaf1(leafPosition: $leafPosition, leafLevel: $leafLevel, isTenuto: $isTenuto)
+                            .scaleEffect(leafChangingScale)
+                            .onChange(of: scene.score, perform: { newValue in
+                                withAnimation(.easeOut(duration: 0.15)) {
+                                    leafChangingScale = 1.2
+                                }
+                                withAnimation(.easeOut(duration: 0.10)) {
+                                    leafChangingScale = 0.8
+                                }
+                                
+                            })
+                        
+                        
+                            .onAppear() {
+                                leafPosition = noteUI!.leafPosition
+                                leafLevel = noteUI!.level
+                                isTenuto = noteUI!.isTenuto
+                            }
+                    }
+                    
+                    if isShowScorePanView {
+                        ScorePanView(scene: scene, bgmSystem: bgmSystem, trimEnd: $trimEnd)
+                        
+                        
+                        Button {
+                            print("pressed pause button")
+        //                    soundEffectSystem.buttonPlay()
+        //                    soundEffectSystem.popUpWindowPlay()
+                            if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
+                            
+                            
+                            isShowPause = true
+                            
+                        } label: {
+                            Image("pauseCircle")
+                                .resizable()
+                        }
+                        .frame(width: 48, height: 48)
+                        .offset(x: 160, y: -330)
+                        .zIndex(10.0)
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    if isShowWow == true && isShowedWow == false {
+                        Wow()
+                            .onAppear() {
+    //                            soundEffectSystem.wowPlay()
+                                if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
+                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                    player?.volume = 0.6
+                                    player?.play()
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                    withAnimation(.default) {
+                                        isShowWow = false
+                                        isShowedWow = true
+                                    }
+                                }
+                            }
+                    }
+                    
+                    if isShowTaikula == true && isShowedTaikula == false{
+                        Taikula()
+                            .onAppear() {
+                                if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
+                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                    player?.volume = 0.6
+                                    player?.play()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                    withAnimation(.default) {
+                                        isShowTaikula = false
+                                        isShowedTaikula = true
+                                    }
+                                }
+                            }
+                    }
+                    
+                    if isShowLikeyou == true && isShowedLikeyou == false{
+                        Likeyou()
+                            .onAppear() {
+    //                            soundEffectSystem.likeyouPlay()
+                                if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
+                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                    player?.volume = 0.6
+                                    player?.play()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                    withAnimation(.default) {
+                                        isShowLikeyou = false
+                                        isShowedLikeyou = true
+                                    }
+                                }
+                            }
+                    }
+                    
+                    
+                    
+                    
+                    
+                    if isShowStage2Reminder {
+                        Stage2Remind()
+                            .onAppear() {
+    //                            soundEffectSystem.surprisePlay()
+                                if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
+                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                    player?.volume = 0.6
+                                    player?.play()
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    withAnimation(.default) {
+                                        isShowStage2Reminder = false
+                                    }
+                                }
+                            }
+                    }
+                    
+                    if dataModel.isShowFilter15s {
+                        Filter15s()
+                            .zIndex(1.0)
+                    }
+                    
+                    if isShowPause {
+                        Color.black.opacity(0.1)  //darken background of PauseAlertView
+                            .ignoresSafeArea()
+                        PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
+                            .zIndex(11)
+                    }
+                    
 
-                    bgmSystem.play()
-                    scene.moveCameraNodeAndNeckNodeToGamePosition()
-                    withAnimation {
-                        isInHomePage = false
-                    }
                     
-                    scene.leafNode?.removeFromParentNode()
-                }
-                
-                if newScore >= 50 {
-                    withAnimation(.default) {
-                        isShowWow = true
-                    }
+                } // GamingView: zstack of ruling and circle
+                .onAppear() {
+                    bgmSystem.audioPlayer?.volume = 0.3
+                    print("bgm duration: ", bgmSystem.audioPlayer?.duration)
                     
                 }
-                
-                if newScore >= 100 {
-                    withAnimation(.default) {
-                        isShowTaikula = true
+                .onChange(of: scene.score) { newScore in
+//                    if newScore == 1 {                       //game starts
+//                        trimEnd = 1.0
+//                        isShowScorePanView = true
+//                        bgmSystem.play()
+//                        scene.moveCameraNodeAndNeckNodeToGamePosition()
+//                        withAnimation {
+//                            isInHomePage = false
+//                        }
+//                        
+//                        scene.leafNode?.removeFromParentNode()
+//                    }
+                    
+                    if newScore >= 50 {
+                        withAnimation(.default) {
+                            isShowWow = true
+                        }
+                        
+                    }
+                    
+                    if newScore >= 100 {
+                        withAnimation(.default) {
+                            isShowTaikula = true
+                        }
+                        
+                    }
+                    
+                    if newScore >= 150 {
+                        withAnimation(.default) {
+                            isShowLikeyou = true
+                        }
+                        
                     }
                     
                 }
-                
-                if newScore >= 150 {
-                    withAnimation(.default) {
-                        isShowLikeyou = true
+                .onChange(of: bgmSystem.currentTime) { newValue in
+                    
+                    if newValue >= 15.0 && extraLightAdded == false {
+    //                    scene.addExtraLight()
+                        extraLightAdded = true
+                        print("extra light added")
+                        withAnimation(.default) {
+                            isShowStage2Reminder = true
+                            dataModel.isShowFilter15s = true
+                        }
                     }
                     
-                }
-                
-            }
-            .onChange(of: bgmSystem.currentTime) { newValue in
-                
-                if newValue >= 15.0 && extraLightAdded == false {
-//                    scene.addExtraLight()
-                    extraLightAdded = true
-                    print("extra light added")
-                    withAnimation(.default) {
-                        isShowStage2Reminder = true
-                        dataModel.isShowFilter15s = true
-                    }
-                }
-                
-                if (newValue > note!.endTime) {
-                    //if currentTime is not in the range of current note
-                    //then change note to the next one
-                    if scene.leafNode != nil {
-                        scene.leafNode!.removeFromParentNode()
+                    if (newValue > note!.endTime) {
+                        //if currentTime is not in the range of current note
+                        //then change note to the next one
+                        if scene.leafNode != nil {
+                            scene.leafNode!.removeFromParentNode()
+                            scene.isContacting = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                scene.isContacting = false
+                            }
+                            print("removed leaf")
+                        }
+    //                    isShowProgressBar = false
+                        print("curtime and note.endtime: ", newValue, note!.endTime)
+                        
+                        
+                        noteIterator += 1
+                        note = notes[noteIterator]
+                        noteUI = noteUIs[noteIterator]
+                        
                         scene.isContacting = false
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                             scene.isContacting = false
                         }
-                        print("removed leaf")
+                        isLeafAdded = false
                     }
-//                    isShowProgressBar = false
-                    print("curtime and note.endtime: ", newValue, note!.endTime)
                     
-                    
-                    noteIterator += 1
-                    note = notes[noteIterator]
-                    noteUI = noteUIs[noteIterator]
-                    
-                    scene.isContacting = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        scene.isContacting = false
-                    }
-                    isLeafAdded = false
-                }
-                
-                if newValue > note!.startTime && isLeafAdded == false {
-                    if noteIterator > 0 {
-                        scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level, noteUIPosition: noteUI!.leafPosition)
-                        isLeafAdded = true
-                        
-                        print("addleafnode 2")
-                        if note!.isTenuto {
-//                            isShowProgressBar = true
+                    if newValue > note!.startTime && isLeafAdded == false {
+                        if noteIterator > 0 {
+                            scene.addLeafNode(xPosition: note!.leafPosition.x, yPosition: note!.leafPosition.y, zPosition: note!.leafPosition.z, level: note!.level, noteUIPosition: noteUI!.leafPosition)
+                            isLeafAdded = true
+                            
+                            print("addleafnode 2")
+                            if note!.isTenuto {
+    //                            isShowProgressBar = true
+                            }
                         }
+                        
+                        
                     }
                     
                     
-                }
-                
-                
-                if newValue >= bgmSystem.audioPlayer!.duration - 0.2 && scene.score >= 1 {   //when game ends
-                    //bgmSystem.stop() will let bgmSystem.audioPlayer!.currentTime turns to 0.0
-                    //and if scene.score >= 1 means game once started
-                    bgmSystem.stop()
-                    isShowCountScoreView = true
-                    
-                }
-            }
-            .onChange(of: isShowPause, perform: { newValue in  //when game pauses
-                if newValue == true { //show pause
-                    bgmSystem.pause()
-//                    scene.shouldContact = false
-                    scene.isContacting = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        scene.isContacting = false
-                    }
-                    scene.physicsWorld.contactDelegate = nil
-                } else {  //resume from pause
-                    bgmSystem.play()
-//                    scene.shouldContact = true //恢复碰撞检测
-                    scene.physicsWorld.contactDelegate = scene
-                }
-            })
-            .fullScreenCover(isPresented: $isShowCountScoreView, content: {
-                CountScoreView(neckLength: $neckLength, totalLeaves: $totalLeaves, scene: scene, isInHomePage: $isInHomePage)
-                    .onAppear(){
-                        print("countscoreview appear")
+                    if newValue >= bgmSystem.audioPlayer!.duration - 0.2 && scene.score >= 1 {   //when game ends
+                        //bgmSystem.stop() will let bgmSystem.audioPlayer!.currentTime turns to 0.0
+                        //and if scene.score >= 1 means game once started
                         bgmSystem.stop()
-//                        scene.removeExtraLight()
-                        dataModel.isShowFilter15s = false
-//                        soundEffectSystem.showCountScoreViewPlay()
-                        if let url = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "mp3") {
-                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                    player?.play()
-                                }
-//                        scene.shouldContact = false
+                        isShowScorePanView = false
+                        isShowCountScoreView = true
+                        
+                    }
+                }
+                .onChange(of: isShowPause, perform: { newValue in  //when game pauses
+                    if newValue == true { //show pause
+                        bgmSystem.pause()
+    //                    scene.shouldContact = false
                         scene.isContacting = false
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                             scene.isContacting = false
                         }
                         scene.physicsWorld.contactDelegate = nil
-                        scene.leafNode?.removeFromParentNode()
-                        
+                    } else {  //resume from pause
+                        bgmSystem.play()
+    //                    scene.shouldContact = true //恢复碰撞检测
+                        scene.physicsWorld.contactDelegate = scene
                     }
-                    .onDisappear(){
-                        print("countscoreview disappear")
-                        isShowCountScoreView = false
-                        if Int(neckLength)! >= neckLengthLevel[0] {
-                            if dataModel.isShowCorrectingPositionView {
-                                dataModel.isShowCorrectingPositionView = false
-                                scene.upWorld()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    withAnimation {
-                                        isShowUpWorldCongratulationView = true
+                })
+                .fullScreenCover(isPresented: $isShowCountScoreView, content: {
+                    CountScoreView(neckLength: $neckLength, totalLeaves: $totalLeaves, scene: scene, isInHomePage: $isInHomePage)
+                        .onAppear(){
+                            print("countscoreview appear")
+                            bgmSystem.stop()
+    //                        scene.removeExtraLight()
+                            dataModel.isShowFilter15s = false
+    //                        soundEffectSystem.showCountScoreViewPlay()
+                            if let url = Bundle.main.url(forResource: "CountScoreView_onloading", withExtension: "mp3") {
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
                                     }
-                                    dataModel.isShowCorrectingPositionView = true
-                                }
+    //                        scene.shouldContact = false
+                            scene.isContacting = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                scene.isContacting = false
                             }
+                            scene.physicsWorld.contactDelegate = nil
+                            scene.leafNode?.removeFromParentNode()
                             
-                            worldName = "云中秘境"
-                        } else {
-                            worldName = "地面"
                         }
-                        scene.rotateBackNeckNode()
-                        extraLightAdded = false
-                        
-                    }
-            })
-            .opacity(!isInHomePage ? 1.0 : 0.0)
-            
-            if isShowInitBlackBackground {
-                Rectangle()
-                    .edgesIgnoringSafeArea(.all)
+                        .onDisappear(){
+                            print("countscoreview disappear")
+                            isShowCountScoreView = false
+                            if Int(neckLength)! >= neckLengthLevel[0] {
+                                if dataModel.isShowCorrectingPositionView {
+                                    dataModel.isShowCorrectingPositionView = false
+                                    scene.upWorld()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                        withAnimation {
+                                            isShowUpWorldCongratulationView = true
+                                        }
+                                        dataModel.isShowCorrectingPositionView = true
+                                    }
+                                }
+                                
+                                worldName = "云中秘境"
+                            } else {
+                                worldName = "地面"
+                            }
+                            scene.rotateBackNeckNode()
+                            extraLightAdded = false
+                            
+                        }
+                })
+//                .opacity(!isInHomePage ? 1.0 : 0.0)
             }
+            
+            
+//            if isShowInitBlackBackground {
+//                Rectangle()
+//                    .edgesIgnoringSafeArea(.all)
+//            }
             
             if isShowIntroVideoView {
                 IntroVideoView(isShowIntroVideoView: $isShowIntroVideoView)
-                    
                     .onDisappear(){
-                        isShowIntroVideoView = false
-                        isInHomePage = true
-                        isShowInitBlackBackground = false
+//                        isShowInitBlackBackground = false
+                        
+                        withAnimation(.easeIn(duration: 0.8)) {
+                            isInHomePage = true
+                        }
+                        
                     }
             }
             

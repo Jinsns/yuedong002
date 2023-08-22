@@ -464,13 +464,34 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         } else if ornamentName == "戒指" {
             scene = SCNScene(named: "戒指0822.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.6, 1.6, 1.6)
-            ornament.position = SCNVector3(x: 0, y: 2 , z: 0)
+            ornament.scale = SCNVector3(1.2, 1.2, 1.2)
+            ornament.position = SCNVector3(x: 0, y: 3 , z: 0.25)
         } else if ornamentName == "天使" {
             scene = SCNScene(named: "天使.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
-            ornament.position = SCNVector3(x: 0, y: 6.4, z: 0.28)
+            
+            let rootNode = scene!.rootNode
+            var geometryNode: SCNNode?
+            for childNode in rootNode.childNodes {
+                if childNode.geometry != nil {
+                    geometryNode = childNode
+                    break
+                }
+            }
+            if let ornamentGeometry = geometryNode?.geometry {
+                print("found geometry: ", ornamentGeometry)
+                let ornamentMaterial1 = SCNMaterial()
+                ornamentMaterial1.diffuse.contents = UIImage(named: "angleskin")
+                ornamentMaterial1.lightingModel = .lambert
+                ornamentGeometry.materials = [ornamentMaterial1]
+                ornament = SCNNode(geometry: ornamentGeometry)
+            } else {
+                print("no geometry found")
+            }
+            ornament.categoryBitMask = LightType.onNeck
+            
+            ornament.scale = SCNVector3(0.5, 0.5, 0.5)
+            ornament.position = SCNVector3(x: 0, y: 6.4, z: 0.21)
             ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
         } else if ornamentName == "香蕉" {
             scene = SCNScene(named: "香蕉.dae")!

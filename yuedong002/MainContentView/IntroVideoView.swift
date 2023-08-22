@@ -47,7 +47,7 @@ struct IntroVideoView: View {
                 timer?.invalidate()
             }
             .onChange(of: currentTime) { newValue in
-                if newValue >= 14.0 {
+                if newValue >= 10.5 {
                     isAddButton = true
                 }
             }
@@ -70,8 +70,9 @@ struct IntroVideoView: View {
                     
                     Button(action: {
                         print("button pressed")
-                        withAnimation {
+                        withAnimation(.easeOut(duration: 0.8)) {
                             isShowIntroVideoView = false
+                            
                         }
                         
                         

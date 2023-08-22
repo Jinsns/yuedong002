@@ -315,10 +315,12 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(totalLeaves: .constant(1443), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(),  isLeafAdded: .constant(true))
-            .previewDevice("iPhone 13 mini")
+//        HomePageView(totalLeaves: .constant(1443), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(),  isLeafAdded: .constant(true))
+//            .previewDevice("iPhone 13 mini")
 //        ShutterView(isShowShutterView: .constant(true), isShowSnapEffect: .constant(false))
 //            .previewDevice("iPhone 13 mini")
+        SnapEffectView(isShowSnapEffect: .constant(true))
+            .previewDevice("iPhone 13 mini")
     
     }
 }
@@ -382,6 +384,7 @@ struct ShutterView: View {
 struct SnapEffectView: View {
     @Binding var isShowSnapEffect: Bool
     @EnvironmentObject var dataModel: DataModel
+    @State var isShowSavedView = false
     
     var body: some View {
         ZStack{
@@ -392,47 +395,75 @@ struct SnapEffectView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .frame(width: 340, height: 580)
                         .blendMode(.destinationOut)
-//                        .padding(.bottom, 50)
+                        .padding(.bottom, 50)
                 }
 //                .offset(x: 0, y: -10)
                     
                 
-            
             VStack {
-                HStack(alignment: .top, spacing: 12) {
-                    Text("7")
-                      .font(Font.custom("LilitaOne", size: 32))
-                      .kerning(2.56)
-                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                      .padding(.bottom, 30)
+                Spacer()
+                VStack {
+                    HStack {
+                        HStack(alignment: .top, spacing: 12) {
+                            Text("8")
+                              .font(Font.custom("LilitaOne", size: 32))
+                              .kerning(2.56)
+                              .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                              .padding(.bottom, 30)
+                            
+                            Text("| 22")
+                              .font(Font.custom("LilitaOne", size: 14))
+                              .kerning(1.12)
+                              .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.6))
+                            
+                            Text("宜放过自己")
+                              .font(Font.custom("DFPYuanW9-GB", size: 14))
+                              .kerning(0.56)
+                              .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                              .frame(width: 73, height: 13, alignment: .leading)
+                        }
+                        .padding(.leading, 30)
+
+                        Spacer()
+                    }
+                    .padding(.top, 20)
                     
-                    Text("| 25")
-                      .font(Font.custom("LilitaOne", size: 14))
-                      .kerning(1.12)
-                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.6))
+                
                     
-                    Text("宜放过自己")
-                      .font(Font.custom("DFPYuanW9-GB", size: 14))
-                      .kerning(0.56)
-                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                      .frame(width: 73, height: 13, alignment: .leading)
+                    
+                    
+                    Spacer()
+                    
+                    
+                    
+                    VStack {
+//                        Spacer()
+                        HStack(alignment: .bottom) {
+                            Spacer()
+                            Text("Yoon")
+                              .font(Font.custom("LilitaOne", size: 24))
+                              .kerning(0.48)
+                              .multilineTextAlignment(.trailing)
+                              .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.56))
+                              .padding(.trailing, 50)
+                        }
+                        .padding(.bottom, 50)
+                    }
+                    
+                
+                    
                 }
-                .offset(x: -80, y: -200)
+                .frame(width: 340, height: 580)
+//                .background(
+//                    RoundedRectangle(cornerRadius: 16)
+////
+//                        .foregroundColor(.white)
+//                )
+                .padding(.top, 36)
                 
+                Spacer()
                 
-                
-                HStack(alignment: .bottom) {
-                    Text("Yoon")
-                      .font(Font.custom("LilitaOne", size: 24))
-                      .kerning(0.48)
-                      .multilineTextAlignment(.trailing)
-                      .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.56))
-                }
-                .offset(x: 100, y: 200)
-               
-                
-                
-                HStack(alignment: .top, spacing: 42) {
+                HStack(alignment: .bottom, spacing: 42) {
                     
                     Button {
                         print("pressed reshot button")
@@ -453,6 +484,10 @@ struct SnapEffectView: View {
                     Button {
                         print("pressed save button")
                         dataModel.isSnapShotted.toggle()
+                        withAnimation(.easeIn(duration: 0.6)) {
+                            isShowSavedView = true
+                        }
+                        
                         
                     } label: {
                         VStack(spacing: 4) {
@@ -491,10 +526,23 @@ struct SnapEffectView: View {
                         }
                     }
                 }
-                .offset(x: 0, y: 280)
-            
-                
+                .offset(x: 0, y: -50)
+//                .padding(.bottom, 30)
             }
+            
+            if isShowSavedView {
+                Image("saveToAlbum")
+                    .offset(x: 0, y: -170)
+                    .onAppear(){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            withAnimation(.easeOut(duration: 0.6)) {
+                                isShowSavedView = false
+                            }
+                        }
+                        
+                    }
+            }
+
 
             
             

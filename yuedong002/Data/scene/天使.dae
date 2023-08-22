@@ -4,14 +4,14 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2023-08-20T15:28:00Z</created>
-  <modified>2023-08-20T15:28:00Z</modified>
+  <created>2023-08-22T10:36:11Z</created>
+  <modified>2023-08-22T10:36:11Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
  <library_images>
   <image id="image1">
-   <init_from>天使纹理.png</init_from>
+   <init_from>angleskin.png</init_from>
   </image>
  </library_images>
  <library_materials>
