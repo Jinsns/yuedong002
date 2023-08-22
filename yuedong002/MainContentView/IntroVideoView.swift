@@ -78,12 +78,12 @@ struct IntroVideoView: View {
                         presentationMode.wrappedValue.dismiss()  //close this sheet view
                     }, label: {
                         Text("冲!")
-                          .font(Font.custom("DFPYuanW9-GB", size: 20))
+                          .font(Font.custom("DFPYuanW9-GB", size: 40))
                           .multilineTextAlignment(.center)
                           .foregroundColor(Color(red: 1, green: 1, blue: 1))
                           .opacity(0.7)
                     })
-                    .padding(.bottom, 90)
+                    .padding(.bottom, 78)
                     .padding(.trailing, 30)
                 }
             }

@@ -76,11 +76,11 @@ struct leaf1: View {
             }
             
         }
-        .scaleEffect(
-            (leafPosition == "left" || leafPosition == "right") ? 1.2 :
-                        ( (leafPosition == "fore") ? 1.4
-                          : 0.8 )
-        )
+//        .scaleEffect(
+//            (leafPosition == "left" || leafPosition == "right") ? 1.2 :
+//                        ( (leafPosition == "fore") ? 1.4
+//                          : 0.8 )
+//        )
 //        .scaleEffect(1.2)  //left and right
 //        .scaleEffect(1.4)  //forward
 //        .scaleEffect(0.8)  //backward
