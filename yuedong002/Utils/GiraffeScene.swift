@@ -180,7 +180,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             SCNTransaction.completionBlock = {
                 SCNTransaction.begin()
                 SCNTransaction.animationDuration = 1.2
-                self.backgroundNode?.position = SCNVector3(x: -35, y: 114, z: 0)
+                self.backgroundNode?.position = SCNVector3(x: -35, y: 100, z: 0)
                 self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
                 self.neckNode?.position = SCNVector3(x: 0.0, y: -2.8, z: 0.0)
                 SCNTransaction.commit()
@@ -271,7 +271,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.completionBlock = {
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 1.2
-            self.backgroundNode?.position = SCNVector3(x: -35, y: 114, z: 0)    //back to original position
+            self.backgroundNode?.position = SCNVector3(x: -35, y: 100, z: 0)    //back to original position
             self.neckNode?.position = SCNVector3(x: 0.0, y: 6.0, z: 0 )//长颈鹿上去才能看到下面的脖子
             self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0)
             SCNTransaction.commit()
@@ -289,7 +289,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 1.2
             self.neckNode?.position = SCNVector3(x: 0.0, y: -3.2, z: 0)
-            self.backgroundNode?.position = SCNVector3(x: -35, y: 66, z: 0)
+            self.backgroundNode?.position = SCNVector3(x: -35, y: 52, z: 0)  //from 66 -> 52
             self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0.0)
             SCNTransaction.commit()
         }
@@ -299,34 +299,34 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     
     
     
-    func moveCameraNodeUp2() {  //2 means worldname == 云中秘境
-        //original cameranode position SCNVector3(x: 10, y: 2, z: 0)
-        SCNTransaction.begin()
-        SCNTransaction.animationDuration = 1.2
-        if self.inWorld == 1 {
-            self.cameraNode!.position = SCNVector3(x: 10, y: 20, z: 0 )
-            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
-        } else if self.inWorld == 2 {
-            self.cameraNode!.position = SCNVector3(x: 10, y: 8.0, z: 0)
-            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
-        }
-        SCNTransaction.commit()
-        self.inWorld = 2
-    }
+//    func moveCameraNodeUp2() {  //2 means worldname == 云中秘境
+//        //original cameranode position SCNVector3(x: 10, y: 2, z: 0)
+//        SCNTransaction.begin()
+//        SCNTransaction.animationDuration = 1.2
+//        if self.inWorld == 1 {
+//            self.cameraNode!.position = SCNVector3(x: 10, y: 20, z: 0 )
+//            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+//        } else if self.inWorld == 2 {
+//            self.cameraNode!.position = SCNVector3(x: 10, y: 8.0, z: 0)
+//            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+//        }
+//        SCNTransaction.commit()
+//        self.inWorld = 2
+//    }
     
-    func moveCameraNodeDown2() { //2 means worldname == 云中秘境
-        
-        SCNTransaction.begin()
-        SCNTransaction.animationDuration = 1.2
-        if self.inWorld == 1 {
-            self.cameraNode!.position = SCNVector3(x: 10, y: -1.5, z: 0)
-        } else if self.inWorld == 2 {
-            self.cameraNode!.position = SCNVector3(x: 10, y: -14, z: 0)
-            self.backgroundNode?.position = SCNVector3(x: -35, y: 90, z: 0)
-        }
-        SCNTransaction.commit()
-        self.inWorld = 1
-    }
+//    func moveCameraNodeDown2() { //2 means worldname == 云中秘境
+//
+//        SCNTransaction.begin()
+//        SCNTransaction.animationDuration = 1.2
+//        if self.inWorld == 1 {
+//            self.cameraNode!.position = SCNVector3(x: 10, y: -1.5, z: 0)
+//        } else if self.inWorld == 2 {
+//            self.cameraNode!.position = SCNVector3(x: 10, y: -14, z: 0)
+//            self.backgroundNode?.position = SCNVector3(x: -35, y: 90, z: 0)
+//        }
+//        SCNTransaction.commit()
+//        self.inWorld = 1
+//    }
     
     
     func moveCameraNodeAndNeckNodeToShopPosition() {
@@ -367,8 +367,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let backgroundGeometry = SCNPlane(width: 60, height: 284.44)
         backgroundGeometry.materials = [backgroundMaterial]
         let backgroundNode = SCNNode(geometry: backgroundGeometry)
-//        backgroundNode.position = SCNVector3(-10, 0, 0)
-        backgroundNode.position = SCNVector3(-35, 114, 0)    //original
+        backgroundNode.position = SCNVector3(-35, 100, 0)    //original   y: from 114 -> 100
 //        backgroundNode.position = SCNVector3(-35, 66, 0)    //test move
         backgroundNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
         
@@ -412,7 +411,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             //原来在 giraffeNode10.position = SCNVector3(0.0, -1.8, 0.0)
     //        self.neckNode?.position = SCNVector3(0.0, 5, 0.0)
-            self.backgroundNode?.position = SCNVector3(-35, 66, 0)
+            self.backgroundNode?.position = SCNVector3(-35, 52, 0)
             self.cloudNode?.position = SCNVector3(1, -6.4, 0)
             self.neckNode?.position = SCNVector3(0.0, -2.8, 0.0)
             SCNTransaction.commit()
