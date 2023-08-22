@@ -56,7 +56,7 @@ var noteIterator = 0
 
 
 struct SwiftUIView: View {
-    @AppStorage("neckLength") var neckLength: String = "100"
+    @AppStorage("neckLength") var neckLength: Int = 100
     @AppStorage("totalLeaves") var totalLeaves: Int = 0
     @StateObject var dataModel = DataModel()
     @State var worldName: String = "地面"
@@ -101,6 +101,11 @@ struct SwiftUIView: View {
     @State var isShowCapturedImage = false
     @State var isShowUpWorldCongratulationView = false
     
+    @State var isShowHandSupportView = false
+    @State var isHandSupportReminded = false
+    
+    @State var viewState: Int = 2
+    
     var body: some View {
         ZStack{
             
@@ -112,7 +117,7 @@ struct SwiftUIView: View {
             
             
             if isInHomePage {
-                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, isLeafAdded: $isLeafAdded)
+                HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, isLeafAdded: $isLeafAdded, viewState: $viewState)
                     .onAppear{
                         bgmSystem.audioPlayer?.prepareToPlay()
 //                        soundEffectSystem.prepareToPlay()
@@ -290,6 +295,18 @@ struct SwiftUIView: View {
                             .zIndex(1.0)
                     }
                     
+                    if isShowHandSupportView {
+                        handSupportRemindView()
+                            .onAppear() {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                    withAnimation(.easeOut(duration: 0.6)) {
+                                        isShowHandSupportView = false
+                                    }
+                                    
+                                }
+                            }
+                    }
+                    
                     if isShowPause {
                         Color.black.opacity(0.1)  //darken background of PauseAlertView
                             .ignoresSafeArea()
@@ -350,6 +367,14 @@ struct SwiftUIView: View {
                             isShowStage2Reminder = true
                             dataModel.isShowFilter15s = true
                         }
+                    }
+                    
+                    if newValue >= 25 && isHandSupportReminded == false {
+                        isHandSupportReminded = true
+                        withAnimation(.easeIn(duration: 0.6)) {
+                            isShowHandSupportView = true
+                        }
+                        
                     }
                     
                     if (newValue > note!.endTime) {
@@ -441,27 +466,27 @@ struct SwiftUIView: View {
                         .onDisappear(){
                             print("countscoreview disappear")
                             isShowCountScoreView = false
-                            if Int(neckLength)! >= neckLengthLevel[0] {
-                                if dataModel.isShowCorrectingPositionView {
-                                    dataModel.isShowCorrectingPositionView = false
-                                    scene.upWorld()
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                        if let url = Bundle.main.url(forResource: "升级音效", withExtension: "wav") {
-                                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                                    player?.play()
-                                                }
+                            viewState = 4
+                            if neckLength >= neckLengthLevel[0] {
+                                
+                                    
+                                scene.upWorld()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    if let url = Bundle.main.url(forResource: "升级音效", withExtension: "wav") {
+                                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                                player?.play()
+                                            }
 
-                                        withAnimation {
-                                            isShowUpWorldCongratulationView = true
-                                        }
-                                        dataModel.isShowCorrectingPositionView = true
+                                    withAnimation {
+                                        isShowUpWorldCongratulationView = true
                                     }
+    
                                 }
                                 
-                                worldName = "云中秘境"
-                            } else {
-                                worldName = "地面"
+                                
+                                worldName = "魔幻森林"
                             }
+                            
                             scene.rotateBackNeckNode()
                             extraLightAdded = false
                             
@@ -492,8 +517,9 @@ struct SwiftUIView: View {
                 UpWorldCongratulationView()
                     .onAppear() {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            withAnimation {
+                            withAnimation(.easeOut(duration: 0.8)) {
                                 isShowUpWorldCongratulationView = false
+                                viewState = 2
                             }
                             
                         }

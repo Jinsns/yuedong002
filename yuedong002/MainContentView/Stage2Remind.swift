@@ -74,13 +74,27 @@ struct Likeyou: View {
     }
 }
 
+struct handSupportRemindView: View {
+    var body: some View {
+        VStack {
+            Image("handSupport")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200)
+                .offset(x: 0, y: -100)
+        }
+        
+    }
+}
+
 struct Stage2Remind_Previews: PreviewProvider {
     static var previews: some View {
 //        Stage2Remind()
 //        Wow()
 //        Taikula()
 //        Likeyou()
-        Filter15s()
+//        Filter15s()
+        handSupportRemindView()
         
     }
 }

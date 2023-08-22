@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountScoreView: View {
-    @Binding var neckLength: String
+    @Binding var neckLength: Int
     @State var dNeckLength: Int = 0
     @Binding var totalLeaves: Int
     @State var dLeaves: Int = 1443
@@ -152,7 +152,7 @@ struct CountScoreView: View {
 //                    dLeaves = 443   //for testing 
                     totalLeaves += dLeaves
                     dNeckLength = Int(scene.score / 5)
-                    neckLength = String(Int(neckLength)! + dNeckLength)
+                    neckLength += dNeckLength
                 }
                 
                 
@@ -184,7 +184,7 @@ struct CountScoreView: View {
                 .padding(.bottom, 100)
 
             }
-            .offset(x: 0, y: 10)
+            .offset(x: 0, y: 36)
                         
             
             
@@ -197,7 +197,8 @@ struct CountScoreView: View {
 
 struct CountScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        CountScoreView(neckLength: .constant("100"), totalLeaves: .constant(1443), scene: GiraffeScene(), isInHomePage: .constant(false))
+        CountScoreView(neckLength: .constant(100), totalLeaves: .constant(1443), scene: GiraffeScene(), isInHomePage: .constant(false))
+            .previewDevice("iphone 13 mini")
     }
 }
 

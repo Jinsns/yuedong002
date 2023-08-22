@@ -114,6 +114,12 @@
 		3639F2812A9503DA002E1BA2 /* 升级音效.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2802A9503DA002E1BA2 /* 升级音效.wav */; };
 		3639F2822A9503DA002E1BA2 /* 升级音效.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2802A9503DA002E1BA2 /* 升级音效.wav */; };
 		3639F2832A9503DA002E1BA2 /* 升级音效.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2802A9503DA002E1BA2 /* 升级音效.wav */; };
+		3639F2852A951BE9002E1BA2 /* 换装声音2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2842A951BE9002E1BA2 /* 换装声音2.wav */; };
+		3639F2862A951BE9002E1BA2 /* 换装声音2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2842A951BE9002E1BA2 /* 换装声音2.wav */; };
+		3639F2872A951BE9002E1BA2 /* 换装声音2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2842A951BE9002E1BA2 /* 换装声音2.wav */; };
+		3639F2892A95282C002E1BA2 /* handSupport.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2882A95282C002E1BA2 /* handSupport.png */; };
+		3639F28A2A95282C002E1BA2 /* handSupport.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2882A95282C002E1BA2 /* handSupport.png */; };
+		3639F28B2A95282C002E1BA2 /* handSupport.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2882A95282C002E1BA2 /* handSupport.png */; };
 		364A66762A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66772A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66782A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
@@ -520,6 +526,8 @@
 		3639F2782A94F628002E1BA2 /* savedToAlbum2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = savedToAlbum2.png; sourceTree = "<group>"; };
 		3639F27C2A94F62F002E1BA2 /* buyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyed.png; sourceTree = "<group>"; };
 		3639F2802A9503DA002E1BA2 /* 升级音效.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "升级音效.wav"; sourceTree = "<group>"; };
+		3639F2842A951BE9002E1BA2 /* 换装声音2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "换装声音2.wav"; sourceTree = "<group>"; };
+		3639F2882A95282C002E1BA2 /* handSupport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handSupport.png; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
 		364A66852A867779007C2103 /* GetScore0811.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore0811.mp3; sourceTree = "<group>"; };
@@ -733,6 +741,7 @@
 				3639F2742A94E77B002E1BA2 /* saveToAlbum.png */,
 				3639F2782A94F628002E1BA2 /* savedToAlbum2.png */,
 				3639F27C2A94F62F002E1BA2 /* buyed.png */,
+				3639F2882A95282C002E1BA2 /* handSupport.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -940,6 +949,7 @@
 				368726F62A7939D9007F859C /* BGM_Shop.mp3 */,
 				368726FA2A7939EB007F859C /* CountDownClock.mp3 */,
 				3639F2802A9503DA002E1BA2 /* 升级音效.wav */,
+				3639F2842A951BE9002E1BA2 /* 换装声音2.wav */,
 			);
 			path = SoundEffects;
 			sourceTree = "<group>";
@@ -1126,6 +1136,7 @@
 				366576E52A46B6C6008C166D /* Preview Assets.xcassets in Resources */,
 				368726EB2A7939A8007F859C /* Shop_DressChanging.mp3 in Resources */,
 				3676892F2A812F5100B3C6D4 /* DownTriangle.png in Resources */,
+				3639F2892A95282C002E1BA2 /* handSupport.png in Resources */,
 				3639F2452A93B989002E1BA2 /* upWorldCongratulation.png in Resources */,
 				364A66762A862FF4007C2103 /* songEndBG2.png in Resources */,
 				3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
@@ -1213,6 +1224,7 @@
 				3676892B2A80DBCB00B3C6D4 /* CoconutTree.png in Resources */,
 				366576E12A46B6C6008C166D /* Assets.xcassets in Resources */,
 				368225212A8F98B50090A7A6 /* 引导页_4.mp4 in Resources */,
+				3639F2852A951BE9002E1BA2 /* 换装声音2.wav in Resources */,
 				3639F2312A926103002E1BA2 /* 香蕉.dae in Resources */,
 				3639F2632A94A9F1002E1BA2 /* 戒指材质003.png in Resources */,
 				3696A5E62A756CEE00B59DCB /* PhotoIcon.png in Resources */,
@@ -1237,6 +1249,7 @@
 				364A66AF2A875BD8007C2103 /* wow.png in Resources */,
 				365121D92A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				367689782A85226900B3C6D4 /* blurredbg.jpg in Resources */,
+				3639F2862A951BE9002E1BA2 /* 换装声音2.wav in Resources */,
 				368726DC2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				3696A5F62A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				3682256E2A91DC700090A7A6 /* ringskin1.png in Resources */,
@@ -1317,6 +1330,7 @@
 				3639F2822A9503DA002E1BA2 /* 升级音效.wav in Resources */,
 				3639F2762A94E77B002E1BA2 /* saveToAlbum.png in Resources */,
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
+				3639F28A2A95282C002E1BA2 /* handSupport.png in Resources */,
 				364A669B2A875430007C2103 /* 花.png in Resources */,
 				3639F2562A94A3A0002E1BA2 /* 引导页0822.mp4 in Resources */,
 				3639F23E2A926125002E1BA2 /* 椰子树.dae in Resources */,
@@ -1361,6 +1375,7 @@
 				364A66B02A875BD8007C2103 /* wow.png in Resources */,
 				365121DA2A750FBD0071D1C1 /* Pause Circle.png in Resources */,
 				367689792A85226900B3C6D4 /* blurredbg.jpg in Resources */,
+				3639F2872A951BE9002E1BA2 /* 换装声音2.wav in Resources */,
 				368726DD2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				3696A5F72A76293F00B59DCB /* 41HuaKangYuanTiW5.ttf in Resources */,
 				3682256F2A91DC700090A7A6 /* ringskin1.png in Resources */,
@@ -1441,6 +1456,7 @@
 				3639F2832A9503DA002E1BA2 /* 升级音效.wav in Resources */,
 				3639F2772A94E77B002E1BA2 /* saveToAlbum.png in Resources */,
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
+				3639F28B2A95282C002E1BA2 /* handSupport.png in Resources */,
 				364A669C2A875430007C2103 /* 花.png in Resources */,
 				3639F2572A94A3A0002E1BA2 /* 引导页0822.mp4 in Resources */,
 				3639F23F2A926125002E1BA2 /* 椰子树.dae in Resources */,

@@ -271,7 +271,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.completionBlock = {
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 1.2
-            self.backgroundNode?.position = SCNVector3(x: -35, y: 100, z: 0)    //back to original position
+            self.backgroundNode?.position = SCNVector3(x: -35, y: 107, z: 0)    //back to original position
             self.neckNode?.position = SCNVector3(x: 0.0, y: 6.0, z: 0 )//长颈鹿上去才能看到下面的脖子
             self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0)
             SCNTransaction.commit()
@@ -289,7 +289,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 1.2
             self.neckNode?.position = SCNVector3(x: 0.0, y: -2.8, z: 0)
-            self.backgroundNode?.position = SCNVector3(x: -35, y: 52, z: 0)  //from 66 -> 52
+            self.backgroundNode?.position = SCNVector3(x: -35, y: 47, z: 0)  //from 66 -> 52 -> 59 -> 47
             self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0.0)
             SCNTransaction.commit()
         }
@@ -367,7 +367,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let backgroundGeometry = SCNPlane(width: 60, height: 284.44)
         backgroundGeometry.materials = [backgroundMaterial]
         let backgroundNode = SCNNode(geometry: backgroundGeometry)
-        backgroundNode.position = SCNVector3(-35, 100, 0)    //original   y: from 114 -> 100
+        backgroundNode.position = SCNVector3(-35, 107, 0)    //original   y: from 114 -> 100 -> 107
 //        backgroundNode.position = SCNVector3(-35, 66, 0)    //test move
         backgroundNode.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
         
@@ -411,7 +411,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             //原来在 giraffeNode10.position = SCNVector3(0.0, -1.8, 0.0)
     //        self.neckNode?.position = SCNVector3(0.0, 5, 0.0)
-            self.backgroundNode?.position = SCNVector3(-35, 52, 0)
+            self.backgroundNode?.position = SCNVector3(-35, 47, 0)
             self.cloudNode?.position = SCNVector3(1, -6.4, 0)
             self.neckNode?.position = SCNVector3(0.0, -2.8, 0.0)
             SCNTransaction.commit()
@@ -464,8 +464,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         } else if ornamentName == "戒指" {
             scene = SCNScene(named: "戒指0822.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
-            ornament.position = SCNVector3(x: 0, y: 3 , z: 0.24)
+            ornament.scale = SCNVector3(0.92, 0.92, 0.92)
+            ornament.position = SCNVector3(x: 0.15, y: 3 , z: 0.28)
         } else if ornamentName == "天使" {
             scene = SCNScene(named: "天使.dae")!
             ornament = scene!.rootNode

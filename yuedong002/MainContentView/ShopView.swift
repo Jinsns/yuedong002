@@ -278,7 +278,7 @@ struct ShopItems: View {
             //first item
             Button(action: {
                 print("pressed shop item 1")
-                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
+                if let url = Bundle.main.url(forResource: "换装声音2", withExtension: "wav") {
                             let player = AVAudioPlayerPool().playerWithURL(url: url)
                             player?.play()
                         }

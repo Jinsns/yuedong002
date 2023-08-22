@@ -20,7 +20,7 @@ DFPYuanW9
 
 struct HomePageView: View {
     @Binding var totalLeaves: Int
-    @Binding var neckLength: String
+    @Binding var neckLength: Int
     @Binding var worldName: String
     
 //    @State var isShowAirpodsReminder = true
@@ -38,7 +38,7 @@ struct HomePageView: View {
     
     @Binding var isLeafAdded: Bool
     
-    @State var viewState: Int = 2
+    @Binding var viewState: Int
     
     
     
@@ -404,12 +404,12 @@ struct SnapEffectView: View {
                 Spacer()
                 VStack {
                     HStack {
-                        HStack(alignment: .top, spacing: 12) {
+                        HStack(alignment: .bottom, spacing: 12) {
                             Text("8")
                               .font(Font.custom("LilitaOne", size: 32))
                               .kerning(2.56)
                               .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                              .padding(.bottom, 30)
+                              .offset(x: 0, y: 6)
                             
                             Text("| 22")
                               .font(Font.custom("LilitaOne", size: 14))
@@ -679,7 +679,7 @@ struct ArrowButtonsView: View {
                             
                         }
                         
-                    } else if worldName == "云中秘境" {
+                    } else if worldName == "魔幻森林" {
                         if viewState == 2 {
                             scene.world2ViewMid2Up()
                             viewState = 3
@@ -775,7 +775,7 @@ struct ArrowButtonsView: View {
 //
 //                        }
 
-                    } else if worldName == "云中秘境" {
+                    } else if worldName == "魔幻森林" {
                         if viewState == 3 {
                             scene.world2ViewUp2Mid()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
