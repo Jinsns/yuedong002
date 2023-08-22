@@ -98,6 +98,7 @@ struct SwiftUIView: View {
     
     
     @State var isShowCapturedImage = false
+    @State var isShowUpWorldCongratulationView = false
     
     var body: some View {
         ZStack{
@@ -409,6 +410,9 @@ struct SwiftUIView: View {
                                 dataModel.isShowCorrectingPositionView = false
                                 scene.upWorld()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    withAnimation {
+                                        isShowUpWorldCongratulationView = true
+                                    }
                                     dataModel.isShowCorrectingPositionView = true
                                 }
                             }
@@ -436,6 +440,18 @@ struct SwiftUIView: View {
                         isShowIntroVideoView = false
                         isInHomePage = true
                         isShowInitBlackBackground = false
+                    }
+            }
+            
+            if isShowUpWorldCongratulationView {
+                UpWorldCongratulationView()
+                    .onAppear() {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            withAnimation {
+                                isShowUpWorldCongratulationView = false
+                            }
+                            
+                        }
                     }
             }
             
