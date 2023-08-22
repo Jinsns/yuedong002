@@ -22,13 +22,13 @@ let notes: [Note] = [
     Note(startTime: 0.0, endTime: 0.01, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
     Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 1), //左
-    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 1), //右
+    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.0), isTenuto: true, level: 1), //右
     Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 2), //左
-    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.8), isTenuto: true, level: 2), //右
-    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.8, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
-    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.8, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
-    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.8, y: 1.2, z: -0.0), isTenuto: true, level: 2),  //后
-    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -3.8, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //后
+    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.0), isTenuto: true, level: 2), //右
+    Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.0, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
+    Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.0, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
+    Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.0, y: 1.2, z: -0.0), isTenuto: true, level: 2),  //后
+    Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -3.0, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //后
     
     Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
@@ -335,6 +335,9 @@ struct SwiftUIView: View {
                     if scene.leafNode != nil {
                         scene.leafNode!.removeFromParentNode()
                         scene.isContacting = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                            scene.isContacting = false
+                        }
                         print("removed leaf")
                     }
 //                    isShowProgressBar = false
@@ -346,6 +349,9 @@ struct SwiftUIView: View {
                     noteUI = noteUIs[noteIterator]
                     
                     scene.isContacting = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        scene.isContacting = false
+                    }
                     isLeafAdded = false
                 }
                 
@@ -377,6 +383,9 @@ struct SwiftUIView: View {
                     bgmSystem.pause()
 //                    scene.shouldContact = false
                     scene.isContacting = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        scene.isContacting = false
+                    }
                     scene.physicsWorld.contactDelegate = nil
                 } else {  //resume from pause
                     bgmSystem.play()
@@ -398,6 +407,9 @@ struct SwiftUIView: View {
                                 }
 //                        scene.shouldContact = false
                         scene.isContacting = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                            scene.isContacting = false
+                        }
                         scene.physicsWorld.contactDelegate = nil
                         scene.leafNode?.removeFromParentNode()
                         

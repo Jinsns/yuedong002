@@ -460,7 +460,7 @@ struct ShopItems: View {
             HStack(alignment: .center, spacing: 7.33974) {
                 Button {
                     print("pressed buy button")
-                    if let url = Bundle.main.url(forResource: "Shop_BuyitBtn", withExtension: "mp3") {
+                    if let url = Bundle.main.url(forResource: "Shop_BuyItBtn", withExtension: "mp3") {
                                 let player = AVAudioPlayerPool().playerWithURL(url: url)
                                 player?.play()
                             }

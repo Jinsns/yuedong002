@@ -856,7 +856,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             let absx: Float = abs(Float(attitude.roll))
             let absz: Float = abs(Float(attitude.pitch))
-            let maxAngle = Float.pi / 4
+            let maxAngle = Float.pi / 6
                         
             
             self?.neckNode?.eulerAngles = SCNVector3(
@@ -941,6 +941,9 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
     func physicsWorld(_ world: SCNPhysicsWorld, didEnd contact: SCNPhysicsContact) {
         print("contact end")
         DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.isContacting = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             self.isContacting = false
         }
 //        self.isContacting = false
