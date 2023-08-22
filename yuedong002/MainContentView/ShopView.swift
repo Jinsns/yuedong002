@@ -23,7 +23,7 @@ var shopItems = [
 ]
 
 struct ShopView: View {
-    @Binding var totalLeaves: String
+    @Binding var totalLeaves: Int
     @Binding var isShowShopView: Bool
     @State var isMineOrShop = true
     @State var selectedItem = 1
@@ -149,7 +149,7 @@ struct ShopView: View {
                             .offset(x: 8, y: -8)
     //                        .background(.black)
                     } else {
-                        ShopItems(selectedItem: $selectedItem, scene: scene)
+                        ShopItems(selectedItem: $selectedItem, scene: scene, totalLeaves: $totalLeaves)
                             .offset(x: 8, y: -8)
                     }
                     
@@ -250,6 +250,8 @@ struct MyItems: View {
 struct ShopItems: View {
     @Binding var selectedItem: Int
     @ObservedObject var scene: GiraffeScene
+    @State var itemPrice: Int = 0
+    @Binding var totalLeaves: Int
     
     var body: some View {
         VStack(alignment: .center, spacing: 20.87937) {
@@ -257,7 +259,13 @@ struct ShopItems: View {
             //first item
             Button(action: {
                 print("pressed shop item 1")
+                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.play()
+                        }
+
                 selectedItem = 1
+                itemPrice = 3700
                 scene.addOrnament(ornamentName: "戒指")
             }, label: {
                 VStack(alignment: .center, spacing: 2.08794) {
@@ -299,7 +307,13 @@ struct ShopItems: View {
             //second item
             Button(action: {
                 print("pressed shop item 2")
+                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.play()
+                        }
+
                 selectedItem = 2
+                itemPrice = 1600
                 scene.addOrnament(ornamentName: "椰子树")
             
             }, label: {
@@ -344,7 +358,13 @@ struct ShopItems: View {
             //third item
             Button(action: {
                 print("pressed shop item 3")
+                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.play()
+                        }
+
                 selectedItem = 3
+                itemPrice = 700
                 scene.addOrnament(ornamentName: "香蕉")
             
             }, label: {
@@ -388,7 +408,12 @@ struct ShopItems: View {
             //fourth item
             Button {
                 print("pressed shop item 4")
+                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.play()
+                        }
                 selectedItem = 4
+                itemPrice = 420
                 scene.addOrnament(ornamentName: "天使")
             } label: {
                 VStack(alignment: .center, spacing: 2.08794) {
@@ -433,11 +458,21 @@ struct ShopItems: View {
             Spacer()
             
             HStack(alignment: .center, spacing: 7.33974) {
-                Text("买它！")
-                  .font(Font.custom("DFPYuanW9-GB", size: 24))
-                  .kerning(2.88)
-                  .multilineTextAlignment(.center)
-                  .foregroundColor(.white)
+                Button {
+                    print("pressed buy button")
+                    if let url = Bundle.main.url(forResource: "Shop_BuyitBtn", withExtension: "mp3") {
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.play()
+                            }
+                    totalLeaves -= itemPrice
+                } label: {
+                    Text("买它！")
+                      .font(Font.custom("DFPYuanW9-GB", size: 24))
+                      .kerning(2.88)
+                      .multilineTextAlignment(.center)
+                      .foregroundColor(.white)
+                }
+                
             }
             .padding(.horizontal, 28)
             .padding(.vertical, 25.41345)
@@ -461,6 +496,6 @@ struct ShopItems: View {
 
 struct ShopView_Previews: PreviewProvider {
     static var previews: some View {
-        ShopView(totalLeaves: .constant("1443"), isShowShopView: .constant(true), scene: GiraffeScene())
+        ShopView(totalLeaves: .constant(1443), isShowShopView: .constant(true), scene: GiraffeScene())
     }
 }

@@ -57,7 +57,7 @@ var noteIterator = 0
 
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: String = "100"
-    @AppStorage("totalLeaves") var totalLeaves: String = "0"
+    @AppStorage("totalLeaves") var totalLeaves: Int = 0
     @StateObject var dataModel = DataModel()
     @State var worldName: String = "地面"
 //    @State var worldName: String = "云中秘境"  //for testing
@@ -104,8 +104,8 @@ struct SwiftUIView: View {
         ZStack{
             
             SceneView(
-                scene: scene,
-                options: [.allowsCameraControl]
+                scene: scene
+//                options: [.allowsCameraControl]
             )
                 .ignoresSafeArea()
             

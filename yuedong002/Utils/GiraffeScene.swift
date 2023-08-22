@@ -362,7 +362,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         let backgroundMaterial = SCNMaterial()
         backgroundMaterial.lightingModel = .constant
 //        backgroundMaterial.diffuse.contents = UIImage(named: "gameBackgroundSourceImage") //3000 * 2000
-        backgroundMaterial.diffuse.contents = UIImage(named: "LongBackGround2") //3000 * 2000
+//        backgroundMaterial.diffuse.contents = UIImage(named: "LongBackGround2") //3000 * 2000
+        backgroundMaterial.diffuse.contents = UIImage(named: "bg0822") //3000 * 2000
         let backgroundGeometry = SCNPlane(width: 60, height: 284.44)
         backgroundGeometry.materials = [backgroundMaterial]
         let backgroundNode = SCNNode(geometry: backgroundGeometry)
@@ -462,7 +463,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //            ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: Float.pi / 2)
             
         } else if ornamentName == "戒指" {
-            scene = SCNScene(named: "戒指0820.dae")!
+            scene = SCNScene(named: "戒指0822.dae")!
             ornament = scene!.rootNode
             ornament.scale = SCNVector3(1.6, 1.6, 1.6)
             ornament.position = SCNVector3(x: 0, y: 2 , z: 0)

@@ -13,7 +13,7 @@ struct IntroVideoView: View {
     @Binding var isShowIntroVideoView: Bool
     @Environment(\.presentationMode) var presentationMode //used to close this sheet view
     
-    @State var player = AVPlayer(url: Bundle.main.url(forResource: "引导页_4", withExtension: "mp4")!)
+    @State var player = AVPlayer(url: Bundle.main.url(forResource: "引导页0822", withExtension: "mp4")!)
     @State var currentTime = 0.0
     @State var timer: Timer?
     @State var isAddButton: Bool = false
@@ -84,7 +84,7 @@ struct IntroVideoView: View {
                           .opacity(0.7)
                     })
                     .padding(.bottom, 78)
-                    .padding(.trailing, 30)
+                    .padding(.trailing, 20)
                 }
             }
             

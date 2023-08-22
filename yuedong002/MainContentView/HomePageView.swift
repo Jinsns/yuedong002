@@ -19,7 +19,7 @@ DFPYuanW9
 
 
 struct HomePageView: View {
-    @Binding var totalLeaves: String
+    @Binding var totalLeaves: Int
     @Binding var neckLength: String
     @Binding var worldName: String
     
@@ -315,7 +315,7 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        HomePageView(totalLeaves: .constant("1443"), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(),  isLeafAdded: .constant(true))
+        HomePageView(totalLeaves: .constant(1443), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(),  isLeafAdded: .constant(true))
             .previewDevice("iPhone 13 mini")
 //        ShutterView(isShowShutterView: .constant(true), isShowSnapEffect: .constant(false))
 //            .previewDevice("iPhone 13 mini")
