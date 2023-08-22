@@ -69,6 +69,15 @@
 		3639F2452A93B989002E1BA2 /* upWorldCongratulation.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2442A93B989002E1BA2 /* upWorldCongratulation.png */; };
 		3639F2462A93B989002E1BA2 /* upWorldCongratulation.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2442A93B989002E1BA2 /* upWorldCongratulation.png */; };
 		3639F2472A93B989002E1BA2 /* upWorldCongratulation.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2442A93B989002E1BA2 /* upWorldCongratulation.png */; };
+		3639F2492A949AF6002E1BA2 /* cannotSeeHigher.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2482A949AF6002E1BA2 /* cannotSeeHigher.png */; };
+		3639F24A2A949AF6002E1BA2 /* cannotSeeHigher.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2482A949AF6002E1BA2 /* cannotSeeHigher.png */; };
+		3639F24B2A949AF6002E1BA2 /* cannotSeeHigher.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2482A949AF6002E1BA2 /* cannotSeeHigher.png */; };
+		3639F24D2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F24C2A949AFE002E1BA2 /* cannotSeeLower.png */; };
+		3639F24E2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F24C2A949AFE002E1BA2 /* cannotSeeLower.png */; };
+		3639F24F2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F24C2A949AFE002E1BA2 /* cannotSeeLower.png */; };
+		3639F2512A949BA3002E1BA2 /* CannotSeeReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639F2502A949BA3002E1BA2 /* CannotSeeReminder.swift */; };
+		3639F2522A949BA3002E1BA2 /* CannotSeeReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639F2502A949BA3002E1BA2 /* CannotSeeReminder.swift */; };
+		3639F2532A949BA3002E1BA2 /* CannotSeeReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3639F2502A949BA3002E1BA2 /* CannotSeeReminder.swift */; };
 		364A66762A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66772A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66782A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
@@ -460,6 +469,9 @@
 		3639F23C2A926125002E1BA2 /* 椰子树.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "椰子树.dae"; sourceTree = "<group>"; };
 		3639F2402A93B8BB002E1BA2 /* UpWorldCongratulationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpWorldCongratulationView.swift; sourceTree = "<group>"; };
 		3639F2442A93B989002E1BA2 /* upWorldCongratulation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upWorldCongratulation.png; sourceTree = "<group>"; };
+		3639F2482A949AF6002E1BA2 /* cannotSeeHigher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannotSeeHigher.png; sourceTree = "<group>"; };
+		3639F24C2A949AFE002E1BA2 /* cannotSeeLower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannotSeeLower.png; sourceTree = "<group>"; };
+		3639F2502A949BA3002E1BA2 /* CannotSeeReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannotSeeReminder.swift; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
 		364A66852A867779007C2103 /* GetScore0811.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore0811.mp3; sourceTree = "<group>"; };
@@ -667,6 +679,8 @@
 				368225582A90F9EB0090A7A6 /* kiwi.png */,
 				3639F2242A925606002E1BA2 /* appicon0820.png */,
 				3639F2442A93B989002E1BA2 /* upWorldCongratulation.png */,
+				3639F2482A949AF6002E1BA2 /* cannotSeeHigher.png */,
+				3639F24C2A949AFE002E1BA2 /* cannotSeeLower.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -828,6 +842,7 @@
 				368225242A8F998D0090A7A6 /* IntroVideoView.swift */,
 				368225502A90B88C0090A7A6 /* CapturedImageView.swift */,
 				3639F2402A93B8BB002E1BA2 /* UpWorldCongratulationView.swift */,
+				3639F2502A949BA3002E1BA2 /* CannotSeeReminder.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -1118,6 +1133,7 @@
 				366577252A46B723008C166D /* pianoF.mp3 in Resources */,
 				364A66E42A879324007C2103 /* 3-ShenShou.mp3 in Resources */,
 				36027E3A2A7EC29D00A505BC /* save.png in Resources */,
+				3639F24D2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */,
 				368225692A91DC690090A7A6 /* ringskin2.png in Resources */,
 				3676894F2A83CDEA00B3C6D4 /* LongBackGround2.png in Resources */,
 				368225082A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */,
@@ -1132,6 +1148,7 @@
 				366577192A46B723008C166D /* pianoE.mp3 in Resources */,
 				3639F23D2A926125002E1BA2 /* 椰子树.dae in Resources */,
 				3665771C2A46B723008C166D /* pianoG.mp3 in Resources */,
+				3639F2492A949AF6002E1BA2 /* cannotSeeHigher.png in Resources */,
 				36027E082A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */,
 				366577102A46B723008C166D /* pianoD.mp3 in Resources */,
@@ -1182,6 +1199,7 @@
 				36027E352A7EC29D00A505BC /* reshot.png in Resources */,
 				3639F22E2A9260F0002E1BA2 /* 天使.dae in Resources */,
 				36027E3B2A7EC29D00A505BC /* save.png in Resources */,
+				3639F24A2A949AF6002E1BA2 /* cannotSeeHigher.png in Resources */,
 				36027E092A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				368225422A8FAB4C0090A7A6 /* neckskin0818-2.png in Resources */,
 				364A66FF2A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */,
@@ -1238,6 +1256,7 @@
 				368726F42A7939C7007F859C /* BGM_HomepageAndCamera.mp3 in Resources */,
 				364A66D32A878636007C2103 /* Orange.png in Resources */,
 				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
+				3639F24E2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */,
 				368225052A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				368225192A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */,
@@ -1292,6 +1311,7 @@
 				36027E362A7EC29D00A505BC /* reshot.png in Resources */,
 				3639F22F2A9260F0002E1BA2 /* 天使.dae in Resources */,
 				36027E3C2A7EC29D00A505BC /* save.png in Resources */,
+				3639F24B2A949AF6002E1BA2 /* cannotSeeHigher.png in Resources */,
 				36027E0A2A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				368225432A8FAB4C0090A7A6 /* neckskin0818-2.png in Resources */,
 				364A67002A87C499007C2103 /* Camera_PressShutter.mp3 in Resources */,
@@ -1348,6 +1368,7 @@
 				368726F52A7939C7007F859C /* BGM_HomepageAndCamera.mp3 in Resources */,
 				364A66D42A878636007C2103 /* Orange.png in Resources */,
 				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
+				3639F24F2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */,
 				368225062A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				3682251A2A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */,
@@ -1384,6 +1405,7 @@
 				3665773C2A46B82A008C166D /* ContentView3.swift in Sources */,
 				365CF80E2A6D68760007A2CF /* SwiftUIView.swift in Sources */,
 				365121E52A75655A0071D1C1 /* DataModel.swift in Sources */,
+				3639F2512A949BA3002E1BA2 /* CannotSeeReminder.swift in Sources */,
 				367689572A84D62500B3C6D4 /* LeafInGame.swift in Sources */,
 				3676893B2A829C2700B3C6D4 /* ScorePanView.swift in Sources */,
 				36D15EA42A72398600BC1967 /* StyledGauge.swift in Sources */,
@@ -1423,6 +1445,7 @@
 				36E5F18C2A7F8B7600C11B37 /* ProgressView.swift in Sources */,
 				365121C52A73AC700071D1C1 /* head.swift in Sources */,
 				367689142A80D34F00B3C6D4 /* ShopView.swift in Sources */,
+				3639F2522A949BA3002E1BA2 /* CannotSeeReminder.swift in Sources */,
 				366576EF2A46B6C6008C166D /* yuedong002Tests.swift in Sources */,
 				36EC1E1D2A6CCA81009E5351 /* PanView.swift in Sources */,
 				366577412A46B832008C166D /* CreateMode.swift in Sources */,
@@ -1459,6 +1482,7 @@
 				365121E72A75655A0071D1C1 /* DataModel.swift in Sources */,
 				365121C62A73AC700071D1C1 /* head.swift in Sources */,
 				365121BE2A7285950071D1C1 /* CountScoreView.swift in Sources */,
+				3639F2532A949BA3002E1BA2 /* CannotSeeReminder.swift in Sources */,
 				368225272A8F998D0090A7A6 /* IntroVideoView.swift in Sources */,
 				366577352A46B7E6008C166D /* MotionManager.swift in Sources */,
 				36EC1E122A6BCA82009E5351 /* SpatialAudio.swift in Sources */,

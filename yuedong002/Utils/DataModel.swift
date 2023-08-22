@@ -15,5 +15,8 @@ class DataModel: ObservableObject {
     @Published var isShowCorrectingPositionView = false
     @Published var isShowNodToEatView = false
     @Published var isSnapShotted = false
+    @Published var isShowCannotSeeHigherView = false
+    @Published var isShowCannotSeeLowerView = false
+    
     @Published var capturedImage: UIImage?
 }
