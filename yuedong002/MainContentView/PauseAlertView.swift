@@ -37,7 +37,7 @@ struct PauseAlertView: View {
                           .frame(maxWidth: .infinity, alignment: .center)
                           .lineSpacing(5)   //调整行间距
                     }
-                    .padding(.horizontal, 16)
+//                    .padding(.horizontal, 16)
                     .padding(.top, 0)
                     .padding(.bottom, 8)
                     .frame(width: 270, alignment: .top)
@@ -95,9 +95,11 @@ struct PauseAlertView: View {
                         
                         
                     }
-                    .padding(7)
+                    .padding(.horizontal, 10)
+                    .padding(.top, 12)
+                    
                     .frame(maxWidth: .infinity, alignment: .top)
-
+                    
                     
 
                 }
@@ -107,6 +109,13 @@ struct PauseAlertView: View {
                 .padding(.bottom, 0)
                 .background(.white)
                 .cornerRadius(14)
+                
+//                .background(
+//                    Rectangle()
+//                        .foregroundColor(.black)
+//                        .edgesIgnoringSafeArea(.all)
+//                )
+                
                 
                 
                 

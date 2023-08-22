@@ -80,16 +80,21 @@ struct CountScoreView: View {
                           .frame(width: 36, height: 39)
                           .clipped()
                       )
- 
-                    Text("+\(dLeaves)")
-                        .font(Font.custom("Lilita One", size: 32))
-                        .kerning(0.64)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
-                        .frame(width: 100, height: 22, alignment: .center)  //宽度能容纳四位数
-                        .offset(x: 0, y: -16)
-                        .padding(.top, 8)
-                        .padding(.trailing, 4)
+                    HStack(spacing: 0.8) {
+                        Text("+")
+                            .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                        Text("\(dLeaves)")
+                            .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
+                            
+                    }
+                    .font(Font.custom("Lilita One", size: 32))
+                    .kerning(0.64)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 200, height: 22, alignment: .center)  //宽度能容纳四位数
+                    .offset(x: 0, y: -16)
+                    .padding(.top, 8)
+                    .padding(.trailing, 4)
+                    
                 }  //VStack of white circle containing a leaf and +finalScore
                 .background(
                     Circle()
@@ -144,6 +149,7 @@ struct CountScoreView: View {
 //                .padding(.top, 180)
                 .onAppear() {
                     dLeaves = scene.score
+//                    dLeaves = 443   //for testing 
                     totalLeaves += dLeaves
                     dNeckLength = Int(scene.score / 5)
                     neckLength = String(Int(neckLength)! + dNeckLength)

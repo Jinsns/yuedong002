@@ -105,6 +105,15 @@
 		3639F2752A94E77B002E1BA2 /* saveToAlbum.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2742A94E77B002E1BA2 /* saveToAlbum.png */; };
 		3639F2762A94E77B002E1BA2 /* saveToAlbum.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2742A94E77B002E1BA2 /* saveToAlbum.png */; };
 		3639F2772A94E77B002E1BA2 /* saveToAlbum.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2742A94E77B002E1BA2 /* saveToAlbum.png */; };
+		3639F2792A94F629002E1BA2 /* savedToAlbum2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2782A94F628002E1BA2 /* savedToAlbum2.png */; };
+		3639F27A2A94F629002E1BA2 /* savedToAlbum2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2782A94F628002E1BA2 /* savedToAlbum2.png */; };
+		3639F27B2A94F629002E1BA2 /* savedToAlbum2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2782A94F628002E1BA2 /* savedToAlbum2.png */; };
+		3639F27D2A94F62F002E1BA2 /* buyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F27C2A94F62F002E1BA2 /* buyed.png */; };
+		3639F27E2A94F62F002E1BA2 /* buyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F27C2A94F62F002E1BA2 /* buyed.png */; };
+		3639F27F2A94F62F002E1BA2 /* buyed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F27C2A94F62F002E1BA2 /* buyed.png */; };
+		3639F2812A9503DA002E1BA2 /* 升级音效.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2802A9503DA002E1BA2 /* 升级音效.wav */; };
+		3639F2822A9503DA002E1BA2 /* 升级音效.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2802A9503DA002E1BA2 /* 升级音效.wav */; };
+		3639F2832A9503DA002E1BA2 /* 升级音效.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2802A9503DA002E1BA2 /* 升级音效.wav */; };
 		364A66762A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66772A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66782A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
@@ -508,6 +517,9 @@
 		3639F26C2A94AB07002E1BA2 /* bg0822.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg0822.png; sourceTree = "<group>"; };
 		3639F2702A94C5ED002E1BA2 /* angleskin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angleskin.png; sourceTree = "<group>"; };
 		3639F2742A94E77B002E1BA2 /* saveToAlbum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveToAlbum.png; sourceTree = "<group>"; };
+		3639F2782A94F628002E1BA2 /* savedToAlbum2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = savedToAlbum2.png; sourceTree = "<group>"; };
+		3639F27C2A94F62F002E1BA2 /* buyed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyed.png; sourceTree = "<group>"; };
+		3639F2802A9503DA002E1BA2 /* 升级音效.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "升级音效.wav"; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
 		364A66852A867779007C2103 /* GetScore0811.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore0811.mp3; sourceTree = "<group>"; };
@@ -719,6 +731,8 @@
 				3639F24C2A949AFE002E1BA2 /* cannotSeeLower.png */,
 				3639F26C2A94AB07002E1BA2 /* bg0822.png */,
 				3639F2742A94E77B002E1BA2 /* saveToAlbum.png */,
+				3639F2782A94F628002E1BA2 /* savedToAlbum2.png */,
+				3639F27C2A94F62F002E1BA2 /* buyed.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -925,6 +939,7 @@
 				368726EE2A7939B5007F859C /* Shop_UseItBtn.mp3 */,
 				368726F62A7939D9007F859C /* BGM_Shop.mp3 */,
 				368726FA2A7939EB007F859C /* CountDownClock.mp3 */,
+				3639F2802A9503DA002E1BA2 /* 升级音效.wav */,
 			);
 			path = SoundEffects;
 			sourceTree = "<group>";
@@ -1115,6 +1130,7 @@
 				364A66762A862FF4007C2103 /* songEndBG2.png in Resources */,
 				3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				3639F2392A926119002E1BA2 /* 香蕉纹理-1红.png in Resources */,
+				3639F2792A94F629002E1BA2 /* savedToAlbum2.png in Resources */,
 				364A66CE2A87862F007C2103 /* Pitaya.png in Resources */,
 				367689272A80DBC200B3C6D4 /* DiamondRing.png in Resources */,
 				3665771F2A46B723008C166D /* pianoC.mp3 in Resources */,
@@ -1136,6 +1152,7 @@
 				36027DF82A7A0F6E00A505BC /* monoGetScore.mp3 in Resources */,
 				3639F2552A94A3A0002E1BA2 /* 引导页0822.mp4 in Resources */,
 				364A66AE2A875BD8007C2103 /* wow.png in Resources */,
+				3639F2812A9503DA002E1BA2 /* 升级音效.wav in Resources */,
 				3698D5742A6E908F0003C037 /* leaf.png in Resources */,
 				368726DB2A793973007F859C /* Homepage_HeadPositionCorrect.mp3 in Resources */,
 				364A66862A867779007C2103 /* GetScore0811.mp3 in Resources */,
@@ -1175,6 +1192,7 @@
 				366577222A46B723008C166D /* pianoB.mp3 in Resources */,
 				368225452A8FABB70090A7A6 /* eyeskin.png in Resources */,
 				3696A6032A7633C400B59DCB /* airpodsReminder.png in Resources */,
+				3639F27D2A94F62F002E1BA2 /* buyed.png in Resources */,
 				365121D42A750BE20071D1C1 /* scorepan.png in Resources */,
 				368726EF2A7939B5007F859C /* Shop_UseItBtn.mp3 in Resources */,
 				3676897B2A85276300B3C6D4 /* backFromShop.png in Resources */,
@@ -1293,8 +1311,10 @@
 				3682251D2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
 				364A66CF2A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */,
+				3639F27E2A94F62F002E1BA2 /* buyed.png in Resources */,
 				364A66E22A879324007C2103 /* surprise.mp3 in Resources */,
 				3696A5DF2A756BDD00B59DCB /* SettingsButton.png in Resources */,
+				3639F2822A9503DA002E1BA2 /* 升级音效.wav in Resources */,
 				3639F2762A94E77B002E1BA2 /* saveToAlbum.png in Resources */,
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				364A669B2A875430007C2103 /* 花.png in Resources */,
@@ -1321,6 +1341,7 @@
 				3696A5F92A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3639F24E2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */,
 				368225052A8DE7E10090A7A6 /* filter15s.png in Resources */,
+				3639F27A2A94F629002E1BA2 /* savedToAlbum2.png in Resources */,
 				3696A6082A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				368225192A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */,
 				36E5F1942A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,
@@ -1414,8 +1435,10 @@
 				3682251E2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
 				364A66D02A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D52A793950007F859C /* LeavesAppearing.mp3 in Resources */,
+				3639F27F2A94F62F002E1BA2 /* buyed.png in Resources */,
 				364A66E32A879324007C2103 /* surprise.mp3 in Resources */,
 				3696A5E02A756BDD00B59DCB /* SettingsButton.png in Resources */,
+				3639F2832A9503DA002E1BA2 /* 升级音效.wav in Resources */,
 				3639F2772A94E77B002E1BA2 /* saveToAlbum.png in Resources */,
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				364A669C2A875430007C2103 /* 花.png in Resources */,
@@ -1442,6 +1465,7 @@
 				3696A5FA2A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
 				3639F24F2A949AFE002E1BA2 /* cannotSeeLower.png in Resources */,
 				368225062A8DE7E10090A7A6 /* filter15s.png in Resources */,
+				3639F27B2A94F629002E1BA2 /* savedToAlbum2.png in Resources */,
 				3696A6092A76395900B59DCB /* NodToEatReminder.png in Resources */,
 				3682251A2A8F64F00090A7A6 /* earphoneskin0818.jpg in Resources */,
 				36E5F1952A7F993600C11B37 /* 虫儿飞.mp3 in Resources */,

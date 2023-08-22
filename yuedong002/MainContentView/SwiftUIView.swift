@@ -21,10 +21,10 @@ let notes: [Note] = [
     
     Note(startTime: 0.0, endTime: 0.01, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
-    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 1), //左
-    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.0), isTenuto: true, level: 1), //右
-    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: 1, z: 3.8), isTenuto: true, level: 2), //左
-    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: 1, z: -3.0), isTenuto: true, level: 2), //右
+    Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 1.4, z: 3.8), isTenuto: true, level: 1), //左
+    Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1.4, z: -3.0), isTenuto: true, level: 1), //右
+    Note(startTime: 16.0, endTime: 20.0, leafPosition: SCNVector3(x: 0, y: 1.4, z: 3.8), isTenuto: true, level: 2), //左
+    Note(startTime: 22.0, endTime: 26.0, leafPosition: SCNVector3(x: 0, y: 1.4, z: -3.0), isTenuto: true, level: 2), //右
     Note(startTime: 30.0, endTime: 34.0, leafPosition: SCNVector3(x: 3.0, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
     Note(startTime: 36.0, endTime: 40.0, leafPosition: SCNVector3(x: 3.0, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //前
     Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.0, y: 1.2, z: -0.0), isTenuto: true, level: 2),  //后
@@ -446,6 +446,11 @@ struct SwiftUIView: View {
                                     dataModel.isShowCorrectingPositionView = false
                                     scene.upWorld()
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                        if let url = Bundle.main.url(forResource: "升级音效", withExtension: "wav") {
+                                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                                    player?.play()
+                                                }
+
                                         withAnimation {
                                             isShowUpWorldCongratulationView = true
                                         }
@@ -486,7 +491,7 @@ struct SwiftUIView: View {
             if isShowUpWorldCongratulationView {
                 UpWorldCongratulationView()
                     .onAppear() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             withAnimation {
                                 isShowUpWorldCongratulationView = false
                             }

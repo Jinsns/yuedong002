@@ -150,45 +150,45 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         self.cameraNode = cameraNode
     }
     
-    func moveCameraNodeSmoothly(newPosition: SCNVector3) {
-//        //originalposition of cloud
-//        //cloudNode.position = SCNVector3(1, 9.4, 0)
-        var cloudNewPositionY: Float = 9.4
-        if newPosition.y == 8.0 {
-            cloudNewPositionY = 7.4//down to the border between two world
-        } else if newPosition.y <= 2.0 {
-            cloudNewPositionY = 9.4   //back to originalPosition
-        }
-        
-//        SCNTransaction.begin()
-//        SCNTransaction.animationDuration = 1.2
-//        self.cameraNode?.position = newPosition
-//        self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
-//        SCNTransaction.commit()
-        
-        if newPosition.y >= 2.0 {
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 1.2
-            self.cameraNode?.position = newPosition
-            self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
-            SCNTransaction.commit()
-        } else { //go down world
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 0.6
-            self.neckNode?.position = SCNVector3(x: 0.0, y: -3.0, z: 0.0)
-            
-            SCNTransaction.completionBlock = {
-                SCNTransaction.begin()
-                SCNTransaction.animationDuration = 1.2
-                self.backgroundNode?.position = SCNVector3(x: -35, y: 100, z: 0)
-                self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
-                self.neckNode?.position = SCNVector3(x: 0.0, y: -2.8, z: 0.0)
-                SCNTransaction.commit()
-            }
-                
-            SCNTransaction.commit()
-        }
-    }
+//    func moveCameraNodeSmoothly(newPosition: SCNVector3) {
+////        //originalposition of cloud
+////        //cloudNode.position = SCNVector3(1, 9.4, 0)
+//        var cloudNewPositionY: Float = 9.4
+//        if newPosition.y == 8.0 {
+//            cloudNewPositionY = 7.4//down to the border between two world
+//        } else if newPosition.y <= 2.0 {
+//            cloudNewPositionY = 9.4   //back to originalPosition
+//        }
+//
+////        SCNTransaction.begin()
+////        SCNTransaction.animationDuration = 1.2
+////        self.cameraNode?.position = newPosition
+////        self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
+////        SCNTransaction.commit()
+//
+//        if newPosition.y >= 2.0 {
+//            SCNTransaction.begin()
+//            SCNTransaction.animationDuration = 1.2
+//            self.cameraNode?.position = newPosition
+//            self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
+//            SCNTransaction.commit()
+//        } else { //go down world
+//            SCNTransaction.begin()
+//            SCNTransaction.animationDuration = 0.6
+//            self.neckNode?.position = SCNVector3(x: 0.0, y: -3.0, z: 0.0)
+//
+//            SCNTransaction.completionBlock = {
+//                SCNTransaction.begin()
+//                SCNTransaction.animationDuration = 1.2
+//                self.backgroundNode?.position = SCNVector3(x: -35, y: 100, z: 0)
+//                self.cloudNode?.position = SCNVector3(x: 1, y: cloudNewPositionY, z: 0)
+//                self.neckNode?.position = SCNVector3(x: 0.0, y: -2.8, z: 0.0)
+//                SCNTransaction.commit()
+//            }
+//
+//            SCNTransaction.commit()
+//        }
+//    }
     
     /* 在“地面”，有三种状态，下，中，上
      从中到下时，camera下移，背景和鹿不动
@@ -288,7 +288,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.completionBlock = {
             SCNTransaction.begin()
             SCNTransaction.animationDuration = 1.2
-            self.neckNode?.position = SCNVector3(x: 0.0, y: -3.2, z: 0)
+            self.neckNode?.position = SCNVector3(x: 0.0, y: -2.8, z: 0)
             self.backgroundNode?.position = SCNVector3(x: -35, y: 52, z: 0)  //from 66 -> 52
             self.cameraNode?.position = SCNVector3(x: 10, y: 2.0, z: 0.0)
             SCNTransaction.commit()
@@ -341,7 +341,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
         self.cameraNode?.position = SCNVector3(x: 10, y: 2, z: 0)
-        self.neckNode?.position = SCNVector3(0.0, -3.2, 0)
+        self.neckNode?.position = SCNVector3(0.0, -2.8, 0)
         SCNTransaction.commit()
     }
     
@@ -426,25 +426,25 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         }
         
         print("scene.rootNode.childNodes: ", scene.rootNode.childNodes)
-        let giraffeNode10 = scene.rootNode
+        let neckNode = scene.rootNode
         
         // 根据需要对脖子模型进行缩放和位置调整
         //in game position: self.neckNode?.position = SCNVector3(0.0, -3.2, 0)
-        giraffeNode10.scale = SCNVector3(1.0, 1.0, 1.0)   //缩放
-        giraffeNode10.position = SCNVector3(0.0, -3.2, 0.0) // 设置位置，根据需要调整
-        giraffeNode10.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
+        neckNode.scale = SCNVector3(1.0, 1.0, 1.0)   //缩放
+        neckNode.position = SCNVector3(0.0, -3.2, 0.0) // 设置位置，根据需要调整
+        neckNode.eulerAngles = SCNVector3(neckInitialXEulerAngle, neckInitialYEulerAngle, neckInitialZEulerAngle) // 设置旋转角度，根据需要调整
 
 
-        giraffeNode10.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .statgiffecan't collide
-        giraffeNode10.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
-        giraffeNode10.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
-        giraffeNode10.name = "neck"
+        neckNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: nil)  //if both neck and leaf are .statgiffecan't collide
+        neckNode.physicsBody?.categoryBitMask = 1 // Set a unique bitmask for the "neck" node
+        neckNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
+        neckNode.name = "neck"
         
-        giraffeNode10.geometry?.materials.first?.lightingModel = .lambert
-        giraffeNode10.categoryBitMask = LightType.onNeck
+        neckNode.geometry?.materials.first?.lightingModel = .lambert
+        neckNode.categoryBitMask = LightType.onNeck
         
-        self.rootNode.addChildNode(giraffeNode10)
-        self.neckNode = giraffeNode10
+        self.rootNode.addChildNode(neckNode)
+        self.neckNode = neckNode
         
     
     }
@@ -464,8 +464,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         } else if ornamentName == "戒指" {
             scene = SCNScene(named: "戒指0822.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.2, 1.2, 1.2)
-            ornament.position = SCNVector3(x: 0, y: 3 , z: 0.25)
+            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
+            ornament.position = SCNVector3(x: 0, y: 3 , z: 0.24)
         } else if ornamentName == "天使" {
             scene = SCNScene(named: "天使.dae")!
             ornament = scene!.rootNode

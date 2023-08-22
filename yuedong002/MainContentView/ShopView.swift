@@ -27,149 +27,167 @@ struct ShopView: View {
     @Binding var isShowShopView: Bool
     @State var isMineOrShop = true
     @State var selectedItem = 1
+    @State var isShowBuyedView = false
     
     @ObservedObject var scene: GiraffeScene
     
     let greenTextColor = Color(red: 0.59, green: 0.74, blue: 0.43)
     
     var body: some View {
-        VStack {
-//            VStack(alignment: .leading, spacing: 0) {
-//                Rectangle()
-//                    .foregroundColor(.black.opacity(0.4))
-//            }
-//            .padding(0)
-//            .cornerRadius(13)
-//            .frame(width: 170, height: 696)
-//            .offset(x: 104, y: 68)
-//            .blur(radius: 10)
-            
+        ZStack {
             VStack {
-                HStack(alignment: .center, spacing: 200) {
-                    HStack(spacing: 2) {
-                        Button {
-                            print("pressed back button in shop")
-                            isShowShopView = false
-                            scene.moveCameraNodeAndNeckNodeToGamePosition()
-                        } label: {
-                            Image("backFromShop")
-                                .frame(width: 6.26382, height: 12.94523)
-                            Text("返回")
-                                .font(Font.custom("DFPYuanW7-GB", size: 20))
-                                .kerning(0.4)
-                                .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+    //            VStack(alignment: .leading, spacing: 0) {
+    //                Rectangle()
+    //                    .foregroundColor(.black.opacity(0.4))
+    //            }
+    //            .padding(0)
+    //            .cornerRadius(13)
+    //            .frame(width: 170, height: 696)
+    //            .offset(x: 104, y: 68)
+    //            .blur(radius: 10)
+                
+                VStack {
+                    HStack(alignment: .center, spacing: 200) {
+                        HStack(spacing: 2) {
+                            Button {
+                                print("pressed back button in shop")
+                                isShowShopView = false
+                                scene.moveCameraNodeAndNeckNodeToGamePosition()
+                            } label: {
+                                Image("backFromShop")
+                                    .frame(width: 6.26382, height: 12.94523)
+                                Text("返回")
+                                    .font(Font.custom("DFPYuanW7-GB", size: 20))
+                                    .kerning(0.4)
+                                    .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                            }
+                        }
+                        
+                        HStack(spacing: 4) {
+                            Text("\(totalLeaves)")
+                              .font(Font.custom("LilitaOne", size: 25.05524))
+                              .kerning(0.5011)
+                              .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                            Rectangle()
+                              .foregroundColor(.clear)
+                              .frame(width: 31, height: 33)
+            //                  .position(x:40.5, y:16.5)
+                              .background(
+                                Image("leaf")
+                                  .resizable()
+                                  .aspectRatio(contentMode: .fill)
+                                  .frame(width: 31, height: 33)
+                                  .clipped()
+                              )
                         }
                     }
+                    .padding(.top, 60)
                     
-                    HStack(spacing: 4) {
-                        Text("\(totalLeaves)")
-                          .font(Font.custom("LilitaOne", size: 25.05524))
-                          .kerning(0.5011)
-                          .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                        Rectangle()
-                          .foregroundColor(.clear)
-                          .frame(width: 31, height: 33)
-        //                  .position(x:40.5, y:16.5)
-                          .background(
-                            Image("leaf")
-                              .resizable()
-                              .aspectRatio(contentMode: .fill)
-                              .frame(width: 31, height: 33)
-                              .clipped()
-                          )
-                    }
                 }
-                .padding(.top, 60)
+                
+                Spacer()
+                
+                HStack(alignment: .center) {
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: 0) {
+                        HStack(alignment: .center , spacing: -1.044) {
+                            HStack(alignment: .center, spacing: 0) {
+                                HStack(alignment: .center, spacing: 0) {
+                                    Button {
+                                        print("pressed shop")
+                                        isMineOrShop = false
+                                    } label: {
+                                        Text("商店")
+                                          .font(Font.custom("DFPYuanW9-GB", size: 16))
+                                          .multilineTextAlignment(.center)
+                                          .foregroundColor(!isMineOrShop ? .white : greenTextColor)
+                                          .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
+                                    }
+
+                                    
+                                }
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 3)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                .background(!isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
+                                .cornerRadius(9)
+        //                        .cornerRadius(isMineOrShop ? 0 : 9)
+                                
+                                HStack(alignment: .center, spacing: 0) {
+                                    Button {
+                                        print("pressed mine")
+                                        isMineOrShop = true
+                                    } label: {
+                                        Text("我的")
+                                          .font(Font.custom("DFPYuanW9-GB", size: 16))
+                                          .multilineTextAlignment(.center)
+                                          .foregroundColor(isMineOrShop ? .white : greenTextColor)
+                                          .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
+                                    }
+
+                                    
+                                }
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 3)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                .background(isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
+                                .cornerRadius(9)
+        //                        .cornerRadius(isMineOrShop ? 9 : 0)
+                                
+                            }
+                            .padding(7)
+                            .frame(width: 160, height: 48, alignment: .center)
+    //                        .background(.white.opacity(0.7))
+        //                    .background(.black)
+                            .cornerRadius(8)
+                        }
+                        .padding(0)
+                        .padding(.leading, 7.8)
+        //                .cornerRadius(10)
+                        
+                        
+                        if isMineOrShop {
+                            MyItems(scene: scene)
+                                .offset(x: 8, y: -8)
+        //                        .background(.black)
+                        } else {
+                            ShopItems(selectedItem: $selectedItem, scene: scene, totalLeaves: $totalLeaves, isShowBuyedView: $isShowBuyedView)
+                                .offset(x: 8, y: -8)
+                        }
+                        
+
+                    }  //outer stack containing 商店，我的，items
+    //                .padding(0)
+                    .cornerRadius(13)
+                    .padding(.trailing, 20)
+        //                .offset(x:100, y: -10)
+        //                .scaleEffect(<#T##scale: CGSize##CGSize#>)
+                    .background(
+                        Image("blurredbg")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 170, height: 696)
+                            .clipped()
+                    )
+                }
                 
             }
             
-            Spacer()
-            
-            HStack(alignment: .center) {
-                Spacer()
-                VStack(alignment: .trailing, spacing: 0) {
-                    HStack(alignment: .center , spacing: -1.044) {
-                        HStack(alignment: .center, spacing: 0) {
-                            HStack(alignment: .center, spacing: 0) {
-                                Button {
-                                    print("pressed shop")
-                                    isMineOrShop = false
-                                } label: {
-                                    Text("商店")
-                                      .font(Font.custom("DFPYuanW9-GB", size: 16))
-                                      .multilineTextAlignment(.center)
-                                      .foregroundColor(!isMineOrShop ? .white : greenTextColor)
-                                      .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
-                                }
-
-                                
+            if isShowBuyedView {
+                Image("buyed")
+                    .offset(x: 0, y: -160)
+                    .onAppear() {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            withAnimation(.easeOut(duration: 0.8)) {
+                                isShowBuyedView = false
                             }
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 3)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                            .background(!isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
-                            .cornerRadius(9)
-    //                        .cornerRadius(isMineOrShop ? 0 : 9)
-                            
-                            HStack(alignment: .center, spacing: 0) {
-                                Button {
-                                    print("pressed mine")
-                                    isMineOrShop = true
-                                } label: {
-                                    Text("我的")
-                                      .font(Font.custom("DFPYuanW9-GB", size: 16))
-                                      .multilineTextAlignment(.center)
-                                      .foregroundColor(isMineOrShop ? .white : greenTextColor)
-                                      .frame(maxWidth: .infinity, minHeight: 18, maxHeight: 18, alignment: .top)
-                                }
-
-                                
-                            }
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 3)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                            .background(isMineOrShop ? Color(red: 0.49, green: 0.73, blue: 0.22) : .white)
-                            .cornerRadius(9)
-    //                        .cornerRadius(isMineOrShop ? 9 : 0)
                             
                         }
-                        .padding(7)
-                        .frame(width: 160, height: 48, alignment: .center)
-//                        .background(.white.opacity(0.7))
-    //                    .background(.black)
-                        .cornerRadius(8)
                     }
-                    .padding(0)
-                    .padding(.leading, 7.8)
-    //                .cornerRadius(10)
-                    
-                    
-                    if isMineOrShop {
-                        MyItems(scene: scene)
-                            .offset(x: 8, y: -8)
-    //                        .background(.black)
-                    } else {
-                        ShopItems(selectedItem: $selectedItem, scene: scene, totalLeaves: $totalLeaves)
-                            .offset(x: 8, y: -8)
-                    }
-                    
-
-                }  //outer stack containing 商店，我的，items
-//                .padding(0)
-                .cornerRadius(13)
-                .padding(.trailing, 20)
-    //                .offset(x:100, y: -10)
-    //                .scaleEffect(<#T##scale: CGSize##CGSize#>)
-                .background(
-                    Image("blurredbg")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 170, height: 696)
-                        .clipped()
-                )
             }
             
         }
+
         
     }
     
@@ -252,6 +270,7 @@ struct ShopItems: View {
     @ObservedObject var scene: GiraffeScene
     @State var itemPrice: Int = 0
     @Binding var totalLeaves: Int
+    @Binding var isShowBuyedView: Bool
     
     var body: some View {
         VStack(alignment: .center, spacing: 20.87937) {
@@ -460,6 +479,7 @@ struct ShopItems: View {
             HStack(alignment: .center, spacing: 7.33974) {
                 Button {
                     print("pressed buy button")
+                    isShowBuyedView = true
                     if let url = Bundle.main.url(forResource: "Shop_BuyItBtn", withExtension: "mp3") {
                                 let player = AVAudioPlayerPool().playerWithURL(url: url)
                                 player?.play()

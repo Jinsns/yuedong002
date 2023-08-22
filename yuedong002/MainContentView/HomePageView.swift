@@ -668,7 +668,10 @@ struct ArrowButtonsView: View {
                             viewState = 3
                         } else if viewState == 1 {
                             scene.world1ViewDown2Mid()
-                            viewState = 2
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                                viewState = 2
+                            }
+                            
                         } else if viewState == 3 {
                             withAnimation(.easeIn(duration: 0.5)) {
                                 dataModel.isShowCannotSeeHigherView = true
@@ -682,7 +685,9 @@ struct ArrowButtonsView: View {
                             viewState = 3
                         } else if viewState == 1 {
                             scene.world2ViewDown2Mid()
-                            viewState = 2
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                                viewState = 2
+                            }
                         } else if viewState == 3 {
                             withAnimation(.easeIn(duration: 0.5)) {
                                 dataModel.isShowCannotSeeHigherView = true
@@ -712,7 +717,9 @@ struct ArrowButtonsView: View {
                     if worldName == "地面" {
                         if viewState == 3 {
                             scene.world1ViewUp2Mid()
-                            viewState = 2
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                                viewState = 2
+                            }
                         } else if viewState == 2 {
                             scene.world1ViewMid2Down()
                             viewState = 1
@@ -771,7 +778,9 @@ struct ArrowButtonsView: View {
                     } else if worldName == "云中秘境" {
                         if viewState == 3 {
                             scene.world2ViewUp2Mid()
-                            viewState = 2
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                                viewState = 2
+                            }
                         } else if viewState == 2 {
                             scene.world2ViewMid2Down()
                             viewState = 1
