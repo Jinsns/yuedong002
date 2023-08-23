@@ -96,6 +96,10 @@ struct ShopView: View {
                                     Button {
                                         print("pressed shop")
                                         isMineOrShop = false
+                                        if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                                    player?.play()
+                                                }
                                     } label: {
                                         Text("商店")
                                           .font(Font.custom("DFPYuanW9-GB", size: 16))
@@ -117,6 +121,11 @@ struct ShopView: View {
                                     Button {
                                         print("pressed mine")
                                         isMineOrShop = true
+                                        if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
+                                                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                                    player?.play()
+                                                }
+                                        
                                     } label: {
                                         Text("我的")
                                           .font(Font.custom("DFPYuanW9-GB", size: 16))

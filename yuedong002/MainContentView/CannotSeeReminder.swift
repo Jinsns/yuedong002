@@ -12,7 +12,7 @@ struct CannotSeeHigherReminder: View {
         VStack {
             
             Image("cannotSeeHigher")
-                .padding(.top, 160)
+                .padding(.top, 320)
             Spacer()
             
             
@@ -33,7 +33,7 @@ struct CannotSeeLowerReminder: View {
 
 struct CannotSeeReminder_Previews: PreviewProvider {
     static var previews: some View {
-        CannotSeeHigherReminder()
-//        CannotSeeLowerReminder()
+//        CannotSeeHigherReminder()
+        CannotSeeLowerReminder()
     }
 }

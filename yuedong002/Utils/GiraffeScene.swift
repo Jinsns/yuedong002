@@ -211,7 +211,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 
         SCNTransaction.begin()
         SCNTransaction.animationDuration = 1.2
-        self.cameraNode?.position = SCNVector3(x: 10, y: 8.0, z: 0)
+        self.cameraNode?.position = SCNVector3(x: 10, y: 9.0, z: 0)
 //        self.cloudNode?.position = SCNVector3(x: 1, y: 7.4, z: 0)  //先不动云的位置试试视觉效果
         SCNTransaction.commit()
     }

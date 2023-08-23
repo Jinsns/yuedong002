@@ -17,6 +17,9 @@ struct UpWorldCongratulationView: View {
               .background(.black.opacity(0.6))
             Image("upWorldCongratulation")
                 .frame(width: 580, height: 603)
+                .offset(x: 0, y: -110)
+//            Image("upWorldCongratulation")
+//                .frame(width: 580, height: 603)
             
             
         }

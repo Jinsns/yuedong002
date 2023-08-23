@@ -57,7 +57,7 @@ var noteIterator = 0
 
 struct SwiftUIView: View {
     @AppStorage("neckLength") var neckLength: Int = 100
-    @AppStorage("totalLeaves") var totalLeaves: Int = 0
+    @AppStorage("totalLeaves") var totalLeaves: Int = 5000
     @StateObject var dataModel = DataModel()
     @State var worldName: String = "地面"
 //    @State var worldName: String = "云中秘境"  //for testing
