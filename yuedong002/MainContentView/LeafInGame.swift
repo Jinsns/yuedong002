@@ -86,7 +86,7 @@ struct leaf1: View {
 //        .scaleEffect(0.8)  //backward
         .offset(
             x: (leafPosition == "left") ? -160 : ((leafPosition == "right") ? 160 : 0),
-                y: (leafPosition == "fore") ? 130 : ((leafPosition == "back") ? -135 : 0)
+                y: (leafPosition == "fore") ? 130 : ((leafPosition == "back") ? -145 : 0)
         )
         
         .onAppear() {

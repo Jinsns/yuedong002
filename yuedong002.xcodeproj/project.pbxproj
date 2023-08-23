@@ -120,6 +120,9 @@
 		3639F2892A95282C002E1BA2 /* handSupport.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2882A95282C002E1BA2 /* handSupport.png */; };
 		3639F28A2A95282C002E1BA2 /* handSupport.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2882A95282C002E1BA2 /* handSupport.png */; };
 		3639F28B2A95282C002E1BA2 /* handSupport.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2882A95282C002E1BA2 /* handSupport.png */; };
+		3639F28D2A95B213002E1BA2 /* handSupport0823.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F28C2A95B212002E1BA2 /* handSupport0823.png */; };
+		3639F28E2A95B213002E1BA2 /* handSupport0823.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F28C2A95B212002E1BA2 /* handSupport0823.png */; };
+		3639F28F2A95B213002E1BA2 /* handSupport0823.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F28C2A95B212002E1BA2 /* handSupport0823.png */; };
 		364A66762A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66772A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66782A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
@@ -528,6 +531,7 @@
 		3639F2802A9503DA002E1BA2 /* 升级音效.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "升级音效.wav"; sourceTree = "<group>"; };
 		3639F2842A951BE9002E1BA2 /* 换装声音2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "换装声音2.wav"; sourceTree = "<group>"; };
 		3639F2882A95282C002E1BA2 /* handSupport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handSupport.png; sourceTree = "<group>"; };
+		3639F28C2A95B212002E1BA2 /* handSupport0823.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handSupport0823.png; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
 		364A66852A867779007C2103 /* GetScore0811.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore0811.mp3; sourceTree = "<group>"; };
@@ -742,6 +746,7 @@
 				3639F2782A94F628002E1BA2 /* savedToAlbum2.png */,
 				3639F27C2A94F62F002E1BA2 /* buyed.png */,
 				3639F2882A95282C002E1BA2 /* handSupport.png */,
+				3639F28C2A95B212002E1BA2 /* handSupport0823.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1139,6 +1144,7 @@
 				3639F2892A95282C002E1BA2 /* handSupport.png in Resources */,
 				3639F2452A93B989002E1BA2 /* upWorldCongratulation.png in Resources */,
 				364A66762A862FF4007C2103 /* songEndBG2.png in Resources */,
+				3639F28D2A95B213002E1BA2 /* handSupport0823.png in Resources */,
 				3696A5FE2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				3639F2392A926119002E1BA2 /* 香蕉纹理-1红.png in Resources */,
 				3639F2792A94F629002E1BA2 /* savedToAlbum2.png in Resources */,
@@ -1321,6 +1327,7 @@
 				368726F82A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				3639F2322A926103002E1BA2 /* 香蕉.dae in Resources */,
 				367689182A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
+				3639F28E2A95B213002E1BA2 /* handSupport0823.png in Resources */,
 				3682251D2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
 				364A66CF2A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D42A793950007F859C /* LeavesAppearing.mp3 in Resources */,
@@ -1447,6 +1454,7 @@
 				368726F92A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				3639F2332A926103002E1BA2 /* 香蕉.dae in Resources */,
 				367689192A80D5F700B3C6D4 /* AltArrowLeft.svg in Resources */,
+				3639F28F2A95B213002E1BA2 /* handSupport0823.png in Resources */,
 				3682251E2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
 				364A66D02A87862F007C2103 /* Pitaya.png in Resources */,
 				368726D52A793950007F859C /* LeavesAppearing.mp3 in Resources */,

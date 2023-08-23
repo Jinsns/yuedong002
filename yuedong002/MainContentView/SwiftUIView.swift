@@ -369,7 +369,7 @@ struct SwiftUIView: View {
                         }
                     }
                     
-                    if newValue >= 25 && isHandSupportReminded == false {
+                    if newValue >= 11.0 && isHandSupportReminded == false {
                         isHandSupportReminded = true
                         withAnimation(.easeIn(duration: 0.6)) {
                             isShowHandSupportView = true
@@ -467,7 +467,7 @@ struct SwiftUIView: View {
                             print("countscoreview disappear")
                             isShowCountScoreView = false
                             viewState = 4
-                            if neckLength >= neckLengthLevel[0] {
+                            if neckLength >= neckLengthLevel[0] && worldName == "地面" {
                                 
                                     
                                 scene.upWorld()

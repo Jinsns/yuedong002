@@ -84,7 +84,7 @@ struct CountScoreView: View {
                         Text("+")
                             .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
                         Text("\(dLeaves)")
-                            .foregroundColor(Color(red: 0.25, green: 0.47, blue: 0))
+                            .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
                             
                     }
                     .font(Font.custom("Lilita One", size: 32))
@@ -134,7 +134,7 @@ struct CountScoreView: View {
             VStack(spacing: 40){
                 Spacer()
                 VStack(alignment: .center, spacing: 23) {
-                    Text("哦哦～脖子长度+\(Int(scene.score / 5))cm")
+                    Text("哇哦～脖子长度+\(Int(scene.score / 5))cm")
                         .font(Font.custom("DFPYuanW9-GB", size: 25.05524))
                         .kerning(0.5011)
                         .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
@@ -143,7 +143,7 @@ struct CountScoreView: View {
                       .kerning(0.64)
                       .multilineTextAlignment(.center)
                       .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
-                      .frame(width: 192, alignment: .center)
+//                      .frame(width: 162, alignment: .center)
                       .lineSpacing(10)   //调整行间距
                 } //text VStack
 //                .padding(.top, 180)

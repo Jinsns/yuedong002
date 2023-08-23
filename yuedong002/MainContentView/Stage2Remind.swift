@@ -80,8 +80,8 @@ struct handSupportRemindView: View {
             Image("handSupport")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 200)
-                .offset(x: 0, y: -100)
+                .frame(width: 140)
+                .offset(x: 0, y: 110)
         }
         
     }
