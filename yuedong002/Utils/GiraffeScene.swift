@@ -455,10 +455,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         var scene: SCNScene?
         var ornament: SCNNode!
         if ornamentName == "墨镜" {
-            scene = SCNScene(named: "墨镜0820.dae")!
+            scene = SCNScene(named: "墨镜0827.dae")!
             ornament = scene!.rootNode
-            ornament.scale = SCNVector3(1.0, 1.0, 1.0)
-            ornament.position = SCNVector3(x: 0, y: 2 , z: 0)
+            ornament.scale = SCNVector3(0.8, 0.8, 0.8)
+            ornament.position = SCNVector3(x: 1.0, y: 5.36, z: 0.08)
 //            ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: Float.pi / 2)
             
         } else if ornamentName == "戒指" {
@@ -518,8 +518,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                 print("no geometry found")
             }
             
-            ornament.scale = SCNVector3(2.0, 2.0, 2.0)
-            ornament.position = SCNVector3(x: -8, y: 0, z: -1)
+            ornament.scale = SCNVector3(0.4, 0.4, 0.4)
+            ornament.position = SCNVector3(x: 0, y: 5.5, z: 0.4)
             ornament.eulerAngles = SCNVector3(x: Float.pi , y: 0, z: -Float.pi / 2)
             ornament.categoryBitMask = LightType.onNeck
         } else if ornamentName == "椰子树" {
@@ -547,8 +547,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                 print("no geometry found")
             }
             
-            ornament.scale = SCNVector3(5.0, 5.0, 5.0)
-            ornament.position = SCNVector3(x: -8, y: 0, z: 10)
+            ornament.scale = SCNVector3(1.4, 1.4, 1.4)
+            ornament.position = SCNVector3(x: -2.0, y: 5.8, z: 0.4)
             ornament.eulerAngles = SCNVector3(x: 0, y: -Float.pi / 2, z: 0)
             ornament.categoryBitMask = LightType.onNeck
             

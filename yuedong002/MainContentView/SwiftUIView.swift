@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SceneKit
+import UserNotifications
+
 
 let neckLengthLevel: [Int] = [120, 200]
 
@@ -103,6 +105,12 @@ struct SwiftUIView: View {
     
     @State var isShowHandSupportView = false
     @State var isHandSupportReminded = false
+    
+    @State var isShowListenRemindView = false
+    @State var listenRemindViewShowed = false
+    
+    @State var isShowTasteGoodView = false
+    @State var tasteGoodViewShowed = false
     
     @State var viewState: Int = 2
     
@@ -296,7 +304,7 @@ struct SwiftUIView: View {
                     }
                     
                     if isShowHandSupportView {
-                        handSupportRemindView()
+                        HandSupportRemindView()
                             .onAppear() {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                     withAnimation(.easeOut(duration: 0.6)) {
@@ -307,11 +315,36 @@ struct SwiftUIView: View {
                             }
                     }
                     
+                    if isShowTasteGoodView {
+                        TasteGoodView()
+                            .onAppear() {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    withAnimation(.easeOut(duration: 0.6)) {
+                                        isShowTasteGoodView = false
+                                    }
+                                    
+                                }
+                            }
+
+                    } else if isShowListenRemindView {
+                        ListenRemindView()
+                            .onAppear() {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    withAnimation(.easeOut(duration: 0.6)) {
+                                        isShowListenRemindView = false
+                                    }
+                                    
+                                }
+                            }
+
+                    }
+                    
+                                        
                     if isShowPause {
                         Color.black.opacity(0.1)  //darken background of PauseAlertView
                             .ignoresSafeArea()
                         PauseAlertView(isShowPause: $isShowPause, isShowCountScoreView: $isShowCountScoreView, leafNum: $scene.score)
-                            .zIndex(11)
+                            .zIndex(12)
                     }
                     
 
@@ -358,6 +391,21 @@ struct SwiftUIView: View {
                     
                 }
                 .onChange(of: bgmSystem.currentTime) { newValue in
+                    
+                    if newValue >= 2.0 && listenRemindViewShowed == false {
+                        listenRemindViewShowed = true
+                        withAnimation(.default) {
+                            isShowListenRemindView = true
+                        }
+                        
+                    }
+                    
+                    if newValue >= 54.0 && tasteGoodViewShowed == false {
+                        tasteGoodViewShowed = true
+                        withAnimation(.default) {
+                            isShowTasteGoodView = true
+                        }
+                    }
                     
                     if newValue >= 15.0 && extraLightAdded == false {
     //                    scene.addExtraLight()
@@ -509,6 +557,8 @@ struct SwiftUIView: View {
                         withAnimation(.easeIn(duration: 0.8)) {
                             isInHomePage = true
                         }
+                        setNotification()
+                        makeNotification()
                         
                     }
             }
@@ -700,3 +750,67 @@ func cropImage(image: UIImage, cropRect: CGRect) -> UIImage? {
     }
     return nil
 }
+
+
+//获取通知权限
+func setNotification(){
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]){ (granted, _) in
+        if granted {
+            //用户同意我们推送通知
+            print("用户同意我们推送通知")
+        }else{
+            //用户不同意
+            print("用户不同意")
+        }
+    }
+}
+
+//推送通知
+func makeNotification(){
+    //四小时发一次通知
+    let trigger0 = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+    
+    
+    //设置通知的时间：推送时间为6点30分
+    var dateComponents1 = DateComponents()
+    dateComponents1.hour = 10
+//    dateComponents.minute = 30
+    //这里最后让repeats为true表示每天的10点30分都会推送通知
+    let trigger1 = UNCalendarNotificationTrigger(dateMatching: dateComponents1, repeats: true)
+    
+    var dateComponents2 = DateComponents()
+    dateComponents2.hour = 14
+    let trigger2 = UNCalendarNotificationTrigger(dateMatching: dateComponents1, repeats: true)
+    
+    var dateComponents3 = DateComponents()
+    dateComponents3.hour = 18
+    let trigger3 = UNCalendarNotificationTrigger(dateMatching: dateComponents1, repeats: true)
+    
+    var dateComponents4 = DateComponents()
+    dateComponents4.hour = 22
+    let trigger4 = UNCalendarNotificationTrigger(dateMatching: dateComponents1, repeats: true)
+    
+    //通知的内容
+    let content = UNMutableNotificationContent()
+    content.title = "乐动一下"
+    content.body = "老大，是时候动动脖子啦。"
+    content.sound = UNNotificationSound.default
+    /* 需要注意这个自定义的提示音不能超过30秒，不然系统会播放默认声音 */
+//    content.sound = UNNotificationSound.init(named: UNNotificationSoundName("ring.m4a"))
+    
+    //完成通知的设置
+    let request0 = UNNotificationRequest(identifier: "通知名称", content: content, trigger: trigger0)
+    
+    let request1 = UNNotificationRequest(identifier: "通知名称", content: content, trigger: trigger1)
+    let request2 = UNNotificationRequest(identifier: "通知名称", content: content, trigger: trigger2)
+    let request3 = UNNotificationRequest(identifier: "通知名称", content: content, trigger: trigger3)
+    let request4 = UNNotificationRequest(identifier: "通知名称", content: content, trigger: trigger4)
+    
+    //添加我们的通知到UNUserNotificationCenter推送的队列里
+    UNUserNotificationCenter.current().add(request0, withCompletionHandler: nil)
+//    UNUserNotificationCenter.current().add(request1, withCompletionHandler: nil)
+//    UNUserNotificationCenter.current().add(request2, withCompletionHandler: nil)
+//    UNUserNotificationCenter.current().add(request3, withCompletionHandler: nil)
+//    UNUserNotificationCenter.current().add(request4, withCompletionHandler: nil)
+}
+

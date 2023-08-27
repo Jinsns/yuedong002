@@ -74,7 +74,7 @@ struct Likeyou: View {
     }
 }
 
-struct handSupportRemindView: View {
+struct HandSupportRemindView: View {
     var body: some View {
         VStack {
             Image("handSupport")
@@ -87,6 +87,34 @@ struct handSupportRemindView: View {
     }
 }
 
+struct ListenRemindView: View {
+    var body: some View {
+        VStack {
+            Image("listenRemind")
+                .padding(.top, 220)
+            
+            Spacer()
+            
+                
+        }
+        
+    }
+}
+
+struct TasteGoodView: View {
+    var body: some View {
+        VStack {
+            Image("tasteGood")
+                .padding(.top, 220)
+            
+            Spacer()
+            
+                
+        }
+        
+    }
+}
+
 struct Stage2Remind_Previews: PreviewProvider {
     static var previews: some View {
 //        Stage2Remind()
@@ -94,7 +122,9 @@ struct Stage2Remind_Previews: PreviewProvider {
 //        Taikula()
 //        Likeyou()
 //        Filter15s()
-        handSupportRemindView()
+//        HandSupportRemindView()
+//        ListenRemindView()
+        TasteGoodView()
         
     }
 }
