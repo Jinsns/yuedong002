@@ -21,7 +21,7 @@ let notes: [Note] = [
     //y 大 屏幕上
     //z 大 屏幕左， x，z和头运动方向一致
     
-    Note(startTime: 0.0, endTime: 0.01, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
+    Note(startTime: 0.0, endTime: 0.1, leafPosition: SCNVector3(x: 3.0, y: -1.0, z: 0), isTenuto: false, level: 1), //吃掉第一个叶子启动游戏，位置固定在正下方
     
     Note(startTime: 4.0, endTime: 8.0, leafPosition: SCNVector3(x: 0, y: 1.4, z: 3.8), isTenuto: true, level: 1), //左
     Note(startTime: 10.0, endTime: 14.0, leafPosition: SCNVector3(x: 0, y: 1.4, z: -3.0), isTenuto: true, level: 1), //右
@@ -32,11 +32,11 @@ let notes: [Note] = [
     Note(startTime: 42.0, endTime: 46.0, leafPosition: SCNVector3(x: -3.0, y: 1.2, z: -0.0), isTenuto: true, level: 2),  //后
     Note(startTime: 48.0, endTime: 52.0, leafPosition: SCNVector3(x: -3.0, y: 1.2, z: -0.0), isTenuto: true, level: 3),  //后
     
-    Note(startTime: 65.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
+    Note(startTime: 68.0, endTime: 75.0, leafPosition: SCNVector3(x: 1.5, y: -1.5, z: -1), isTenuto: true, level: 1)  //最后添加一个开始时间大于歌曲时长的，避免array index out of range
 ]
 
 let noteUIs: [NoteUI] = [
-    NoteUI(startTime: 0.0, endTime: 0.01, leafPosition: "fore", isTenuto: false, level: 1),   //平面ui 不要第一个叶子，第一个叶子用三维模型做
+    NoteUI(startTime: 0.0, endTime: 0.1, leafPosition: "fore", isTenuto: false, level: 1),   //平面ui 不要第一个叶子，第一个叶子用三维模型做
     
     NoteUI(startTime: 4.0, endTime: 8.0, leafPosition: "left", isTenuto: true, level: 1),
     NoteUI(startTime: 10.0, endTime: 14.0, leafPosition: "right", isTenuto: true, level: 1),
@@ -47,7 +47,7 @@ let noteUIs: [NoteUI] = [
     NoteUI(startTime: 42.0, endTime: 46.0, leafPosition: "back", isTenuto: true, level: 2),
     NoteUI(startTime: 48.0, endTime: 52.0, leafPosition: "back", isTenuto: true, level: 3),
     
-    NoteUI(startTime: 65.0, endTime: 75.0, leafPosition: "left", isTenuto: true, level: 1),
+    NoteUI(startTime: 68.0, endTime: 75.0, leafPosition: "left", isTenuto: true, level: 1),
     NoteUI(startTime: 85.0, endTime: 95.0, leafPosition: "left", isTenuto: true, level: 1),
 ]
 
@@ -127,6 +127,11 @@ struct SwiftUIView: View {
             if isInHomePage {
                 HomePageView(totalLeaves: $totalLeaves, neckLength: $neckLength, worldName: $worldName, scene: scene, isLeafAdded: $isLeafAdded, viewState: $viewState)
                     .onAppear{
+                        if worldName == "地面" {
+                            bgmSystem.setPlaySource(bgmURL: urlCaterpillarsFly!)
+                        } else {
+                            bgmSystem.setPlaySource(bgmURL: urlYoruShizukani!)
+                        }
                         bgmSystem.audioPlayer?.prepareToPlay()
 //                        soundEffectSystem.prepareToPlay()
                         scene.score = 0
@@ -514,21 +519,27 @@ struct SwiftUIView: View {
                         .onDisappear(){
                             print("countscoreview disappear")
                             isShowCountScoreView = false
-                            viewState = 4
+                            isInHomePage = true
+                            
                             if neckLength >= neckLengthLevel[0] && worldName == "地面" {
-                                
+                                viewState = 4
                                     
                                 scene.upWorld()
+                                bgmSystem.setPlaySource(bgmURL: urlYoruShizukani!)
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                     if let url = Bundle.main.url(forResource: "升级音效", withExtension: "wav") {
-                                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                                player?.play()
-                                            }
+                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                        player?.play()
+                                    }
 
                                     withAnimation {
                                         isShowUpWorldCongratulationView = true
                                     }
     
+                                }
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+                                    viewState = 2
                                 }
                                 
                                 
@@ -792,8 +803,8 @@ func makeNotification(){
     
     //通知的内容
     let content = UNMutableNotificationContent()
-    content.title = "乐动一下"
-    content.body = "老大，是时候动动脖子啦。"
+    content.title = "乐动时间"
+    content.body = "老大，是时候动动脖子了!"
     content.sound = UNNotificationSound.default
     /* 需要注意这个自定义的提示音不能超过30秒，不然系统会播放默认声音 */
 //    content.sound = UNNotificationSound.init(named: UNNotificationSoundName("ring.m4a"))

@@ -440,7 +440,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         neckNode.physicsBody?.contactTestBitMask = 2 // Set the bitmask of nodes to be notified about contact
         neckNode.name = "neck"
         
-        neckNode.geometry?.materials.first?.lightingModel = .lambert
+        neckNode.geometry?.materials.first?.lightingModel = .constant
         neckNode.categoryBitMask = LightType.onNeck
         
         self.rootNode.addChildNode(neckNode)
@@ -518,8 +518,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
                 print("no geometry found")
             }
             
-            ornament.scale = SCNVector3(0.4, 0.4, 0.4)
-            ornament.position = SCNVector3(x: 0, y: 5.5, z: 0.4)
+            ornament.scale = SCNVector3(0.2, 0.2, 0.2)
+            ornament.position = SCNVector3(x: 0.25, y: 5.7, z: 0.3)
             ornament.eulerAngles = SCNVector3(x: Float.pi , y: 0, z: -Float.pi / 2)
             ornament.categoryBitMask = LightType.onNeck
         } else if ornamentName == "椰子树" {
@@ -722,7 +722,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         omniLightNode2.light?.color = UIColor(red: 1.0, green: 0.733, blue: 0.273, alpha: 1.0)
 //        omniLightNode2.light?.color = UIColor(red: 1.00, green: 0.358, blue: 0.625, alpha: 0.5)
         omniLightNode2.position = SCNVector3(30, 25, -6)
-        omniLightNode2.eulerAngles = SCNVector3(x: 0, y: -Float.pi / 2, z: 0)
+        omniLightNode2.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
         omniLightNode2.light?.categoryBitMask = LightType.onNeck
         omniLightNode2.light?.intensity = 1000
 

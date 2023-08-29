@@ -61,6 +61,17 @@ class BgmSystem: ObservableObject {
         self.duration = audioPlayer?.duration ?? 3.0
     }
     
+    func setPlaySource(bgmURL: URL) {
+        do {
+            self.audioPlayer = try AVAudioPlayer(contentsOf: bgmURL)
+        } catch {
+            print("error when setting PlaySource.")
+        }
+        
+        self.isPlaying = false
+        self.duration = audioPlayer?.duration ?? 3.0
+    }
+    
     
     func play() {
         if self.isPlaying == false {

@@ -22,6 +22,7 @@ let urlF = URL(fileURLWithPath: pathF)
 let urlSpatialMoonRiver = URL(fileURLWithPath: pathSpatialMoonRiver)
 let homePageBgmURL = Bundle.main.url(forResource: "BGM_HomepageAndCamera", withExtension: "mp3")
 let urlCaterpillarsFly = Bundle.main.url(forResource: "虫儿飞", withExtension: "mp3")
+let urlYoruShizukani = Bundle.main.url(forResource: "晚上安静", withExtension: "mp3")
 
 
 struct Note {

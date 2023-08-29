@@ -211,6 +211,10 @@ struct MyItems: View {
                 
                 Button {
                     print("pressed sunglasses button")
+                    if let url = Bundle.main.url(forResource: "换装声音2", withExtension: "wav") {
+                        let player = AVAudioPlayerPool().playerWithURL(url: url)
+                        player?.play()
+                    }
                     scene.addOrnament(ornamentName: "墨镜")
                 } label: {
                     Rectangle()
@@ -288,9 +292,9 @@ struct ShopItems: View {
             Button(action: {
                 print("pressed shop item 1")
                 if let url = Bundle.main.url(forResource: "换装声音2", withExtension: "wav") {
-                            let player = AVAudioPlayerPool().playerWithURL(url: url)
-                            player?.play()
-                        }
+                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                    player?.play()
+                }
 
                 selectedItem = 1
                 itemPrice = 3700
@@ -335,11 +339,10 @@ struct ShopItems: View {
             //second item
             Button(action: {
                 print("pressed shop item 2")
-                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
-                            let player = AVAudioPlayerPool().playerWithURL(url: url)
-                            player?.play()
-                        }
-
+                if let url = Bundle.main.url(forResource: "换装声音2", withExtension: "wav") {
+                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                    player?.play()
+                }
                 selectedItem = 2
                 itemPrice = 1600
                 scene.addOrnament(ornamentName: "椰子树")
@@ -386,11 +389,10 @@ struct ShopItems: View {
             //third item
             Button(action: {
                 print("pressed shop item 3")
-                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
-                            let player = AVAudioPlayerPool().playerWithURL(url: url)
-                            player?.play()
-                        }
-
+                if let url = Bundle.main.url(forResource: "换装声音2", withExtension: "wav") {
+                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                    player?.play()
+                }
                 selectedItem = 3
                 itemPrice = 700
                 scene.addOrnament(ornamentName: "香蕉")
@@ -436,10 +438,10 @@ struct ShopItems: View {
             //fourth item
             Button {
                 print("pressed shop item 4")
-                if let url = Bundle.main.url(forResource: "Shop_DressChanging", withExtension: "mp3") {
-                            let player = AVAudioPlayerPool().playerWithURL(url: url)
-                            player?.play()
-                        }
+                if let url = Bundle.main.url(forResource: "换装声音2", withExtension: "wav") {
+                    let player = AVAudioPlayerPool().playerWithURL(url: url)
+                    player?.play()
+                }
                 selectedItem = 4
                 itemPrice = 420
                 scene.addOrnament(ornamentName: "天使")

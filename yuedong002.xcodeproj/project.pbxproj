@@ -138,6 +138,9 @@
 		3639F2A12A9B3037002E1BA2 /* sunglassSkin0827.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2A02A9B3037002E1BA2 /* sunglassSkin0827.png */; };
 		3639F2A22A9B3037002E1BA2 /* sunglassSkin0827.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2A02A9B3037002E1BA2 /* sunglassSkin0827.png */; };
 		3639F2A32A9B3037002E1BA2 /* sunglassSkin0827.png in Resources */ = {isa = PBXBuildFile; fileRef = 3639F2A02A9B3037002E1BA2 /* sunglassSkin0827.png */; };
+		364560942A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364560932A9E2B68007AFE87 /* 晚上安静.mp3 */; };
+		364560952A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364560932A9E2B68007AFE87 /* 晚上安静.mp3 */; };
+		364560962A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364560932A9E2B68007AFE87 /* 晚上安静.mp3 */; };
 		364A66762A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66772A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66782A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
@@ -552,6 +555,7 @@
 		3639F2982A9B20EB002E1BA2 /* listenRemind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listenRemind.png; sourceTree = "<group>"; };
 		3639F29C2A9B3025002E1BA2 /* 墨镜0827.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "墨镜0827.dae"; sourceTree = "<group>"; };
 		3639F2A02A9B3037002E1BA2 /* sunglassSkin0827.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunglassSkin0827.png; sourceTree = "<group>"; };
+		364560932A9E2B68007AFE87 /* 晚上安静.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "晚上安静.mp3"; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
 		364A66852A867779007C2103 /* GetScore0811.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore0811.mp3; sourceTree = "<group>"; };
@@ -964,6 +968,7 @@
 				364A66FD2A87C499007C2103 /* Camera_PressShutter.mp3 */,
 				364A66852A867779007C2103 /* GetScore0811.mp3 */,
 				36E5F1922A7F993600C11B37 /* 虫儿飞.mp3 */,
+				364560932A9E2B68007AFE87 /* 晚上安静.mp3 */,
 				36027DF72A7A0F6D00A505BC /* monoGetScore.mp3 */,
 				364A66892A867A12007C2103 /* monoGetScore0811.mp3 */,
 				36027DFB2A7A0F7700A505BC /* monoLeavesAppearing.mp3 */,
@@ -1160,6 +1165,7 @@
 				368726D32A793950007F859C /* LeavesAppearing.mp3 in Resources */,
 				3639F22D2A9260F0002E1BA2 /* 天使.dae in Resources */,
 				3682251C2A8F687F0090A7A6 /* 长颈鹿0816.dae in Resources */,
+				364560942A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */,
 				3696A5E22A756CE400B59DCB /* EyeGlassesIcon.png in Resources */,
 				36027E042A7A367200A505BC /* Overall_ClickButton.mp3 in Resources */,
 				3665772D2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
@@ -1376,6 +1382,7 @@
 				3639F2562A94A3A0002E1BA2 /* 引导页0822.mp4 in Resources */,
 				3639F2922A9B20DD002E1BA2 /* handSupport0827.png in Resources */,
 				3639F23E2A926125002E1BA2 /* 椰子树.dae in Resources */,
+				364560952A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */,
 				3696A5FF2A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				3696A6042A7633C400B59DCB /* airpodsReminder.png in Resources */,
 				364A668B2A867A12007C2103 /* monoGetScore0811.mp3 in Resources */,
@@ -1508,6 +1515,7 @@
 				3639F2572A94A3A0002E1BA2 /* 引导页0822.mp4 in Resources */,
 				3639F2932A9B20DD002E1BA2 /* handSupport0827.png in Resources */,
 				3639F23F2A926125002E1BA2 /* 椰子树.dae in Resources */,
+				364560962A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */,
 				3696A6002A76293F00B59DCB /* 42HuaKangYuanTiW7.ttf in Resources */,
 				3696A6052A7633C400B59DCB /* airpodsReminder.png in Resources */,
 				364A668C2A867A12007C2103 /* monoGetScore0811.mp3 in Resources */,
