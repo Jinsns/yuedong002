@@ -141,6 +141,18 @@
 		364560942A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364560932A9E2B68007AFE87 /* 晚上安静.mp3 */; };
 		364560952A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364560932A9E2B68007AFE87 /* 晚上安静.mp3 */; };
 		364560962A9E2B68007AFE87 /* 晚上安静.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 364560932A9E2B68007AFE87 /* 晚上安静.mp3 */; };
+		364560982A9E3AC5007AFE87 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364560972A9E3AC5007AFE87 /* SettingsView.swift */; };
+		364560992A9E3AC5007AFE87 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364560972A9E3AC5007AFE87 /* SettingsView.swift */; };
+		3645609A2A9E3AC5007AFE87 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364560972A9E3AC5007AFE87 /* SettingsView.swift */; };
+		3645609E2A9E3DB7007AFE87 /* Bag2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609B2A9E3DB7007AFE87 /* Bag2.png */; };
+		3645609F2A9E3DB7007AFE87 /* Bag2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609B2A9E3DB7007AFE87 /* Bag2.png */; };
+		364560A02A9E3DB7007AFE87 /* Bag2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609B2A9E3DB7007AFE87 /* Bag2.png */; };
+		364560A12A9E3DB7007AFE87 /* Letter.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609C2A9E3DB7007AFE87 /* Letter.png */; };
+		364560A22A9E3DB7007AFE87 /* Letter.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609C2A9E3DB7007AFE87 /* Letter.png */; };
+		364560A32A9E3DB7007AFE87 /* Letter.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609C2A9E3DB7007AFE87 /* Letter.png */; };
+		364560A42A9E3DB7007AFE87 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609D2A9E3DB7007AFE87 /* Alarm.png */; };
+		364560A52A9E3DB7007AFE87 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609D2A9E3DB7007AFE87 /* Alarm.png */; };
+		364560A62A9E3DB7007AFE87 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609D2A9E3DB7007AFE87 /* Alarm.png */; };
 		364A66762A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66772A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66782A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
@@ -556,6 +568,10 @@
 		3639F29C2A9B3025002E1BA2 /* 墨镜0827.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = "墨镜0827.dae"; sourceTree = "<group>"; };
 		3639F2A02A9B3037002E1BA2 /* sunglassSkin0827.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunglassSkin0827.png; sourceTree = "<group>"; };
 		364560932A9E2B68007AFE87 /* 晚上安静.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "晚上安静.mp3"; sourceTree = "<group>"; };
+		364560972A9E3AC5007AFE87 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3645609B2A9E3DB7007AFE87 /* Bag2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bag2.png; sourceTree = "<group>"; };
+		3645609C2A9E3DB7007AFE87 /* Letter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Letter.png; sourceTree = "<group>"; };
+		3645609D2A9E3DB7007AFE87 /* Alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alarm.png; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
 		364A66852A867779007C2103 /* GetScore0811.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore0811.mp3; sourceTree = "<group>"; };
@@ -774,6 +790,9 @@
 				3639F2902A9B20DD002E1BA2 /* handSupport0827.png */,
 				3639F2982A9B20EB002E1BA2 /* listenRemind.png */,
 				3639F2942A9B20E4002E1BA2 /* tasteGood.png */,
+				3645609D2A9E3DB7007AFE87 /* Alarm.png */,
+				3645609B2A9E3DB7007AFE87 /* Bag2.png */,
+				3645609C2A9E3DB7007AFE87 /* Letter.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -944,6 +963,7 @@
 				368225502A90B88C0090A7A6 /* CapturedImageView.swift */,
 				3639F2402A93B8BB002E1BA2 /* UpWorldCongratulationView.swift */,
 				3639F2502A949BA3002E1BA2 /* CannotSeeReminder.swift */,
+				364560972A9E3AC5007AFE87 /* SettingsView.swift */,
 			);
 			path = MainContentView;
 			sourceTree = "<group>";
@@ -1159,6 +1179,7 @@
 				367689232A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				36EC1E142A6BCEA2009E5351 /* moonriver.mp3 in Resources */,
 				368225592A90F9EB0090A7A6 /* kiwi.png in Resources */,
+				3645609E2A9E3DB7007AFE87 /* Bag2.png in Resources */,
 				368726F72A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
 				3696A5EA2A756DAC00B59DCB /* NeckIcon.png in Resources */,
 				36027DF42A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
@@ -1188,6 +1209,7 @@
 				367689772A85226900B3C6D4 /* blurredbg.jpg in Resources */,
 				368225552A90EFD70090A7A6 /* headskin0819-3.png in Resources */,
 				3639F2752A94E77B002E1BA2 /* saveToAlbum.png in Resources */,
+				364560A42A9E3DB7007AFE87 /* Alarm.png in Resources */,
 				3639F2352A92610C002E1BA2 /* 香蕉纹理-2.png in Resources */,
 				3639F2952A9B20E4002E1BA2 /* tasteGood.png in Resources */,
 				36EC1E182A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
@@ -1281,6 +1303,7 @@
 				36027E342A7EC29D00A505BC /* reshot.png in Resources */,
 				368225042A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A5DE2A756BDD00B59DCB /* SettingsButton.png in Resources */,
+				364560A12A9E3DB7007AFE87 /* Letter.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,6 +1323,7 @@
 				3639F29A2A9B20EB002E1BA2 /* listenRemind.png in Resources */,
 				36F4198F2A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				368225092A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */,
+				364560A52A9E3DB7007AFE87 /* Alarm.png in Resources */,
 				3639F22A2A9260E6002E1BA2 /* 天使纹理.png in Resources */,
 				3639F2462A93B989002E1BA2 /* upWorldCongratulation.png in Resources */,
 				3639F2722A94C5ED002E1BA2 /* angleskin.png in Resources */,
@@ -1362,6 +1386,7 @@
 				36027DF52A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3639F26E2A94AB07002E1BA2 /* bg0822.png in Resources */,
 				368225222A8F98B50090A7A6 /* 引导页_4.mp4 in Resources */,
+				3645609F2A9E3DB7007AFE87 /* Bag2.png in Resources */,
 				368225622A91DC5A0090A7A6 /* sunglassskin.png in Resources */,
 				3665772E2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				368726F82A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
@@ -1396,6 +1421,7 @@
 				367689242A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				368225562A90EFD70090A7A6 /* headskin0819-3.png in Resources */,
 				36027DFD2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
+				364560A22A9E3DB7007AFE87 /* Letter.png in Resources */,
 				366577262A46B723008C166D /* pianoF.mp3 in Resources */,
 				368726FC2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3696A5EF2A7628D900B59DCB /* EarthIcon.png in Resources */,
@@ -1433,6 +1459,7 @@
 				3639F29B2A9B20EB002E1BA2 /* listenRemind.png in Resources */,
 				36F419902A46D4FF00B11D59 /* gs_instruments.dls in Resources */,
 				3682250A2A8DF2D60090A7A6 /* 第二阶段前图片2.png in Resources */,
+				364560A62A9E3DB7007AFE87 /* Alarm.png in Resources */,
 				3639F22B2A9260E6002E1BA2 /* 天使纹理.png in Resources */,
 				3639F2472A93B989002E1BA2 /* upWorldCongratulation.png in Resources */,
 				3639F2732A94C5ED002E1BA2 /* angleskin.png in Resources */,
@@ -1495,6 +1522,7 @@
 				36027DF62A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3639F26F2A94AB07002E1BA2 /* bg0822.png in Resources */,
 				368225232A8F98B50090A7A6 /* 引导页_4.mp4 in Resources */,
+				364560A02A9E3DB7007AFE87 /* Bag2.png in Resources */,
 				368225632A91DC5A0090A7A6 /* sunglassskin.png in Resources */,
 				3665772F2A46B75C008C166D /* 0614spatial_moonriver.mp3 in Resources */,
 				368726F92A7939D9007F859C /* BGM_Shop.mp3 in Resources */,
@@ -1529,6 +1557,7 @@
 				367689252A80DBBD00B3C6D4 /* AngleRing.png in Resources */,
 				368225572A90EFD70090A7A6 /* headskin0819-3.png in Resources */,
 				36027DFE2A7A0F7700A505BC /* monoLeavesAppearing.mp3 in Resources */,
+				364560A32A9E3DB7007AFE87 /* Letter.png in Resources */,
 				366577272A46B723008C166D /* pianoF.mp3 in Resources */,
 				368726FD2A7939EB007F859C /* CountDownClock.mp3 in Resources */,
 				3696A5F02A7628D900B59DCB /* EarthIcon.png in Resources */,
@@ -1562,6 +1591,7 @@
 				3637F6C82A6A5763004FEB42 /* Yue.swift in Sources */,
 				3664C3E92A695E9D004486EB /* Relaxing.swift in Sources */,
 				366576DF2A46B6C5008C166D /* ContentView.swift in Sources */,
+				364560982A9E3AC5007AFE87 /* SettingsView.swift in Sources */,
 				366577332A46B7E6008C166D /* MotionManager.swift in Sources */,
 				3696A60B2A76C41100B59DCB /* EulerAngle.swift in Sources */,
 				366577372A46B7EF008C166D /* SoundSystem.swift in Sources */,
@@ -1629,6 +1659,7 @@
 				36F419932A49964D00B11D59 /* MainNavigation.swift in Sources */,
 				366577492A46B8B5008C166D /* soundVars.swift in Sources */,
 				368225262A8F998D0090A7A6 /* IntroVideoView.swift in Sources */,
+				364560992A9E3AC5007AFE87 /* SettingsView.swift in Sources */,
 				36F419992A5718DD00B11D59 /* MusicInfo.swift in Sources */,
 				3696A60C2A76C41100B59DCB /* EulerAngle.swift in Sources */,
 				366577452A46B83F008C166D /* serverRequests.swift in Sources */,
@@ -1663,6 +1694,7 @@
 				366577392A46B7EF008C166D /* SoundSystem.swift in Sources */,
 				3676893D2A829C2700B3C6D4 /* ScorePanView.swift in Sources */,
 				3665773E2A46B82A008C166D /* ContentView3.swift in Sources */,
+				3645609A2A9E3AC5007AFE87 /* SettingsView.swift in Sources */,
 				36EC1E1E2A6CCA81009E5351 /* PanView.swift in Sources */,
 				36D15EA62A72398600BC1967 /* StyledGauge.swift in Sources */,
 				3664C3EB2A695E9D004486EB /* Relaxing.swift in Sources */,

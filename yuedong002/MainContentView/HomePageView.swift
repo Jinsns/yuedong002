@@ -96,7 +96,7 @@ struct HomePageView: View {
             
             
             VStack {  //icons at the corners
-                HStack(alignment: .top, spacing: 205) {
+                HStack(alignment: .top, spacing: 0) {
                     VStack(alignment: .leading, spacing: 24) {
                         HStack(alignment: .center, spacing: 8) {  //NeckIcon  123cm
                             Image("NeckIcon")
@@ -114,19 +114,29 @@ struct HomePageView: View {
                         HStack(alignment: .center, spacing: 8) { //EarthIcon 地面
                             Image("EarthIcon")
                             .frame(width: 32, height: 32)
+//                            Text("\(worldName)")
                             Text("\(worldName)")
                               .font(.custom("DFPYuanW9-GB", size: 16))
                               .kerning(1.28)
                               .foregroundColor(Color(red: 0.32, green: 0.51, blue: 0.1))
+                              .frame(width: .infinity, height: .infinity)
                         }
                         .padding(0)
+                        .frame(width: .infinity, height: .infinity)
                     }
-                    .padding(0)
+                    .padding(.leading, 30)
+                    .frame(width: .infinity, height: .infinity)
+                    
+                    Spacer()
                     
                     
-                    HStack(alignment: .center, spacing: 9.85389) {  //button hstack
+                    VStack(alignment: .trailing, spacing: 0) {  //button hstack
                         Button {
                             print("pressed settings button")
+                            withAnimation {
+                                dataModel.isShowSettingsView.toggle()
+                            }
+                            
 //                            soundEffectSystem.buttonPlay()
                             if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
                                         let player = AVAudioPlayerPool().playerWithURL(url: url)
@@ -135,10 +145,20 @@ struct HomePageView: View {
                         } label: {
                             Image("SettingsButton")
                         }
+                        
+                        if dataModel.isShowSettingsView {
+                            ZStack {
+                                ExpandedSettingsView(dataModel: dataModel)
+                            }
+                            
+                        }
+                        
                     }
-                    .frame(width: 32, height: 32, alignment: .leading)
+                    .padding(.trailing, 32)
+                    .frame(width: .infinity, height: .infinity, alignment: .leading)
                 }  //hstack of NeckIcon, EarthIcon, SettingsButton
                 .padding(.top, 70)
+                .frame(width: .infinity, height: .infinity)
                 
                 Spacer()
                 
@@ -216,6 +236,16 @@ struct HomePageView: View {
                                 }
                             }
                         }
+                }
+                
+                if dataModel.isShowAlarmSettingView {
+                    Color.black.opacity(0.1)  //darken background of alarmsettingview
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                                    dataModel.isShowAlarmSettingView = false
+                                }
+
+                    AlarmSettingView(dataModel: dataModel)
                 }
                 
             }
@@ -315,12 +345,15 @@ struct HomePageView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-//        HomePageView(totalLeaves: .constant(1443), neckLength: .constant("100"), worldName: .constant("地面"), scene: GiraffeScene(),  isLeafAdded: .constant(true))
+        HomePageView(totalLeaves: .constant(1443), neckLength: .constant(100), worldName: .constant("地面"), scene: GiraffeScene(),  isLeafAdded: .constant(true), viewState: .constant(2))
+            .environmentObject(DataModel())
 //            .previewDevice("iPhone 13 mini")
 //        ShutterView(isShowShutterView: .constant(true), isShowSnapEffect: .constant(false))
 //            .previewDevice("iPhone 13 mini")
-        SnapEffectView(isShowSnapEffect: .constant(true))
-            .previewDevice("iPhone 13 mini")
+//        SnapEffectView(isShowSnapEffect: .constant(true))
+//            .previewDevice("iPhone 13 mini")
+        
+        
     
     }
 }

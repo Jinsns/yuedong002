@@ -19,4 +19,8 @@ class DataModel: ObservableObject {
     @Published var isShowCannotSeeLowerView = false
     
     @Published var capturedImage: UIImage?
+    
+    @Published var isShowSettingsView: Bool = false
+    @Published var isShowAlarmSettingView: Bool = false
+    @Published var isOpenAlarm: Bool = false
 }
