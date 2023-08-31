@@ -23,4 +23,6 @@ class DataModel: ObservableObject {
     @Published var isShowSettingsView: Bool = false
     @Published var isShowAlarmSettingView: Bool = false
     @Published var isOpenAlarm: Bool = false
+    @Published var alarmInterval = 1
+    @Published var isBlurScene = false
 }

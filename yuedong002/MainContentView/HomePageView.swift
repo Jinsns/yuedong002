@@ -239,13 +239,23 @@ struct HomePageView: View {
                 }
                 
                 if dataModel.isShowAlarmSettingView {
+                    
                     Color.black.opacity(0.1)  //darken background of alarmsettingview
                         .ignoresSafeArea()
                         .onTapGesture {
-                                    dataModel.isShowAlarmSettingView = false
-                                }
+                            dataModel.isShowAlarmSettingView = false
+                            dataModel.isBlurScene = false
+                        }
 
                     AlarmSettingView(dataModel: dataModel)
+                        .onAppear() {
+                            scene.stopMotionUpdates()
+                        }
+                        .onDisappear() {
+                            scene.addNeckRotation()
+                            dataModel.isBlurScene = false
+                        }
+                    
                 }
                 
             }

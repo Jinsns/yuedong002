@@ -25,6 +25,7 @@ struct ExpandedSettingsView: View {
                     withAnimation {
                         dataModel.isShowSettingsView = false
                         dataModel.isShowAlarmSettingView = true
+                        dataModel.isBlurScene = true
                     }
                     
                 } label: {
@@ -108,7 +109,7 @@ struct ExpandedSettingsView: View {
                 
             }
             .padding(0)
-            .background(.white.opacity(0.7))
+            .background(.white)
             .cornerRadius(8)
             .frame(maxWidth: 135, alignment: .center)
         }
@@ -122,7 +123,7 @@ struct AlarmSettingView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 2) {
-            VStack(alignment: .center, spacing: 8) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text("提醒设置")
                   .font(Font.custom("DFPYuanW9-GB", size: 17))
                   .multilineTextAlignment(.center)
@@ -143,12 +144,72 @@ struct AlarmSettingView: View {
                     Spacer()
                     //switch
                     Toggle("", isOn: $dataModel.isOpenAlarm)
-                      .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.41, green: 0.63, blue: 0.16)))
-                      .frame(width: 42, height: 24)
-                      .padding(.trailing, 8)
+                      .toggleStyle(
+                        SwitchToggleStyle(tint: Color(red: 0.41, green: 0.63, blue: 0.16))
+                      )
+                      .frame(width: 40, height: 22)
+                      .padding(.trailing, 14)
                 }
                 .padding(.top, 4)
                 .frame(width: 250.5, alignment: .leading)
+                
+                if dataModel.isOpenAlarm {
+                    HStack(alignment: .center) {
+                      // Space Between
+                        Text("间隔时间")
+                          .font(Font.custom("DFPYuanW7-GB", size: 12))
+                          .foregroundColor(.black.opacity(0.65))
+                          .padding(.leading, 0)
+                        
+                        Text("（推荐2小时）")
+                          .font(Font.custom("DFPYuanW7-GB", size: 10))
+                          .foregroundColor(.black.opacity(0.45))
+                          .lineLimit(1)
+                        
+                        Spacer()
+                      // Alternative Views and Spacers
+                        HStack {
+//                            Rectangle()
+//                              .foregroundColor(.clear)
+//                              .frame(width: 95, height: 22)
+//                              .background(Color(red: 0.24, green: 0.24, blue: 0.26).opacity(0.05))
+//                              .cornerRadius(3.58609)
+                            HStack(alignment: .center, spacing: 0) {
+                                Picker("alarmInterval", selection: $dataModel.alarmInterval) {
+                                    Text("4小时")
+                                      .font(Font.custom("DFPYuanW9-GB", size: 10))
+                                      .multilineTextAlignment(.center)
+                                      .frame(width: 37.4371, height: 9.5629, alignment: .center)
+                                      .tag(0)
+                                    
+                                    Text("2小时")
+                                        .font(Font.custom("DFPYuanW9-GB", size: 10))
+                                        .multilineTextAlignment(.center)
+                                        .frame(width: 38.4371, height: 9.5629, alignment: .center)
+                                        .tag(1)
+                                }
+                                .accentColor(Color(red: 0.41, green: 0.63, blue: 0.16))
+                                .pickerStyle(.menu)
+                            }
+                            .padding(.horizontal, 0)
+                            .padding(.top, 0)
+                            .padding(.bottom, 0.75684)
+                            .frame(width: .infinity, height: .infinity, alignment: .center)
+                        }
+                        .frame(width: 95, height: 22)
+                        .cornerRadius(3.58609)
+                        
+                    }
+                    .padding(0)
+                    .padding(.top, 6)
+                    .frame(width: 253, alignment: .center)
+                    .onAppear(){
+                        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(red: 0.41, green: 0.63, blue: 0.16, alpha: 1.0)
+//                        UISegmentedControl.appearance().color
+//                        UISegmentedControl.appearance().backgroundColor = .systemRed
+//                        UISegmentedControl.appearance().tintColor = UIColor(red: 0.41, green: 0.63, blue: 0.16, alpha: 1.0)
+                    }
+                }
             }
             .padding(.horizontal, 16)
             .padding(.top, 0)
@@ -193,8 +254,8 @@ struct AlarmSettingView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
 //        SettingsView()
-        ExpandedSettingsView(dataModel: DataModel())
-//        AlarmSettingView(dataModel: DataModel())
-//            .environmentObject(DataModel())
+//        ExpandedSettingsView(dataModel: DataModel())
+        AlarmSettingView(dataModel: DataModel())
+            .environmentObject(DataModel())
     }
 }

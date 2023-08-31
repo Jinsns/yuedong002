@@ -122,6 +122,7 @@ struct SwiftUIView: View {
 //                options: [.allowsCameraControl]
             )
                 .ignoresSafeArea()
+                .blur(radius: (dataModel.isBlurScene ? 7 : 0) )
             
             
             if isInHomePage {
