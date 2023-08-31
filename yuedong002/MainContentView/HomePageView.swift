@@ -77,6 +77,16 @@ struct HomePageView: View {
                 
             }
             
+            if dataModel.isShowSettingsView {
+                Color.black
+                    .ignoresSafeArea()
+                    .opacity(0.1)
+                    .onTapGesture {
+                        dataModel.isShowSettingsView = false
+                    }
+            }
+
+            
             
 
             
@@ -139,18 +149,15 @@ struct HomePageView: View {
                             
 //                            soundEffectSystem.buttonPlay()
                             if let url = Bundle.main.url(forResource: "Overall_ClickButton", withExtension: "mp3") {
-                                        let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                        player?.play()
-                                    }
+                                let player = AVAudioPlayerPool().playerWithURL(url: url)
+                                player?.play()
+                            }
                         } label: {
                             Image("SettingsButton")
                         }
                         
                         if dataModel.isShowSettingsView {
-                            ZStack {
-                                ExpandedSettingsView(dataModel: dataModel)
-                            }
-                            
+                            ExpandedSettingsView(dataModel: dataModel)
                         }
                         
                     }
@@ -257,6 +264,7 @@ struct HomePageView: View {
                         }
                     
                 }
+                
                 
             }
             

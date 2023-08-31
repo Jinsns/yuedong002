@@ -28,6 +28,7 @@ struct ShopView: View {
     @State var isMineOrShop = true
     @State var selectedItem = 1
     @State var isShowBuyedView = false
+    @State var isShowLackMoneyView = false
     
     @ObservedObject var scene: GiraffeScene
     
@@ -160,7 +161,7 @@ struct ShopView: View {
                                 .offset(x: 8, y: -8)
         //                        .background(.black)
                         } else {
-                            ShopItems(selectedItem: $selectedItem, scene: scene, totalLeaves: $totalLeaves, isShowBuyedView: $isShowBuyedView)
+                            ShopItems(selectedItem: $selectedItem, scene: scene, totalLeaves: $totalLeaves, isShowBuyedView: $isShowBuyedView, isShowLackMoneyView: $isShowLackMoneyView)
                                 .offset(x: 8, y: -8)
                         }
                         
@@ -193,6 +194,20 @@ struct ShopView: View {
                             
                         }
                     }
+            }
+            
+            if isShowLackMoneyView {
+                Image("lackMoney")
+                    .offset(x: 0, y: -160)
+                    .onAppear() {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            withAnimation(.easeOut(duration: 0.8)) {
+                                isShowLackMoneyView = false
+                            }
+                            
+                        }
+                    }
+                
             }
             
         }
@@ -284,6 +299,7 @@ struct ShopItems: View {
     @State var itemPrice: Int = 0
     @Binding var totalLeaves: Int
     @Binding var isShowBuyedView: Bool
+    @Binding var isShowLackMoneyView: Bool
     
     var body: some View {
         VStack(alignment: .center, spacing: 20.87937) {
@@ -489,13 +505,27 @@ struct ShopItems: View {
             
             HStack(alignment: .center, spacing: 7.33974) {
                 Button {
-                    print("pressed buy button")
-                    isShowBuyedView = true
-                    if let url = Bundle.main.url(forResource: "Shop_BuyItBtn", withExtension: "mp3") {
-                                let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                player?.play()
-                            }
-                    totalLeaves -= itemPrice
+                    
+                    if totalLeaves >= itemPrice {
+                        print("pressed buy button: buy success")
+                        withAnimation {
+                            isShowBuyedView = true
+                        }
+                        
+                        if let url = Bundle.main.url(forResource: "Shop_BuyItBtn", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.play()
+                        }
+                        totalLeaves -= itemPrice
+                    } else {
+                        print("pressed buy button: lack money")
+                        withAnimation {
+                            isShowLackMoneyView = true
+                        }
+                        
+                    }
+                    
+                    
                 } label: {
                     Text("买它！")
                       .font(Font.custom("DFPYuanW9-GB", size: 24))

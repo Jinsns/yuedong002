@@ -153,6 +153,9 @@
 		364560A42A9E3DB7007AFE87 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609D2A9E3DB7007AFE87 /* Alarm.png */; };
 		364560A52A9E3DB7007AFE87 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609D2A9E3DB7007AFE87 /* Alarm.png */; };
 		364560A62A9E3DB7007AFE87 /* Alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 3645609D2A9E3DB7007AFE87 /* Alarm.png */; };
+		364560A82AA093CD007AFE87 /* lackMoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 364560A72AA093CC007AFE87 /* lackMoney.png */; };
+		364560A92AA093CD007AFE87 /* lackMoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 364560A72AA093CC007AFE87 /* lackMoney.png */; };
+		364560AA2AA093CD007AFE87 /* lackMoney.png in Resources */ = {isa = PBXBuildFile; fileRef = 364560A72AA093CC007AFE87 /* lackMoney.png */; };
 		364A66762A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66772A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
 		364A66782A862FF4007C2103 /* songEndBG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 364A66752A862FF3007C2103 /* songEndBG2.png */; };
@@ -572,6 +575,7 @@
 		3645609B2A9E3DB7007AFE87 /* Bag2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bag2.png; sourceTree = "<group>"; };
 		3645609C2A9E3DB7007AFE87 /* Letter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Letter.png; sourceTree = "<group>"; };
 		3645609D2A9E3DB7007AFE87 /* Alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Alarm.png; sourceTree = "<group>"; };
+		364560A72AA093CC007AFE87 /* lackMoney.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lackMoney.png; sourceTree = "<group>"; };
 		364A66752A862FF3007C2103 /* songEndBG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndBG2.png; sourceTree = "<group>"; };
 		364A667D2A863096007C2103 /* songEndCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = songEndCircle.png; sourceTree = "<group>"; };
 		364A66852A867779007C2103 /* GetScore0811.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GetScore0811.mp3; sourceTree = "<group>"; };
@@ -793,6 +797,7 @@
 				3645609D2A9E3DB7007AFE87 /* Alarm.png */,
 				3645609B2A9E3DB7007AFE87 /* Bag2.png */,
 				3645609C2A9E3DB7007AFE87 /* Letter.png */,
+				364560A72AA093CC007AFE87 /* lackMoney.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1300,6 +1305,7 @@
 				36027E082A7A369100A505BC /* CountScoreView_onloading.mp3 in Resources */,
 				36D15EAC2A7280A200BC1967 /* songEnd.png in Resources */,
 				366577102A46B723008C166D /* pianoD.mp3 in Resources */,
+				364560A82AA093CD007AFE87 /* lackMoney.png in Resources */,
 				36027E342A7EC29D00A505BC /* reshot.png in Resources */,
 				368225042A8DE7E10090A7A6 /* filter15s.png in Resources */,
 				3696A5DE2A756BDD00B59DCB /* SettingsButton.png in Resources */,
@@ -1404,6 +1410,7 @@
 				36EC1E192A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				3639F28A2A95282C002E1BA2 /* handSupport.png in Resources */,
 				364A669B2A875430007C2103 /* 花.png in Resources */,
+				364560A92AA093CD007AFE87 /* lackMoney.png in Resources */,
 				3639F2562A94A3A0002E1BA2 /* 引导页0822.mp4 in Resources */,
 				3639F2922A9B20DD002E1BA2 /* handSupport0827.png in Resources */,
 				3639F23E2A926125002E1BA2 /* 椰子树.dae in Resources */,
@@ -1540,6 +1547,7 @@
 				36EC1E1A2A6CBAC3009E5351 /* monoMoonriver.mp3 in Resources */,
 				3639F28B2A95282C002E1BA2 /* handSupport.png in Resources */,
 				364A669C2A875430007C2103 /* 花.png in Resources */,
+				364560AA2AA093CD007AFE87 /* lackMoney.png in Resources */,
 				3639F2572A94A3A0002E1BA2 /* 引导页0822.mp4 in Resources */,
 				3639F2932A9B20DD002E1BA2 /* handSupport0827.png in Resources */,
 				3639F23F2A926125002E1BA2 /* 椰子树.dae in Resources */,
@@ -1846,7 +1854,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"yuedong002/Preview Content\"";
-				DEVELOPMENT_TEAM = BT6L7Y3CS4;
+				DEVELOPMENT_TEAM = MKN5BFJC4Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1893,7 +1901,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"yuedong002/Preview Content\"";
-				DEVELOPMENT_TEAM = BT6L7Y3CS4;
+				DEVELOPMENT_TEAM = MKN5BFJC4Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
