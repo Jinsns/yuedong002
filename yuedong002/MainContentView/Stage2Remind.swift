@@ -91,6 +91,10 @@ struct ListenRemindView: View {
     var body: some View {
         VStack {
             Image("listenRemind")
+                .resizable()
+                .scaledToFill()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200)
                 .padding(.top, 220)
             
             Spacer()

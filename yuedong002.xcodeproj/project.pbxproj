@@ -423,6 +423,9 @@
 		368726FB2A7939EB007F859C /* CountDownClock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726FA2A7939EB007F859C /* CountDownClock.mp3 */; };
 		368726FC2A7939EB007F859C /* CountDownClock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726FA2A7939EB007F859C /* CountDownClock.mp3 */; };
 		368726FD2A7939EB007F859C /* CountDownClock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 368726FA2A7939EB007F859C /* CountDownClock.mp3 */; };
+		3687FD9A2AA1B12400BB379A /* zhuyi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3687FD992AA1B12400BB379A /* zhuyi.png */; };
+		3687FD9B2AA1B12400BB379A /* zhuyi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3687FD992AA1B12400BB379A /* zhuyi.png */; };
+		3687FD9C2AA1B12400BB379A /* zhuyi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3687FD992AA1B12400BB379A /* zhuyi.png */; };
 		3696A5DC2A756B1300B59DCB /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3696A5DB2A756B1300B59DCB /* HomePageView.swift */; };
 		3696A5DE2A756BDD00B59DCB /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5DD2A756BDD00B59DCB /* SettingsButton.png */; };
 		3696A5DF2A756BDD00B59DCB /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3696A5DD2A756BDD00B59DCB /* SettingsButton.png */; };
@@ -675,6 +678,7 @@
 		368726F22A7939C7007F859C /* BGM_HomepageAndCamera.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM_HomepageAndCamera.mp3; sourceTree = "<group>"; };
 		368726F62A7939D9007F859C /* BGM_Shop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM_Shop.mp3; sourceTree = "<group>"; };
 		368726FA2A7939EB007F859C /* CountDownClock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CountDownClock.mp3; sourceTree = "<group>"; };
+		3687FD992AA1B12400BB379A /* zhuyi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zhuyi.png; sourceTree = "<group>"; };
 		3696A5DB2A756B1300B59DCB /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		3696A5DD2A756BDD00B59DCB /* SettingsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsButton.png; sourceTree = "<group>"; };
 		3696A5E12A756CE400B59DCB /* EyeGlassesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EyeGlassesIcon.png; sourceTree = "<group>"; };
@@ -786,6 +790,7 @@
 				3639F2482A949AF6002E1BA2 /* cannotSeeHigher.png */,
 				3639F24C2A949AFE002E1BA2 /* cannotSeeLower.png */,
 				3639F26C2A94AB07002E1BA2 /* bg0822.png */,
+				3687FD992AA1B12400BB379A /* zhuyi.png */,
 				3639F2742A94E77B002E1BA2 /* saveToAlbum.png */,
 				3639F2782A94F628002E1BA2 /* savedToAlbum2.png */,
 				3639F27C2A94F62F002E1BA2 /* buyed.png */,
@@ -1260,6 +1265,7 @@
 				364A66962A875427007C2103 /* apple.png in Resources */,
 				364A668A2A867A12007C2103 /* monoGetScore0811.mp3 in Resources */,
 				36027E3D2A7EC29D00A505BC /* wechatlogin.png in Resources */,
+				3687FD9A2AA1B12400BB379A /* zhuyi.png in Resources */,
 				364A66D62A87865D007C2103 /* leaf0812.png in Resources */,
 				3639F29D2A9B3026002E1BA2 /* 墨镜0827.dae in Resources */,
 				3696A5F82A76293F00B59DCB /* 40HuaKangYuanTiW4.ttf in Resources */,
@@ -1391,6 +1397,7 @@
 				3639F23A2A926119002E1BA2 /* 香蕉纹理-1红.png in Resources */,
 				36027DF52A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3639F26E2A94AB07002E1BA2 /* bg0822.png in Resources */,
+				3687FD9B2AA1B12400BB379A /* zhuyi.png in Resources */,
 				368225222A8F98B50090A7A6 /* 引导页_4.mp4 in Resources */,
 				3645609F2A9E3DB7007AFE87 /* Bag2.png in Resources */,
 				368225622A91DC5A0090A7A6 /* sunglassskin.png in Resources */,
@@ -1528,6 +1535,7 @@
 				3639F23B2A926119002E1BA2 /* 香蕉纹理-1红.png in Resources */,
 				36027DF62A795D5B00A505BC /* LilitaOne-Regular.ttf in Resources */,
 				3639F26F2A94AB07002E1BA2 /* bg0822.png in Resources */,
+				3687FD9C2AA1B12400BB379A /* zhuyi.png in Resources */,
 				368225232A8F98B50090A7A6 /* 引导页_4.mp4 in Resources */,
 				364560A02A9E3DB7007AFE87 /* Bag2.png in Resources */,
 				368225632A91DC5A0090A7A6 /* sunglassskin.png in Resources */,
