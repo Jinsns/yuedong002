@@ -15,6 +15,10 @@ import SwiftUI
 
 struct ExpandedSettingsView: View {
     @ObservedObject var dataModel: DataModel
+    @ObservedObject var bgmSystem: BgmSystem
+    @Binding var totalLeaves: Int
+    @ObservedObject var scene: GiraffeScene
+    @Binding var worldName: String
     
     var body: some View {
         HStack {
@@ -79,6 +83,13 @@ struct ExpandedSettingsView: View {
                 //联系我们
                 Button {
                     print("pressed contact us button")
+                    //reset here
+                    worldName = "地面"
+                    totalLeaves = 7000
+                    scene.backWorldOne()
+                    bgmSystem.setPlaySource(bgmURL: urlCaterpillarsFly!)
+                    dataModel.reset2DefaultValue()
+                                        
                 } label: {
                     HStack(alignment: .center) {
                         HStack(alignment: .center) {
@@ -87,7 +98,7 @@ struct ExpandedSettingsView: View {
                                   .frame(width: 30, height: 30)
                               Spacer()
                             // Alternative Views and Spacers
-                              Text("联系我们")
+                              Text("关卡重置")
                                 .font(Font.custom("DFPYuanW7-GB", size: 16))
                                 .foregroundColor(Color(red: 0.18, green: 0.25, blue: 0.1))
                         }

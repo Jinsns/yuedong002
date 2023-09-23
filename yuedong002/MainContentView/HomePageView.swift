@@ -26,6 +26,7 @@ struct HomePageView: View {
 //    @State var isShowAirpodsReminder = true
 //    @State var isShowCorrectingPositionView = false
 //    @State var isShowNodToEatView = false
+    @EnvironmentObject var bgmSystem: BgmSystem
     @StateObject var homePageBgmSystem = BgmSystem(bgmURL: homePageBgmURL!)
     
     @State var isShowShutterView = false
@@ -157,7 +158,7 @@ struct HomePageView: View {
                         }
                         
                         if dataModel.isShowSettingsView {
-                            ExpandedSettingsView(dataModel: dataModel)
+                            ExpandedSettingsView(dataModel: dataModel, bgmSystem: bgmSystem, totalLeaves: $totalLeaves, scene: scene, worldName: $worldName)
                         }
                         
                     }

@@ -200,7 +200,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //     初始位置
 //    cameraNode.position = SCNVector3(x: 10, y: 2, z: 0)
 //    cloudNode.position = SCNVector3(1, 9.4, 0)
-//    backgroundNode.position = SCNVector3(-35, 114, 0)    //original
+//    backgroundNode.position = SCNVector3(-35, 107, 0)    //original
 //    self.backgroundNode?.position = SCNVector3(-35, 66, 0) // in world 2
 //    giraffeNode10.position = SCNVector3(0.0, -3.2, 0.0)
 
@@ -419,6 +419,18 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         SCNTransaction.commit()
     }
     
+    func backWorldOne() {
+        self.inWorld = 1
+        SCNTransaction.begin()
+        SCNTransaction.animationDuration = 1.0
+        self.neckNode?.position = SCNVector3(0.0, -3.2, 0.0)
+        self.backgroundNode?.position = SCNVector3(-35, 107, 0)
+        self.cloudNode?.position = SCNVector3(1, 9.4, 0)
+        self.cameraNode?.position = SCNVector3(x: 10, y: 2, z: 0)
+        SCNTransaction.commit()
+    
+    }
+    
     func addNeckNode(neckInitialXEulerAngle: Float, neckInitialYEulerAngle: Float, neckInitialZEulerAngle: Float) {
         guard let scene = SCNScene(named: "长颈鹿0816.dae") else {
             print("Failed to load 'giraffe0.dae'")
@@ -632,7 +644,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         //appear audio setting
         self.leavesAppearAudioSource.isPositional = true // Enable 3D spatialization
         self.leavesAppearAudioSource.shouldStream = false // Use streaming for longer audio files
-        self.leavesAppearAudioSource.volume = 1.0
+        self.leavesAppearAudioSource.volume = 8.0
         leafNode.addAudioPlayer(SCNAudioPlayer(source: leavesAppearAudioSource))
         
         //eaten(get score) audio setting
@@ -872,6 +884,8 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             
             self!.headphoneAnglex = attitude.roll
             self!.headphoneAnglez = attitude.pitch
+            
+            
             
             
             let absx: Float = abs(Float(attitude.roll))

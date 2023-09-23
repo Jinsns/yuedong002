@@ -25,7 +25,7 @@ var shopItems = [
 struct ShopView: View {
     @Binding var totalLeaves: Int
     @Binding var isShowShopView: Bool
-    @State var isMineOrShop = true
+    @State var isMineOrShop = false
     @State var selectedItem = 1
     @State var isShowBuyedView = false
     @State var isShowLackMoneyView = false

@@ -62,17 +62,20 @@ struct leaf1: View {
 //                .rotationEffect(.degrees(-87))
               
             if leafLevel == 1 {
-                Image("leaf0812")
+                Image("leaf0902")
                     .resizable()
-                    .frame(width: 74, height: 74)
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
             } else if leafLevel == 2 {
-                Image("orange0812")
+                Image("orange0902")
                     .resizable()
-                    .frame(width: 74, height: 74)
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
             } else {
-                Image("kiwi")
+                Image("kiwi0902")
                     .resizable()
-                    .frame(width: 74, height: 74)
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
             }
             
         }

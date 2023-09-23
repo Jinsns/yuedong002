@@ -73,7 +73,7 @@ struct SwiftUIView: View {
     
 //    private let cameraNode = createCameraNode()
     
-    @ObservedObject var bgmSystem = BgmSystem(bgmURL: urlCaterpillarsFly!)
+    @StateObject var bgmSystem = BgmSystem(bgmURL: urlCaterpillarsFly!)
     
         
     @State var isShowScorePanView = false
@@ -85,12 +85,7 @@ struct SwiftUIView: View {
     @State var isShowCountScoreView = false
 //    @State var scoreScale: CGFloat = 1.0
     @State var isShowStage2Reminder = false
-    @State var isShowWow = false
-    @State var isShowedWow = false
-    @State var isShowTaikula = false
-    @State var isShowedTaikula = false
-    @State var isShowLikeyou = false
-    @State var isShowedLikeyou = false
+    
     
     @State var extraLightAdded = false
     @State var isLeafAdded = false
@@ -103,16 +98,13 @@ struct SwiftUIView: View {
     @State var isShowCapturedImage = false
     @State var isShowUpWorldCongratulationView = false
     
-    @State var isShowHandSupportView = false
-    @State var isHandSupportReminded = false
     
-    @State var isShowListenRemindView = false
-    @State var listenRemindViewShowed = false
-    
-    @State var isShowTasteGoodView = false
-    @State var tasteGoodViewShowed = false
+
     
     @State var viewState: Int = 2
+    
+    
+    
     
     var body: some View {
         ZStack{
@@ -229,55 +221,55 @@ struct SwiftUIView: View {
                     
                     
                     
-                    if isShowWow == true && isShowedWow == false {
+                    if dataModel.isShowWow == true && dataModel.isShowedWow == false {
                         Wow()
                             .onAppear() {
     //                            soundEffectSystem.wowPlay()
                                 if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
                                     let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                    player?.volume = 0.6
+                                    player?.volume = 0.3
                                     player?.play()
                                 }
                                 
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                     withAnimation(.default) {
-                                        isShowWow = false
-                                        isShowedWow = true
+                                        dataModel.isShowWow = false
+                                        dataModel.isShowedWow = true
                                     }
                                 }
                             }
                     }
                     
-                    if isShowTaikula == true && isShowedTaikula == false{
+                    if dataModel.isShowTaikula == true && dataModel.isShowedTaikula == false{
                         Taikula()
                             .onAppear() {
                                 if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
                                     let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                    player?.volume = 0.6
+                                    player?.volume = 0.3
                                     player?.play()
                                 }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                     withAnimation(.default) {
-                                        isShowTaikula = false
-                                        isShowedTaikula = true
+                                        dataModel.isShowTaikula = false
+                                        dataModel.isShowedTaikula = true
                                     }
                                 }
                             }
                     }
                     
-                    if isShowLikeyou == true && isShowedLikeyou == false{
+                    if dataModel.isShowLikeyou == true && dataModel.isShowedLikeyou == false{
                         Likeyou()
                             .onAppear() {
     //                            soundEffectSystem.likeyouPlay()
                                 if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
                                     let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                    player?.volume = 0.6
+                                    player?.volume = 0.3
                                     player?.play()
                                 }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                     withAnimation(.default) {
-                                        isShowLikeyou = false
-                                        isShowedLikeyou = true
+                                        dataModel.isShowLikeyou = false
+                                        dataModel.isShowedLikeyou = true
                                     }
                                 }
                             }
@@ -293,7 +285,9 @@ struct SwiftUIView: View {
     //                            soundEffectSystem.surprisePlay()
                                 if let url = Bundle.main.url(forResource: "surprise", withExtension: "mp3") {
                                     let player = AVAudioPlayerPool().playerWithURL(url: url)
-                                    player?.volume = 0.6
+                                    player?.volume = 0.0
+                                    player?.setVolume(0.3, fadeDuration: 0.8)
+//                                    player?.volume = 0.3
                                     player?.play()
                                 }
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -309,35 +303,35 @@ struct SwiftUIView: View {
                             .zIndex(1.0)
                     }
                     
-                    if isShowHandSupportView {
+                    if dataModel.isShowHandSupportView {
                         HandSupportRemindView()
                             .onAppear() {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                                     withAnimation(.easeOut(duration: 0.6)) {
-                                        isShowHandSupportView = false
+                                        dataModel.isShowHandSupportView = false
                                     }
                                     
                                 }
                             }
                     }
                     
-                    if isShowTasteGoodView {
+                    if dataModel.isShowTasteGoodView {
                         TasteGoodView()
                             .onAppear() {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                     withAnimation(.easeOut(duration: 0.6)) {
-                                        isShowTasteGoodView = false
+                                        dataModel.isShowTasteGoodView = false
                                     }
                                     
                                 }
                             }
 
-                    } else if isShowListenRemindView {
+                    } else if dataModel.isShowListenRemindView {
                         ListenRemindView()
                             .onAppear() {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                     withAnimation(.easeOut(duration: 0.6)) {
-                                        isShowListenRemindView = false
+                                        dataModel.isShowListenRemindView = false
                                     }
                                     
                                 }
@@ -376,21 +370,21 @@ struct SwiftUIView: View {
                     
                     if newScore >= 50 {
                         withAnimation(.default) {
-                            isShowWow = true
+                            dataModel.isShowWow = true
                         }
                         
                     }
                     
                     if newScore >= 100 {
                         withAnimation(.default) {
-                            isShowTaikula = true
+                            dataModel.isShowTaikula = true
                         }
                         
                     }
                     
                     if newScore >= 150 {
                         withAnimation(.default) {
-                            isShowLikeyou = true
+                            dataModel.isShowLikeyou = true
                         }
                         
                     }
@@ -398,18 +392,18 @@ struct SwiftUIView: View {
                 }
                 .onChange(of: bgmSystem.currentTime) { newValue in
                     
-                    if newValue >= 2.0 && listenRemindViewShowed == false {
-                        listenRemindViewShowed = true
+                    if newValue >= 2.0 && dataModel.listenRemindViewShowed == false {
+                        dataModel.listenRemindViewShowed = true
                         withAnimation(.default) {
-                            isShowListenRemindView = true
+                            dataModel.isShowListenRemindView = true
                         }
                         
                     }
                     
-                    if newValue >= 54.0 && tasteGoodViewShowed == false {
-                        tasteGoodViewShowed = true
+                    if newValue >= 54.0 && dataModel.tasteGoodViewShowed == false {
+                        dataModel.tasteGoodViewShowed = true
                         withAnimation(.default) {
-                            isShowTasteGoodView = true
+                            dataModel.isShowTasteGoodView = true
                         }
                     }
                     
@@ -423,10 +417,10 @@ struct SwiftUIView: View {
                         }
                     }
                     
-                    if newValue >= 11.0 && isHandSupportReminded == false {
-                        isHandSupportReminded = true
+                    if newValue >= 11.0 && dataModel.isHandSupportReminded == false {
+                        dataModel.isHandSupportReminded = true
                         withAnimation(.easeIn(duration: 0.6)) {
-                            isShowHandSupportView = true
+                            dataModel.isShowHandSupportView = true
                         }
                         
                     }
@@ -479,6 +473,37 @@ struct SwiftUIView: View {
                         isShowScorePanView = false
                         isShowCountScoreView = true
                         
+                    }
+                    
+                    if newValue >= 3.0 && dataModel.isLeftPlayed == false {
+                        if let url = Bundle.main.url(forResource: "left0902", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.volume = 0.5
+                            player?.play()
+                        }
+                        dataModel.isLeftPlayed = true
+                        
+                    } else if newValue >= 9.0 && dataModel.isRightPlayed == false {
+                        if let url = Bundle.main.url(forResource: "right0902", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.volume = 0.5
+                            player?.play()
+                        }
+                        dataModel.isRightPlayed = true
+                    } else if newValue >= 29 && dataModel.isDownPlayed == false {
+                        if let url = Bundle.main.url(forResource: "down0902", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.volume = 0.5
+                            player?.play()
+                        }
+                        dataModel.isDownPlayed = true
+                    } else if newValue >= 41.0 && dataModel.isUpPlayed == false {
+                        if let url = Bundle.main.url(forResource: "up0902", withExtension: "mp3") {
+                            let player = AVAudioPlayerPool().playerWithURL(url: url)
+                            player?.volume = 0.5
+                            player?.play()
+                        }
+                        dataModel.isUpPlayed = true
                     }
                 }
                 .onChange(of: isShowPause, perform: { newValue in  //when game pauses
@@ -610,6 +635,7 @@ struct SwiftUIView: View {
 //        })
         
         .environmentObject(dataModel)
+        .environmentObject(bgmSystem)
 //        .onChange(of: dataModel.isSnapShotted) { newValue in
 //            print("snap1")
 //            isShowCapturedImage = true
