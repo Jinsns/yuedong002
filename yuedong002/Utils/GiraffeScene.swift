@@ -466,19 +466,19 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
         
         var scene: SCNScene?
         var ornament: SCNNode!
-        if ornamentName == "墨镜" {
+        if ornamentName == "sunglasses" {
             scene = SCNScene(named: "墨镜0827.dae")!
             ornament = scene!.rootNode
             ornament.scale = SCNVector3(0.8, 0.8, 0.8)
             ornament.position = SCNVector3(x: 1.0, y: 5.36, z: 0.08)
 //            ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: Float.pi / 2)
             
-        } else if ornamentName == "戒指" {
+        } else if ornamentName == "DiamondRing" {
             scene = SCNScene(named: "戒指0822.dae")!
             ornament = scene!.rootNode
             ornament.scale = SCNVector3(0.92, 0.92, 0.92)
             ornament.position = SCNVector3(x: 0.15, y: 3 , z: 0.28)
-        } else if ornamentName == "天使" {
+        } else if ornamentName == "AngelRing" {
             scene = SCNScene(named: "天使.dae")!
             ornament = scene!.rootNode
             
@@ -505,7 +505,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             ornament.scale = SCNVector3(0.5, 0.5, 0.5)
             ornament.position = SCNVector3(x: 0, y: 6.4, z: 0.21)
             ornament.eulerAngles = SCNVector3(x: 0, y: Float.pi / 2, z: 0)
-        } else if ornamentName == "香蕉" {
+        } else if ornamentName == "banana" {
             scene = SCNScene(named: "香蕉.dae")!
             ornament = scene!.rootNode
             let rootNode = scene!.rootNode
@@ -534,7 +534,7 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
             ornament.position = SCNVector3(x: 0.25, y: 5.7, z: 0.3)
             ornament.eulerAngles = SCNVector3(x: Float.pi , y: 0, z: -Float.pi / 2)
             ornament.categoryBitMask = LightType.onNeck
-        } else if ornamentName == "椰子树" {
+        } else if ornamentName == "CoconutTree" {
             scene = SCNScene(named: "椰子树.dae")!
             ornament = scene!.rootNode
             let rootNode = scene!.rootNode
@@ -575,6 +575,10 @@ class GiraffeScene: SCNScene, SCNPhysicsContactDelegate, ObservableObject, AVAud
 //        self.rootNode.addChildNode(ornament)
         
         SCNTransaction.commit()
+    }
+    
+    func removeOrnament() {
+        self.ornamentNode?.removeFromParentNode()
     }
     
     func rotateBackNeckNode() {
