@@ -438,6 +438,8 @@ struct SnapEffectView: View {
     @EnvironmentObject var dataModel: DataModel
     @State var isShowSavedView = false
     
+    @State private var capturedImage: UIImage?
+    
     var body: some View {
         ZStack{
             Rectangle()
@@ -539,6 +541,8 @@ struct SnapEffectView: View {
                         withAnimation(.easeIn(duration: 0.6)) {
                             isShowSavedView = true
                         }
+                        capturedImage = takeScreenshot()
+                        saveToPhotoLibrary()
                         
                         
                     } label: {
@@ -594,7 +598,15 @@ struct SnapEffectView: View {
                         
                     }
             }
-
+            
+            if let image = capturedImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+            } else {
+                Text("No Image Captured")
+            }
 
             
             
@@ -606,6 +618,24 @@ struct SnapEffectView: View {
         
         
     }
+    
+    func takeScreenshot() -> UIImage? {
+        let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+        
+        UIGraphicsBeginImageContextWithOptions(window?.frame.size ?? CGSize.zero, false, 0)
+        window?.drawHierarchy(in: window?.bounds ?? CGRect.zero, afterScreenUpdates: true)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return screenshot
+    }
+
+    func saveToPhotoLibrary() {
+        if let image = capturedImage {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
+    }
+    
 }
 
 
@@ -933,3 +963,6 @@ struct MyButtonStyle: ButtonStyle {
             
     }
 }
+
+
+
