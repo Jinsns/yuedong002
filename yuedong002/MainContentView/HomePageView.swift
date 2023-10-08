@@ -581,7 +581,7 @@ struct SnapEffectView: View {
                             VStack(spacing: 4) {
     //                            Image("qqlogin")
     //                                .frame(width: 36, height: 36)
-                                ShareLink(item: Image(uiImage: capturedImage!), preview: SharePreview("snapshot of your giraffe", image: Image(uiImage: capturedImage!))) {
+                                ShareLink(item: Image(uiImage: cropSnapShot(sourceImage: capturedImage!)), preview: SharePreview("snapshot of your giraffe", image: Image(uiImage: cropSnapShot(sourceImage: capturedImage!)))) {
                                     Image("qqlogin")
                                         .frame(width: 36, height: 36)
 //                                    Label("", image: "qqlogin")
@@ -633,14 +633,14 @@ struct SnapEffectView: View {
                     }
             }
             
-            if let image = capturedImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-            } else {
-//                Text("No Image Captured")
-            }
+//            if let image = capturedImage {
+//                Image(uiImage: cropSnapShot(sourceImage: image))
+////                    .resizable()
+////                    .scaledToFit()
+////                    .frame(width: 200, height: 200)
+//            } else {
+////                Text("No Image Captured")
+//            }
 
             
             
@@ -668,9 +668,8 @@ struct SnapEffectView: View {
     }
 
     func saveToPhotoLibrary() {
-        if let image = capturedImage {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        }
+        let croppedImage = cropSnapShot(sourceImage: capturedImage!)
+        UIImageWriteToSavedPhotosAlbum(croppedImage, nil, nil, nil)
     }
     
     func currentDate() -> String {
@@ -1009,4 +1008,49 @@ struct MyButtonStyle: ButtonStyle {
 }
 
 
-
+func cropSnapShot(sourceImage: UIImage) -> UIImage {
+    
+//    .reverseMask{
+//        RoundedRectangle(cornerRadius: 16)
+//            .frame(width: 340, height: 580)
+//            .blendMode(.destinationOut)
+//            .padding(.bottom, 50)
+//    }
+    
+    // about UIImage and CGImage
+    //https://stackoverflow.com/questions/35945493/why-is-my-cgimage-3-x-the-size-of-the-uiimage
+    //It's because UIImage has a scale property. This mediates between pixels and points. So, for example, a UIImage created from a 180x180 pixel image, but with a scale of 3, is automatically treated as having size 60x60 points. It will report its size as 60x60, and will also look good on a 3x resolution screen where 3 pixels correspond to 1 point. And, as you rightly guess, the @3x suffix, or the corresponding location in the asset catalog, tells the system to give the UIImage a scale of 3 as it forms it.
+    //  But a CGImage does not have such a property; it's just a bitmap, the actual pixels of the image. So a CGImage formed from a UIImage created from 180x180 pixel image is 180x180 points as well.
+    
+//    let sideLength = min(sourceImage.size.width, sourceImage.size.height) //短边
+//    let sourceSize = sourceImage.size
+//
+//    //宽是短边，所以xOffset = 0
+//    let xOffset = (sourceSize.width - sideLength) / 2.0
+//    let yOffset = (sourceSize.height - sideLength) / 2.0
+//
+//    let cropRect = CGRect(
+//        x: xOffset * 3, y: yOffset * 3,
+//        width: sideLength * 3, height: sideLength * 3
+//    ).integral
+    
+    let sourceSize = sourceImage.size
+    let xOffset = 18.0
+    let yOffset = 130.0
+    let cropRect = CGRect(
+        x: xOffset * 3,
+        y: yOffset * 3,
+        width: (sourceSize.width - 2.0 * xOffset) * 3.0,
+        height: (sourceSize.height - 2.0 * yOffset) * 3.0
+    ).integral
+    
+    let sourceCGImage = sourceImage.cgImage!
+    let croppedCGImage = sourceCGImage.cropping(to: cropRect)!
+    
+    let croppedIamge = UIImage(
+        cgImage: croppedCGImage,
+        scale: sourceImage.imageRendererFormat.scale,
+        orientation: sourceImage.imageOrientation
+    )
+    return croppedIamge
+}
