@@ -41,6 +41,9 @@ struct HomePageView: View {
     
     @Binding var viewState: Int
     
+    @State var capturedImage: UIImage?
+    @State var isShowSaveShareIcons = false
+    
     
     
     
@@ -326,7 +329,7 @@ struct HomePageView: View {
         }
         
         if isShowShutterView {
-            ShutterView(isShowShutterView: $isShowShutterView, isShowSnapEffect: $isShowSnapEffect)
+            ShutterView(isShowShutterView: $isShowShutterView, isShowSnapEffect: $isShowSnapEffect, capturedImage: $capturedImage, isShowSaveShareIcons: $isShowSaveShareIcons)
                 .onAppear() {
                     scene.addCameraRotation()
                 }
@@ -337,11 +340,12 @@ struct HomePageView: View {
         }
         
         if isShowSnapEffect {
-            SnapEffectView(isShowSnapEffect: $isShowSnapEffect)
+            SnapEffectView(isShowSnapEffect: $isShowSnapEffect, capturedImage: $capturedImage, isShowSaveShareIcons: $isShowSaveShareIcons)
                 .onAppear() {
                     scene.physicsWorld.contactDelegate = nil
                     scene.stopMotionUpdates()
-                    scene.stopCameraRotation()                }
+                    scene.stopCameraRotation()
+                }
                 .onDisappear() {
                     scene.physicsWorld.contactDelegate = scene
                     scene.addNeckRotation()
@@ -381,6 +385,8 @@ struct HomePageView_Previews: PreviewProvider {
 struct ShutterView: View {
     @Binding var isShowShutterView: Bool
     @Binding var isShowSnapEffect: Bool
+    @Binding var capturedImage: UIImage?
+    @Binding var isShowSaveShareIcons: Bool
                 
                 
     var body: some View {
@@ -409,12 +415,17 @@ struct ShutterView: View {
             HStack {
                 Button {
                     print("pressed shutter button")
+                    
                     if let url = Bundle.main.url(forResource: "Camera_PressShutter", withExtension: "mp3") {
                         let player = AVAudioPlayerPool().playerWithURL(url: url)
                         player?.play()
                     }
                     withAnimation(.linear(duration: 0.6)) {
                         isShowSnapEffect = true
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        capturedImage = takeScreenshot()  //截图
+                        isShowSaveShareIcons = true
                     }
                     
                 } label: {
@@ -438,7 +449,11 @@ struct SnapEffectView: View {
     @EnvironmentObject var dataModel: DataModel
     @State var isShowSavedView = false
     
-    @State private var capturedImage: UIImage?
+    @Binding var capturedImage: UIImage?
+    @State var month: String = "10"
+    @State var day: String = "8"
+    @State var isShowShareLink: Bool = false
+    @Binding var isShowSaveShareIcons: Bool
     
     var body: some View {
         ZStack{
@@ -459,13 +474,13 @@ struct SnapEffectView: View {
                 VStack {
                     HStack {
                         HStack(alignment: .bottom, spacing: 12) {
-                            Text("8")
+                            Text(month)
                               .font(Font.custom("LilitaOne", size: 32))
                               .kerning(2.56)
                               .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16))
                               .offset(x: 0, y: 6)
                             
-                            Text("| 22")
+                            Text("| \(day)")
                               .font(Font.custom("LilitaOne", size: 14))
                               .kerning(1.12)
                               .foregroundColor(Color(red: 0.41, green: 0.63, blue: 0.16).opacity(0.6))
@@ -517,73 +532,92 @@ struct SnapEffectView: View {
                 
                 Spacer()
                 
-                HStack(alignment: .bottom, spacing: 42) {
-                    
-                    Button {
-                        print("pressed reshot button")
-                        isShowSnapEffect = false
-                    
+                if isShowSaveShareIcons {
+                    HStack(alignment: .bottom, spacing: 42) {
                         
-                    } label: {
-                        VStack(spacing: 4) {
-                            Image("reshot")
-                                .frame(width: 36, height: 36)
-                            Text("重拍")
-                              .font(Font.custom("DFPYuanW7-GB", size: 14))
-                              .multilineTextAlignment(.center)
-                              .foregroundColor(.white)
-                        }
-                    }
-                    
-                    Button {
-                        print("pressed save button")
-                        dataModel.isSnapShotted.toggle()
-                        withAnimation(.easeIn(duration: 0.6)) {
-                            isShowSavedView = true
-                        }
-                        capturedImage = takeScreenshot()
-                        saveToPhotoLibrary()
+                        Button {
+                            print("pressed reshot button")
+                            isShowSnapEffect = false
                         
+                            
+                        } label: {
+                            VStack(spacing: 4) {
+                                Image("reshot")
+                                    .frame(width: 36, height: 36)
+                                Text("重拍")
+                                  .font(Font.custom("DFPYuanW7-GB", size: 14))
+                                  .multilineTextAlignment(.center)
+                                  .foregroundColor(.white)
+                            }
+                        }
                         
-                    } label: {
-                        VStack(spacing: 4) {
-                            Image("save")
-                                .frame(width: 36, height: 36)
-                            Text("保存")
-                              .font(Font.custom("DFPYuanW7-GB", size: 14))
-                              .multilineTextAlignment(.center)
-                              .foregroundColor(.white)
+                        Button {
+                            print("pressed save button")
+                            dataModel.isSnapShotted.toggle()
+                            withAnimation(.easeIn(duration: 0.6)) {
+                                isShowSavedView = true
+                            }
+    //                        capturedImage = takeScreenshot()
+                            saveToPhotoLibrary()
+                            
+                            
+                        } label: {
+                            VStack(spacing: 4) {
+                                Image("save")
+                                    .frame(width: 36, height: 36)
+                                Text("保存")
+                                  .font(Font.custom("DFPYuanW7-GB", size: 14))
+                                  .multilineTextAlignment(.center)
+                                  .foregroundColor(.white)
+                            }
                         }
-                    }
-                    
-                    Button {
-                        print("pressed QQ login button")
-                    } label: {
-                        VStack(spacing: 4) {
-                            Image("qqlogin")
-                                .frame(width: 36, height: 36)
-                            Text("QQ")
-                              .font(Font.custom("DFPYuanW7-GB", size: 14))
-                              .multilineTextAlignment(.center)
-                              .foregroundColor(.white)
+                        
+                        Button {
+                            print("pressed QQ login button")
+                            isShowShareLink = true
+                            
+                            
+                        } label: {
+                            VStack(spacing: 4) {
+    //                            Image("qqlogin")
+    //                                .frame(width: 36, height: 36)
+                                ShareLink(item: Image(uiImage: capturedImage!), preview: SharePreview("snapshot of your giraffe", image: Image(uiImage: capturedImage!))) {
+                                    Image("qqlogin")
+                                        .frame(width: 36, height: 36)
+//                                    Label("", image: "qqlogin")
+//                                        .frame(width: 36, height: 36)
+                                }
+                                Text("QQ")
+                                  .font(Font.custom("DFPYuanW7-GB", size: 14))
+                                  .multilineTextAlignment(.center)
+                                  .foregroundColor(.white)
+                            }
                         }
-                    }
-                    
-                    Button {
-                        print("pressed WeChat login button")
-                    } label: {
-                        VStack(spacing: 4) {
-                            Image("wechatlogin")
-                                .frame(width: 36, height: 36)
-                            Text("微信")
-                              .font(Font.custom("DFPYuanW7-GB", size: 14))
-                              .multilineTextAlignment(.center)
-                              .foregroundColor(.white)
+                        
+                        Button {
+                            print("pressed WeChat login button")
+                        } label: {
+                            VStack(spacing: 4) {
+                                Image("wechatlogin")
+                                    .frame(width: 36, height: 36)
+                                Text("微信")
+                                  .font(Font.custom("DFPYuanW7-GB", size: 14))
+                                  .multilineTextAlignment(.center)
+                                  .foregroundColor(.white)
+                            }
                         }
+                        
+    //                    if isShowShareLink {
+    //                        ShareLink(item: Image(uiImage: capturedImage!), preview: SharePreview("snapshot of your giraffe", image: Image(uiImage: capturedImage!))) {
+    //                            Label(<#T##title: StringProtocol##StringProtocol#>, image: "qqlogin")
+    //                        }
+    //                    }
+                        
                     }
+                    .offset(x: 0, y: -50)
+    //                .padding(.bottom, 30)
                 }
-                .offset(x: 0, y: -50)
-//                .padding(.bottom, 30)
+                
             }
             
             if isShowSavedView {
@@ -605,7 +639,7 @@ struct SnapEffectView: View {
                     .scaledToFit()
                     .frame(width: 200, height: 200)
             } else {
-                Text("No Image Captured")
+//                Text("No Image Captured")
             }
 
             
@@ -614,6 +648,9 @@ struct SnapEffectView: View {
         .edgesIgnoringSafeArea(.all)
         .onAppear() {
 //            dataModel.isSnapShotted.toggle()
+            let currentDate = currentDate()
+            month = currentDate.components(separatedBy: "-")[1]
+            day = currentDate.components(separatedBy: "-")[2]
         }
         
         
@@ -634,6 +671,13 @@ struct SnapEffectView: View {
         if let image = capturedImage {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
+    }
+    
+    func currentDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let datetime = formatter.string(from: Date())
+        return datetime
     }
     
 }
