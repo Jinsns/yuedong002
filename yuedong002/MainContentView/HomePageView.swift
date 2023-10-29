@@ -581,38 +581,18 @@ struct SnapEffectView: View {
                             VStack(spacing: 4) {
     //                            Image("qqlogin")
     //                                .frame(width: 36, height: 36)
-                                ShareLink(item: Image(uiImage: cropSnapShot(sourceImage: capturedImage!)), preview: SharePreview("snapshot of your giraffe", image: Image(uiImage: cropSnapShot(sourceImage: capturedImage!)))) {
-                                    Image("qqlogin")
+                                ShareLink(item: Image(uiImage: cropSnapShot(sourceImage: capturedImage!)), preview: SharePreview("你的长颈鹿照片", image: Image(uiImage: cropSnapShot(sourceImage: capturedImage!)))) {
+                                    Image("share")
                                         .frame(width: 36, height: 36)
 //                                    Label("", image: "qqlogin")
 //                                        .frame(width: 36, height: 36)
                                 }
-                                Text("QQ")
+                                Text("分享")
                                   .font(Font.custom("DFPYuanW7-GB", size: 14))
                                   .multilineTextAlignment(.center)
                                   .foregroundColor(.white)
                             }
                         }
-                        
-                        Button {
-                            print("pressed WeChat login button")
-                        } label: {
-                            VStack(spacing: 4) {
-                                Image("wechatlogin")
-                                    .frame(width: 36, height: 36)
-                                Text("微信")
-                                  .font(Font.custom("DFPYuanW7-GB", size: 14))
-                                  .multilineTextAlignment(.center)
-                                  .foregroundColor(.white)
-                            }
-                        }
-                        
-    //                    if isShowShareLink {
-    //                        ShareLink(item: Image(uiImage: capturedImage!), preview: SharePreview("snapshot of your giraffe", image: Image(uiImage: capturedImage!))) {
-    //                            Label(<#T##title: StringProtocol##StringProtocol#>, image: "qqlogin")
-    //                        }
-    //                    }
-                        
                     }
                     .offset(x: 0, y: -50)
     //                .padding(.bottom, 30)
